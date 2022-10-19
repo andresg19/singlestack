@@ -1,12 +1,18 @@
 import Landing from "./Components/Landing/Landing";
+import Qa from "./Components/QA/Qa"
+import {BrowserRouter as Router, useRoutes} from 'react-router-dom';
+import Resources from "./Components/Resources/Resources";
+
 
 
 function App() {
-  return (
-    <div className="App">
-      <Landing />
-    </div>
-  );
+    const element = useRoutes([
+      {path: "/",  element: <Landing /> },
+      {path: "/q-a", element: <Qa />},
+      {path: "resources", element: <Resources />},
+
+    ])
+    return element
 }
 
 export default App;
