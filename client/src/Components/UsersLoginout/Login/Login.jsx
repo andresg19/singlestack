@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router';
-import { getUsers } from "../../../Redux/Actions/Actions"
+import { getUsers, userLogged } from "../../../Redux/Actions/Actions"
 
 
 const Login= () => {
@@ -31,7 +31,8 @@ const Login= () => {
         e.preventDefault();
         users.forEach(u => {
             if(u.email === input.email && u.password === input.password) {
-                return navigate('/');
+                dispatch(userLogged(u))
+                navigate('/');
             }
         });
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_USERS} from "../Actions/ActionTypes";
+import {GET_USERS, USER_LOGGED} from "../Actions/ActionTypes";
 
 
 
@@ -15,6 +15,15 @@ export const getUsers = (payload) => {
         } catch (error) {
             console.log(error);
         }
+    }
+}
+
+export const userLogged = (payload) => {
+    return async function (dispatch) {
+        return dispatch({
+            type: USER_LOGGED,
+            payload,
+        })
     }
 }
 
