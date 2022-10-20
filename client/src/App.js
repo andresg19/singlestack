@@ -14,7 +14,7 @@ function App() {
       {path: "/q-a", element: <Qa />},
       {path: "/resources", element: <Resources />},
       {path: "/login", element: <Login />},
-      {path: "register", element: <Register />},
+      {path: "/register", element: <Register />},
 
     ])
     return element
