@@ -6,3 +6,7 @@ CREATE TABLE users(
 
 INSERT INTO users (fullname, email) VALUES
 ('joe', 'joe@gmail.com');
+
+
+ALTER TABLE users
+ADD password varchar(100);

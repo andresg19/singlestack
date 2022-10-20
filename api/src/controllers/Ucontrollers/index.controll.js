@@ -21,14 +21,14 @@ const getUsersById = async (req, res) => {
 }
 
 const postUsers = async (req, res) => {
-    const { fullname, email } = req.body;
+    const { fullname, email, password } = req.body;
 
-    const response = await pool.query('INSERT INTO users (fullname, email) VALUES ($1, $2)', [fullname, email]);
+    const response = await pool.query('INSERT INTO users (fullname, email, password) VALUES ($1, $2, $3)', [fullname, email, password]);
 
     res.json({
         message: 'User Added Succesfully',
         body: {
-            user: {fullname, email}
+            user: {fullname, email, password}
         }
     });
 }
