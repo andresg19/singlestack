@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #050D1A;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.navbar {
+  display: block;
+  background-color: #15273F;
+  height: 50px;
+}
+
+.navigation {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.2%;
+  width: 12%;
+  justify-content: space-between;
+}
+
+.navigation button {
+  background-color: #050D1A;
+  color: #FDF8F5;
+  font-size: 14px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background-color: #15273F;
+}
+
+.landingWeAre {
+  display: flex;
+  font-size: 25px;
+  transform: rotate(35deg);
+  width: 30%;
+  margin-top: 7%;
+  margin-left: 2%;
+}
+
+.oscuretextlanding {
+  color: #456685;
+  margin: 10%;
+}
+.lightextlanding{
+  color: #FDF8F5;
+  margin: 10%;
+}
+
+.titleLanding {
+  color: #B3C4D4;
+  font-size: 35px;
+  margin-top: 5%;
+  width: 17%;
+  margin-left: 6.5%;
+
+}
+
+.containerQa {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+}
+
+.qaLeft {
+
+}
+.qaRight {
+  background-color: #456685;
+ 
+}
+
