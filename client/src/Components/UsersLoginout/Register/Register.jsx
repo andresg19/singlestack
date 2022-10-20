@@ -4,9 +4,14 @@ import React from 'react';
 const Register = () => {
 
     return ( 
-        <div> 
-        <h1>REGISTER</h1>
-    </div>
+        <div className='containerRegister'> 
+        <form>
+            <input type="text" autoComplete='off' placeholder='fullname'/>
+            <input type="text" autoComplete='off' placeholder='email'/>
+            <input type="password" autoComplete='off' placeholder='password'/>
+            <button type='submit'>Confirm</button>
+        </form>
+        </div>
      );
 }
  
