@@ -10,6 +10,12 @@ const Nav = () => {
                <Link to='/resources'>
                <button type='button'>RESOURCES</button>
                </Link>
+               <Link to='/login'>
+               <button type='button'>LOGIN</button>
+               </Link>
+               <Link to='/register'>
+               <button type='button'>REGISTER</button>
+               </Link>
             </li>
         </nav>
      );

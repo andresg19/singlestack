@@ -24,8 +24,9 @@ code {
   margin-left: auto;
   margin-right: auto;
   margin-top: 0.2%;
-  width: 12%;
-  justify-content: space-between;
+  width: auto;
+  justify-content: space-around;
+
 }
 
 .navigation button {
