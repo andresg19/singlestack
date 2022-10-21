@@ -80,7 +80,19 @@ code {
 
 }
 .qaRight {
+  display: grid;
   background-color: #456685;
  
+}
+
+.containerFeedQA {
+  width: 90%;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  border-right: #15273f solid 0.5px;
+  border-bottom: #15273f solid 0.5px;
+  border-top:#15273f solid 0.1px;
 }
 

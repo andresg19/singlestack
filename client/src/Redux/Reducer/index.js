@@ -1,10 +1,11 @@
 import {
-    GET_USERS, USER_LOGGED
+    GET_USERS, USER_LOGGED, GET_POSTS,
 } from "../Actions/ActionTypes";
 
 const initialState = {
     users : [],
     userLogged: [],
+    posts: [],
 }
 
 
@@ -20,6 +21,11 @@ export default function rootReducer(state= initialState, {type, payload}) {
             return {
                 ...state,
                 userLogged: payload,
+            }
+        case GET_POSTS:
+            return {
+                ...state,
+                posts: payload,
             }
         default:
             return state

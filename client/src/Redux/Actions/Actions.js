@@ -1,5 +1,9 @@
 import axios from 'axios';
-import {GET_USERS, USER_LOGGED} from "../Actions/ActionTypes";
+import {
+    GET_USERS,
+    USER_LOGGED,
+    GET_POSTS,
+        } from "../Actions/ActionTypes";
 
 
 
@@ -34,6 +38,20 @@ export const register = (payload) => {
         return {
             data
         };
+    }
+}
+
+export const getPosts = (payload) => {
+    return async function(dispatch) {
+        try {
+            let result = await axios.get('http://localhost:3001/posts');
+            return dispatch({
+                type: GET_POSTS,
+                payload: result.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
