@@ -10,3 +10,10 @@ INSERT INTO users (fullname, email) VALUES
 
 ALTER TABLE users
 ADD password varchar(100);
+
+CREATE TABLE posts(
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(100),
+    content TEXT,
+    author VARCHAR(100)
+);
