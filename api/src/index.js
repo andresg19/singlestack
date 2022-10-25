@@ -34,4 +34,4 @@ Users.belongsToMany(Posts, { through: "Users_Posts" });
 Posts.belongsToMany(Users, { through: "Users_Posts" });
 
 app.listen(3001);
-console.log("Server on port 3001");
+console.log("Server on port 3001.");
