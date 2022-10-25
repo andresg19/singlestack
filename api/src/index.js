@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-
+const { Sequelize } = require("sequelize");
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -16,8 +16,30 @@ app.use((req, res, next) => {
   next();
 });
 
+<<<<<<< HEAD
 //routes(
 app.use(require("./routes/index"));
 
 app.listen(3001);
 console.log("Server on port 3001!");
+=======
+//routes
+app.use(require("./routes/index"));
+
+modelDefiners.forEach((model) => model(sequelize));
+// Capitalizamos los nombres de los modelos ie: product => Product
+let entries = Object.entries(sequelize.models);
+let capsEntries = entries.map((entry) => [
+  entry[0][0].toUpperCase() + entry[0].slice(1),
+  entry[1],
+]);
+sequelize.models = Object.fromEntries(capsEntries);
+
+const { Users, Posts } = sequelize.models;
+
+Users.belongsToMany(Posts, { through: "Users_Posts" });
+Posts.belongsToMany(Users, { through: "Users_Posts" });
+
+app.listen(3001);
+console.log("Server on port 3001.");
+>>>>>>> 82cf6ef5fcce8bd85a648143c1f918696fadaf44
