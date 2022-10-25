@@ -8,7 +8,7 @@ const { Users, Posts } = require("../db.js");
 //GET ALL
 router.get("/", async (req, res) => {
   console.log("Hola desde el get");
-  res.send("hola");
+  res.send("hello world");
 });
 
 module.exports = router;
