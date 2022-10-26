@@ -9,15 +9,15 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
 
-    titulo: {
+   fullname: {
       type: DataTypes.STRING,
     },
 
-    descripcion: {
+    email: {
       type: DataTypes.TEXT,
     },
 
-    archivado: {
+    password: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
