@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { Link } from "react-router-dom"
 import { getPosts } from "../../Redux/Actions/Actions";
 
 const Questions = () => {
@@ -17,7 +17,9 @@ const Questions = () => {
         return (
           <div key={p.id}>
             <h1 className="text-center">
-              <a href="/">{p.title}</a>
+              <Link to={"/question/" + p.id}>
+                {p.title}
+              </Link>
             </h1>
             {/* <p>{p.content}</p> */}
           </div>
