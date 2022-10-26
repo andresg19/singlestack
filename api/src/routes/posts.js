@@ -59,8 +59,18 @@ router.get("/", async (req, res) => {
 });
 
 //BUSCA UN POST
-router.get("/", async (req, res) => {
-  console.log("Hola desde el get");
+router.get("/:id", async (req, res) => {
+  let { id } = req.params;
+  try {
+    let search = await Posts.findOne({
+      where: {
+        id,
+      },
+    });
+    res.status(200).send(search);
+  } catch (error) {
+    res.status(400).json(`Error del catch del searchID, ${err}`);
+  }
 });
 
 module.exports = router;

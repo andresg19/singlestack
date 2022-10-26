@@ -4,6 +4,7 @@ import {
   USER_LOGGED,
   GET_POSTS,
   POST_POSTS,
+  SEARCH_BY_ID,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -61,6 +62,21 @@ export const postPost = (payload) => {
 
       return dispatch({
         type: POST_POSTS,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const searchPost = (id) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.post(`http://localhost:3001/posts/${id}`);
+
+      return dispatch({
+        type: SEARCH_BY_ID,
+        payload: result.data,
       });
     } catch (error) {
       console.log(error);

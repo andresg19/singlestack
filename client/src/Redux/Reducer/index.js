@@ -3,12 +3,14 @@ import {
   USER_LOGGED,
   GET_POSTS,
   POST_POSTS,
+  SEARCH_BY_ID,
 } from "../Actions/ActionTypes";
 
 const initialState = {
   users: [],
   userLogged: [],
   posts: [],
+  postDetail: [],
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -32,6 +34,11 @@ export default function rootReducer(state = initialState, { type, payload }) {
     case POST_POSTS:
       return {
         ...state,
+      };
+    case SEARCH_BY_ID:
+      return {
+        ...state,
+        postDetail: payload,
       };
     default:
       return state;

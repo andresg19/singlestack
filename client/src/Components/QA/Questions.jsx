@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { getPosts } from "../../Redux/Actions/Actions";
 
 const Questions = () => {
   const dispatch = useDispatch();
   const posteos = useSelector((state) => state.posts);
   console.log(posteos);
-
   useEffect(() => {
     dispatch(getPosts());
   }, []);
@@ -16,8 +16,10 @@ const Questions = () => {
       {posteos.map((p) => {
         return (
           <div key={p.id}>
-            <h1 className="text-center">{p.title}</h1>
-            <p>{p.content}</p>
+            <h1 className="text-center">
+              <a href="/">{p.title}</a>
+            </h1>
+            {/* <p>{p.content}</p> */}
           </div>
         );
       })}
