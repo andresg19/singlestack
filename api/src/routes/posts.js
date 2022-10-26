@@ -5,7 +5,60 @@ const router = Router();
 const axios = require("axios");
 const { Users, Posts } = require("../db.js");
 
-//GET ALL
+//Checkea si andan las rutas
+router.get("/test", async (req, res) => {
+  res.status(200).json("Todo en orden");
+});
+
+//TRAE TODOS LOS POSTS
+router.get("/", async (req, res) => {
+  try {
+    let posts = await Posts.findAll();
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(400).json(`Error del catch getall, ${err}`);
+  }
+});
+
+//CREA UN POST
+router.post("/", async (req, res) => {
+  let { title, content } = req.body;
+
+  try {
+    let [posts, created] = await Posts.findOrCreate({
+      where: {
+        title,
+        content,
+      },
+    });
+    created ? res.status(200).json(posts) : null; // este if es porque me molesta el created sin usar
+  } catch (error) {
+    res.status(400).json(`Error del catch post, ${err}`);
+  }
+});
+
+//BORRA UN POST
+router.delete("/:id", async (req, res) => {
+  let { id } = req.params;
+
+  try {
+    let destroyPost = await Posts.destroy({
+      where: {
+        id,
+      },
+    });
+    res.status(200).send("Borrado con exito");
+  } catch (error) {
+    res.status(400).json(`Error del catch del delete, ${err}`);
+  }
+});
+
+//EDITA UN POST
+router.get("/", async (req, res) => {
+  console.log("Hola desde el get");
+});
+
+//BUSCA UN POST
 router.get("/", async (req, res) => {
   console.log("Hola desde el get");
 });

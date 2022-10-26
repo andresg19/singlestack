@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
 
-   fullname: {
+    fullname: {
       type: DataTypes.STRING,
     },
 
@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
     },
 
     password: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       defaultValue: false,
     },
   });
