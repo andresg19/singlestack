@@ -70,7 +70,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Users, Posts } = sequelize.models;
 
 Users.belongsToMany(Posts, { through: "Users_Posts" });
-Posts.hasOne(Users);
+Posts.belongsToMany(Users, { through: "Users_Posts" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
