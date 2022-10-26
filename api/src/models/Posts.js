@@ -8,18 +8,19 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-
-    titulo: {
-      type: DataTypes.STRING,
-    },
-
-    descripcion: {
+    title: {
       type: DataTypes.TEXT,
     },
 
-    archivado: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
+    content: {
+      type: DataTypes.STRING,
+    },
+
+    author: {
+      type: DataTypes.TEXT,
+    },
+    date: {
+      type: DataTypes.DATE
     },
   });
 };
