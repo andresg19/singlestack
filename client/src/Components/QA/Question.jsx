@@ -35,8 +35,11 @@ const Question = (/* id */) => {
   return (
     <div className="containerQuestionDetail">
       <p>{dateFormatter(currentPost.date)}</p>
+      {/* si le pongo algo que no se p se chanflea/ acomodar dsp con los estilos */}
+      <p>{currentPost.author}</p>
       <h1>{currentPost.title}</h1>
       <p>{currentPost.content}</p>
+      <button>comentar</button>
     </div>
   );
 };
