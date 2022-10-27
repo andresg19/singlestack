@@ -20,7 +20,8 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
     },
     date: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
   });
 };
