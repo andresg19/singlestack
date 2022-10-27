@@ -22,18 +22,19 @@ router.get("/", async (req, res) => {
 
 //CREA UN POST
 router.post("/", async (req, res) => {
-  let { title, content } = req.body;
-
+  let { title, content, author } = req.body;
+  console.log("author", author);
   try {
     let [posts, created] = await Posts.findOrCreate({
       where: {
         title,
         content,
+        author,
       },
     });
     created ? res.status(200).json(posts) : null; // este if es porque me molesta el created sin usar
   } catch (error) {
-    res.status(400).json(`Error del catch post, ${err}`);
+    res.status(400).json(`Error del catch post, ${error}`);
   }
 });
 

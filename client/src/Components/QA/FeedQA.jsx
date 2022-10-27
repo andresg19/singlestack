@@ -25,12 +25,15 @@ const FeedQA = () => {
     console.log("close");
   };
 
+  let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  console.log("fullname", currentUser.fullname);
+
   return (
     <div className="containerFeedQA">
       <div className="">
         {modal ? (
           <div className="">
-            <Modal />
+            <Modal fullname={currentUser.fullname} />
             <button onClick={modalClose}>Cerrar ventana</button>
           </div>
         ) : (

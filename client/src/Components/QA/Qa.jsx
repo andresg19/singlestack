@@ -8,10 +8,10 @@ const Qa = () => {
       <div className="qaLeft text-center text-white">
         <h1>Explicacion:</h1>
         <h4>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-          provident vitae placeat odio sit earum commodi vel. Nostrum, vero
-          libero! Voluptatibus harum soluta mollitia dicta libero repudiandae
-          quos, incidunt consequuntur?
+          Independiente? Se fue a la .... Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Ea ratione nulla minus provident vel non rem
+          nesciunt enim eos quos, id reiciendis sequi officia voluptate sunt est
+          nam tempore nihil!
         </h4>
       </div>
       <div className="qaRight">
