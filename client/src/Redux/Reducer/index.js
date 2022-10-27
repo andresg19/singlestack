@@ -4,6 +4,7 @@ import {
   GET_POSTS,
   POST_POSTS,
   SEARCH_BY_ID,
+  CLEAR_STATE,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -40,6 +41,11 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
         postDetail: payload,
       };
+    case CLEAR_STATE:
+      return { 
+        ...state,
+        postDetail: [],
+      }
     default:
       return state;
   }

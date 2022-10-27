@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { searchPost } from "../../Redux/Actions/Actions";
+import { searchPost, clearState } from "../../Redux/Actions/Actions";
 
 const Question = (/* id */) => {
   const dispatch = useDispatch();
@@ -12,10 +12,13 @@ const Question = (/* id */) => {
 
   useEffect(() => {
     dispatch(searchPost(id))
+    return () => {
+      dispatch(clearState());
+    }
   }, []);
 
   return(
-    <div>
+    <div className="containerQuestionDetail">
       <h1>{currentPost.title}</h1>
       <p>{currentPost.content}</p>
     </div> 
