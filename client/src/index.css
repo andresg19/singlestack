@@ -108,3 +108,21 @@ code {
   border-top:#15273f solid 0.1px;
 }
 
+.containerQuestionDetail {
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15%;
+  height: auto;
+  width: 60%;
+  background-color: #456685;
+}
+
+.containerQuestionDetail h1, p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.containerQuestionDetail p {
+  margin-top: 5%;
+}
