@@ -72,10 +72,9 @@ export const postPost = (payload) => {
 
 export const searchPost = (id) => {
   return async function (dispatch) {
-    console.log('entre al back')
     try {
       let result = await axios.get(`http://localhost:3001/posts/${id}`);
-      console.log('sali del back')
+      console.log(result.data);
       return dispatch({
         type: SEARCH_BY_ID,
         payload: result.data,
@@ -89,5 +88,5 @@ export const searchPost = (id) => {
 export const clearState = () => {
   return {
     type: CLEAR_STATE,
-  }
-}
+  };
+};
