@@ -39,6 +39,7 @@ const Question = (/* id */) => {
       <p>{currentPost.author}</p>
       <h1>{currentPost.title}</h1>
       <p>{currentPost.content}</p>
+      <button>comentar</button>
     </div>
   );
 };
