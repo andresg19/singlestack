@@ -23,5 +23,9 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
     },
+    comments: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true,
+    },
   });
 };

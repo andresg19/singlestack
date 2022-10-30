@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
 //CREA UN POST
 router.post("/", async (req, res) => {
   let { title, content, author } = req.body;
-  console.log("author", author);
+
   try {
     let [posts, created] = await Posts.findOrCreate({
       where: {
@@ -71,6 +71,39 @@ router.get("/:id", async (req, res) => {
     res.status(200).send(search);
   } catch (error) {
     res.status(400).json(`Error del catch del searchID, ${err}`);
+  }
+});
+
+//AGREGA UN COMENTARIO
+router.put("/:id", async (req, res) => {
+  let { id } = req.params;
+  let { comment, userId } = req.body;
+  let arr = [];
+  try {
+    let addComment = await Posts.findOne({
+      where: {
+        id,
+      },
+    });
+    arr.push(comment);
+    console.log(arr);
+    console.log(addComment.comments);
+    !addComment.comments
+      ? (addComment.comments = [...arr])
+      : addComment.comments.push(comment);
+
+    await addComment.update(
+      { comments: addComment.comments },
+      {
+        where: {
+          id,
+        },
+      }
+    );
+
+    res.status(200).send(addComment);
+  } catch (error) {
+    res.status(400).json(`Error del catch del put comment, ${error}`);
   }
 });
 
