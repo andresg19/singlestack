@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router';
-import { getUsers, userLogged } from "../../../Redux/Actions/Actions"
+import { getUsers, login, userLogged } from "../../../Redux/Actions/Actions"
 
 
 const Login= () => {
@@ -12,11 +12,10 @@ const Login= () => {
     console.log(users)
 
     const [ input, setInput ] = useState({
-        fullname: "",
         email: "",
         password: "",
     })
-    console.log(input)
+  
 
     useEffect(() => {
         dispatch(getUsers())
@@ -26,7 +25,7 @@ const Login= () => {
         setInput({...input, [e.target.name]: e.target.value});
 
     }
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         users.forEach(u => {
