@@ -7,12 +7,6 @@ import Modal from "./Modal";
 
 const FeedQA = () => {
   const dispatch = useDispatch();
-  // const posteos = useSelector((state) => state.posts);
-  // console.log(posteos)
-
-  // useEffect(() => {
-  //     dispatch(getPosts())
-  // }, [])
 
   const [modal, setModal] = useState(false);
 
@@ -26,7 +20,7 @@ const FeedQA = () => {
   };
 
   let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  console.log("fullname", currentUser.fullname);
+  // console.log("fullname", currentUser.fullname);
 
   return (
     <div className="containerFeedQA">

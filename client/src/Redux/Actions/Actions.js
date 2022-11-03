@@ -6,6 +6,7 @@ import {
   POST_POSTS,
   SEARCH_BY_ID,
   CLEAR_STATE,
+  
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -22,6 +23,20 @@ export const getUsers = (payload) => {
     }
   };
 };
+
+// export const login = (payload) => {
+//   return async function () {
+//     try {
+//       console.log('entre')
+//       let fnLogin = await axios.post('http://localhost:3001/users/login', payload);
+//       return {
+//         fnLogin,
+//       }
+//     } catch (error) {
+//       alert(error);
+//     }
+//   }
+// }
 
 export const userLogged = (payload) => {
   return async function (dispatch) {

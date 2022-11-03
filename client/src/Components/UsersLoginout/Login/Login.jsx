@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { getUsers, userLogged } from "../../../Redux/Actions/Actions";
+import { getUsers, login, userLogged } from "../../../Redux/Actions/Actions";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -11,11 +11,9 @@ const Login = () => {
   console.log(users);
 
   const [input, setInput] = useState({
-    fullname: "",
     email: "",
     password: "",
   });
-  console.log(input);
 
   useEffect(() => {
     dispatch(getUsers());
@@ -27,6 +25,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("aprieta");
     users.forEach((u) => {
       if (u.email === input.email && u.password === input.password) {
         dispatch(userLogged(u));
