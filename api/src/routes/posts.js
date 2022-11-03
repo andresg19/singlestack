@@ -69,14 +69,18 @@ router.get("/:id", async (req, res) => {
       },
     });
 
-    let comments = await Comments_Posts.findOne({
+    let joinner = await Comments_Posts.findOne({
       where: {
-        postId: id,
+        postId: search.id,
       },
     });
-    console.log("comments", comments);
-    search.comments = comments;
-    res.status(200).send(search);
+    let comments = await Comments.findAll({
+      where: {
+        id: joinner.commentId,
+      },
+    });
+    let result = [search, comments];
+    res.status(200).send(result);
   } catch (err) {
     res.status(400).json(`Error del catch del searchID, ${err}`);
   }
