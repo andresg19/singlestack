@@ -3,7 +3,7 @@ const { Router } = require("express");
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
 const axios = require("axios");
-const { Users, Posts } = require("../db.js");
+const { Users, Posts, Comments, Comments_Posts } = require("../db.js");
 
 //Checkea si andan las rutas
 router.get("/test", async (req, res) => {
@@ -68,42 +68,17 @@ router.get("/:id", async (req, res) => {
         id,
       },
     });
-    res.status(200).send(search);
-  } catch (error) {
-    res.status(400).json(`Error del catch del searchID, ${err}`);
-  }
-});
 
-//AGREGA UN COMENTARIO
-router.put("/:id", async (req, res) => {
-  let { id } = req.params;
-  let { comment, userId } = req.body;
-  let arr = [];
-  try {
-    let addComment = await Posts.findOne({
+    let comments = await Comments_Posts.findOne({
       where: {
-        id,
+        postId: id,
       },
     });
-    arr.push(comment);
-    console.log(arr);
-    console.log(addComment.comments);
-    !addComment.comments
-      ? (addComment.comments = [...arr])
-      : addComment.comments.push(comment);
-
-    await addComment.update(
-      { comments: addComment.comments },
-      {
-        where: {
-          id,
-        },
-      }
-    );
-
-    res.status(200).send(addComment);
-  } catch (error) {
-    res.status(400).json(`Error del catch del put comment, ${error}`);
+    console.log("comments", comments);
+    search.comments = comments;
+    res.status(200).send(search);
+  } catch (err) {
+    res.status(400).json(`Error del catch del searchID, ${err}`);
   }
 });
 
