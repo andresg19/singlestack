@@ -3,7 +3,7 @@ const { Router } = require("express");
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
 const axios = require("axios");
-const { encrypt, compare } = require('../helpers/handleBcrypt')
+const { encrypt, compare } = require("../helpers/handleBcrypt");
 const { Users, Posts } = require("../db.js");
 
 //GET ALL
@@ -20,12 +20,12 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res, next) => {
   try {
     const { fullname, email, password } = req.body;
-    
-    const passHash = await encrypt(password);
+
+    /* const passHash = await encrypt(password); */
     const newUser = await Users.create({
       fullname,
       email,
-      password : passHash
+      password,
     });
 
     res.send("User created");
@@ -35,31 +35,30 @@ router.post("/", async (req, res, next) => {
 });
 
 //LOGIN
-router.post('/login', async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const user = await Users.findOne({email});
- 
+    const user = await Users.findOne({ email });
+
     const passCheck = await compare(password, user.password);
-    
-    if(passCheck) {
+
+    if (passCheck) {
       res.send({
-        data: user
-      })
-      return
+        data: user,
+      });
+      return;
     }
-    if(!passCheck) {
-      res.status(409)
+    if (!passCheck) {
+      res.status(409);
       res.send({
-        error: 'Invalid password'
-      })
-      return
+        error: "Invalid password",
+      });
+      return;
     }
-    
   } catch (error) {
     next(error);
   }
-})
+});
 
 //DELETE USER
 router.delete("/:id", async (req, res, next) => {

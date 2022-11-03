@@ -23,6 +23,20 @@ export const getUsers = (payload) => {
   };
 };
 
+// export const login = (payload) => {
+//   return async function () {
+//     try {
+//       console.log('entre')
+//       let fnLogin = await axios.post('http://localhost:3001/users/login', payload);
+//       return {
+//         fnLogin,
+//       }
+//     } catch (error) {
+//       alert(error);
+//     }
+//   }
+// }
+
 export const userLogged = (payload) => {
   return async function (dispatch) {
     return dispatch({
@@ -72,10 +86,9 @@ export const postPost = (payload) => {
 
 export const searchPost = (id) => {
   return async function (dispatch) {
-    console.log('entre al back')
     try {
       let result = await axios.get(`http://localhost:3001/posts/${id}`);
-      console.log('sali del back')
+      console.log(result.data);
       return dispatch({
         type: SEARCH_BY_ID,
         payload: result.data,
@@ -89,5 +102,5 @@ export const searchPost = (id) => {
 export const clearState = () => {
   return {
     type: CLEAR_STATE,
-  }
-}
+  };
+};

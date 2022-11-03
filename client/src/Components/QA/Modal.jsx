@@ -1,23 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { postPost } from "../../Redux/Actions/Actions";
 
-const Modal = () => {
+const Modal = ({  }) => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     title: "",
     content: "",
+    author: JSON.parse(localStorage.getItem("currentUser")).fullname,
   });
-
+  console.log(input)
+  //  let fullname = currentUser.fullname;
+  //  console.log('soyfullname', fullname)
+  // setInput({ ...input, author: fullname }); 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
   const handlePost = (e) => {
     e.preventDefault();
+
     dispatch(postPost(input));
+
     window.location.reload();
   };
+
+  useEffect(() => {
+      // fullname = localStorage.getItem("fullname"); 
+  }, []);
+
   return (
     <div class="modal-lg">
       <div class="modal-content">

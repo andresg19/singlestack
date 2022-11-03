@@ -3,7 +3,7 @@ const { Router } = require("express");
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
 const axios = require("axios");
-const { Users, Posts } = require("../db.js");
+const { Users, Posts, Comments, Comments_Posts } = require("../db.js");
 
 //Checkea si andan las rutas
 router.get("/test", async (req, res) => {
@@ -22,18 +22,19 @@ router.get("/", async (req, res) => {
 
 //CREA UN POST
 router.post("/", async (req, res) => {
-  let { title, content } = req.body;
+  let { title, content, author } = req.body;
 
   try {
     let [posts, created] = await Posts.findOrCreate({
       where: {
         title,
         content,
+        author,
       },
     });
     created ? res.status(200).json(posts) : null; // este if es porque me molesta el created sin usar
   } catch (error) {
-    res.status(400).json(`Error del catch post, ${err}`);
+    res.status(400).json(`Error del catch post, ${error}`);
   }
 });
 
@@ -67,10 +68,27 @@ router.get("/:id", async (req, res) => {
         id,
       },
     });
-    res.status(200).send(search);
-  } catch (error) {
+
+    let allComments = await Comments.findAll();
+    search.comment = allComments.map((e) => {
+      if ((e.postId = id)) {
+        return e;
+      }
+    });
+
+    res.status(200).send([search, search.comment]);
+  } catch (err) {
     res.status(400).json(`Error del catch del searchID, ${err}`);
   }
 });
 
 module.exports = router;
+
+/* comments                     posts
+    -id                            -id
+    -content                       -content
+    -author                        -author
+    -postId
+se postea un post con content y author ----> (post tiene un id unico) <----
+agrego un comentario al post realizado ----> (detecto el id del post y se lo guardo al comentario) <----
+ */
