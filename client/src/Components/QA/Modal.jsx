@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { postPost } from "../../Redux/Actions/Actions";
 
-const Modal = ({ fullname }) => {
+const Modal = ({  }) => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     title: "",
     content: "",
-    author: fullname,
+    author: JSON.parse(localStorage.getItem("currentUser")).fullname,
   });
-  /* let fullname = "";
-  setInput({ ...input, author: fullname }); */
+  console.log(input)
+  //  let fullname = currentUser.fullname;
+  //  console.log('soyfullname', fullname)
+  // setInput({ ...input, author: fullname }); 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -24,7 +26,7 @@ const Modal = ({ fullname }) => {
   };
 
   useEffect(() => {
-    /*  fullname = localStorage.getItem("fullname"); */
+      // fullname = localStorage.getItem("fullname"); 
   }, []);
 
   return (

@@ -24,7 +24,7 @@ const Question = (/* id */) => {
   const currentPost = useSelector((state) => state.postDetail);
   const { id } = useParams();
 
-  console.log(currentPost.date);
+  console.log("currentPost", currentPost);
   useEffect(() => {
     dispatch(searchPost(id));
     return () => {
@@ -36,9 +36,10 @@ const Question = (/* id */) => {
     <div className="containerQuestionDetail">
       <p>{dateFormatter(currentPost.date)}</p>
       {/* si le pongo algo que no se p se chanflea/ acomodar dsp con los estilos */}
-      <p>{currentPost.author}</p>
+      <p>User: {currentPost.author}</p>
       <h1>{currentPost.title}</h1>
       <p>{currentPost.content}</p>
+      <button>comentar</button>
     </div>
   );
 };
