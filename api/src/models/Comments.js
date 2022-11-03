@@ -14,5 +14,8 @@ module.exports = (sequelize) => {
     author: {
       type: DataTypes.TEXT,
     },
+    postId: {
+      type: DataTypes.STRING,
+    },
   });
 };

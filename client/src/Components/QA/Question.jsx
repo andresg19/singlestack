@@ -24,7 +24,7 @@ const Question = (/* id */) => {
   const currentPost = useSelector((state) => state.postDetail);
   const { id } = useParams();
 
-  console.log(currentPost.date);
+  console.log("currentPost", currentPost);
   useEffect(() => {
     dispatch(searchPost(id));
     return () => {

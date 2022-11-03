@@ -30,40 +30,20 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   let { content, author, postId } = req.body;
   try {
-    let [comment, created] = await Comments.findOrCreate({
-      where: {
-        content,
-        author,
-      },
-    });
-    console.log("comment", comment);
-
-    /* let tabla = await Posts_Comments.findOrCreate({
-      where: {
-        commentId: comment.id,
-        postId,
-      },
-    }); */
-
-    let post = await Posts.findOne({ where: { id: postId } });
-
-    //post  comment
-    await post.addComments(comment);
-
-    res.status(200).json(post);
+    let comment = await Comments.create({ content, author, postId });
+    res.status(200).json(comment);
   } catch (err) {
     console.log(err);
   }
 });
 
-/* 
-include: {
-      model: Tags,
-      attributes: ["nombre"],
-      through: {
-        attributes: [],
-      },
-    },
-*/
-
 module.exports = router;
+
+/* comments                     posts
+    -id                            -id
+    -content                       -content
+    -author                        -author
+    -postId
+se postea un post con content y author ----> (post tiene un id unico) <----
+agrego un comentario al post realizado ----> (detecto el id del post y se lo guardo al comentario) <----
+ */

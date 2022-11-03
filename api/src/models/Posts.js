@@ -23,5 +23,5 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
     },
-  });//[["a", id] , ["b", id], "c"]
+  }); //[["a", id] , ["b", id], "c"]
 };

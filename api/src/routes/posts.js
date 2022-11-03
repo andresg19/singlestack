@@ -69,21 +69,26 @@ router.get("/:id", async (req, res) => {
       },
     });
 
-    let joinner = await Comments_Posts.findOne({
-      where: {
-        postId: search.id,
-      },
+    let allComments = await Comments.findAll();
+    search.comment = allComments.map((e) => {
+      if ((e.postId = id)) {
+        return e;
+      }
     });
-    let comments = await Comments.findAll({
-      where: {
-        id: joinner.commentId,
-      },
-    });
-    let result = [search, comments];
-    res.status(200).send(result);
+
+    res.status(200).send([search, search.comment]);
   } catch (err) {
     res.status(400).json(`Error del catch del searchID, ${err}`);
   }
 });
 
 module.exports = router;
+
+/* comments                     posts
+    -id                            -id
+    -content                       -content
+    -author                        -author
+    -postId
+se postea un post con content y author ----> (post tiene un id unico) <----
+agrego un comentario al post realizado ----> (detecto el id del post y se lo guardo al comentario) <----
+ */

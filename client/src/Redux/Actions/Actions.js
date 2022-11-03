@@ -6,7 +6,6 @@ import {
   POST_POSTS,
   SEARCH_BY_ID,
   CLEAR_STATE,
-  
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
