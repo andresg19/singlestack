@@ -70,13 +70,18 @@ router.get("/:id", async (req, res) => {
     });
 
     let allComments = await Comments.findAll();
-    search.comment = allComments.map((e) => {
-      if ((e.postId = id)) {
-        return e;
-      }
-    });
 
-    res.status(200).send([search, search.comment]);
+
+    // if(search.comment.length) {
+    //   res.status(200).send([search, search.comment]);
+    // } else {
+      search.comment = allComments.map((e) => {
+        if ((e.postId = id)) {
+          return e;
+        }
+      });
+    // }
+    res.status(200).send([search, search.comment]); 
   } catch (err) {
     res.status(400).json(`Error del catch del searchID, ${err}`);
   }

@@ -48,6 +48,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         postDetail: [],
+        commentsDetail: [],
       };
     case POST_COMMENT:
       return {
