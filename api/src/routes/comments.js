@@ -28,9 +28,11 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  let { content, author, postId } = req.body;
+  let { content, author, postId, img } = req.body;
   try {
-    let comment = await Comments.create({ content, author, postId });
+    // let imgDecoder = atob(img)
+    // img = !img ? "" : img  
+    let comment = await Comments.create({ content, author, postId, img });
     res.status(200).json(comment);
   } catch (err) {
     console.log(err);

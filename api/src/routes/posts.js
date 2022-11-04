@@ -69,14 +69,9 @@ router.get("/:id", async (req, res) => {
       },
     });
 
-    let allComments = await Comments.findAll();
-    search.comment = allComments.map((e) => {
-      if ((e.postId = id)) {
-        return e;
-      }
-    });
+    let allComments = await Comments.findAll({ where: { postId: id } });
 
-    res.status(200).send([search, search.comment]);
+    res.status(200).send([search, allComments]);
   } catch (err) {
     res.status(400).json(`Error del catch del searchID, ${err}`);
   }
