@@ -131,3 +131,37 @@ p {
 .containerQuestionDetail p {
   margin-top: 5%;
 }
+
+
+.profileContainer {
+  display: grid;
+}
+
+.profileUser {
+  display:block;
+  margin-top: 5%;
+  width: 40%;
+  height: 50vh;
+  border-radius: 2%;
+  background-color: #456685;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.profileUser h1, p {
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  max-width:auto;
+  font-size: 18px;
+  text-align: center;
+}
+
+.profileUser img {
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+}
+
