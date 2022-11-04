@@ -6,6 +6,7 @@ import {
   POST_POSTS,
   SEARCH_BY_ID,
   CLEAR_STATE,
+  POST_COMMENT,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -102,5 +103,19 @@ export const searchPost = (id) => {
 export const clearState = () => {
   return {
     type: CLEAR_STATE,
+  };
+};
+
+export const postComment = (payload) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.post(`http://localhost:3001/comments`, payload);
+
+      return dispatch({
+        type: POST_COMMENT,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 };

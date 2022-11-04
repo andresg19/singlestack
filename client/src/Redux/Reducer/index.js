@@ -5,6 +5,7 @@ import {
   POST_POSTS,
   SEARCH_BY_ID,
   CLEAR_STATE,
+  POST_COMMENT,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   userLogged: [],
   posts: [],
   postDetail: [],
+  commentsDetail: [],
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -39,13 +41,18 @@ export default function rootReducer(state = initialState, { type, payload }) {
     case SEARCH_BY_ID:
       return {
         ...state,
-        postDetail: payload,
+        postDetail: payload[0],
+        commentsDetail: payload[1],
       };
     case CLEAR_STATE:
-      return { 
+      return {
         ...state,
         postDetail: [],
-      }
+      };
+    case POST_COMMENT:
+      return {
+        ...state,
+      };
     default:
       return state;
   }
