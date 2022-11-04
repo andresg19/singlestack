@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { searchPost, clearState } from "../../Redux/Actions/Actions";
 import InputComment from "./InputComment";
 
-function dateFormatter(state) {
+export function dateFormatter(state) {
   //date "2022-10-26T13:25:39.855Z"
   //dateFromRedux.toString();
 
