@@ -9,6 +9,8 @@ const Modal = ({  }) => {
     content: "",
     author: JSON.parse(localStorage.getItem("currentUser")).fullname,
   });
+  const [img, setImg] =  useState("");
+  
   console.log(input)
   //  let fullname = currentUser.fullname;
   //  console.log('soyfullname', fullname)
@@ -16,6 +18,20 @@ const Modal = ({  }) => {
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
+
+  
+  
+  // const handleImage = (e) => {
+  //   e.preventDefault();
+  //   const reader = new FileReader();
+  //   if (e.target.files[0]) {
+  //     reader.readAsDataURL(e.target.files[0]);
+  //   }
+  //   reader.onload = (readerEvent) => {
+  //     setImg(readerEvent.target.result);
+  //   };
+  // }
+   
 
   const handlePost = (e) => {
     e.preventDefault();
@@ -46,6 +62,11 @@ const Modal = ({  }) => {
           value={input.content}
           onChange={handleChange}
         />
+        {/* <input 
+        type="file"
+        accept="image/*,.pdf" 
+        onChange={handleImage}
+        /> */}
       </div>
 
       <button class="btn-sm" onClick={handlePost}>
