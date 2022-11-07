@@ -89,7 +89,7 @@ export const searchPost = (id) => {
   return async function (dispatch) {
     try {
       let result = await axios.get(`http://localhost:3001/posts/${id}`);
-      console.log(result.data);
+      console.log("result.data", result.data);
       return dispatch({
         type: SEARCH_BY_ID,
         payload: result.data,

@@ -5,9 +5,6 @@ import { searchPost, clearState } from "../../Redux/Actions/Actions";
 import InputComment from "./InputComment";
 
 export function dateFormatter(state) {
-  //date "2022-10-26T13:25:39.855Z"
-  //dateFromRedux.toString();
-
   if (state && typeof state === "string") {
     let cutter = state.split("T");
     let dateSplit = cutter[0].split("-");
@@ -16,7 +13,7 @@ export function dateFormatter(state) {
 
     return `${hourSplit.substring(0, 5)} - ${dateJoin}`;
   }
-  //let cutter = dateFromRedux.split(":");
+
   return "Error en la fecha/hora del post";
 }
 
@@ -48,14 +45,19 @@ const Question = (/* id */) => {
           <h2>Comentarios</h2>
           {currentComments &&
             currentComments.map((e) => {
-              console.log("soy e comments", e);
               return (
                 <div key={e.id}>
                   <p>{dateFormatter(e.createdAt)}</p>
                   <p>{e.author}</p>
                   <p>{e.content}</p>
-                  {e.img === "" || e.img === null ? null : (
-                    <img src={e.img} alt="" width={50} />
+
+                  {e.img && (
+                    <img
+                      /* src={`data:image/jpeg;base64,${e.img}`} */
+                      src={e.img}
+                      alt=""
+                      width={50}
+                    />
                   )}
                   <hr />
                 </div>
