@@ -34,13 +34,13 @@ const Question = (/* id */) => {
     };
   }, []);
 
-  function blobToBase64(blob) {
-    return new Promise((resolve, _) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result);
-      reader.readAsDataURL(blob);
-    });
-  }
+  // function blobToBase64(blob) {
+  //   return new Promise((resolve, _) => {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => resolve(reader.result);
+  //     reader.readAsDataURL(blob);
+  //   });
+  // }
 
  
   
@@ -68,7 +68,7 @@ const Question = (/* id */) => {
                   <p>{e.content}</p>
 
                   {
-                    e.img === "" || e.img === null ?  null : <img src={e[0].img} alt="" width={50} />
+                    e.img === "" || e.img === null ?  null : <img src={e.img} alt="" width={50} />
                   }
                   <hr />
                 </div>

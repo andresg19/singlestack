@@ -12,13 +12,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     author: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
     },
     postId: {
       type: DataTypes.STRING,
     },
     img: {
-      type: DataTypes.BLOB,
+      type: DataTypes.TEXT,
     },
   });
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postComment } from "../../Redux/Actions/Actions";
@@ -10,9 +10,7 @@ const InputComment = ({ postId }) => {
     author: JSON.parse(localStorage.getItem("currentUser")).fullname,
   };
   const [input, setInput] = useState("");
-  const [img, setImg] =  useState("");
-  // console.log('soy la img', img)
-
+  const [img, setImg] = useState("");
 
 //   function base64toBlob(base64Data, contentType) {
 //     contentType = contentType || '';
@@ -38,22 +36,38 @@ const InputComment = ({ postId }) => {
 
   const handleImage = (e) => {
     e.preventDefault();
-    if (e.target.files && e.target.files[0]) {
+
+    const reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+    reader.onload = (readerEvent) => {
+      setImg(readerEvent.target.result);
+    };
+    /*  if (e.target.files && e.target.files[0]) {
+      console.log(e.target.files[0]);
       setImg({
-        data: URL.createObjectURL(e.target.files[0])
+        data: URL.createObjectURL(e.target.files[0]),
       });
-  }
-}
+    }
+    fullComment.img = img.data;
+    console.log(fullComment); */
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log('30', fullComment)
+    console.log(img);
     fullComment.content = input;
-    // console.log('31', fullComment)
-    fullComment.img = img.data;
+    fullComment.img = img;
+    console.log(fullComment);
     dispatch(postComment(fullComment));
     window.location.reload();
   };
+
+  console.log(fullComment);
+  useEffect(() => {
+    fullComment.img = img;
+  }, [img]);
   return (
     <div className="inputComment">
       <textarea
@@ -65,22 +79,16 @@ const InputComment = ({ postId }) => {
         placeholder="Escribe tu respuesta, cambia el mundo 😏"
         onChange={(e) => setInput(e.target.value)}
       ></textarea>
-        <input 
+      <input
         type="file"
+        /*  accept=".jpg,.jpeg,.png,.webp,.doc,.blob,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" */
         onChange={handleImage}
         // value={img}
-        />
-       {
-        img ? 
-         <img src={img.data} alt="" width={25} />
-         :
-         <p>No hay imagen</p>
-
-       } 
+      />
+      {img ? <img src={img} alt="" width={25} /> : <p>No hay imagen</p>}
       <button onClick={handleSubmit}>Responder</button>
     </div>
   );
-}; 
-
+};
 
 export default InputComment;
