@@ -8,6 +8,7 @@ const Modal = ({  }) => {
     title: "",
     content: "",
     author: JSON.parse(localStorage.getItem("currentUser")).fullname,
+    etiquetas: "",
   });
   const [img, setImg] =  useState("");
   
@@ -61,6 +62,13 @@ const Modal = ({  }) => {
           placeholder="Contenido"
           value={input.content}
           onChange={handleChange}
+        />
+        <input
+        type="text"
+        name="etiquetas"
+        placeholder="#javascript"
+        value={input.etiquetas}
+        onChange={handleChange}
         />
         {/* <input 
         type="file"
