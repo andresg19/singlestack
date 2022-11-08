@@ -12,11 +12,11 @@ const Questions = () => {
   }, []);
 
   return (
-    <div className="containerQuestions">
+    <div className="">
       {posteos.map((p) => {
         return (
           <div key={p.id}>
-            <h1 className="text-center">
+            <h1 className="">
               <Link to={"/question/" + p.id}>{p.title}</Link>
             </h1>
             {/* <p>{p.content}</p> */}

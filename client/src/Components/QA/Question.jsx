@@ -33,15 +33,15 @@ const Question = (/* id */) => {
 
   return (
     <div className="">
-      <div className="containerQuestionDetail">
-        <p>{dateFormatter(currentPost.date)}</p>
+      <div className="">
+        <p>{dateFormatter(currentPost.createdAt)}</p>
         {/* si le pongo algo que no se p se chanflea/ acomodar dsp con los estilos */}
         <p>User: {currentPost.author}</p>
         <h1>{currentPost.title}</h1>
         <p>{currentPost.content}</p>
       </div>
       <div className="">
-        <div className="containerQuestionDetail">
+        <div className="">
           <h2>Comentarios</h2>
           {currentComments &&
             currentComments.map((e) => {

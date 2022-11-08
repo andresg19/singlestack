@@ -2,26 +2,30 @@ const sequelize = require("sequelize");
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("posts", {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-    },
-    title: {
-      type: DataTypes.TEXT,
-    },
+  sequelize.define(
+    "posts",
+    {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+      },
+      title: {
+        type: DataTypes.TEXT,
+      },
 
-    content: {
-      type: DataTypes.STRING,
-    },
+      content: {
+        type: DataTypes.STRING,
+      },
 
-    author: {
-      type: DataTypes.TEXT,
+      author: {
+        type: DataTypes.TEXT,
+      },
+      date: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
     },
-    date: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
-  }); //[["a", id] , ["b", id], "c"]
+    { timestamp: true }
+  );
 };
