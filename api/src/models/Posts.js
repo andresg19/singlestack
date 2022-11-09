@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
     },
     etiquetas: {
-      type: DataTypes.ARRAY(DataTypes.STRING)
+      type: DataTypes.ARRAY(DataTypes.STRING),
     },
     date: {
       type: DataTypes.DATE,

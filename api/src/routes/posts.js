@@ -90,7 +90,8 @@ router.get("/ematch/:etiqueta", async (req, res, next) => {
     let results = []
     const matchEtiqueta = () => {
       allPosts.map((p) => {
-        p.dataValues && p.dataValues.etiquetas.includes(etiqueta) ? results.push(p) : null; 
+        console.log(p.dataValues)
+        p.dataValues && p.dataValues.etiquetas[0].includes(etiqueta) ? results.push(p) : null; 
       })
     }
     matchEtiqueta()
