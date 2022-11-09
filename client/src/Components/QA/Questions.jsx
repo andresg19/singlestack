@@ -15,11 +15,29 @@ const Questions = () => {
     <div className="">
       {posteos.map((p) => {
         return (
-          <div key={p.id}>
-            <h1 className="">
-              <Link to={"/question/" + p.id}>{p.title}</Link>
-            </h1>
-            {/* <p>{p.content}</p> */}
+          <div key={p.id} className="bg-[#46899B] mr-[3%] mb-[10%] text-white ">
+            <div className="flex justify-between">
+              <div className="ml-2 mt-2 font-thin">#javascript #bokitaJS</div>
+              <div className="flex mr-2 mt-2 font-bold">
+                {p.author}
+
+                <img
+                  src="./imgs/user.png"
+                  alt=""
+                  className="w-8 inline-flex ml-2"
+                />
+              </div>
+            </div>
+            <div className="ml-[20%]">
+              {/* contenido */}
+              <h5>{p.title}</h5>
+              <h5 className="truncate mr-2">{p.content}</h5>
+            </div>
+            <div className="">
+              <p className="underline ml-[80%]">
+                <Link to={"/question/" + p.id}>Saber mas...</Link>
+              </p>
+            </div>
           </div>
         );
       })}
