@@ -1,5 +1,5 @@
 const sequelize = require("sequelize");
-const { DataTypes } = require("sequelize");
+const { DataTypes, STRING } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("posts", {
@@ -18,6 +18,9 @@ module.exports = (sequelize) => {
 
     author: {
       type: DataTypes.TEXT,
+    },
+    etiquetas: {
+      type: DataTypes.ARRAY(DataTypes.STRING)
     },
     date: {
       type: DataTypes.DATE,
