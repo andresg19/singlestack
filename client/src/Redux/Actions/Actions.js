@@ -7,6 +7,7 @@ import {
   SEARCH_BY_ID,
   CLEAR_STATE,
   POST_COMMENT,
+  SEARCH_TAG,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -113,6 +114,21 @@ export const postComment = (payload) => {
 
       return dispatch({
         type: POST_COMMENT,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const searchByTag = (tag) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get(`http://localhost:3001/posts/ematch/${tag}`);
+      console.log("result.data", result.data);
+      return dispatch({
+        type: SEARCH_TAG,
+        payload: result.data,
       });
     } catch (error) {
       console.log(error);
