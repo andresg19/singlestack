@@ -8,7 +8,7 @@ const Qa = () => {
   return (
     <div className=" h-[100vh]">
       <Nav />
-      <div className="flex mt-10 ">
+      <div className="flex mt-10">
         <div className=" border border-[#46899b82] shadow-[#5a5959] shadow-lg  rounded-[2%]  bg-[#D9D9D9] ml-[10%] w-[60vh] hover:border-[rgba(3,3,3,0.51)] hover:shadow-[#396e7d82] hover:shadow-xl">
           {/* PRIMER DIV */}
           <input
@@ -43,6 +43,7 @@ const Qa = () => {
           <Questions />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

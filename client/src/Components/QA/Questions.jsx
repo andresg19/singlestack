@@ -18,7 +18,7 @@ const Questions = () => {
         return (
           <div
             key={p.id}
-            className="bg-[#46899B] mr-[3%] mb-[10%] text-white border border-black hover:border-white hover:border-2"
+            className="bg-[#46899B] mr-[3%] mb-[10%] text-white border border-[#0000007d] hover:border-white "
           >
             <div className="flex justify-between">
               <div className="ml-2 mt-2 font-thin">#javascript #bokitaJS</div>
