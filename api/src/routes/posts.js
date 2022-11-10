@@ -26,13 +26,16 @@ router.post("/", async (req, res) => {
   let { title, content, author, etiquetas } = req.body;
   console.log(req.body)
   
+  let splitEtiquetas = etiquetas.split(' ');
+  console.log('soy split etiquetas', splitEtiquetas);
+  
   try {
     let [posts, created] = await Posts.findOrCreate({
       where: {
         title,
         content,
         author,
-        etiquetas: [etiquetas]       
+        etiquetas: splitEtiquetas       
       },
     });
     
@@ -91,7 +94,7 @@ router.get("/ematch/:etiqueta", async (req, res, next) => {
     const matchEtiqueta = () => {
       allPosts.map((p) => {
         console.log(p.dataValues)
-        p.dataValues && p.dataValues.etiquetas[0].includes(etiqueta) ? results.push(p) : null; 
+        p.dataValues && p.dataValues.etiquetas.includes(etiqueta) ? results.push(p) : null; 
       })
     }
     matchEtiqueta()
