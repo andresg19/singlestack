@@ -16,7 +16,10 @@ const Questions = () => {
     <div className="mt-[10%] ml-[10%] text-xl max-h-[60vh] overflow-scroll scrollbar-hide">
       {posteos.map((p) => {
         return (
-          <div key={p.id} className="bg-[#46899B] mr-[3%] mb-[10%] text-white ">
+          <div
+            key={p.id}
+            className="bg-[#46899B] mr-[3%] mb-[10%] text-white border border-black hover:border-white hover:border-2"
+          >
             <div className="flex justify-between">
               <div className="ml-2 mt-2 font-thin">#javascript #bokitaJS</div>
               <div className="flex mr-2 mt-2 font-bold">
