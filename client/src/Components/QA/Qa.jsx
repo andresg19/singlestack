@@ -9,7 +9,7 @@ const Qa = () => {
     <div className=" h-[100vh]">
       <Nav />
       <div className="flex mt-10 ">
-        <div className=" border border-[#46899b82] shadow-[#5a5959] shadow-lg  rounded-[2%]  bg-[#D9D9D9] ml-[10%] w-[60vh] h-[100%] hover:border-[rgba(3,3,3,0.51)] hover:shadow-[#396e7d82] hover:shadow-xl">
+        <div className=" border border-[#46899b82] shadow-[#5a5959] shadow-lg  rounded-[2%]  bg-[#D9D9D9] ml-[10%] w-[60vh] hover:border-[rgba(3,3,3,0.51)] hover:shadow-[#396e7d82] hover:shadow-xl">
           {/* PRIMER DIV */}
           <input
             type="text"
@@ -27,7 +27,7 @@ const Qa = () => {
             </div>
             <hr className="mt-[10%] mr-[7%] border border-[#939393]" />
           </div>
-          <div className="mt-[10%] ml-[10%] mb-[10%] text-xl ">
+          <div className="mt-[10%] ml-[10%] mb-[10%] text-xl">
             <h3 className="ml-2 underline text-[#46899B] font-bold">
               #Preguntas
             </h3>
@@ -37,11 +37,10 @@ const Qa = () => {
             </div>
           </div>
         </div>
-        <div className=" border border-[#46899b82] shadow-[#5a5959] shadow-lg  rounded-[2%]  bg-[#D9D9D9] ml-[10%] w-[100vh] h-[100%] hover:border-[rgba(3,3,3,0.51)] hover:shadow-[#396e7d82] hover:shadow-xl">
+        <div className=" border border-[#46899b82] shadow-[#5a5959] shadow-lg  rounded-[2%]  bg-[#D9D9D9] ml-[10%] w-[100vh]  hover:border-[rgba(3,3,3,0.51)] hover:shadow-[#396e7d82] hover:shadow-xl">
           {/* SEGUNDO DIV */}
-          <div className=" mt-[10%] ml-[10%] text-xl h-[100vh] object-contain">
-            <Questions />
-          </div>
+
+          <Questions />
         </div>
       </div>
     </div>

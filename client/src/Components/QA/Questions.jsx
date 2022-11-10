@@ -11,8 +11,9 @@ const Questions = () => {
     dispatch(getPosts());
   }, []);
 
+  /* <div className="mt-[10%] ml-[10%] text-xl"> */
   return (
-    <div className="">
+    <div className="mt-[10%] ml-[10%] text-xl max-h-[60vh] overflow-scroll scrollbar-hide">
       {posteos.map((p) => {
         return (
           <div key={p.id} className="bg-[#46899B] mr-[3%] mb-[10%] text-white ">
