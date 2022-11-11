@@ -11,7 +11,6 @@ const InputComment = ({ postId }) => {
   };
   const [input, setInput] = useState("");
   const [img, setImg] = useState("");
-  console.log("soy img", img);
   const [imgArr, setImgArr] = useState([]);
 
   useEffect(() => {
