@@ -108,12 +108,3 @@ router.get("/ematch/:etiqueta", async (req, res, next) => {
 });
 
 module.exports = router;
-
-/* comments                     posts
-    -id                            -id
-    -content                       -content
-    -author                        -author
-    -postId
-se postea un post con content y author ----> (post tiene un id unico) <----
-agrego un comentario al post realizado ----> (detecto el id del post y se lo guardo al comentario) <----
- */
