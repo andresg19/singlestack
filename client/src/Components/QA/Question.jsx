@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { searchPost, clearState } from "../../Redux/Actions/Actions";
+import { searchPost, clearState, getPosts } from "../../Redux/Actions/Actions";
 import InputComment from "./InputComment";
 
 export function dateFormatter(state) {
@@ -24,9 +24,11 @@ const Question = (/* id */) => {
   const dispatch = useDispatch();
   const currentPost = useSelector((state) => state.postDetail);
   const currentComments = useSelector((state) => state.commentsDetail);
-  console.log("soycurrentComments", currentComments);
+  console.log("soycurrentPost", currentPost);
   const { id } = useParams();
   const postId = currentPost.id;
+
+
   useEffect(() => {
     dispatch(searchPost(id));
     return () => {
@@ -42,6 +44,7 @@ const Question = (/* id */) => {
   //   });
   // }
 
+  
   return (
     <div className="">
       <div className="">
@@ -52,6 +55,17 @@ const Question = (/* id */) => {
         <p>{currentPost.content}</p>
         <p>{currentPost.etiquetas + ""}</p>
         <p>{dateFormatter(currentPost.date)}</p>
+        
+        {  
+          
+                  currentPost.img?.map((i) => {
+                   return (
+                    <img src={i} alt="img not found" width={50} />
+                   )
+                  })
+        } 
+        
+            
       </div>
       <div className="">
         <div className="">

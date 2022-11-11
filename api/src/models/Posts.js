@@ -23,6 +23,9 @@ module.exports = (sequelize) => {
     etiquetas: {
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
+    img: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+    },
     date: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,

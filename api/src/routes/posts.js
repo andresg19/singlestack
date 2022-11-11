@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
 
 //CREA UN POST
 router.post("/", async (req, res) => {
-  let { title, content, author, etiquetas } = req.body;
+  let { title, content, author, etiquetas, img } = req.body;
   console.log(req.body);
 
   let splitEtiquetas = etiquetas.split(" ");
@@ -36,6 +36,7 @@ router.post("/", async (req, res) => {
         content,
         author,
         etiquetas: splitEtiquetas,
+        img,
       },
     });
 

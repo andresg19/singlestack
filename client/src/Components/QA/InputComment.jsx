@@ -16,7 +16,7 @@ const InputComment = ({ postId }) => {
 
   useEffect(() => {
     if(img !== "") {
-     imgArr.push(img)
+     setImgArr([...imgArr, img])
     }
     console.log(imgArr)
   }, [img]);
@@ -43,10 +43,10 @@ const InputComment = ({ postId }) => {
     window.location.reload();
   };
 
-  console.log(fullComment);
-  useEffect(() => {
-    fullComment.img = img;
-  }, [img]);
+  // console.log(fullComment);
+  // useEffect(() => {
+  //   fullComment.img = img;
+  // }, [img]);
   return (
     <div className="">
       <textarea
@@ -65,7 +65,14 @@ const InputComment = ({ postId }) => {
         onChange={handleImage}
         // value={img}
       />
-      {img ? <img src={img} alt="" width={25} /> : <p>No hay imagen</p>}
+
+      {imgArr?.map((i) => {
+        return(
+
+            <img src={i} alt="" width={25} />
+            )
+          })}
+   
       <button onClick={handleSubmit}>Responder</button>
     </div>
   );
