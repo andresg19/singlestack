@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Nav from "../NavBar/Nav";
 import FeedQA from "./FeedQA";
 import Footer from "./../Footer/Footer";
 import Questions from "./Questions";
+import { useDispatch } from "react-redux";
+import { clearState, searchByTag } from "../../Redux/Actions/Actions";
 
 const Qa = () => {
+  const dispatch = useDispatch();
+
+  const handleTagFilter = (e) => {
+    e.preventDefault();
+    let tag = e.target.attributes.getNamedItem("value").value; // o.O
+    dispatch(searchByTag(tag));
+  };
+
+  /*   useEffect(() => {
+    return () => {
+      dispatch(clearState());
+    };
+  }, []); */
   return (
     <div className=" h-[100vh]">
       <Nav />
@@ -20,10 +35,28 @@ const Qa = () => {
             <h3 className="ml-2 underline text-[#46899B] font-bold">
               #Etiquetas
             </h3>
-            <div className="  ml-8 w-[30%] text-center font-bold text-[#3B3A3A] ">
-              <p className="bg-[#B0B0B0] mt-6 rounded-[3px]">#javascript</p>
-              <p className="bg-[#B0B0B0] mt-6 rounded-[3px]">#nodejs</p>
-              <p className="bg-[#B0B0B0] mt-6 rounded-[3px]">#python</p>
+            <div className="ml-8 w-[30%] text-center font-bold text-[#3B3A3A]">
+              <p
+                value="javascript"
+                className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white"
+                onClick={handleTagFilter}
+              >
+                #javascript
+              </p>
+              <p
+                value="node"
+                className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white"
+                onClick={handleTagFilter}
+              >
+                #node
+              </p>
+              <p
+                value="python"
+                className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white"
+                onClick={handleTagFilter}
+              >
+                #python
+              </p>
             </div>
             <hr className="mt-[10%] mr-[7%] border border-[#939393]" />
           </div>
@@ -32,8 +65,12 @@ const Qa = () => {
               #Preguntas
             </h3>
             <div className=" ml-8 mb-4 w-[30%] text-center font-bold text-[#3B3A3A]">
-              <p className="bg-[#B0B0B0] mt-6 rounded-[3px]">Recientes</p>
-              <p className="bg-[#B0B0B0] mt-6 rounded-[3px]">#Semanal</p>
+              <p className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white">
+                Recientes
+              </p>
+              <p className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white">
+                #Semanal
+              </p>
             </div>
           </div>
         </div>

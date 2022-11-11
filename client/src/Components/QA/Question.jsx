@@ -5,6 +5,9 @@ import { searchPost, clearState } from "../../Redux/Actions/Actions";
 import InputComment from "./InputComment";
 
 export function dateFormatter(state) {
+  //date "2022-10-26T13:25:39.855Z"
+  //dateFromRedux.toString();
+
   if (state && typeof state === "string") {
     let cutter = state.split("T");
     let dateSplit = cutter[0].split("-");
@@ -13,7 +16,7 @@ export function dateFormatter(state) {
 
     return `${hourSplit.substring(0, 5)} - ${dateJoin}`;
   }
-
+  //let cutter = dateFromRedux.split(":");
   return "Error en la fecha/hora del post";
 }
 
@@ -21,7 +24,7 @@ const Question = (/* id */) => {
   const dispatch = useDispatch();
   const currentPost = useSelector((state) => state.postDetail);
   const currentComments = useSelector((state) => state.commentsDetail);
-  console.log("soycurrentComments", currentComments);
+  console.log("soycurrentPosts", currentPost);
   const { id } = useParams();
   const postId = currentPost.id;
   useEffect(() => {
@@ -31,6 +34,14 @@ const Question = (/* id */) => {
     };
   }, []);
 
+  // function blobToBase64(blob) {
+  //   return new Promise((resolve, _) => {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => resolve(reader.result);
+  //     reader.readAsDataURL(blob);
+  //   });
+  // }
+
   return (
     <div className="">
       <div className="">
@@ -39,19 +50,25 @@ const Question = (/* id */) => {
         <p>User: {currentPost.author}</p>
         <h1>{currentPost.title}</h1>
         <p>{currentPost.content}</p>
+        <p>{currentPost.etiquetas + ""}</p>
+        <p>{dateFormatter(currentPost.date)}</p>
       </div>
       <div className="">
         <div className="">
           <h2>Comentarios</h2>
           {currentComments &&
             currentComments.map((e) => {
+              console.log("soy e comments", e);
+
               return (
                 <div key={e.id}>
                   <p>{dateFormatter(e.createdAt)}</p>
                   <p>{e.author}</p>
                   <p>{e.content}</p>
 
-                  {e.img && <img src={e.img} alt="" width={50} />}
+                  {e.img === "" || e.img === null ? null : (
+                    <img src={e.img} alt="" width={50} />
+                  )}
                   <hr />
                 </div>
               );

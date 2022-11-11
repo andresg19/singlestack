@@ -20,7 +20,11 @@ const Questions = () => {
             className="bg-[#46899B] mr-[3%] mb-[10%] text-white border border-[#0000007d] hover:border-white "
           >
             <div className="flex justify-between">
-              <div className="ml-2 mt-2 font-thin">#javascript #bokitaJS</div>
+              <div className="ml-2 mt-2 font-thin">
+                {p.etiquetas?.map((e) => {
+                  return `#${e} `;
+                })}
+              </div>
               <div className="flex mr-2 mt-2 font-bold">
                 {p.author}
 

@@ -14,7 +14,6 @@ const InputComment = ({ postId }) => {
 
   const handleImage = (e) => {
     e.preventDefault();
-    //base64
     const reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
@@ -49,12 +48,7 @@ const InputComment = ({ postId }) => {
         placeholder="Escribe tu respuesta, cambia el mundo 😏"
         onChange={(e) => setInput(e.target.value)}
       ></textarea>
-      <input
-        type="file"
-        /*  accept=".jpg,.jpeg,.png,.webp,.doc,.blob,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" */
-        onChange={handleImage}
-        // value={img}
-      />
+      <input type="file" onChange={handleImage} />
       {img ? <img src={img} alt="" width={25} /> : <p>No hay imagen</p>}
       <button onClick={handleSubmit}>Responder</button>
     </div>

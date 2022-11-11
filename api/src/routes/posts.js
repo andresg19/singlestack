@@ -4,6 +4,7 @@ const { Router } = require("express");
 const router = Router();
 const axios = require("axios");
 const { Users, Posts, Comments, Comments_Posts } = require("../db.js");
+const { Op } = require("sequelize");
 
 //Checkea si andan las rutas
 router.get("/test", async (req, res) => {
@@ -22,7 +23,11 @@ router.get("/", async (req, res) => {
 
 //CREA UN POST
 router.post("/", async (req, res) => {
-  let { title, content, author } = req.body;
+  let { title, content, author, etiquetas } = req.body;
+  console.log(req.body);
+
+  let splitEtiquetas = etiquetas.split(" ");
+  console.log("soy split etiquetas", splitEtiquetas);
 
   try {
     let [posts, created] = await Posts.findOrCreate({
@@ -30,8 +35,10 @@ router.post("/", async (req, res) => {
         title,
         content,
         author,
+        etiquetas: splitEtiquetas,
       },
     });
+
     created ? res.status(200).json(posts) : null; // este if es porque me molesta el created sin usar
   } catch (error) {
     res.status(400).json(`Error del catch post, ${error}`);
@@ -77,13 +84,27 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+router.get("/ematch/:etiqueta", async (req, res, next) => {
+  const { etiqueta } = req.params;
+  try {
+    console.log("linea 86 etiq", etiqueta);
+    let allPosts = await Posts.findAll({});
 
-/* comments                     posts
-    -id                            -id
-    -content                       -content
-    -author                        -author
-    -postId
-se postea un post con content y author ----> (post tiene un id unico) <----
-agrego un comentario al post realizado ----> (detecto el id del post y se lo guardo al comentario) <----
- */
+    let results = [];
+    const matchEtiqueta = () => {
+      allPosts.map((p) => {
+        console.log(p.dataValues);
+        p.dataValues && p.dataValues.etiquetas.includes(etiqueta)
+          ? results.push(p)
+          : null;
+      });
+    };
+    matchEtiqueta();
+
+    res.status(200).send(results);
+  } catch (error) {
+    res.status(404).json(next(error));
+  }
+});
+
+module.exports = router;

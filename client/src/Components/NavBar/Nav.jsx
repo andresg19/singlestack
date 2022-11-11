@@ -8,11 +8,16 @@ const Nav = () => {
   };
   const navigate = useNavigate();
   const navigateToQA = () => {
-    navigate("/q-a");
+    window.location.reload();
   };
   return (
     <nav className="flex w-full justify-between bg-[#2B4046] h-[8.5vh] text-white shrink-0 place-items-center">
-      <img src="./imgs/house.png" alt="" className="w-[2.8%] ml-2 " />
+      <img
+        src="./imgs/house.png"
+        alt=""
+        className="w-[2.8%] ml-2"
+        onClick={navigateToQA}
+      />
 
       <div className="flex ml-auto mr-auto justify-between w-[30%]">
         <Link to="/ask-question">
@@ -44,7 +49,12 @@ const Nav = () => {
         </Link> 
           <button onClick={handleLogout} type="button"></button>*/}
 
-      <img src="./imgs/user.png" alt="" className="w-[2.8%] mr-2 " />
+      <img
+        src="./imgs/user.png"
+        alt=""
+        className="w-[2.8%] mr-2"
+        onClick={() => navigate("/register")}
+      />
     </nav>
   );
 };
