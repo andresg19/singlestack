@@ -11,54 +11,69 @@ const AskQuestion = ({}) => {
     author: JSON.parse(localStorage.getItem("currentUser")).fullname,
     etiquetas: "",
   });
+  console.log(input)
   const [img, setImg] = useState("");
+  const [imgArr, setImgArr] = useState([]);
 
-  console.log(input);
+  useEffect(() => {
+    if(img !== "") {
+      imgArr.push(img)
+     }
+     console.log(imgArr)
+  }, [img]);
 
-  const handleChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-  };
 
   const handlePost = (e) => {
     e.preventDefault();
-
+    input.img = imgArr
     dispatch(postPost(input));
 
     window.location.reload();
   };
 
-  useEffect(() => {
-    // fullname = localStorage.getItem("fullname");
-  }, []);
+  const handleImage = (e) => {
+ 
+    const reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+    reader.onload  =  (readerEvent) => {
+      setImg(readerEvent.target.result);
+    };
+  };
+
 
   return (
-    <div class="">
+    <div className="">
       <Nav />
-      <div class="">
+      <div className="">
         <input
           type="text"
           name="title"
           placeholder="Titulo"
           value={input.title}
-          onChange={handleChange}
+          onChange={(e) => {setInput({ ...input, [e.target.name]: e.target.value })}}
         />
         <input
           type="textarea"
           name="content"
           placeholder="Contenido"
           value={input.content}
-          onChange={handleChange}
+          onChange={(e) => {setInput({ ...input, [e.target.name]: e.target.value })}}
         />
         <input
           type="text"
           name="etiquetas"
-          placeholder="#javascript"
+          placeholder="javascript python node"
           value={input.etiquetas}
-          onChange={handleChange}
+          onChange={(e) => {setInput({ ...input, [e.target.name]: e.target.value })}}
         />
+        <input type="file" multiple onChange={handleImage} 
+        />
+        {img ? <img src={img} alt="" width={25} /> : <p>No hay imagen</p>}
       </div>
 
-      <button class="" onClick={handlePost}>
+      <button className="" onClick={handlePost}>
         POSTEA Y QUITATE LA DUDA
       </button>
     </div>

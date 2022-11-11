@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPosts } from "../../Redux/Actions/Actions";
 
-const Questions = () => {
+const Questions = ({handleSearch}) => {
+
   const dispatch = useDispatch();
   const posteos = useSelector((state) => state.posts);
   console.log(posteos);
@@ -13,7 +14,7 @@ const Questions = () => {
 
   return (
     <div className="mt-[10%] ml-[10%] text-xl max-h-[60vh] overflow-scroll scrollbar-hide">
-      {posteos.map((p) => {
+      {handleSearch.map((p) => {
         return (
           <div
             key={p.id}
