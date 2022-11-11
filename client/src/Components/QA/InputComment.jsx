@@ -11,43 +11,44 @@ const InputComment = ({ postId }) => {
   };
   const [input, setInput] = useState("");
   const [img, setImg] = useState("");
+  console.log('soy img', img);
+  const [imgArr, setImgArr] = useState([]);
+
+  useEffect(() => {
+    if(img !== "") {
+     setImgArr([...imgArr, img])
+    }
+    console.log(imgArr)
+  }, [img]);
 
   const handleImage = (e) => {
-    e.preventDefault();
-
+ 
     const reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
     }
-    reader.onload = (readerEvent) => {
+    reader.onload  =  (readerEvent) => {
       setImg(readerEvent.target.result);
     };
-    /*  if (e.target.files && e.target.files[0]) {
-      console.log(e.target.files[0]);
-      setImg({
-        data: URL.createObjectURL(e.target.files[0]),
-      });
-    }
-    fullComment.img = img.data;
-    console.log(fullComment); */
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(img);
     fullComment.content = input;
-    fullComment.img = img;
+    fullComment.img = imgArr;
     console.log(fullComment);
     dispatch(postComment(fullComment));
     window.location.reload();
   };
 
-  console.log(fullComment);
-  useEffect(() => {
-    fullComment.img = img;
-  }, [img]);
+  // console.log(fullComment);
+  // useEffect(() => {
+  //   fullComment.img = img;
+  // }, [img]);
   return (
-    <div className="inputComment">
+    <div className="">
       <textarea
         name=""
         id=""
@@ -59,11 +60,19 @@ const InputComment = ({ postId }) => {
       ></textarea>
       <input
         type="file"
+        multiple
         /*  accept=".jpg,.jpeg,.png,.webp,.doc,.blob,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" */
         onChange={handleImage}
         // value={img}
       />
-      {img ? <img src={img} alt="" width={25} /> : <p>No hay imagen</p>}
+
+      {imgArr?.map((i) => {
+        return(
+
+            <img src={i} alt="" width={25} />
+            )
+          })}
+   
       <button onClick={handleSubmit}>Responder</button>
     </div>
   );

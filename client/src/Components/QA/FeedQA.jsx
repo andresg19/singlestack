@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../Redux/Actions/Actions";
 import Questions from "./Questions";
-import Modal from "./Modal";
+import AskQuestion from "./AskQuestion";
 
 const FeedQA = () => {
   const dispatch = useDispatch();
@@ -23,11 +23,11 @@ const FeedQA = () => {
   // console.log("fullname", currentUser.fullname);
 
   return (
-    <div className="containerFeedQA">
+    <div className="">
       <div className="">
         {modal ? (
           <div className="">
-            <Modal fullname={currentUser.fullname} />
+            <AskQuestion fullname={currentUser.fullname} />
             <button onClick={modalClose}>Cerrar ventana</button>
           </div>
         ) : (
@@ -35,7 +35,7 @@ const FeedQA = () => {
             <button className="" onClick={modalOpen}>
               Crear nuevo post
             </button>
-            <Questions />
+            {/* <Questions /> */}
           </div>
         )}
       </div>
@@ -44,3 +44,5 @@ const FeedQA = () => {
 };
 
 export default FeedQA;
+
+//how to update model route in express node and postgres
