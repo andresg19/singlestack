@@ -35,8 +35,8 @@ const Login = () => {
   };
 
   return (
-    <div className="containerLogin">
-      <form className="containerFormLogin" onSubmit={handleSubmit}>
+    <div className="">
+      <form className="" onSubmit={handleSubmit}>
         <input
           type="text"
           autoComplete="off"

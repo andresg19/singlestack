@@ -24,21 +24,21 @@ router.get("/", async (req, res) => {
 //CREA UN POST
 router.post("/", async (req, res) => {
   let { title, content, author, etiquetas } = req.body;
-  console.log(req.body)
-  
-  let splitEtiquetas = etiquetas.split(' ');
-  console.log('soy split etiquetas', splitEtiquetas);
-  
+  console.log(req.body);
+
+  let splitEtiquetas = etiquetas.split(" ");
+  console.log("soy split etiquetas", splitEtiquetas);
+
   try {
     let [posts, created] = await Posts.findOrCreate({
       where: {
         title,
         content,
         author,
-        etiquetas: splitEtiquetas       
+        etiquetas: splitEtiquetas,
       },
     });
-    
+
     created ? res.status(200).json(posts) : null; // este if es porque me molesta el created sin usar
   } catch (error) {
     res.status(400).json(`Error del catch post, ${error}`);
@@ -89,23 +89,25 @@ router.get("/:id", async (req, res) => {
 router.get("/ematch/:etiqueta", async (req, res, next) => {
   const { etiqueta } = req.params;
   try {
-    console.log('linea 86 etiq', etiqueta)
-    let allPosts = await Posts.findAll({})
+    console.log("linea 86 etiq", etiqueta);
+    let allPosts = await Posts.findAll({});
 
-    let results = []
+    let results = [];
     const matchEtiqueta = () => {
       allPosts.map((p) => {
-        console.log(p.dataValues)
-        p.dataValues && p.dataValues.etiquetas.includes(etiqueta) ? results.push(p) : null; 
-      })
-    }
-    matchEtiqueta()
-    
-    res.status(200).send(results)
+        console.log(p.dataValues);
+        p.dataValues && p.dataValues.etiquetas.includes(etiqueta)
+          ? results.push(p)
+          : null;
+      });
+    };
+    matchEtiqueta();
+
+    res.status(200).send(results);
   } catch (error) {
-    res.status(404).json(next(error))
+    res.status(404).json(next(error));
   }
-})
+});
 
 module.exports = router;
 

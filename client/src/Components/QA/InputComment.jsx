@@ -36,7 +36,7 @@ const InputComment = ({ postId }) => {
 
   const handleImage = (e) => {
     e.preventDefault();
-
+    //base64
     const reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
@@ -44,14 +44,6 @@ const InputComment = ({ postId }) => {
     reader.onload = (readerEvent) => {
       setImg(readerEvent.target.result);
     };
-    /*  if (e.target.files && e.target.files[0]) {
-      console.log(e.target.files[0]);
-      setImg({
-        data: URL.createObjectURL(e.target.files[0]),
-      });
-    }
-    fullComment.img = img.data;
-    console.log(fullComment); */
   };
 
   const handleSubmit = (e) => {
@@ -69,7 +61,7 @@ const InputComment = ({ postId }) => {
     fullComment.img = img;
   }, [img]);
   return (
-    <div className="inputComment">
+    <div className="">
       <textarea
         name=""
         id=""

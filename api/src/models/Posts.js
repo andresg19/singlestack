@@ -19,6 +19,7 @@ module.exports = (sequelize) => {
     author: {
       type: DataTypes.TEXT,
     },
+
     etiquetas: {
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
@@ -26,5 +27,5 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
     },
-  }); //[["a", id] , ["b", id], "c"]
+  });
 };

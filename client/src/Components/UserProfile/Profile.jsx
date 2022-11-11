@@ -12,8 +12,8 @@ const Profile = () => {
   const date = dateFormatter(user.createdAt);
 
   return (
-    <div className="containerProfile">
-      <section className="profileUser">
+    <div className="">
+      <section className="">
         <img
           src="https://thumbs.dreamstime.com/b/default-profile-picture-avatar-photo-placeholder-vector-illustration-default-profile-picture-avatar-photo-placeholder-vector-189495158.jpg"
           alt="not found"

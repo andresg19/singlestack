@@ -24,7 +24,7 @@ const Question = (/* id */) => {
   const dispatch = useDispatch();
   const currentPost = useSelector((state) => state.postDetail);
   const currentComments = useSelector((state) => state.commentsDetail);
-  console.log('soycurrentPosts',currentPost)
+  console.log("soycurrentPosts", currentPost);
   const { id } = useParams();
   const postId = currentPost.id;
   useEffect(() => {
@@ -42,25 +42,23 @@ const Question = (/* id */) => {
   //   });
   // }
 
- 
-  
-  
   return (
     <div className="">
-      <div className="containerQuestionDetail">
+      <div className="">
+        <p>{dateFormatter(currentPost.createdAt)}</p>
         {/* si le pongo algo que no se p se chanflea/ acomodar dsp con los estilos */}
         <p>User: {currentPost.author}</p>
         <h1>{currentPost.title}</h1>
         <p>{currentPost.content}</p>
-        <p>{currentPost.etiquetas + ''}</p>
+        <p>{currentPost.etiquetas + ""}</p>
         <p>{dateFormatter(currentPost.date)}</p>
       </div>
       <div className="">
-        <div className="containerQuestionDetail">
+        <div className="">
           <h2>Comentarios</h2>
           {currentComments &&
             currentComments.map((e) => {
-              console.log('soy e comments', e)
+              console.log("soy e comments", e);
 
               return (
                 <div key={e.id}>
@@ -68,9 +66,9 @@ const Question = (/* id */) => {
                   <p>{e.author}</p>
                   <p>{e.content}</p>
 
-                  {
-                    e.img === "" || e.img === null ?  null : <img src={e.img} alt="" width={50} />
-                  }
+                  {e.img === "" || e.img === null ? null : (
+                    <img src={e.img} alt="" width={50} />
+                  )}
                   <hr />
                 </div>
               );
