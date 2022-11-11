@@ -13,8 +13,7 @@ const AskQuestion = ({}) => {
   });
   const [img, setImg] = useState("");
 
-  console.log(input);
-
+  
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -32,9 +31,9 @@ const AskQuestion = ({}) => {
   }, []);
 
   return (
-    <div class="">
+    <div className="">
       <Nav />
-      <div class="">
+      <div className="">
         <input
           type="text"
           name="title"
@@ -52,13 +51,13 @@ const AskQuestion = ({}) => {
         <input
           type="text"
           name="etiquetas"
-          placeholder="javascript python nodejs"
+          placeholder="javascript python node"
           value={input.etiquetas}
           onChange={handleChange}
         />
       </div>
 
-      <button class="" onClick={handlePost}>
+      <button className="" onClick={handlePost}>
         POSTEA Y QUITATE LA DUDA
       </button>
     </div>

@@ -11,46 +11,33 @@ const InputComment = ({ postId }) => {
   };
   const [input, setInput] = useState("");
   const [img, setImg] = useState("");
+  console.log('soy img', img);
+  const [imgArr, setImgArr] = useState([]);
 
-//   function base64toBlob(base64Data, contentType) {
-//     contentType = contentType || '';
-//     var sliceSize = 1024;
-//     var byteCharacters = atob(base64Data);
-//     var bytesLength = byteCharacters.length;
-//     var slicesCount = Math.ceil(bytesLength / sliceSize);
-//     var byteArrays = new Array(slicesCount);
-
-//     for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
-//         var begin = sliceIndex * sliceSize;
-//         var end = Math.min(begin + sliceSize, bytesLength);
-
-//         var bytes = new Array(end - begin);
-//         for (var offset = begin, i = 0; offset < end; ++i, ++offset) {
-//             bytes[i] = byteCharacters[offset].charCodeAt(0);
-//         }
-//         byteArrays[sliceIndex] = new Uint8Array(bytes);
-//     }
-//     return new Blob(byteArrays, { type: contentType });
-// }
-
+  useEffect(() => {
+    if(img !== "") {
+     imgArr.push(img)
+    }
+    console.log(imgArr)
+  }, [img]);
 
   const handleImage = (e) => {
-    e.preventDefault();
-    //base64
+ 
     const reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
     }
-    reader.onload = (readerEvent) => {
+    reader.onload  =  (readerEvent) => {
       setImg(readerEvent.target.result);
     };
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(img);
     fullComment.content = input;
-    fullComment.img = img;
+    fullComment.img = imgArr;
     console.log(fullComment);
     dispatch(postComment(fullComment));
     window.location.reload();
@@ -73,6 +60,7 @@ const InputComment = ({ postId }) => {
       ></textarea>
       <input
         type="file"
+        multiple
         /*  accept=".jpg,.jpeg,.png,.webp,.doc,.blob,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" */
         onChange={handleImage}
         // value={img}

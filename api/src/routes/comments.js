@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   let { content, author, postId, img } = req.body;
-  console.log(req.body);
+  console.log(req.body.img.length);
   try {
     // let imgDecoder = atob(img)
     // img = !img ? "" : img

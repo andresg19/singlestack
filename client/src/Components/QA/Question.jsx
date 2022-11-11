@@ -24,7 +24,7 @@ const Question = (/* id */) => {
   const dispatch = useDispatch();
   const currentPost = useSelector((state) => state.postDetail);
   const currentComments = useSelector((state) => state.commentsDetail);
-  console.log("soycurrentPosts", currentPost);
+  console.log("soycurrentComments", currentComments);
   const { id } = useParams();
   const postId = currentPost.id;
   useEffect(() => {
@@ -65,10 +65,13 @@ const Question = (/* id */) => {
                   <p>{dateFormatter(e.createdAt)}</p>
                   <p>{e.author}</p>
                   <p>{e.content}</p>
-
-                  {e.img === "" || e.img === null ? null : (
-                    <img src={e.img} alt="" width={50} />
-                  )}
+                {  
+                  e && e.img.map((i) => {
+                   return (
+                    <img src={i} alt="img not found" width={50} />
+                   )
+                  })
+                } 
                   <hr />
                 </div>
               );

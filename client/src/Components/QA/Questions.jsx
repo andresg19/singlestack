@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getPosts } from "../../Redux/Actions/Actions";
 
 const Questions = ({handleSearch}) => {
-  console.log('soyHandleDesdeQuestions', handleSearch)
+
   const dispatch = useDispatch();
   const posteos = useSelector((state) => state.posts);
   console.log(posteos);
