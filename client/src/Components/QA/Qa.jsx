@@ -3,17 +3,29 @@ import Nav from "../NavBar/Nav";
 import FeedQA from "./FeedQA";
 import Footer from "./../Footer/Footer";
 import Questions from "./Questions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearState, searchByTag } from "../../Redux/Actions/Actions";
+import { useState } from "react";
 
 const Qa = () => {
   const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts)
+  console.log(posts)
+
+  const [search, setSearch] = useState("");
 
   const handleTagFilter = (e) => {
     e.preventDefault();
     let tag = e.target.attributes.getNamedItem("value").value; // o.O
     dispatch(searchByTag(tag));
   };
+
+  
+    let filterPosts = posts.filter(
+      (post) =>
+        post.title.toLowerCase().includes(search.toLowerCase()) ||
+        post.content.toLowerCase().includes(search.toLowerCase())
+    );
 
   /*   useEffect(() => {
     return () => {
@@ -30,6 +42,7 @@ const Qa = () => {
             type="text"
             placeholder="busca tu duda"
             className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] placeholder:text-[#46899b82] placeholder:text-center placeholder:font-bold outline-none text-center text-lg"
+            onChange={(e) => {setSearch(e.target.value)}}
           />
           <div className=" mt-[10%] ml-[10%] text-xl">
             <h3 className="ml-2 underline text-[#46899B] font-bold">
@@ -77,7 +90,7 @@ const Qa = () => {
         <div className=" border border-[#46899b82] shadow-[#5a5959] shadow-lg  rounded-[2%]  bg-[#D9D9D9] ml-[10%] w-[100vh]  hover:border-[rgba(3,3,3,0.51)] hover:shadow-[#396e7d82] hover:shadow-xl">
           {/* SEGUNDO DIV */}
 
-          <Questions />
+          <Questions handleSearch={filterPosts} />
         </div>
       </div>
       <Footer />
