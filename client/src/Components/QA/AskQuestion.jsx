@@ -52,7 +52,7 @@ const AskQuestion = ({}) => {
         <input
           type="text"
           name="etiquetas"
-          placeholder="#javascript"
+          placeholder="javascript python nodejs"
           value={input.etiquetas}
           onChange={handleChange}
         />
