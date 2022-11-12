@@ -1,4 +1,5 @@
 import React from "react";
+import linkedin from "../../assets/imgs/linkedin.png";
 
 const Footer = () => {
   return (
@@ -6,7 +7,7 @@ const Footer = () => {
       <div className="ml-4">
         <div className=" text-3xl">
           <h2 className="text-white mt-4">singlestack co</h2>
-          <img src="./imgs/linkedin.png" alt="" className="w-12 h-12 mt-8" />
+          <img src={linkedin} alt="" className="w-12 h-12 mt-8" />
         </div>
       </div>
       <div className="mr-4">
