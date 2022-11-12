@@ -40,6 +40,8 @@ const Question = () => {
     };
   }, []);
 
+  const handleImgZoom = () => {};
+
   return (
     <div className="">
       <Nav />
@@ -55,29 +57,34 @@ const Question = () => {
         </div>
         <div className=" mt-2 m-7 border w-[100vh]  border-black bg-[#46899B]">
           <div className="flex justify-between mt-2">
-            <p className="text-[#46899B]"></p>
-
-            <img src={bookmark} alt="" className="w-8 ml-4" />
-          </div>
-          <div className="mt-1 mb-2 mx-10 h-[43vh] border border-black">
-            <p className="text-white m-8">{currentPost.content}</p>
-
-            <div className="flex justify-center space-x-8">
-              {currentPost.img?.map((i) => {
-                return <img src={i} alt="img not found" className="w-[20%] " />;
+            <div className="flex space-x-3 ml-2 ">
+              {currentPost.etiquetas?.map((t) => {
+                return (
+                  <p className="bg-[#3232323d] px-1 rounded-xl font-semibold text-center self-center">
+                    #{t}{" "}
+                  </p>
+                );
               })}
             </div>
 
-            <div className="flex border border-black">
-              <div className="flex mt-10 ">
-                {currentPost.etiquetas?.map((t) => {
-                  return (
-                    <p className="bg-[#3232323d] rounded-xl font-semibold mt-10">
-                      #{t}{" "}
-                    </p>
-                  );
-                })}
-              </div>
+            <img src={bookmark} alt="" className="w-8 mr-1" />
+          </div>
+          <div className="mt-1 mb-2 mx-10   ">
+            <p className="text-white text-xl m-8 mt-12">
+              {currentPost.content}
+            </p>
+
+            <div className="flex justify-center space-x-8 m-8 mt-12">
+              {currentPost.img?.map((i) => {
+                return (
+                  <img
+                    src={i}
+                    alt="img not found"
+                    className="w-[25%] cursor-pointer"
+                    href={i}
+                  />
+                );
+              })}
             </div>
           </div>
           <div className="flex justify-between mr-2">
