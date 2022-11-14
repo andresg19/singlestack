@@ -2,8 +2,6 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const PostResource = require("./models/PostResource");
-const CommentResource = require("./models/CommentResource");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 /* let sequelize =
