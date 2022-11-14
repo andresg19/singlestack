@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import userBlack from "../../assets/imgs/userBlack.png";
+import house from "../../assets/imgs/house.png";
 
 const Nav = () => {
   const handleLogout = () => {
@@ -13,7 +15,7 @@ const Nav = () => {
   return (
     <nav className="flex w-full justify-between bg-[#2B4046] h-[8.5vh] text-white shrink-0 place-items-center">
       <img
-        src="./imgs/house.png"
+        src={house}
         alt=""
         className="w-[2.8%] ml-2"
         onClick={navigateToQA}
@@ -23,7 +25,7 @@ const Nav = () => {
         <Link to="/ask-question">
           <button
             type="button"
-            className="font-bold bg-[#050D1A] rounded-[8px] w-[130px] py-1 hover:shadow-lg hover:shadow-[#e39999]"
+            className="font-light bg-[#050D1A] rounded-[8px] w-[130px] py-1 hover:shadow-lg hover:shadow-[#e39999]"
           >
             Haz tu pregunta
           </button>
@@ -31,7 +33,7 @@ const Nav = () => {
         <Link to="/q-a">
           <button
             type="button"
-            className="font-bold bg-[#050D1A] rounded-[8px] w-[130px] py-1 hover:shadow-lg hover:shadow-[#e39999]"
+            className="font-light bg-[#050D1A] rounded-[8px] w-[130px] py-1 hover:shadow-lg hover:shadow-[#e39999]"
           >
             Recursos
           </button>
@@ -50,7 +52,7 @@ const Nav = () => {
           <button onClick={handleLogout} type="button"></button>*/}
 
       <img
-        src="./imgs/user.png"
+        src={userBlack}
         alt=""
         className="w-[2.8%] mr-2"
         onClick={() => navigate("/register")}

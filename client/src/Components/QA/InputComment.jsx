@@ -11,27 +11,24 @@ const InputComment = ({ postId }) => {
   };
   const [input, setInput] = useState("");
   const [img, setImg] = useState("");
-  console.log('soy img', img);
   const [imgArr, setImgArr] = useState([]);
 
   useEffect(() => {
-    if(img !== "") {
-     setImgArr([...imgArr, img])
+    if (img !== "") {
+      setImgArr([...imgArr, img]);
     }
-    console.log(imgArr)
+    console.log(imgArr);
   }, [img]);
 
   const handleImage = (e) => {
- 
     const reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
     }
-    reader.onload  =  (readerEvent) => {
+    reader.onload = (readerEvent) => {
       setImg(readerEvent.target.result);
     };
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,12 +64,9 @@ const InputComment = ({ postId }) => {
       />
 
       {imgArr?.map((i) => {
-        return(
+        return <img src={i} alt="" width={25} />;
+      })}
 
-            <img src={i} alt="" width={25} />
-            )
-          })}
-   
       <button onClick={handleSubmit}>Responder</button>
     </div>
   );
