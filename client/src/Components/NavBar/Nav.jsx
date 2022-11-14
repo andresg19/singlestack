@@ -17,7 +17,7 @@ const Nav = () => {
       <img
         src={house}
         alt=""
-        className="w-[2.8%] ml-2"
+        className="w-[2.8%] ml-2 cursor-pointer"
         onClick={navigateToQA}
       />
 
@@ -54,7 +54,7 @@ const Nav = () => {
       <img
         src={userBlack}
         alt=""
-        className="w-[2.8%] mr-2"
+        className="w-[2.8%] mr-2 cursor-pointer"
         onClick={() => navigate("/register")}
       />
     </nav>
