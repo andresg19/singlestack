@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { postPost } from "../../Redux/Actions/Actions";
 import Nav from "../NavBar/Nav";
+import Footer from "../Footer/Footer";
 
 const AskQuestion = ({}) => {
   const dispatch = useDispatch();
@@ -42,8 +43,9 @@ const AskQuestion = ({}) => {
   return (
     <div className="">
       <Nav />
-      <div className="">
+      <div className="grid w-[100%]  justify-center mt-[2%]">
         <input
+          className="w-[60%] placeholder:text-center rounded-b-lg bg-[#aaabac5b] ml-auto shadow-lg shadow-[#1919191c] mr-auto m-3"
           type="text"
           name="title"
           placeholder="Titulo"
@@ -52,8 +54,10 @@ const AskQuestion = ({}) => {
             setInput({ ...input, [e.target.name]: e.target.value });
           }}
         />
-        <input
-          type="textarea"
+        <textarea
+          className="m-3 shadow-lg bg-[#aaabac5b] shadow-[#1919191c] rounded-b-lg "
+          rows="10"
+          cols="80"
           name="content"
           placeholder="Contenido"
           value={input.content}
@@ -62,6 +66,7 @@ const AskQuestion = ({}) => {
           }}
         />
         <input
+          className="m-3 placeholder:text-center shadow-lg rounded-b-lg bg-[#aaabac5b] shadow-[#1919191c]"
           type="text"
           name="etiquetas"
           placeholder="javascript python node"
@@ -70,20 +75,23 @@ const AskQuestion = ({}) => {
             setInput({ ...input, [e.target.name]: e.target.value });
           }}
         />
-        <input type="file" multiple onChange={handleImage} />
-        {imgArr?.map((i) => {
-          return <img src={i} alt="" width={25} />;
-        })}
-      </div>
-      {/* 
-      {imgArr?.map((i) => {
-        return <img src={i} alt="" width={25} />;
-      })}
-      */}
+        <input
+          className="m-3 ml-auto mr-auto shadow-lg bg-[#aaabac5b] shadow-[#1919191c]"
+          type="file"
+          multiple
+          onChange={handleImage}
+        />
+        {img ? <img src={img} alt="" width={25} /> : <p>No hay imagen</p>}
 
-      <button className="" onClick={handlePost}>
-        POSTEA Y QUITATE LA DUDA
-      </button>
+        <button
+          className="text-sm bg-[#aaabac5b] shadow-lg shadow-[#19191980] w-[30%] ml-auto mr-auto"
+          onClick={handlePost}
+        >
+          POSTEA Y QUITATE LA DUDA
+        </button>
+      </div>
+
+      <Footer />
     </div>
   );
 };
