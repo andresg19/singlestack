@@ -2,6 +2,8 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
+const PostResource = require("./models/PostResource");
+const CommentResource = require("./models/CommentResource");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 /* let sequelize =
@@ -74,6 +76,10 @@ Posts.belongsToMany(Users, { through: "Users_Posts" });
 
 Posts.belongsToMany(Comments, { through: "Comments_Posts" });
 Comments.hasOne(Posts);
+
+// Users.belongsToMany(PostResource, {through: "Users_PostResource"});
+// PostResource.belongsToMany(Users, {through: "Users_PostResource"});
+// CommentResource.hasOne(PostResource);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
