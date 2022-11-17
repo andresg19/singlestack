@@ -36,19 +36,24 @@ const Question = () => {
   const currentComments = useSelector((state) => state.commentsDetail);
   const { id } = useParams();
   const postId = currentPost.id;
-  const [like, setLike] = useState({
+  /* const [like, setLike] = useState({
     like: true,
   });
-  const [change, setChange] = useState(false);
+  const [change, setChange] = useState(false); */
 
-  useEffect(() => {
-    dispatch(searchPost(id));
-    return () => {
-      dispatch(clearState());
-    };
-  }, [dispatch, change]);
+  useEffect(
+    () => {
+      dispatch(searchPost(id));
+      return () => {
+        dispatch(clearState());
+      };
+    },
+    [
+      /* dispatch, change */
+    ]
+  );
 
-  const handleAyuda = (e) => {
+  /*  const handleAyuda = (e) => {
     e.preventDefault();
     e.target.name === "true"
       ? setLike({ like: true })
@@ -56,7 +61,7 @@ const Question = () => {
     console.log(typeof like);
     dispatch(ayudaComment(e.target.id, like));
     setChange(!change);
-  };
+  }; */
 
   return (
     <div className="">
@@ -137,7 +142,6 @@ const Question = () => {
                           className="w-8 ml-2 mb-2 cursor-pointer"
                           name="true"
                           id={c.id}
-                          onClick={handleAyuda}
                         />
                         <img
                           src={finger}
@@ -145,7 +149,6 @@ const Question = () => {
                           className="w-8 ml-[0.45rem] rotate-180 cursor-pointer"
                           name="false"
                           id={c.id}
-                          onClick={handleAyuda}
                         />
                         <p className="text-red-800 ml-3">{c.ayuda}</p>
                       </div>

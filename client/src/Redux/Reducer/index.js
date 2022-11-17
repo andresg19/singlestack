@@ -61,10 +61,10 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
         posts: payload,
       };
-    case AYUDA_COMMENT:
+    /* case AYUDA_COMMENT:
       return {
         ...state,
-      };
+      }; */
     default:
       return state;
   }

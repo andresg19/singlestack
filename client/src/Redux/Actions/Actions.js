@@ -137,7 +137,7 @@ export const searchByTag = (tag) => {
   };
 };
 
-export const ayudaComment = (id, payload) => {
+/* export const ayudaComment = (id, payload) => {
   return async function (dispatch) {
     console.log(payload);
     try {
@@ -154,3 +154,4 @@ export const ayudaComment = (id, payload) => {
     }
   };
 };
+ */
