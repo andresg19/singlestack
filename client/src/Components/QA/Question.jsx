@@ -110,7 +110,6 @@ const Question = () => {
             {currentComments &&
               currentComments.map((c) => {
                 console.log("soy e comments", c);
-                setIdComment(c.id);
                 return (
                   <div className="">
                     <div key={c.id} className="bg-[#AAABAC]">
