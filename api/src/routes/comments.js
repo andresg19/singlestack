@@ -40,11 +40,12 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   let { id } = req.params;
-  let bool = req.body;
+  let { like } = req.body;
+
   try {
     let comment = await Comments.findOne({ where: { id } });
 
-    if (bool) {
+    if (like === true) {
       console.log("if");
       let commentUpdate = await Comments.update(
         {
