@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { searchPost, clearState } from "../../Redux/Actions/Actions";
+import {
+  searchPost,
+  clearState,
+  ayudaComment,
+} from "../../Redux/Actions/Actions";
 import InputComment from "./InputComment";
 import Nav from "../NavBar/Nav";
 import Footer from "../Footer/Footer";
@@ -33,6 +37,8 @@ const Question = () => {
   console.log("soycurrentPost", currentPost);
   const { id } = useParams();
   const postId = currentPost.id;
+  const [idComment, setIdComment] = useState("");
+  const [like, setLike] = useState(true);
 
   useEffect(() => {
     dispatch(searchPost(id));
@@ -41,7 +47,10 @@ const Question = () => {
     };
   }, []);
 
-  /* const handleImgZoom = () => {}; */
+  const handleAyuda = (e) => {
+    e.preventDefault();
+    dispatch(ayudaComment(idComment, like));
+  };
 
   return (
     <div className="">
@@ -99,15 +108,16 @@ const Question = () => {
         <div className="flex justify-center">
           <div className="w-[100vh]">
             {currentComments &&
-              currentComments.map((e) => {
-                console.log("soy e comments", e);
+              currentComments.map((c) => {
+                console.log("soy e comments", c);
+                setIdComment(c.id);
                 return (
                   <div className="">
-                    <div key={e.id} className="bg-[#AAABAC]">
+                    <div key={c.id} className="bg-[#AAABAC]">
                       <div className="flex justify-between">
                         <p></p>
                         <div className="flex mt-2 ">
-                          <p>{e.author}</p>
+                          <p>{c.author}</p>
                           <img
                             src={userWhite}
                             alt=""
@@ -116,22 +126,33 @@ const Question = () => {
                         </div>
                       </div>
                       <div className="-mt-10">
-                        <p className="text-green-500 ml-[25px]">3</p>
-                        <img src={finger} alt="" className="w-8 ml-2 mb-2" />
+                        <p className="text-green-500 ml-[25px]">
+                          {currentComments && currentComments.ayuda}
+                        </p>
                         <img
                           src={finger}
                           alt=""
-                          className="w-8 ml-[0.45rem] rotate-180"
+                          className="w-8 ml-2 mb-2 cursor-pointer"
+                          onClick={() => handleAyuda}
                         />
-                        <p className="text-red-500 ml-3">3</p>
+                        <img
+                          src={finger}
+                          alt=""
+                          className="w-8 ml-[0.45rem] rotate-180 cursor-pointer"
+                          value={like.dislike}
+                          onClick={handleAyuda}
+                        />
+                        <p className="text-red-500 ml-3">
+                          {currentComments && currentComments.ayuda}
+                        </p>
                       </div>
-                      <div className="  px-[30px] -mt-20 min-h-[80px]">
+                      <div className="px-[30px] -mt-20 min-h-[80px]">
                         <p className="text-white text-2xl ml-[8%] mr-[8%]">
-                          {e.content}
+                          {c.content}
                         </p>
                         <div className="">
-                          {e &&
-                            e.img.map((i) => {
+                          {c &&
+                            c.img.map((i) => {
                               return (
                                 <div className="my-3">
                                   <img
@@ -146,7 +167,7 @@ const Question = () => {
                       </div>
                       <div className="flex justify-between mx-2 pb-2">
                         <img src={share} alt="" className="w-8  rotate-180 " />
-                        <p className="text-lg">{dateFormatter(e.createdAt)}</p>
+                        <p className="text-lg">{dateFormatter(c.createdAt)}</p>
                       </div>
                     </div>
 
