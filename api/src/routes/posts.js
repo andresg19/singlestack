@@ -61,8 +61,6 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-
-
 //EDITA UN POST
 router.get("/", async (req, res) => {
   console.log("Hola desde el get");
@@ -77,7 +75,7 @@ router.get("/:id", async (req, res) => {
         id,
       },
     });
-
+    console.log("search", search);
     let allComments = await Comments.findAll({ where: { postId: id } });
 
     res.status(200).send([search, allComments]);

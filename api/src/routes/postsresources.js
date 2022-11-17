@@ -1,7 +1,7 @@
 const { Router } = require("express");
 
 const router = Router();
-const { PostResource } = require("../db.js");
+const { PostResources } = require("../db.js");
 
 
 router.get("/", async(req, res) => {
@@ -10,9 +10,9 @@ router.get("/", async(req, res) => {
 
 router.post("/", async(req, res, next) => {
     const {author, content, archivos, util, noUtil }= req.body;
-    console.log(PostResource)
+    
     try {
-        let createPost = await PostResource.findOrCreate({
+        let createPost = await PostResources.findOrCreate({
             where: {
                 author,
                 content,
@@ -23,7 +23,7 @@ router.post("/", async(req, res, next) => {
         })
         res.status(200).send(createPost)
     } catch (error) {
-        next(error)
+        res.status(404).json(`Error del catch getall, ${error}`)
     }
 });
 

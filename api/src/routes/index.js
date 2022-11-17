@@ -8,7 +8,7 @@ const router = Router();
 const users = require("./users");
 const posts = require("./posts");
 const comments = require("./comments");
-const postsresources = require("./postresource")
+const postsresources = require("./postsresources")
 
 router.use("/users", users);
 router.use("/posts", posts);

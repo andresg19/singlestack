@@ -7,6 +7,7 @@ import {
   CLEAR_STATE,
   POST_COMMENT,
   SEARCH_TAG,
+  AYUDA_COMMENT,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -56,10 +57,13 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
       };
     case SEARCH_TAG:
-      console.log(payload);
       return {
         ...state,
         posts: payload,
+      };
+    case AYUDA_COMMENT:
+      return {
+        ...state,
       };
     default:
       return state;

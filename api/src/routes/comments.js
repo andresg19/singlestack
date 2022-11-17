@@ -38,6 +38,44 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  let { id } = req.params;
+  let bool = req.body;
+  try {
+    let comment = await Comments.findOne({ where: { id } });
+
+    if (bool) {
+      console.log("if");
+      let commentUpdate = await Comments.update(
+        {
+          ayuda: comment.ayuda + 1,
+        },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+      res.json(comment.ayuda);
+    } else {
+      console.log("else");
+      let commentUpdate = await Comments.update(
+        {
+          ayuda: comment.ayuda - 1,
+        },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+      res.json(comment.ayuda);
+    }
+  } catch (err) {
+    res.status(400).json(`Error del catch del put ayuda, ${err}`);
+  }
+});
+
 module.exports = router;
 
 /* comments                     posts
