@@ -40,11 +40,10 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   let { id } = req.params;
-  let { bool } = req.body;
+  let bool = req.body;
   try {
     let comment = await Comments.findOne({ where: { id } });
-    console.log(comment.ayuda);
-    console.log(typeof bool);
+
     if (bool) {
       console.log("if");
       let commentUpdate = await Comments.update(

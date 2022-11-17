@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
       img: {
         type: DataTypes.ARRAY(DataTypes.TEXT),
       },
-      ayuda: {
+      ayuda: { //cambiar nombre
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },

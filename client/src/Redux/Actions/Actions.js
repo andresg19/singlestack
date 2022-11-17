@@ -8,6 +8,7 @@ import {
   CLEAR_STATE,
   POST_COMMENT,
   SEARCH_TAG,
+  AYUDA_COMMENT,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -132,6 +133,27 @@ export const searchByTag = (tag) => {
       });
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const ayudaComment = (id, payload) => {
+  console.log(
+    "🚀 ~ file: Actions.js ~ line 141 ~ ayudaComment ~ payload",
+    payload
+  );
+  return async function (dispatch) {
+    try {
+      let result = await axios.put(
+        `http://localhost:3001/comments/${id}`,
+        payload
+      );
+      console.log("result.data", result.data);
+      return dispatch({
+        type: AYUDA_COMMENT,
+      });
+    } catch (error) {
+      console.log(`error del ayudaComment ${error}`);
     }
   };
 };
