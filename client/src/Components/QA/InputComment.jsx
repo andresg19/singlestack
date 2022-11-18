@@ -41,7 +41,7 @@ const InputComment = ({ postId }) => {
   };
 
   return (
-    <div className="justify-center">
+    <div className="justify-center ">
       <div className="flex">
         <textarea
           name=""

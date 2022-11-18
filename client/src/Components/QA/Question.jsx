@@ -66,32 +66,38 @@ const Question = () => {
   return (
     <div className="">
       <Nav />
-      <div className=" inline-block ml-[25%] mt-6 bg-[#D9D9D9] ">
+      <div className=" inline-block ml-[25%] mt-6 bg-[#D9D9D9] rounded-[8px] shadow-md shadow-[#0404041c]">
         <div className="flex justify-between mt-3 ml-2 mr-2 font-medium">
           <div className="">
-            <h1 className="">{currentPost.title}</h1>
+            <h1 className="text-xl">{currentPost.title}</h1>
           </div>
           <div className="flex">
-            <p>{currentPost.author}</p>
+            <p className="text-xl cursor-pointer hover:text-[#46899B]">
+              {currentPost.author}
+            </p>
             <img src={userWhite} alt="" className="w-8 ml-2" />
           </div>
         </div>
-        <div className=" mt-2 m-7 border w-[100vh]  border-black bg-[#46899B]">
-          <div className="flex justify-between mt-2">
+        <div className=" mt-2 m-7 w-[100vh] bg-[#46899B] rounded-[8px] shadow-md shadow-[#0404041c] border border-[#46899B] hover:border hover:border-black">
+          <div className="flex justify-between ">
             <div className="flex space-x-3 ml-2 ">
               {currentPost.etiquetas?.map((t) => {
                 return (
-                  <p className="bg-[#3232323d] px-1 rounded-xl font-semibold text-center self-center">
+                  <p className="bg-[#3232323d] px-1 rounded-xl font-semibold text-center self-center hover:bg-[#D9D9D9]">
                     #{t}{" "}
                   </p>
                 );
               })}
             </div>
 
-            <img src={bookmark} alt="" className="w-8 mr-1" />
+            <img
+              src={bookmark}
+              alt=""
+              className="mt-2 w-8 mr-1 cursor-pointer"
+            />
           </div>
           <div className="mt-1 mb-2 mx-10   ">
-            <p className="text-white text-xl m-8 mt-12">
+            <p className="text-white text-xl m-8 mt-12 hover:text-black">
               {currentPost.content}
             </p>
 
@@ -101,7 +107,7 @@ const Question = () => {
                   <img
                     src={i}
                     alt="img not found"
-                    className="w-[25%] cursor-pointer"
+                    className="max-w-lg mx-auto cursor-pointer rounded-[8px] shadow-md shadow-[#0404041c]"
                     href={i}
                   />
                 );
@@ -109,24 +115,27 @@ const Question = () => {
             </div>
           </div>
           <div className="flex justify-between mr-2">
-            <img src={share} alt="" className="w-8 ml-2 mb-2" />
-            <p className="font-medium">
+            <img src={share} alt="" className="w-8 ml-2 mb-2 cursor-pointer" />
+            <p className="font-medium hover:text-white">
               {dateFormatter(currentPost.createdAt)}
             </p>
           </div>
         </div>
         <hr className="m-7 box-border border-slate-400" />
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
           <div className="w-[100vh]">
             {currentComments &&
               currentComments.map((c) => {
                 return (
                   <div className="">
-                    <div key={c.id} className="bg-[#AAABAC]">
+                    <div
+                      key={c.id}
+                      className="bg-[#AAABAC] rounded-[8px] shadow-md shadow-[#0404041c] border border-[#AAABAC] hover:bg-[#c3c0c0] hover:border-black hover:border"
+                    >
                       <div className="flex justify-between">
                         <p></p>
                         <div className="flex mt-2 ">
-                          <p>{c.author}</p>
+                          <p className="text-xl cursor-pointer">{c.author}</p>
                           <img
                             src={userWhite}
                             alt=""
@@ -135,7 +144,7 @@ const Question = () => {
                         </div>
                       </div>
                       <div className="-mt-10">
-                        <p className="text-green-800 ml-[25px]">{c.ayuda}</p>
+                        <p className="text-green-800 ml-[25px]">3</p>
                         <img
                           src={finger}
                           alt=""
@@ -150,7 +159,7 @@ const Question = () => {
                           name="false"
                           id={c.id}
                         />
-                        <p className="text-red-800 ml-3">{c.ayuda}</p>
+                        <p className="text-red-800 ml-3">2</p>
                       </div>
                       <div className="px-[30px] -mt-20 min-h-[80px]">
                         <p className="text-white text-2xl ml-[8%] mr-[8%]">
@@ -164,7 +173,7 @@ const Question = () => {
                                   <img
                                     src={i}
                                     alt="img not found"
-                                    className="max-w-lg cursor-pointer mx-auto"
+                                    className="max-w-lg cursor-pointer mx-auto rounded-[8px] shadow-md shadow-[#0404041c]"
                                   />
                                 </div>
                               );
@@ -172,7 +181,11 @@ const Question = () => {
                         </div>
                       </div>
                       <div className="flex justify-between mx-2 pb-2">
-                        <img src={share} alt="" className="w-8  rotate-180 " />
+                        <img
+                          src={share}
+                          alt=""
+                          className="w-8 rotate-180 cursor-pointer"
+                        />
                         <p className="text-lg">{dateFormatter(c.createdAt)}</p>
                       </div>
                     </div>
