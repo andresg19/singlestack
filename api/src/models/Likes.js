@@ -20,6 +20,9 @@ module.exports = (sequelize) => {
       userId: {
         type: DataTypes.STRING,
       },
+      clicked: {
+        type: DataTypes.BOOLEAN,
+      },
     },
     { timestamp: true }
   );

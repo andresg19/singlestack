@@ -5,6 +5,8 @@ import {
   searchPost,
   clearState,
   ayudaComment,
+  dislikeComment,
+  GetLikes,
 } from "../../Redux/Actions/Actions";
 import InputComment from "./InputComment";
 import Nav from "../NavBar/Nav";
@@ -13,6 +15,7 @@ import bookmark from "../../assets/imgs/bookmark.png";
 import share from "../../assets/imgs/share.png";
 import userWhite from "../../assets/imgs/userWhite.png";
 import finger from "../../assets/imgs/finger.png";
+import { likeComment } from "./../../Redux/Actions/Actions";
 
 export function dateFormatter(state) {
   //date "2022-10-26T13:25:39.855Z"
@@ -34,34 +37,43 @@ const Question = () => {
   const dispatch = useDispatch();
   const currentPost = useSelector((state) => state.postDetail);
   const currentComments = useSelector((state) => state.commentsDetail);
+  const likes = useSelector((state) => state.likes);
   const { id } = useParams();
   const postId = currentPost.id;
-  /* const [like, setLike] = useState({
-    like: true,
-  });
-  const [change, setChange] = useState(false); */
+  const userId = JSON.parse(localStorage.getItem("currentUser")).id;
 
-  useEffect(
-    () => {
-      dispatch(searchPost(id));
-      return () => {
-        dispatch(clearState());
-      };
-    },
-    [
-      /* dispatch, change */
-    ]
-  );
+  /* const [likeListener, setLikeListener] = useSelector("");
+  const [dislikeListener, setDislikeListener] = useSelector(""); */
 
-  /*  const handleAyuda = (e) => {
+  useEffect(() => {
+    dispatch(searchPost(id));
+    dispatch(GetLikes());
+    return () => {
+      dispatch(clearState());
+    };
+  }, []);
+
+  const handleLike = (e, c) => {
     e.preventDefault();
-    e.target.name === "true"
-      ? setLike({ like: true })
-      : setLike({ like: false });
-    console.log(typeof like);
-    dispatch(ayudaComment(e.target.id, like));
-    setChange(!change);
-  }; */
+
+    let likeSelected = likes.filter((l) => l.commentId === c.id);
+    console.log(
+      "🚀 ~ file: Question.jsx ~ line 61 ~ handleLike ~ likeSelected",
+      likeSelected
+    );
+    //Likes, switcher, userId, commentId
+
+    if (likeSelected.clicked === true) {
+      dispatch(dislikeComment("Likes", "down", userId, c.id));
+    } else if (likeSelected.clicked === false) {
+      dispatch(likeComment("Likes", "up", userId, c.id));
+    } else {
+      dispatch(likeComment("Likes", userId, c.id));
+    }
+  };
+  const handleDislike = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="">
@@ -144,19 +156,21 @@ const Question = () => {
                         </div>
                       </div>
                       <div className="-mt-10">
-                        <p className="text-green-800 ml-[25px]">3</p>
+                        <p className="text-green-800 ml-[25px]">
+                          {c.clicked ? <p>like</p> : <p>dislike</p>}
+                        </p>
                         <img
                           src={finger}
                           alt=""
                           className="w-8 ml-2 mb-2 cursor-pointer"
-                          name="true"
                           id={c.id}
+                          onClick={(e) => handleLike(e, c)}
                         />
                         <img
                           src={finger}
                           alt=""
                           className="w-8 ml-[0.45rem] rotate-180 cursor-pointer"
-                          name="false"
+                          onClick={handleDislike}
                           id={c.id}
                         />
                         <p className="text-red-800 ml-3">2</p>

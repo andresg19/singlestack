@@ -14,6 +14,9 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
+      clicked: {
+        type: DataTypes.BOOLEAN,
+      },
     },
     { timestamp: true }
   );

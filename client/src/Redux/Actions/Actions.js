@@ -10,6 +10,7 @@ import {
   SEARCH_TAG,
   LIKE,
   DISLIKE,
+  ALL_LIKES,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -127,9 +128,22 @@ export const searchByTag = (tag) => {
   return async function (dispatch) {
     try {
       let result = await axios.get(`http://localhost:3001/posts/ematch/${tag}`);
-      console.log("result.data", result.data);
       return dispatch({
         type: SEARCH_TAG,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const GetLikes = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get(`http://localhost:3001/likes`);
+      return dispatch({
+        type: ALL_LIKES,
         payload: result.data,
       });
     } catch (error) {
@@ -147,6 +161,7 @@ export const likeComment = (Likes, switcher, userId, commentId) => {
         switcher,
         userId
       );
+      console.log(result.data);
       return dispatch({
         type: LIKE,
       });

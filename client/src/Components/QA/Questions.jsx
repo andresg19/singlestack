@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPosts } from "../../Redux/Actions/Actions";
 
-const Questions = ({handleSearch}) => {
-
+const Questions = ({ handleSearch }) => {
   const dispatch = useDispatch();
   const posteos = useSelector((state) => state.posts);
-  console.log(posteos);
   useEffect(() => {
     dispatch(getPosts());
   }, []);

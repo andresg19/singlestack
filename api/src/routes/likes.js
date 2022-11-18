@@ -4,15 +4,28 @@ const { Likes } = require("../db.js");
 
 const { likeSetter } = require("../helpers/likeSetter.js");
 
-
 router.get("/", async (req, res, next) => {
-  let result = await Likes.findAll({});
-  res.status(200).send(result)
-})
+  try {
+    let result = await Likes.findAll({});
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(400).json(`error en el catch del get del back, ${error}`);
+  }
+});
 
 router.put("/:commentId", async (req, res, next) => {
   let { commentId } = req.params;
+  console.log(
+    "🚀 ~ file: likes.js ~ line 18 ~ router.put ~ commentId",
+    commentId
+  );
+
   let { userId, switcher } = req.body;
+  console.log(
+    "🚀 ~ file: likes.js ~ line 21 ~ router.put ~ req.body",
+    req.body
+  );
+
   try {
     let result = likeSetter(Likes, switcher, userId, commentId);
     res.status(200).json(result);
