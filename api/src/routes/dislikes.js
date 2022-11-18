@@ -4,6 +4,12 @@ const axios = require("axios");
 const { Dislikes } = require("../db.js");
 const { likeSetter } = require("../helpers/likeSetter.js");
 
+
+router.get("/", async (req, res, next) => {
+  let result = await Dislikes.findAll({});
+  res.status(200).send(result)
+})
+
 router.put("/:commentId", async (req, res, next) => {
   let { commentId } = req.params;
   let { userId, switcher } = req.body;
@@ -14,3 +20,6 @@ router.put("/:commentId", async (req, res, next) => {
     next(error);
   }
 });
+
+
+module.exports = router;
