@@ -137,12 +137,9 @@ export const searchByTag = (tag) => {
   };
 };
 
-export const ayudaComment = (id, payload) => {
-  console.log(
-    "🚀 ~ file: Actions.js ~ line 141 ~ ayudaComment ~ payload",
-    payload
-  );
+/* export const ayudaComment = (id, payload) => {
   return async function (dispatch) {
+    console.log(payload);
     try {
       let result = await axios.put(
         `http://localhost:3001/comments/${id}`,
@@ -157,3 +154,4 @@ export const ayudaComment = (id, payload) => {
     }
   };
 };
+ */

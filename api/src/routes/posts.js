@@ -26,7 +26,6 @@ router.post("/", async (req, res) => {
   console.log(req.body);
 
   let splitEtiquetas = etiquetas.split(" ");
-  console.log("soy split etiquetas", splitEtiquetas);
 
   try {
     let [posts, created] = await Posts.findOrCreate({

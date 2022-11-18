@@ -34,23 +34,34 @@ const Question = () => {
   const dispatch = useDispatch();
   const currentPost = useSelector((state) => state.postDetail);
   const currentComments = useSelector((state) => state.commentsDetail);
-  console.log("soycurrentPost", currentPost);
   const { id } = useParams();
   const postId = currentPost.id;
-  const [idComment, setIdComment] = useState("");
-  const [like, setLike] = useState(true);
+  /* const [like, setLike] = useState({
+    like: true,
+  });
+  const [change, setChange] = useState(false); */
 
-  useEffect(() => {
-    dispatch(searchPost(id));
-    return () => {
-      dispatch(clearState());
-    };
-  }, []);
+  useEffect(
+    () => {
+      dispatch(searchPost(id));
+      return () => {
+        dispatch(clearState());
+      };
+    },
+    [
+      /* dispatch, change */
+    ]
+  );
 
-  const handleAyuda = (e) => {
+  /*  const handleAyuda = (e) => {
     e.preventDefault();
-    dispatch(ayudaComment(idComment, like));
-  };
+    e.target.name === "true"
+      ? setLike({ like: true })
+      : setLike({ like: false });
+    console.log(typeof like);
+    dispatch(ayudaComment(e.target.id, like));
+    setChange(!change);
+  }; */
 
   return (
     <div className="">
@@ -109,7 +120,6 @@ const Question = () => {
           <div className="w-[100vh]">
             {currentComments &&
               currentComments.map((c) => {
-                console.log("soy e comments", c);
                 return (
                   <div className="">
                     <div key={c.id} className="bg-[#AAABAC]">
@@ -125,25 +135,22 @@ const Question = () => {
                         </div>
                       </div>
                       <div className="-mt-10">
-                        <p className="text-green-500 ml-[25px]">
-                          {currentComments && currentComments.ayuda}
-                        </p>
+                        <p className="text-green-800 ml-[25px]">{c.ayuda}</p>
                         <img
                           src={finger}
                           alt=""
                           className="w-8 ml-2 mb-2 cursor-pointer"
-                          onClick={() => handleAyuda}
+                          name="true"
+                          id={c.id}
                         />
                         <img
                           src={finger}
                           alt=""
                           className="w-8 ml-[0.45rem] rotate-180 cursor-pointer"
-                          value={like.dislike}
-                          onClick={handleAyuda}
+                          name="false"
+                          id={c.id}
                         />
-                        <p className="text-red-500 ml-3">
-                          {currentComments && currentComments.ayuda}
-                        </p>
+                        <p className="text-red-800 ml-3">{c.ayuda}</p>
                       </div>
                       <div className="px-[30px] -mt-20 min-h-[80px]">
                         <p className="text-white text-2xl ml-[8%] mr-[8%]">
