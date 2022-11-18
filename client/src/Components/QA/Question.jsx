@@ -66,7 +66,7 @@ const Question = () => {
   return (
     <div className="">
       <Nav />
-      <div className=" inline-block ml-[25%] mt-6 bg-[#D9D9D9] rounded-[8px] shadow-md shadow-[#0404041c]">
+      <div className=" inline-block ml-[25%] mt-6 bg-[#D9D9D9] rounded-[8px] shadow-[#5a5959] shadow-lg">
         <div className="flex justify-between mt-3 ml-2 mr-2 font-medium">
           <div className="">
             <h1 className="text-xl">{currentPost.title}</h1>
@@ -78,7 +78,7 @@ const Question = () => {
             <img src={userWhite} alt="" className="w-8 ml-2" />
           </div>
         </div>
-        <div className=" mt-2 m-7 w-[100vh] bg-[#46899B] rounded-[8px] shadow-md shadow-[#0404041c] border border-[#46899B] hover:border hover:border-black">
+        <div className=" mt-2 m-7 w-[100vh] bg-[#46899B] rounded-[8px] shadow-[#5a5959] shadow-lg border border-[#46899B] hover:border hover:border-black hover:bg-[#3d7888] ">
           <div className="flex justify-between ">
             <div className="flex space-x-3 ml-2 ">
               {currentPost.etiquetas?.map((t) => {
@@ -101,13 +101,13 @@ const Question = () => {
               {currentPost.content}
             </p>
 
-            <div className="flex justify-center space-x-8 m-8 mt-12">
+            <div className=" justify-center space-x-8 m-8 mt-12">
               {currentPost.img?.map((i) => {
                 return (
                   <img
                     src={i}
                     alt="img not found"
-                    className="max-w-lg mx-auto cursor-pointer rounded-[8px] shadow-md shadow-[#0404041c]"
+                    className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#5a5959] shadow-lg"
                     href={i}
                   />
                 );
@@ -130,7 +130,7 @@ const Question = () => {
                   <div className="">
                     <div
                       key={c.id}
-                      className="bg-[#AAABAC] rounded-[8px] shadow-md shadow-[#0404041c] border border-[#AAABAC] hover:bg-[#c3c0c0] hover:border-black hover:border"
+                      className="bg-[#AAABAC] rounded-[8px] shadow-[#5a5959] shadow-lg border border-[#AAABAC] hover:bg-[#c3c0c0] hover:border-black hover:border"
                     >
                       <div className="flex justify-between">
                         <p></p>
@@ -173,7 +173,7 @@ const Question = () => {
                                   <img
                                     src={i}
                                     alt="img not found"
-                                    className="max-w-lg cursor-pointer mx-auto rounded-[8px] shadow-md shadow-[#0404041c]"
+                                    className="max-w-lg cursor-pointer mx-auto rounded-[8px] shadow-[#5a5959] shadow-lg"
                                   />
                                 </div>
                               );

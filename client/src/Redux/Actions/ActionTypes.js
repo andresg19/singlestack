@@ -6,4 +6,5 @@ export const SEARCH_BY_ID = "SEARCH_BY_ID";
 export const CLEAR_STATE = "CLEAR_STATE";
 export const POST_COMMENT = "POST_COMMENT";
 export const SEARCH_TAG = "SEARCH_TAG";
-export const AYUDA_COMMENT = "AYUDA_COMMENT";
+export const LIKE = "LIKE";
+export const DISLIKE = "DISLIKE";

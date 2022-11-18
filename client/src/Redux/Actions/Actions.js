@@ -8,7 +8,8 @@ import {
   CLEAR_STATE,
   POST_COMMENT,
   SEARCH_TAG,
-  AYUDA_COMMENT,
+  LIKE,
+  DISLIKE,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -137,21 +138,38 @@ export const searchByTag = (tag) => {
   };
 };
 
-/* export const ayudaComment = (id, payload) => {
+export const likeComment = (Likes, switcher, userId, commentId) => {
   return async function (dispatch) {
-    console.log(payload);
     try {
       let result = await axios.put(
-        `http://localhost:3001/comments/${id}`,
-        payload
+        `http://localhost:3001/likes/${commentId}`,
+        Likes,
+        switcher,
+        userId
       );
-      console.log("result.data", result.data);
       return dispatch({
-        type: AYUDA_COMMENT,
+        type: LIKE,
       });
     } catch (error) {
-      console.log(`error del ayudaComment ${error}`);
+      console.log(error);
     }
   };
 };
- */
+
+export const dislikeComment = (Likes, switcher, userId, commentId) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.put(
+        `http://localhost:3001/dislikes/${commentId}`,
+        Likes,
+        switcher,
+        userId
+      );
+      return dispatch({
+        type: DISLIKE,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

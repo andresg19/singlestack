@@ -7,7 +7,8 @@ import {
   CLEAR_STATE,
   POST_COMMENT,
   SEARCH_TAG,
-  AYUDA_COMMENT,
+  LIKE,
+  DISLIKE,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -61,10 +62,14 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
         posts: payload,
       };
-    /* case AYUDA_COMMENT:
+    case LIKE:
       return {
         ...state,
-      }; */
+      };
+    case DISLIKE:
+      return {
+        ...state,
+      };
     default:
       return state;
   }
