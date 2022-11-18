@@ -38,23 +38,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-router.put("/:id", async (req, res, next) => {
-  let { id } = req.params;
-  let param = req.body;
-  
-  try {
-    if(param === true){
-    
-  } else if(param === false) {
-
-  } 
-}
-
-  catch (error) {
-    next(error)
-  }
-=======
 router.put("/:id", async (req, res) => {
   /* let { id } = req.params;
   let param = req.body;
@@ -63,7 +46,6 @@ router.put("/:id", async (req, res) => {
   } catch (error) {
     res.send(error);
   } */
->>>>>>> 7d559cbe65e32b5028ce48b4abe1a736ebe36c47
 });
 
 module.exports = router;

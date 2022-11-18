@@ -17,6 +17,9 @@ module.exports = (sequelize) => {
       commentId: {
         type: DataTypes.STRING,
       },
+      userId: {
+        type: DataTypes.STRING,
+      },
     },
     { timestamp: true }
   );
