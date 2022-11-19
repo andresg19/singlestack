@@ -1,6 +1,6 @@
 const likeSetter = async (model, switcher, userId, commentId) => {
   try {
-    let like = await model.findAll({ where: { commentId } });
+    /* let like = await model.findAll({ where: { commentId } }); */
 
     switch (switcher) {
       case "up":
@@ -36,7 +36,7 @@ const likeSetter = async (model, switcher, userId, commentId) => {
         return newLike;
     }
   } catch (error) {
-    next(error);
+    console.log(`error en el likeSetter del helper: ${error}`);
   }
 };
 

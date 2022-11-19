@@ -14,6 +14,12 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
+      commentId: {
+        type: DataTypes.STRING,
+      },
+      userId: {
+        type: DataTypes.STRING,
+      },
       clicked: {
         type: DataTypes.BOOLEAN,
       },

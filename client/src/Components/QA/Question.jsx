@@ -7,6 +7,9 @@ import {
   ayudaComment,
   dislikeComment,
   GetLikes,
+  dislikeDislikeComment,
+  dislikeLikeComment,
+  GetDislikes,
 } from "../../Redux/Actions/Actions";
 import InputComment from "./InputComment";
 import Nav from "../NavBar/Nav";
@@ -38,41 +41,71 @@ const Question = () => {
   const currentPost = useSelector((state) => state.postDetail);
   const currentComments = useSelector((state) => state.commentsDetail);
   const likes = useSelector((state) => state.likes);
-  const { id } = useParams();
+  const dislikes = useSelector((state) => state.dislikes);
+  console.log(likes);
+  const { id } = useParams(); //postId
   const postId = currentPost.id;
   const userId = JSON.parse(localStorage.getItem("currentUser")).id;
-
-  /* const [likeListener, setLikeListener] = useSelector("");
-  const [dislikeListener, setDislikeListener] = useSelector(""); */
-
+  const switcher = ["up", "down"];
+  const [dispatchLike, setDispatchLike] = useState({
+    model: "Likes",
+    switcher: ["up", "down"],
+    userId: userId,
+    commentId: "",
+  });
+  const [dispatchDislike, setDispatchDislike] = useState({
+    model: "Dislikes",
+    switcher: ["up", "down"],
+    userId: userId,
+    commentId: "",
+  });
   useEffect(() => {
     dispatch(searchPost(id));
     dispatch(GetLikes());
+    dispatch(GetDislikes());
     return () => {
       dispatch(clearState());
     };
   }, []);
 
+  /* useEffect(() =>{
+
+  },[dispatch]) */
+
   const handleLike = (e, c) => {
     e.preventDefault();
 
-    let likeSelected = likes.filter((l) => l.commentId === c.id);
-    console.log(
-      "🚀 ~ file: Question.jsx ~ line 61 ~ handleLike ~ likeSelected",
-      likeSelected
-    );
-    //Likes, switcher, userId, commentId
+    dispatchLike.commentId = c.id;
 
-    if (likeSelected.clicked === true) {
-      dispatch(dislikeComment("Likes", "down", userId, c.id));
-    } else if (likeSelected.clicked === false) {
-      dispatch(likeComment("Likes", "up", userId, c.id));
-    } else {
-      dispatch(likeComment("Likes", userId, c.id));
+    let likeSelected = likes.filter(
+      (l) => l.commentId === dispatchLike.commentId
+    );
+    if (!likeSelected.length || likeSelected.clicked === "undefined") {
+      dispatch(likeComment(dispatchLike));
+    } else if (likeSelected && likeSelected[0].clicked === true) {
+      dispatch(dislikeComment(dispatchLike, dispatchLike.switcher[1]));
+    } else if (likeSelected && likeSelected[0].clicked === false) {
+      dispatch(likeComment(dispatchLike, dispatchLike.switcher[0]));
     }
   };
-  const handleDislike = (e) => {
+  const handleDislike = (e, c) => {
     e.preventDefault();
+    dispatchDislike.commentId = c.id;
+
+    let dislikesSelected = dislikes.filter(
+      (l) => l.commentId === dispatchDislike.commentId
+    );
+    if (!dislikesSelected.length || dislikesSelected.clicked === "undefined") {
+      dispatch(dislikeLikeComment(dispatchDislike));
+    } else if (dislikesSelected && dislikesSelected[0].clicked === true) {
+      dispatch(
+        dislikeDislikeComment(dispatchDislike, dispatchDislike.switcher[1])
+      );
+    } else if (dislikesSelected && dislikesSelected[0].clicked === false) {
+      dispatch(
+        dislikeLikeComment(dispatchDislike, dispatchDislike.switcher[0])
+      );
+    }
   };
 
   return (
@@ -170,7 +203,7 @@ const Question = () => {
                           src={finger}
                           alt=""
                           className="w-8 ml-[0.45rem] rotate-180 cursor-pointer"
-                          onClick={handleDislike}
+                          onClick={(e) => handleDislike(e, c)}
                           id={c.id}
                         />
                         <p className="text-red-800 ml-3">2</p>

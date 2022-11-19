@@ -11,6 +11,9 @@ import {
   LIKE,
   DISLIKE,
   ALL_LIKES,
+  DISLIKE_UP,
+  DISLIKE_DOWN,
+  ALL_DISLIKES,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -152,14 +155,27 @@ export const GetLikes = () => {
   };
 };
 
-export const likeComment = (Likes, switcher, userId, commentId) => {
+export const GetDislikes = () => {
   return async function (dispatch) {
     try {
+      let result = await axios.get(`http://localhost:3001/dislikes`);
+      return dispatch({
+        type: ALL_DISLIKES,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const likeComment = (setDispatchLike) => {
+  return async function (dispatch) {
+    try {
+      console.log("commentId", setDispatchLike.commentId);
       let result = await axios.put(
-        `http://localhost:3001/likes/${commentId}`,
-        Likes,
-        switcher,
-        userId
+        `http://localhost:3001/likes/90e9f73d-c8be-4f3b-b2e7-9ec2d9673821`,
+        setDispatchLike
       );
       console.log(result.data);
       return dispatch({
@@ -171,17 +187,60 @@ export const likeComment = (Likes, switcher, userId, commentId) => {
   };
 };
 
-export const dislikeComment = (Likes, switcher, userId, commentId) => {
+export const dislikeComment = (setDispatchLike) => {
+  console.log("action");
   return async function (dispatch) {
     try {
+      console.log("commentId A", setDispatchLike.commentId);
+
+      let result = await axios.put(
+        `http://localhost:3001/likes/90e9f73d-c8be-4f3b-b2e7-9ec2d9673821`,
+        setDispatchLike
+      );
+      console.log("pasa");
+      return dispatch({
+        type: DISLIKE,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const dislikeLikeComment = (Dislikes, switcher, userId, commentId) => {
+  return async function (dispatch) {
+    try {
+      console.log("entra al actions", Dislikes, switcher, userId, commentId);
       let result = await axios.put(
         `http://localhost:3001/dislikes/${commentId}`,
-        Likes,
+        Dislikes,
+        switcher,
+        userId
+      );
+      console.log(result.data);
+      return dispatch({
+        type: DISLIKE_UP,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const dislikeDislikeComment = (Dislike, switcher, userId, commentId) => {
+  console.log("action");
+  return async function (dispatch) {
+    try {
+      console.log("entra al actions", Dislike, switcher, userId, commentId);
+
+      let result = await axios.put(
+        `http://localhost:3001/dislikes/${commentId}`,
+        Dislike,
         switcher,
         userId
       );
       return dispatch({
-        type: DISLIKE,
+        type: DISLIKE_DOWN,
       });
     } catch (error) {
       console.log(error);

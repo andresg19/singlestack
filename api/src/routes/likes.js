@@ -15,23 +15,15 @@ router.get("/", async (req, res, next) => {
 
 router.put("/:commentId", async (req, res, next) => {
   let { commentId } = req.params;
-  console.log(
-    "🚀 ~ file: likes.js ~ line 18 ~ router.put ~ commentId",
-    commentId
-  );
 
-  let { userId, switcher } = req.body;
-  console.log(
-    "🚀 ~ file: likes.js ~ line 21 ~ router.put ~ req.body",
-    req.body
-  );
-
-  try {
+  let { dispatchLike } = req.body;
+  console.log(dispatchLike);
+  /*  try {
     let result = likeSetter(Likes, switcher, userId, commentId);
     res.status(200).json(result);
   } catch (error) {
-    next(error);
-  }
+    res.status(400).json(`error en el put comment like up: ${error}`);
+  } */
 });
 /* 
   //  if (like.length) {
