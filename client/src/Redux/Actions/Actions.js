@@ -169,13 +169,16 @@ export const GetDislikes = () => {
   };
 };
 
-export const likeComment = (setDispatchLike) => {
+export const likeComment = (commentId, userId, switcher) => {
   return async function (dispatch) {
     try {
-      console.log("commentId", setDispatchLike.commentId);
+      console.log('entre al action')
       let result = await axios.put(
-        `http://localhost:3001/likes/90e9f73d-c8be-4f3b-b2e7-9ec2d9673821`,
-        setDispatchLike
+        'http://localhost:3001/likes/' + commentId,
+        {
+        userId,
+        switcher,
+        }
       );
       console.log(result.data);
       return dispatch({
@@ -187,15 +190,18 @@ export const likeComment = (setDispatchLike) => {
   };
 };
 
-export const dislikeComment = (setDispatchLike) => {
+export const dislikeComment = (model, switcher, userId, commentId, ) => {
   console.log("action");
   return async function (dispatch) {
     try {
-      console.log("commentId A", setDispatchLike.commentId);
 
       let result = await axios.put(
-        `http://localhost:3001/likes/90e9f73d-c8be-4f3b-b2e7-9ec2d9673821`,
-        setDispatchLike
+        'http://localhost:3001/likes/90e9f73d-c8be-4f3b-b2e7-9ec2d9673821' + commentId,
+        {
+        model,
+        switcher,
+        userId,
+        }
       );
       console.log("pasa");
       return dispatch({

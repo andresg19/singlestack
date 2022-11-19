@@ -75,19 +75,43 @@ const Question = () => {
   const handleLike = (e, c) => {
     e.preventDefault();
 
-    dispatchLike.commentId = c.id;
+    
 
     let likeSelected = likes.filter(
-      (l) => l.commentId === dispatchLike.commentId
+      (l) => l.commentId === c.id
     );
-    if (!likeSelected.length || likeSelected.clicked === "undefined") {
-      dispatch(likeComment(dispatchLike));
-    } else if (likeSelected && likeSelected[0].clicked === true) {
-      dispatch(dislikeComment(dispatchLike, dispatchLike.switcher[1]));
-    } else if (likeSelected && likeSelected[0].clicked === false) {
-      dispatch(likeComment(dispatchLike, dispatchLike.switcher[0]));
-    }
+    console.log("likeSelected", likeSelected);
+
+    likeSelected.forEach((l) => {
+      if (
+        l.clicked === true &&
+        l.userId === userId &&
+        l.commentId === dispatchLike.commentId
+      ) {
+        console.log("entre al if");
+        dispatch(
+          dislikeComment(
+            dispatchDislike.model,
+            dispatchLike.switcher[1],
+            l.commentId,
+            l.userId
+          )
+        );
+      }
+    });
   };
+  // }
+  //else if (likeSelected.length && likeSelected[0].clicked === true && dispatchLike.userId === userId) {
+  //   console.log('entre al else')
+  //   dispatch(
+  //     likeComment(
+  //       dispatchLike.commentId,
+  //       dispatchLike.userId,
+  //       dispatchLike.switcher[1]
+  //     )
+  //   );
+  // }
+
   const handleDislike = (e, c) => {
     e.preventDefault();
     dispatchDislike.commentId = c.id;
@@ -111,7 +135,7 @@ const Question = () => {
   return (
     <div className="">
       <Nav />
-      <div className=" inline-block ml-[25%] mt-6 bg-[#D9D9D9] rounded-[8px] shadow-[#5a5959] shadow-lg">
+      <div className=" inline-block ml-[25%] mt-6 bg-[#8a9597] rounded-[8px] shadow-[#0f0f0fbd] shadow-lg">
         <div className="flex justify-between mt-3 ml-2 mr-2 font-medium">
           <div className="">
             <h1 className="text-xl">{currentPost.title}</h1>
@@ -123,7 +147,7 @@ const Question = () => {
             <img src={userWhite} alt="" className="w-8 ml-2" />
           </div>
         </div>
-        <div className=" mt-2 m-7 w-[100vh] bg-[#46899B] rounded-[8px] shadow-[#5a5959] shadow-lg border border-[#46899B] hover:border hover:border-black hover:bg-[#3d7888] ">
+        <div className=" mt-2 m-7 w-[100vh] bg-[#26505c] rounded-[8px] shadow-[#5a5959] shadow-lg border border-[#46899B] hover:border hover:border-black hover:bg-[#214b57] ">
           <div className="flex justify-between ">
             <div className="flex space-x-3 ml-2 ">
               {currentPost.etiquetas?.map((t) => {
@@ -175,7 +199,7 @@ const Question = () => {
                   <div className="">
                     <div
                       key={c.id}
-                      className="bg-[#AAABAC] rounded-[8px] shadow-[#5a5959] shadow-lg border border-[#AAABAC] hover:bg-[#c3c0c0] hover:border-black hover:border"
+                      className="bg-[#8a9597] rounded-[8px] shadow-[#5a5959] shadow-lg border border-[#aaabac3b] hover:bg-[#254f5709]"
                     >
                       <div className="flex justify-between">
                         <p></p>

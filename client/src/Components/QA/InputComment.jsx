@@ -50,7 +50,7 @@ const InputComment = ({ postId }) => {
           cols="80"
           value={input.content}
           placeholder="Escribe tu respuesta, cambia el mundo 😏"
-          className="shadow-lg bg-[#aaabac5b] shadow-[#1919191c] rounded-b-lg outline-none mx-auto"
+          className="shadow-lg bg-[#8a9597] shadow-[#1919195d] rounded-b-lg outline-none mx-auto"
           onChange={(e) => setInput(e.target.value)}
         ></textarea>
       </div>
