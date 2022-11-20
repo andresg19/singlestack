@@ -190,7 +190,7 @@ export const likeComment = (commentId, userId, switcher) => {
   };
 };
 
-export const dislikeComment = (model, switcher, userId, commentId, ) => {
+export const dislikeComment = (commentId, userId, switcher,   ) => {
   console.log("action");
   return async function (dispatch) {
     try {
@@ -198,9 +198,8 @@ export const dislikeComment = (model, switcher, userId, commentId, ) => {
       let result = await axios.put(
         'http://localhost:3001/likes/90e9f73d-c8be-4f3b-b2e7-9ec2d9673821' + commentId,
         {
-        model,
-        switcher,
         userId,
+        switcher,
         }
       );
       console.log("pasa");
@@ -219,9 +218,8 @@ export const dislikeLikeComment = (Dislikes, switcher, userId, commentId) => {
       console.log("entra al actions", Dislikes, switcher, userId, commentId);
       let result = await axios.put(
         `http://localhost:3001/dislikes/${commentId}`,
-        Dislikes,
+        userId,
         switcher,
-        userId
       );
       console.log(result.data);
       return dispatch({

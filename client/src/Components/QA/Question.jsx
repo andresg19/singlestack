@@ -46,6 +46,7 @@ const Question = () => {
   const { id } = useParams(); //postId
   const postId = currentPost.id;
   const userId = JSON.parse(localStorage.getItem("currentUser")).id;
+  console.log(userId)
   const switcher = ["up", "down"];
   const [dispatchLike, setDispatchLike] = useState({
     model: "Likes",
@@ -72,34 +73,64 @@ const Question = () => {
 
   },[dispatch]) */
 
+  
   const handleLike = (e, c) => {
     e.preventDefault();
 
     
+      if (likes.length === 0) {
+        dispatch(
+          dislikeComment(
+            e.commentId,
+            userId
+          )
+        )
+      } else {
+        likes.map(e => {
+          if( e.userId !== userId ) {
+            dispatch(
+             dislikeComment(
+               e.commentId,
+               userId
+             )
+           )
+          } 
+  
+        })
 
+      }
+     
+    
+    
     let likeSelected = likes.filter(
       (l) => l.commentId === c.id
-    );
-    console.log("likeSelected", likeSelected);
+      );
+      console.log("likeSelected", likeSelected);
 
-    likeSelected.forEach((l) => {
+      
       if (
-        l.clicked === true &&
-        l.userId === userId &&
-        l.commentId === dispatchLike.commentId
+        likeSelected[0].clicked === true &&
+        likeSelected[0].userId === userId 
       ) {
         console.log("entre al if");
         dispatch(
           dislikeComment(
-            dispatchDislike.model,
+            likeSelected[0].commentId,
+            userId,
             dispatchLike.switcher[1],
-            l.commentId,
-            l.userId
           )
         );
-      }
-    });
-  };
+      } else if ( likeSelected[0].clicked === false && likeSelected[0].userId === userId) {
+        dispatch(
+          likeComment(
+            likeSelected[0].commentId,
+            userId,
+            dispatchLike.switcher[0],
+          )
+          );
+          }
+    }
+  ;
   // }
   //else if (likeSelected.length && likeSelected[0].clicked === true && dispatchLike.userId === userId) {
   //   console.log('entre al else')

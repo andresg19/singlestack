@@ -1,38 +1,41 @@
 const { Likes } = require("../db.js");
 
-const likeSetter = async (model, switcher, userId, commentId) => {
-  console.log('Helper params', model, switcher, userId, commentId);
+const likeSetter = async (commentId, userId, switcher ) => {
+  console.log('Helper params', switcher, userId, commentId);
   try {
     /* let like = await model.findAll({ where: { commentId } }); */
 
     switch (switcher) {
       case "up":
         console.log('Helper case up', 'entre')
-        let addOneLike = await Likes.increment("likes", {
-          by: 1,
-          where: { commentId },
-        });
-        let clicked = await Likes.update(
-          { where: { commentId } },
-          { clicked: true }
-        );
-        return addOneLike;
+        const like = async() => {
+          await Likes.increment( "likes", {
+           by: 1,
+           where: { userId },
+         });
+         await Likes.update({
+          clicked: true,
+         }, 
+         {where: {userId}}
+         )
+         ; }
+         
+         return like();
 
       case "down":
         console.log('Helper case down', 'entre')
         console.log(userId, 'soycomment',commentId)
         const disLike = async() => {
-         await Likes.decrement("likes", {
-          by: 1,
-          where: { commentId },
-        }); }
+         await Likes.delete({
+          where: { commentId, userId },
+        });
+         await Likes.update({
+          clicked: false,
+         }, 
+         {where: {userId}}
+         )
+        ; }
         
-        // let unclicked = await Likes.update(
-        //   {
-        //     where: {commentId, userId},
-        //     clicked: false
-        //   }
-        //  );
         return disLike();
 
       default:
