@@ -2,33 +2,32 @@ const sequelize = require("sequelize");
 const { DataTypes, STRING } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("posts", {
+  sequelize.define("postsresources", {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    title: {
+    author: {
       type: DataTypes.TEXT,
     },
-
     content: {
       type: DataTypes.STRING,
     },
 
-    author: {
-      type: DataTypes.TEXT,
-    },
-
-    etiquetas: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
-    img: {
+    archivos: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
+    },
+    util: {
+        type: DataTypes.INTEGER,
+    },
+    noUtil: {
+        type: DataTypes.INTEGER,
     },
     date: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
     },
+
   });
 };

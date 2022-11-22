@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { postPost } from "../../Redux/Actions/Actions";
 
-const Modal = ({ fullname }) => {
+const Modal = ({}) => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     title: "",
     content: "",
-    author: fullname,
+    author: JSON.parse(localStorage.getItem("currentUser")).fullname,
+    etiquetas: "",
   });
-  /* let fullname = "";
-  setInput({ ...input, author: fullname }); */
+  const [img, setImg] = useState("");
+
+  console.log(input);
+
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -24,7 +27,7 @@ const Modal = ({ fullname }) => {
   };
 
   useEffect(() => {
-    /*  fullname = localStorage.getItem("fullname"); */
+    // fullname = localStorage.getItem("fullname");
   }, []);
 
   return (
@@ -42,6 +45,13 @@ const Modal = ({ fullname }) => {
           name="content"
           placeholder="Contenido"
           value={input.content}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="etiquetas"
+          placeholder="#javascript"
+          value={input.etiquetas}
           onChange={handleChange}
         />
       </div>
