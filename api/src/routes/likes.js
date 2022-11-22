@@ -2,8 +2,6 @@ const { Router } = require("express");
 const router = Router();
 const { Likes } = require("../db.js");
 
-const { likeSetter } = require("../helpers/likeSetter.js");
-
 router.get("/", async (req, res, next) => {
   try {
     let result = await Likes.findAll({});
@@ -16,17 +14,32 @@ router.get("/", async (req, res, next) => {
 router.put("/:commentId", async (req, res, next) => {
   let { commentId } = req.params;
 
-  let { userId, switcher } = req.body;
-  console.log('userId', userId)
-  console.log('commentId', commentId)
+  let { userId } = req.body;
 
-    try {
-    let result = likeSetter( commentId, userId, switcher );
-    res.status(200).json(result);
-  } catch (error) {
-    res.status(400).json(`error en el put comment like up: ${error}`);
-  } 
-});
+  const matchLike = await Likes.findOne({
+      where: {commentId, userId}
+    })
+
+  if ( !matchLike ) {
+    let newMatch = await Likes.create({
+      likes: 1,
+      commentId,
+      userId,
+    }) 
+    res.status(200).send(newMatch)
+
+  } else {
+    let deleteLike = await Likes.destroy({
+      where: { commentId, userId },
+    })
+    res.status(200).send('borrado')
+  }
+ 
+})  
+     
+  
+  module.exports = router
+
 /* 
   //  if (like.length) {
   //   let addOneLike = Likes.increment('likes', { by: 1, where: { commentId }});
@@ -98,4 +111,4 @@ router.put("/:commentId", async (req, res, next) => {
 //muestre todos los dislikes
 //put
 
-module.exports = router;
+

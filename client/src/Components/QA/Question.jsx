@@ -4,12 +4,9 @@ import { useParams } from "react-router";
 import {
   searchPost,
   clearState,
-  ayudaComment,
-  dislikeComment,
   GetLikes,
-  dislikeDislikeComment,
-  dislikeLikeComment,
   GetDislikes,
+  dislikeComment,
 } from "../../Redux/Actions/Actions";
 import InputComment from "./InputComment";
 import Nav from "../NavBar/Nav";
@@ -42,7 +39,9 @@ const Question = () => {
   const currentComments = useSelector((state) => state.commentsDetail);
   const likes = useSelector((state) => state.likes);
   const dislikes = useSelector((state) => state.dislikes);
-  console.log(likes);
+  console.log('soyLikes', likes);
+  console.log('soydislikes', dislikes);
+
   const { id } = useParams(); //postId
   const postId = currentPost.id;
   const userId = JSON.parse(localStorage.getItem("currentUser")).id;
@@ -74,93 +73,22 @@ const Question = () => {
   },[dispatch]) */
 
   
+
+  
   const handleLike = (e, c) => {
     e.preventDefault();
-
-    
-      if (likes.length === 0) {
-        dispatch(
-          dislikeComment(
-            e.commentId,
-            userId
-          )
-        )
-      } else {
-        likes.map(e => {
-          if( e.userId !== userId ) {
-            dispatch(
-             dislikeComment(
-               e.commentId,
-               userId
-             )
-           )
-          } 
-  
-        })
-
-      }
-     
-    
-    
-    let likeSelected = likes.filter(
-      (l) => l.commentId === c.id
-      );
-      console.log("likeSelected", likeSelected);
-
-      
-      if (
-        likeSelected[0].clicked === true &&
-        likeSelected[0].userId === userId 
-      ) {
-        console.log("entre al if");
-        dispatch(
-          dislikeComment(
-            likeSelected[0].commentId,
-            userId,
-            dispatchLike.switcher[1],
-          )
-        );
-      } else if ( likeSelected[0].clicked === false && likeSelected[0].userId === userId) {
-        dispatch(
-          likeComment(
-            likeSelected[0].commentId,
-            userId,
-            dispatchLike.switcher[0],
-          )
-          );
-          }
+    let commentId = currentComments.filter((comment) => comment.id === c.id)
+    dispatch(likeComment(commentId[0].id, userId))
+    window.location.reload()  
     }
   ;
-  // }
-  //else if (likeSelected.length && likeSelected[0].clicked === true && dispatchLike.userId === userId) {
-  //   console.log('entre al else')
-  //   dispatch(
-  //     likeComment(
-  //       dispatchLike.commentId,
-  //       dispatchLike.userId,
-  //       dispatchLike.switcher[1]
-  //     )
-  //   );
-  // }
 
   const handleDislike = (e, c) => {
-    e.preventDefault();
-    dispatchDislike.commentId = c.id;
-
-    let dislikesSelected = dislikes.filter(
-      (l) => l.commentId === dispatchDislike.commentId
-    );
-    if (!dislikesSelected.length || dislikesSelected.clicked === "undefined") {
-      dispatch(dislikeLikeComment(dispatchDislike));
-    } else if (dislikesSelected && dislikesSelected[0].clicked === true) {
-      dispatch(
-        dislikeDislikeComment(dispatchDislike, dispatchDislike.switcher[1])
-      );
-    } else if (dislikesSelected && dislikesSelected[0].clicked === false) {
-      dispatch(
-        dislikeLikeComment(dispatchDislike, dispatchDislike.switcher[0])
-      );
-    }
+   e.preventDefault();
+   let commentId = currentComments.filter((comment) => comment.id === c.id)
+   console.log(commentId)
+   dispatch(dislikeComment(commentId[0].id, userId));
+   window.location.reload()  
   };
 
   return (
@@ -245,7 +173,9 @@ const Question = () => {
                       </div>
                       <div className="-mt-10">
                         <p className="text-green-800 ml-[25px]">
-                          {c.clicked ? <p>like</p> : <p>dislike</p>}
+                         
+                          likes
+                         
                         </p>
                         <img
                           src={finger}
@@ -261,7 +191,11 @@ const Question = () => {
                           onClick={(e) => handleDislike(e, c)}
                           id={c.id}
                         />
-                        <p className="text-red-800 ml-3">2</p>
+                        <p className="text-red-800 ml-3">
+                          
+                            dislike
+                          
+                        </p>
                       </div>
                       <div className="px-[30px] -mt-20 min-h-[80px]">
                         <p className="text-white text-2xl ml-[8%] mr-[8%]">

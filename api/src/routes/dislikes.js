@@ -15,14 +15,32 @@ router.get("/", async (req, res) => {
 
 router.put("/:commentId", async (req, res, next) => {
   let { commentId } = req.params;
-
-  let { userId, switcher } = req.body;
+console.log(commentId)
+  let { userId } = req.body;
 
   try {
-    let result = likeSetter(Dislikes, switcher, userId, commentId);
-    res.status(200).json(result);
+
+    const matchDislikes = await Dislikes.findOne({
+        where: {commentId, userId}
+      })
+  
+    if ( !matchDislikes ) {
+      let newMatch = await Dislikes.create({
+        dislikes: 1,
+        commentId,
+        userId,
+      }) 
+      res.status(200).send(newMatch)
+  
+    } else {
+      let deleteDislike = await Dislikes.destroy({
+        where: { commentId, userId },
+      })
+      res.status(200).send('borrado')
+    }
+    
   } catch (error) {
-    res.status(400).json(`error en el put comment like up: ${error}`);
+    res.status(404).send('error del catch dislike', error)
   }
 });
 
