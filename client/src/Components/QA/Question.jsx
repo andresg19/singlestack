@@ -63,6 +63,7 @@ const Question = () => {
     dispatch(searchPost(id));
     dispatch(GetLikes());
     dispatch(GetDislikes());
+
     return () => {
       dispatch(clearState());
     };
@@ -72,9 +73,11 @@ const Question = () => {
 
   },[dispatch]) */
 
-  
+ 
 
   
+  
+ 
   const handleLike = (e, c) => {
     e.preventDefault();
     let commentId = currentComments.filter((comment) => comment.id === c.id)
@@ -154,6 +157,8 @@ const Question = () => {
           <div className="w-[100vh]">
             {currentComments &&
               currentComments.map((c) => {
+                let countLikes = likes.filter((l) => l.commentId === c.id);
+                let countdislikes = dislikes.filter((dl) => dl.commentId === c.id);
                 return (
                   <div className="">
                     <div
@@ -172,11 +177,9 @@ const Question = () => {
                         </div>
                       </div>
                       <div className="-mt-10">
-                        <p className="text-green-800 ml-[25px]">
                          
-                          likes
-                         
-                        </p>
+
+                        <p className="text-[#177325]">{countLikes.length}</p>
                         <img
                           src={finger}
                           alt=""
@@ -191,11 +194,11 @@ const Question = () => {
                           onClick={(e) => handleDislike(e, c)}
                           id={c.id}
                         />
-                        <p className="text-red-800 ml-3">
-                          
-                            dislike
-                          
-                        </p>
+                        <p className="text-[#d71e1e]">{countdislikes.length}</p>
+                      
+                         
+                        
+                        
                       </div>
                       <div className="px-[30px] -mt-20 min-h-[80px]">
                         <p className="text-white text-2xl ml-[8%] mr-[8%]">
