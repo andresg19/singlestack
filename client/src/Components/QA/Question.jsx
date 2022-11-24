@@ -97,24 +97,24 @@ const Question = () => {
   return (
     <div className="">
       <Nav />
-      <div className=" inline-block ml-[25%] mt-6 bg-[#8a9597] rounded-[8px] shadow-[#0f0f0fbd] shadow-lg">
-        <div className="flex justify-between mt-3 ml-2 mr-2 font-medium">
-          <div className="">
-            <h1 className="text-xl">{currentPost.title}</h1>
+      <div className=" inline-block ml-[25%]  mt-6 bg-gradient-to-r from-cyan-800 to-blue-810 rounded-[8px] shadow-[#0f0f0fbd] shadow-lg">
+        <div className="flex justify-between  mt-3 ml-2 mr-2 font-medium">
+          <div className="ml-auto mr-auto">
+            <h1 className="text-xl justify-center text-[#aaabac] ">{currentPost.title}</h1>
           </div>
           <div className="flex">
-            <p className="text-xl cursor-pointer hover:text-[#46899B]">
+            <p className="text-sm cursor-pointer text-[#aaabac]">
               {currentPost.author}
             </p>
             <img src={userWhite} alt="" className="w-8 ml-2" />
           </div>
         </div>
-        <div className=" mt-2 m-7 w-[100vh] bg-[#26505c] rounded-[8px] shadow-[#5a5959] shadow-lg border border-[#46899B] hover:border hover:border-black hover:bg-[#214b57] ">
+        <div className=" mt-2 m-7 w-[100vh] rounded-[8px] shadow-[#191919] shadow-lg ">
           <div className="flex justify-between ">
             <div className="flex space-x-3 ml-2 ">
               {currentPost.etiquetas?.map((t) => {
                 return (
-                  <p className="bg-[#3232323d] px-1 rounded-xl font-semibold text-center self-center hover:bg-[#D9D9D9]">
+                  <p className="px-1 rounded-xl font-semibold text-center self-center bg-[#191919] text-[#aaabac]">
                     #{t}{" "}
                   </p>
                 );
@@ -128,7 +128,7 @@ const Question = () => {
             />
           </div>
           <div className="mt-1 mb-2 mx-10   ">
-            <p className="text-white text-xl m-8 mt-12 hover:text-black">
+            <p className="text-[#aaabac] text-xl m-8 mt-12">
               {currentPost.content}
             </p>
 
@@ -138,7 +138,7 @@ const Question = () => {
                   <img
                     src={i}
                     alt="img not found"
-                    className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#5a5959] shadow-lg"
+                    className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
                     href={i}
                   />
                 );
@@ -163,12 +163,12 @@ const Question = () => {
                   <div className="">
                     <div
                       key={c.id}
-                      className="bg-[#8a9597] rounded-[8px] shadow-[#5a5959] shadow-lg border border-[#aaabac3b] hover:bg-[#254f5709]"
+                      className="bg-gradient-to-r from-cyan-800 to-blue-810 rounded-[8px] shadow-[#191919] shadow-lg"
                     >
                       <div className="flex justify-between">
                         <p></p>
                         <div className="flex mt-2 ">
-                          <p className="text-xl cursor-pointer">{c.author}</p>
+                          <p className="text-xl cursor-pointer text-[#aaabac]">{c.author}</p>
                           <img
                             src={userWhite}
                             alt=""
@@ -179,7 +179,7 @@ const Question = () => {
                       <div className="-mt-10">
                          
 
-                        <p className="text-[#177325]">{countLikes.length}</p>
+                        <p className="text-[#1b7161] ml-[2.5%]">{countLikes.length}</p>
                         <img
                           src={finger}
                           alt=""
@@ -194,14 +194,14 @@ const Question = () => {
                           onClick={(e) => handleDislike(e, c)}
                           id={c.id}
                         />
-                        <p className="text-[#d71e1e]">{countdislikes.length}</p>
+                        <p className="text-[#C20000] ml-[2.5%]">{countdislikes.length}</p>
                       
                          
                         
                         
                       </div>
                       <div className="px-[30px] -mt-20 min-h-[80px]">
-                        <p className="text-white text-2xl ml-[8%] mr-[8%]">
+                        <p className="text-[#aaabac] text-xl ml-[8%] mr-[8%]">
                           {c.content}
                         </p>
                         <div className="">

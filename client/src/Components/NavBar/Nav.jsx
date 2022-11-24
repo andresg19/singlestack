@@ -13,7 +13,7 @@ const Nav = () => {
     window.location.reload();
   };
   return (
-    <nav className="flex w-full justify-between bg-[#2B4046] h-[8.5vh] text-white shrink-0 place-items-center">
+    <nav className="flex w-full justify-between bg-[#164e63] h-[8.5vh] text-white shrink-0 place-items-center">
       <img
         src={house}
         alt=""
