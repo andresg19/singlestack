@@ -39,13 +39,13 @@ const Question = () => {
   const currentComments = useSelector((state) => state.commentsDetail);
   const likes = useSelector((state) => state.likes);
   const dislikes = useSelector((state) => state.dislikes);
-  console.log('soyLikes', likes);
-  console.log('soydislikes', dislikes);
+  console.log("soyLikes", likes);
+  console.log("soydislikes", dislikes);
 
   const { id } = useParams(); //postId
   const postId = currentPost.id;
   const userId = JSON.parse(localStorage.getItem("currentUser")).id;
-  console.log(userId)
+  console.log(userId);
   const switcher = ["up", "down"];
   const [dispatchLike, setDispatchLike] = useState({
     model: "Likes",
@@ -73,25 +73,18 @@ const Question = () => {
 
   },[dispatch]) */
 
- 
-
-  
-  
- 
   const handleLike = (e, c) => {
     e.preventDefault();
-    let commentId = currentComments.filter((comment) => comment.id === c.id)
-    dispatch(likeComment(commentId[0].id, userId))
-    window.location.reload()  
-    }
-  ;
-
+    let commentId = currentComments.filter((comment) => comment.id === c.id);
+    dispatch(likeComment(commentId[0].id, userId));
+    window.location.reload();
+  };
   const handleDislike = (e, c) => {
-   e.preventDefault();
-   let commentId = currentComments.filter((comment) => comment.id === c.id)
-   console.log(commentId)
-   dispatch(dislikeComment(commentId[0].id, userId));
-   window.location.reload()  
+    e.preventDefault();
+    let commentId = currentComments.filter((comment) => comment.id === c.id);
+    console.log(commentId);
+    dispatch(dislikeComment(commentId[0].id, userId));
+    window.location.reload();
   };
 
   return (
@@ -100,7 +93,9 @@ const Question = () => {
       <div className="mt-[7%] inline-block ml-[25%] rounded-[8px] shadow-[#0f0f0fbd] shadow-lg">
         <div className="flex justify-between  mt-3 ml-2 mr-2 font-medium">
           <div className="ml-auto mr-auto">
-            <h1 className="text-xl justify-center text-[#aaabac] ">{currentPost.title}</h1>
+            <h1 className="text-xl justify-center text-[#aaabac] ">
+              {currentPost.title}
+            </h1>
           </div>
           <div className="flex">
             <p className="text-sm cursor-pointer text-[#aaabac]">
@@ -158,7 +153,9 @@ const Question = () => {
             {currentComments &&
               currentComments.map((c) => {
                 let countLikes = likes.filter((l) => l.commentId === c.id);
-                let countdislikes = dislikes.filter((dl) => dl.commentId === c.id);
+                let countdislikes = dislikes.filter(
+                  (dl) => dl.commentId === c.id
+                );
                 return (
                   <div className="">
                     <div
@@ -168,7 +165,9 @@ const Question = () => {
                       <div className="flex justify-between">
                         <p></p>
                         <div className="flex mt-2 ">
-                          <p className="text-xl cursor-pointer text-[#aaabac]">{c.author}</p>
+                          <p className="text-xl cursor-pointer text-[#aaabac]">
+                            {c.author}
+                          </p>
                           <img
                             src={userWhite}
                             alt=""
@@ -177,9 +176,9 @@ const Question = () => {
                         </div>
                       </div>
                       <div className="-mt-10">
-                         
-
-                        <p className="text-[#1b7161] ml-[2.5%]">{countLikes.length}</p>
+                        <p className="text-[#1b7161] ml-[2.5%]">
+                          {countLikes.length}
+                        </p>
                         <img
                           src={finger}
                           alt=""
@@ -194,11 +193,9 @@ const Question = () => {
                           onClick={(e) => handleDislike(e, c)}
                           id={c.id}
                         />
-                        <p className="text-[#C20000] ml-[2.5%]">{countdislikes.length}</p>
-                      
-                         
-                        
-                        
+                        <p className="text-[#C20000] ml-[2.5%]">
+                          {countdislikes.length}
+                        </p>
                       </div>
                       <div className="px-[30px] -mt-20 min-h-[80px]">
                         <p className="text-[#aaabac] text-xl ml-[8%] mr-[8%]">
