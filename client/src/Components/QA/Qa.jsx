@@ -33,15 +33,15 @@ const Qa = () => {
     };
   }, []); */
   return (
-    <div className=" h-[100vh]">
+    <div className="">
       <Nav />
-      <div className="flex mt-10">
-        <div className=" border border-[#46899b82] shadow-[#5a5959] shadow-lg  rounded-[2%]  bg-[#D9D9D9] ml-[10%] w-[60vh] hover:border-[rgba(3,3,3,0.51)] hover:shadow-[#396e7d82] hover:shadow-xl">
+      <div className="flex">
+        <div className="mt-[7%] shadow-[#191919] shadow-lg  rounded-[2%]  bg-[#1d2b50] ml-[10%] w-[60vh]">
           {/* PRIMER DIV */}
           <input
             type="text"
             placeholder="busca tu duda"
-            className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] placeholder:text-[#46899b82] placeholder:text-center placeholder:font-bold outline-none text-center text-lg"
+            className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#0f162b] placeholder:text-[#fffff] placeholder:text-center placeholder:font-bold outline-none text-center text-lg"
             onChange={(e) => {setSearch(e.target.value)}}
           />
           <div className=" mt-[10%] ml-[10%] text-xl">
@@ -87,7 +87,7 @@ const Qa = () => {
             </div>
           </div>
         </div>
-        <div className=" border border-[#46899b82] shadow-[#5a5959] shadow-lg  rounded-[2%]  bg-[#D9D9D9] ml-[10%] w-[100vh]  hover:border-[rgba(3,3,3,0.51)] hover:shadow-[#396e7d82] hover:shadow-xl">
+        <div className="mt-[7%] rounded-[2%] bg-[#1d2b50] ml-[10%] w-[100vh] shadow-[#191919] shadow-lg ">
           {/* SEGUNDO DIV */}
 
           <Questions handleSearch={filterPosts} />

@@ -50,7 +50,7 @@ const InputComment = ({ postId }) => {
           cols="80"
           value={input.content}
           placeholder="Escribe tu respuesta, cambia el mundo 😏"
-          className=" bg-[#164e63] shadow-lg rounded-b-lg outline-none mx-auto"
+          className=" bg-[#1d2b50] shadow-lg rounded-b-lg outline-none mx-auto"
           onChange={(e) => setInput(e.target.value)}
         ></textarea>
       </div>
@@ -103,7 +103,7 @@ const InputComment = ({ postId }) => {
       <div className="flex justify-center mt-4 mb-2">
         <button
           onClick={handleSubmit}
-          className="bg-[#46899B] rounded-md p-2 h-10 hover:bg-[#2B4046] hover:text-white hover:border-white hover:border"
+          className="bg-[#1e293b] rounded-md p-2 h-10 hover:bg-[#2B4046] hover:text-white hover:border-white hover:border"
         >
           Responder
         </button>

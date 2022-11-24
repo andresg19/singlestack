@@ -13,7 +13,7 @@ const Nav = () => {
     window.location.reload();
   };
   return (
-    <nav className="flex w-full justify-between bg-[#164e63] h-[8.5vh] text-white shrink-0 place-items-center">
+    <nav className="flex w-full fixed backdrop-blur-sm justify-between bg-transparent h-[8.5vh] text-white shrink-0 place-items-center">
       <img
         src={house}
         alt=""
@@ -25,7 +25,7 @@ const Nav = () => {
         <Link to="/ask-question">
           <button
             type="button"
-            className="font-light bg-[#050D1A] rounded-[8px] w-[130px] py-1 hover:shadow-lg hover:shadow-[#e39999]"
+            className="font-light bg-[#1f2937] rounded-[5px] w-[130px] py-1"
           >
             Haz tu pregunta
           </button>
@@ -33,7 +33,7 @@ const Nav = () => {
         <Link to="/q-a">
           <button
             type="button"
-            className="font-light bg-[#050D1A] rounded-[8px] w-[130px] py-1 hover:shadow-lg hover:shadow-[#e39999]"
+            className="font-light bg-[#1f2937] rounded-[8px] w-[130px] py-1"
           >
             Recursos
           </button>

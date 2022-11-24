@@ -97,7 +97,7 @@ const Question = () => {
   return (
     <div className="">
       <Nav />
-      <div className=" inline-block ml-[25%]  mt-6 bg-gradient-to-r from-cyan-800 to-blue-810 rounded-[8px] shadow-[#0f0f0fbd] shadow-lg">
+      <div className="mt-[7%] inline-block ml-[25%] rounded-[8px] shadow-[#0f0f0fbd] shadow-lg">
         <div className="flex justify-between  mt-3 ml-2 mr-2 font-medium">
           <div className="ml-auto mr-auto">
             <h1 className="text-xl justify-center text-[#aaabac] ">{currentPost.title}</h1>
@@ -109,7 +109,7 @@ const Question = () => {
             <img src={userWhite} alt="" className="w-8 ml-2" />
           </div>
         </div>
-        <div className=" mt-2 m-7 w-[100vh] rounded-[8px] shadow-[#191919] shadow-lg ">
+        <div className=" mt-2 m-7 w-[100vh] rounded-[8px] bg-[#1d2b50] shadow-[#191919] shadow-lg ">
           <div className="flex justify-between ">
             <div className="flex space-x-3 ml-2 ">
               {currentPost.etiquetas?.map((t) => {
@@ -163,7 +163,7 @@ const Question = () => {
                   <div className="">
                     <div
                       key={c.id}
-                      className="bg-gradient-to-r from-cyan-800 to-blue-810 rounded-[8px] shadow-[#191919] shadow-lg"
+                      className="bg-[#1d2b50] rounded-[8px] shadow-[#191919] shadow-lg"
                     >
                       <div className="flex justify-between">
                         <p></p>
