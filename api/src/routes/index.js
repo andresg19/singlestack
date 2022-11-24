@@ -1,18 +1,21 @@
-const { Router } = require('express');
-
+const { Router } = require("express");
+// Importar todos los routers;
+// Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
 
-const { getUsers, postUsers, getUsersById, deleteOneUser, updateUser} = require('../controllers/Ucontrollers/index.controll');
-const { createPost, getPosts } = require('../controllers/Pcontrollers/index.controll');
+// Configurar los routers
+// Ejemplo: router.use('/auth', authRouter);
+const users = require("./users");
+const posts = require("./posts");
+const comments = require("./comments");
+const likes = require("./likes");
+const dislikes = require("./dislikes");
 
-router.get('/users', getUsers);
-router.get('/users/:id', getUsersById);
-router.post('/users', postUsers);
-router.delete('/users/:id', deleteOneUser);
-router.put('/users/:id', updateUser);
+router.use("/users", users);
+router.use("/posts", posts);
+router.use("/comments", comments);
+router.use("/likes", likes);
+router.use("/dislikes", dislikes);
 
-
-router.post('/createPost', createPost);
-router.get('/posts', getPosts)
 
 module.exports = router;
