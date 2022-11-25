@@ -16,6 +16,8 @@ import share from "../../assets/imgs/share.png";
 import userWhite from "../../assets/imgs/userWhite.png";
 import finger from "../../assets/imgs/finger.png";
 import { likeComment } from "./../../Redux/Actions/Actions";
+import FingerLike from "./FingerLike";
+import FingerDislike from "./FingerDislike";
 
 export function dateFormatter(state) {
   //date "2022-10-26T13:25:39.855Z"
@@ -176,26 +178,36 @@ const Question = () => {
                         </div>
                       </div>
                       <div className="-mt-10">
-                        <p className="text-[#1b7161] ml-[2.5%]">
-                          {countLikes.length}
-                        </p>
-                        <img
-                          src={finger}
-                          alt=""
-                          className="w-8 ml-2 mb-2 cursor-pointer"
-                          id={c.id}
-                          onClick={(e) => handleLike(e, c)}
-                        />
-                        <img
-                          src={finger}
-                          alt=""
-                          className="w-8 ml-[0.45rem] rotate-180 cursor-pointer"
-                          onClick={(e) => handleDislike(e, c)}
-                          id={c.id}
-                        />
-                        <p className="text-[#C20000] ml-[2.5%]">
-                          {countdislikes.length}
-                        </p>
+                        <div className="">
+                          <p className="text-[#1b7161] ml-[2.5%]">
+                            {countLikes.length}
+                          </p>
+                          <div
+                            className="cursor-pointer hover:cursor-pointer"
+                            onClick={(e) => handleLike(e, c)}
+                          >
+                            <FingerLike
+                              likes={likes}
+                              comment={c}
+                              userId={userId}
+                            />
+                          </div>
+                        </div>
+                        <div className="">
+                          <div
+                            className="cursor-pointer hover:cursor-pointer"
+                            onClick={(e) => handleDislike(e, c)}
+                          >
+                            <FingerDislike
+                              dislikes={dislikes}
+                              comment={c}
+                              userId={userId}
+                            />
+                          </div>
+                          <p className="text-[#C20000] ml-[2.5%]">
+                            {countdislikes.length}
+                          </p>
+                        </div>
                       </div>
                       <div className="px-[30px] -mt-20 min-h-[80px]">
                         <p className="text-[#aaabac] text-xl ml-[8%] mr-[8%]">
