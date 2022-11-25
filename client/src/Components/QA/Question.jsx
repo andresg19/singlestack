@@ -19,6 +19,7 @@ import { likeComment } from "./../../Redux/Actions/Actions";
 import FingerLike from "./FingerLike";
 import FingerDislike from "./FingerDislike";
 
+import { Lightbox, ModalImage } from "react-modal-image";
 export function dateFormatter(state) {
   //date "2022-10-26T13:25:39.855Z"
   //dateFromRedux.toString();
@@ -41,13 +42,11 @@ const Question = () => {
   const currentComments = useSelector((state) => state.commentsDetail);
   const likes = useSelector((state) => state.likes);
   const dislikes = useSelector((state) => state.dislikes);
-  console.log("soyLikes", likes);
-  console.log("soydislikes", dislikes);
 
   const { id } = useParams(); //postId
   const postId = currentPost.id;
   const userId = JSON.parse(localStorage.getItem("currentUser")).id;
-  console.log(userId);
+
   const switcher = ["up", "down"];
   const [dispatchLike, setDispatchLike] = useState({
     model: "Likes",
@@ -61,6 +60,9 @@ const Question = () => {
     userId: userId,
     commentId: "",
   });
+  const [imgModal, setImgModal] = useState(false);
+  const [imgCommentModal, setImgCommentModal] = useState(false);
+
   useEffect(() => {
     dispatch(searchPost(id));
     dispatch(GetLikes());
@@ -87,6 +89,25 @@ const Question = () => {
     console.log(commentId);
     dispatch(dislikeComment(commentId[0].id, userId));
     window.location.reload();
+  };
+
+  /* 
+ <ModalImage
+        className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
+        href={i}
+        large={i}
+        alt="Hello World!"
+      />
+  */
+
+  const handleImgModal = (e) => {
+    e.preventDefault();
+    setImgModal(!imgModal);
+  };
+
+  const handleImgCommentModal = (e) => {
+    e.preventDefault();
+    setImgCommentModal(!imgCommentModal);
   };
 
   return (
@@ -131,12 +152,21 @@ const Question = () => {
 
             <div className=" justify-center space-x-8 m-8 mt-12">
               {currentPost.img?.map((i) => {
-                return (
+                return imgModal === true ? (
+                  <Lightbox
+                    className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
+                    href={i}
+                    large={i}
+                    alt="Hello World!"
+                    onClose={handleImgModal}
+                  />
+                ) : (
                   <img
                     src={i}
                     alt="img not found"
-                    className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
+                    className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg "
                     href={i}
+                    onClick={handleImgModal}
                   />
                 );
               })}
@@ -216,12 +246,21 @@ const Question = () => {
                         <div className="">
                           {c &&
                             c.img.map((i) => {
-                              return (
+                              return imgCommentModal === true ? (
+                                <Lightbox
+                                  className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
+                                  href={i}
+                                  large={i}
+                                  alt="Hello World!"
+                                  onClose={handleImgCommentModal}
+                                />
+                              ) : (
                                 <div className="my-3">
                                   <img
                                     src={i}
                                     alt="img not found"
                                     className="max-w-lg cursor-pointer mx-auto rounded-[8px] shadow-[#5a5959] shadow-lg"
+                                    onClick={handleImgCommentModal}
                                   />
                                 </div>
                               );
