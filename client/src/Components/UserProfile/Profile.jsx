@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { dateFormatter } from "../QA/Question";
+import QuestionsUsers from "./QuestionsUsers";
 
 const Profile = () => {
   const [user, setUset] = useState(
@@ -33,8 +34,8 @@ const Profile = () => {
        <p>Cambiar contraseña</p>
       </div>
     </div>
-    <div className="fle w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-[#1C1C1C]  rounded-xl">
-      <h1>soy el otro div</h1>
+    <div className="grid overflow-scroll scrollbar-hide w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-[#1C1C1C]  rounded-xl">
+      <QuestionsUsers />
     </div>
     </div>
   );
