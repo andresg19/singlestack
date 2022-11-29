@@ -43,7 +43,8 @@ const AskQuestion = ({}) => {
   return (
     <div className="">
       <Nav />
-      <div className="grid w-[100%]  justify-center mt-[2%]">
+
+      <div className="grid  w-[100%] justify-center mt-[2%]">
         <input
           className="w-[60%] placeholder:text-center rounded-b-lg bg-[#aaabac5b] ml-auto shadow-lg shadow-[#1919191c] mr-auto m-3"
           type="text"
