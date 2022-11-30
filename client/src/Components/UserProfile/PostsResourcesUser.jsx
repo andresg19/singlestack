@@ -3,8 +3,8 @@ import React from 'react';
 
 const PostsResourcesUser = () => {
     return ( 
-        <div>
-            <h1>PostsResources</h1>
+        <div className='text-white ml-auto mr-auto'>
+            <h1>Espacio para las publicaciones del usuario</h1>
         </div>
      );
 }

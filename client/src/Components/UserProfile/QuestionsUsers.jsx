@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../Redux/Actions/Actions";
+import { Link } from "react-router-dom";
 
 const QuestionsUsers = () => {
   const posts = useSelector((state) => state.posts);
@@ -29,7 +30,7 @@ const QuestionsUsers = () => {
     <div className="">
       {resultQuestionsUser.map((q) => {
         return (
-          <div className="bg-[#163250] ml-auto mr-auto m-2 w-[90%] text-white rounded-[2%]">
+          <div className="bg-[#15273f] ml-auto mr-auto m-2 w-[90%] text-white rounded-[2%]">
             <div className="text-m text-center">
               <h1
               className="mt-3"
@@ -53,9 +54,13 @@ const QuestionsUsers = () => {
                 : null}
             </div>
 
-            <div className="grid mt-[5%] ml-auto w-[25%]">
-              <p>{q.author}</p>
+            <div className="grid mt-[2%] ml-auto w-[25%]">
               <p>{q.date}</p>
+              <p>
+                <Link to={"/question/" + q.id} >
+                Ver pregunta completa
+                </Link>
+              </p>
             </div>
           </div>
         );
