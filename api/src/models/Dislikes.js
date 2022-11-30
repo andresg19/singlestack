@@ -3,25 +3,25 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "users",
+    "dislikes",
     {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
-
-      fullname: {
+      dislikes: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      commentId: {
         type: DataTypes.STRING,
       },
-
-      email: {
-        type: DataTypes.TEXT,
-      },
-
-      password: {
+      userId: {
         type: DataTypes.STRING,
-        defaultValue: false,
+      },
+      clicked: {
+        type: DataTypes.BOOLEAN,
       },
     },
     { timestamp: true }
