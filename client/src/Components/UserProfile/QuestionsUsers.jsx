@@ -10,6 +10,8 @@ const QuestionsUsers = () => {
   console.log("soyCurrentUser", currentUser);
   console.log("soy posts", posts);
 
+  
+
   const resultQuestionsUser = [];
   console.log(resultQuestionsUser);
   let postsCurrentUser = posts.forEach((post) => {
