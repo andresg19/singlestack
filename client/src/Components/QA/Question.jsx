@@ -18,8 +18,8 @@ import finger from "../../assets/imgs/finger.png";
 import { likeComment } from "./../../Redux/Actions/Actions";
 import FingerLike from "./FingerLike";
 import FingerDislike from "./FingerDislike";
-
-import { Lightbox, ModalImage } from "react-modal-image";
+import ModalImage from "react-modal-image";
+import { Lightbox } from "react-modal-image";
 export function dateFormatter(state) {
   //date "2022-10-26T13:25:39.855Z"
   //dateFromRedux.toString();
@@ -60,8 +60,6 @@ const Question = () => {
     userId: userId,
     commentId: "",
   });
-  const [imgModal, setImgModal] = useState(false);
-  const [imgCommentModal, setImgCommentModal] = useState(false);
 
   useEffect(() => {
     dispatch(searchPost(id));
@@ -89,25 +87,6 @@ const Question = () => {
     console.log(commentId);
     dispatch(dislikeComment(commentId[0].id, userId));
     window.location.reload();
-  };
-
-  /* 
- <ModalImage
-        className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
-        href={i}
-        large={i}
-        alt="Hello World!"
-      />
-  */
-
-  const handleImgModal = (e) => {
-    e.preventDefault();
-    setImgModal(!imgModal);
-  };
-
-  const handleImgCommentModal = (e) => {
-    e.preventDefault();
-    setImgCommentModal(!imgCommentModal);
   };
 
   return (
@@ -145,29 +124,22 @@ const Question = () => {
               className="mt-2 w-8 mr-1 cursor-pointer"
             />
           </div>
-          <div className="mt-1 mb-2 mx-10   ">
+          <div className="mt-1 mb-2 mx-10">
             <p className="text-[#aaabac] text-xl m-8 mt-12">
               {currentPost.content}
             </p>
 
             <div className=" justify-center space-x-8 m-8 mt-12">
-              {currentPost.img?.map((i) => {
-                return imgModal === true ? (
-                  <Lightbox
-                    className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
-                    href={i}
-                    large={i}
-                    alt="Hello World!"
-                    onClose={handleImgModal}
-                  />
-                ) : (
-                  <img
-                    src={i}
-                    alt="img not found"
-                    className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg "
-                    href={i}
-                    onClick={handleImgModal}
-                  />
+              {currentPost.img?.map((img, index) => {
+                return (
+                  <div className={index}>
+                    <img
+                      src={img}
+                      alt="img not found"
+                      name={index}
+                      className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
+                    />
+                  </div>
                 );
               })}
             </div>
@@ -246,21 +218,12 @@ const Question = () => {
                         <div className="">
                           {c &&
                             c.img.map((i) => {
-                              return imgCommentModal === true ? (
-                                <Lightbox
-                                  className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
-                                  href={i}
-                                  large={i}
-                                  alt="Hello World!"
-                                  onClose={handleImgCommentModal}
-                                />
-                              ) : (
+                              return (
                                 <div className="my-3">
                                   <img
                                     src={i}
                                     alt="img not found"
                                     className="max-w-lg cursor-pointer mx-auto rounded-[8px] shadow-[#5a5959] shadow-lg"
-                                    onClick={handleImgCommentModal}
                                   />
                                 </div>
                               );
