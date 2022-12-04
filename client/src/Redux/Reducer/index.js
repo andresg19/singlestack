@@ -7,6 +7,12 @@ import {
   CLEAR_STATE,
   POST_COMMENT,
   SEARCH_TAG,
+  LIKE,
+  DISLIKE,
+  ALL_LIKES,
+  ALL_DISLIKES,
+  DISLIKE_UP,
+  DISLIKE_DOWN,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -15,6 +21,8 @@ const initialState = {
   posts: [],
   postDetail: [],
   commentsDetail: [],
+  likes: [],
+  dislikes: [],
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -56,10 +64,35 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
       };
     case SEARCH_TAG:
-      console.log(payload);
       return {
         ...state,
         posts: payload,
+      };
+    case LIKE:
+      return {
+        ...state,
+      };
+    case DISLIKE:
+      return {
+        ...state,
+      };
+    case ALL_LIKES:
+      return {
+        ...state,
+        likes: payload,
+      };
+    case ALL_DISLIKES:
+      return {
+        ...state,
+        dislikes: payload,
+      };
+    case DISLIKE_UP:
+      return {
+        ...state,
+      };
+    case DISLIKE_DOWN:
+      return {
+        ...state,
       };
     default:
       return state;

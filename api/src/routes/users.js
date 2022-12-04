@@ -3,7 +3,6 @@ const { Router } = require("express");
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
 const axios = require("axios");
-const { encrypt, compare } = require("../helpers/handleBcrypt");
 const { Users, Posts } = require("../db.js");
 
 //GET ALL

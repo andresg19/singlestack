@@ -7,6 +7,10 @@ import Register from "./Components/UsersLoginout/Register/Register";
 import Profile from "./Components/UserProfile/Profile";
 import Question from "./Components/QA/Question";
 import AskQuestion from "./Components/QA/AskQuestion";
+import QuestionsUsers from "./Components/UserProfile/QuestionsUsers";
+import PostsResourcesUser from "./Components/UserProfile/PostsResourcesUser";
+import DefaultSectionUser from "./Components/UserProfile/DefaultSectionUser";
+
 
 function App() {
   const element = useRoutes([
@@ -18,6 +22,9 @@ function App() {
     { path: "/register", element: <Register /> },
     { path: "/profile", element: <Profile /> },
     { path: "/question/:id", element: <Question /> },
+    { path: "/questionsusers", element: <QuestionsUsers /> },
+    { path: "/postsresourcesuser", element: <PostsResourcesUser />},
+    { path: "/defaultsectionuser", element: <DefaultSectionUser /> },
   ]);
   return element;
 }

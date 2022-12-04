@@ -3,7 +3,7 @@ const { Router } = require("express");
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
 const axios = require("axios");
-const { Comments } = require("../db.js");
+const { Comments, Likes } = require("../db.js");
 
 router.get("/", async (req, res) => {
   let { id } = req.params;
@@ -36,6 +36,16 @@ router.post("/", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+});
+
+router.put("/:id", async (req, res) => {
+  /* let { id } = req.params;
+  let param = req.body;
+  try {
+    let comments = await Comments.findOne({ where: { id } });
+  } catch (error) {
+    res.send(error);
+  } */
 });
 
 module.exports = router;

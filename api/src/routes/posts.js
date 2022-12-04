@@ -2,9 +2,8 @@ const { Router } = require("express");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
-const axios = require("axios");
 const { Users, Posts, Comments, Comments_Posts } = require("../db.js");
-const { Op } = require("sequelize");
+
 
 //Checkea si andan las rutas
 router.get("/test", async (req, res) => {
@@ -27,7 +26,6 @@ router.post("/", async (req, res) => {
   console.log(req.body);
 
   let splitEtiquetas = etiquetas.split(" ");
-  console.log("soy split etiquetas", splitEtiquetas);
 
   try {
     let [posts, created] = await Posts.findOrCreate({
@@ -62,8 +60,6 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-
-
 //EDITA UN POST
 router.get("/", async (req, res) => {
   console.log("Hola desde el get");
@@ -78,7 +74,7 @@ router.get("/:id", async (req, res) => {
         id,
       },
     });
-
+    console.log("search", search);
     let allComments = await Comments.findAll({ where: { postId: id } });
 
     res.status(200).send([search, allComments]);

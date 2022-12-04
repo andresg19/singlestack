@@ -3,22 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPosts } from "../../Redux/Actions/Actions";
 
-const Questions = ({handleSearch}) => {
-
+const Questions = ({ handleSearch }) => {
   const dispatch = useDispatch();
   const posteos = useSelector((state) => state.posts);
-  console.log(posteos);
   useEffect(() => {
     dispatch(getPosts());
   }, []);
 
   return (
-    <div className="mt-[10%] ml-[10%] text-xl max-h-[60vh] overflow-scroll scrollbar-hide">
+    <div className="mt-[6%] ml-[10%] text-xl max-h-[90vh] overflow-scroll scrollbar-hide">
       {handleSearch.map((p) => {
         return (
           <div
             key={p.id}
-            className="bg-[#46899B] mr-[3%] mb-[10%] text-white border border-[#0000007d] hover:border-white "
+            className="bg-[#163250] mr-[3%] mb-[10%] text-white shadow-[#191919] shadow-lg"
           >
             <div className="flex justify-between">
               <div className="ml-2 mt-2 font-thin">
