@@ -15,11 +15,13 @@ import bookmark from "../../assets/imgs/bookmark.png";
 import share from "../../assets/imgs/share.png";
 import userWhite from "../../assets/imgs/userWhite.png";
 import finger from "../../assets/imgs/finger.png";
+import close from "../../assets/imgs/close.svg";
 import { likeComment } from "./../../Redux/Actions/Actions";
 import FingerLike from "./FingerLike";
 import FingerDislike from "./FingerDislike";
 import ModalImage from "react-modal-image";
 import { Lightbox } from "react-modal-image";
+
 export function dateFormatter(state) {
   //date "2022-10-26T13:25:39.855Z"
   //dateFromRedux.toString();
@@ -88,6 +90,21 @@ const Question = () => {
     dispatch(dislikeComment(commentId[0].id, userId));
     window.location.reload();
   };
+  const [model, setModel] = useState(false);
+  const [imgSrc, setImgSrc] = useState("");
+
+  const getImg = (img) => {
+    setImgSrc(img);
+    setModel(true);
+  };
+
+  const [modelComment, setModelComment] = useState(false);
+  const [imgCommentSrc, setImgCommentSrc] = useState("");
+
+  const getCommentImg = (img) => {
+    setImgCommentSrc(img);
+    setModelComment(true);
+  };
 
   return (
     <div className="">
@@ -129,14 +146,24 @@ const Question = () => {
               {currentPost.content}
             </p>
 
+            {model ? (
+              <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+                <img src={imgSrc} alt="" />
+                <img
+                  src={close}
+                  alt=""
+                  className="cursor-pointer w-[2rem] h-[2rem]"
+                  onClick={() => setModel(false)}
+                />
+              </div>
+            ) : null}
             <div className=" justify-center space-x-8 m-8 mt-12">
               {currentPost.img?.map((img, index) => {
                 return (
-                  <div className={index}>
+                  <div key={index} onClick={() => getImg(img)}>
                     <img
                       src={img}
                       alt="img not found"
-                      name={index}
                       className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
                     />
                   </div>
@@ -215,13 +242,28 @@ const Question = () => {
                         <p className="text-[#aaabac] text-xl ml-[8%] mr-[8%]">
                           {c.content}
                         </p>
+                        {modelComment ? (
+                          <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+                            <img src={imgCommentSrc} alt="" />
+                            <img
+                              src={close}
+                              alt=""
+                              className="cursor-pointer w-[2rem] h-[2rem]"
+                              onClick={() => setModelComment(false)}
+                            />
+                          </div>
+                        ) : null}
                         <div className="">
                           {c &&
-                            c.img.map((i) => {
+                            c.img.map((img, index) => {
                               return (
-                                <div className="my-3">
+                                <div
+                                  className="my-3"
+                                  key={index}
+                                  onClick={() => getCommentImg(img)}
+                                >
                                   <img
-                                    src={i}
+                                    src={img}
                                     alt="img not found"
                                     className="max-w-lg cursor-pointer mx-auto rounded-[8px] shadow-[#5a5959] shadow-lg"
                                   />
