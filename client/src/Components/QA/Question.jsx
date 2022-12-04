@@ -148,11 +148,11 @@ const Question = () => {
 
             {model ? (
               <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
-                <img src={imgSrc} alt="" />
+                <img src={imgSrc} alt="" className="max-w-3xl" />
                 <img
                   src={close}
                   alt=""
-                  className="cursor-pointer w-[2rem] h-[2rem]"
+                  className="mb-[89vh] ml-2 cursor-pointer w-[2rem] h-[2rem]"
                   onClick={() => setModel(false)}
                 />
               </div>
@@ -244,11 +244,15 @@ const Question = () => {
                         </p>
                         {modelComment ? (
                           <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
-                            <img src={imgCommentSrc} alt="" />
+                            <img
+                              src={imgCommentSrc}
+                              alt=""
+                              className="max-w-3xl"
+                            />
                             <img
                               src={close}
                               alt=""
-                              className="cursor-pointer w-[2rem] h-[2rem]"
+                              className="mb-[89vh] ml-2 cursor-pointer w-[2rem] h-[2rem]"
                               onClick={() => setModelComment(false)}
                             />
                           </div>
