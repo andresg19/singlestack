@@ -14,6 +14,8 @@ import {
   DISLIKE_UP,
   DISLIKE_DOWN,
   ALL_DISLIKES,
+  GET_FEEDPOSTS,
+  POST_FEEDPOSTS,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -198,6 +200,34 @@ export const dislikeComment = (commentId, userId) => {
       })
     } catch (error) {
       console.log(error);
+    }
+  }
+}
+
+
+export const getFeedPosts = () => {
+  return async function(dispatch) {
+    try {
+      let result = await axios.get('http://localhost:3001/feedposts');
+      return dispatch({
+        type: GET_FEEDPOSTS,
+        payload: result.data
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+export const postFeedPosts = (payload) => {
+  return async function(dispatch) {
+    try {
+      let posteo = await axios.post('http://localhost:3001/feedposts', payload);
+      return dispatch({
+        type: POST_FEEDPOSTS,
+    })
+    } catch (error) {
+      
     }
   }
 }
