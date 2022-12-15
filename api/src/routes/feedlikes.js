@@ -5,6 +5,7 @@ const { Feedlikes } = require("../db.js");
 router.get("/", async (req, res) => {
   try {
     let likes = await Feedlikes.findAll();
+    
     res.status(200).send(likes);
   } catch (error) {
     res.status(400).json(error);

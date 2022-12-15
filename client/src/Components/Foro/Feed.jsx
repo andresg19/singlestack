@@ -1,33 +1,59 @@
-import React /* , { useEffect } */ from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getFeedDislikes, getFeedLikes } from "../../Redux/Actions/Actions";
 //import { feedAllComments } from "./../../Redux/Actions/Actions";
 
 const Feed = ({ post, comments, id }) => {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const postComments = comments.filter((c) => c.feedPostId === id);
-  console.log("🚀 ~ file: Feed.jsx:9 ~ Feed ~ postComments", postComments);
+  const likes = useSelector((state) => state.feedlikes);
+  const postLikes = likes.filter((l) => l.postId === id);
+  const dislikes = useSelector((state) => state.feeddislikes);
+  const postDislikes = dislikes.filter((l) => l.postId === id);
+
+  console.log("postLikes", postLikes);
+  //console.log("dislikes", dislikes);
+  useEffect(() => {
+    dispatch(getFeedLikes());
+    dispatch(getFeedDislikes());
+  }, []);
 
   //todos los post van a foro y de ahi se mapean
   //post solo
-  //likes y dislikes de ese post
   //comentarios de ese post
-
-  /*  useEffect(() => {
-    dispatch(feedAllComments());
-  }, []); */
+  //likes y dislikes de ese post
 
   return (
-    <div>
-      {comments ? (
-        comments.map((c) => (
-          <div className="" key={c.id}>
-            {c.content}
-          </div>
-        ))
-      ) : (
-        <h1 className="text-center text-red-700">No hay commentarios</h1>
-      )}
+    <div className="text-white">
+      <div className="">
+        <h1>POST</h1>
+        <p>{post.author}</p>
+        <p>{post.content}</p>
+        <p>{post.createdAt}</p>
+        <h2 className="text-green-600">
+          Likes: {postLikes ? postLikes.length : 0}
+        </h2>
+        <h2 className="text-red-600">
+          DisLikes: {postDislikes ? postDislikes.length : 0}
+        </h2>
+      </div>
+      <hr />
+      <div className="border ">
+        <h1>COMMENT</h1>
+
+        {postComments ? (
+          postComments.map((c) => (
+            <div className=" " key={c.id}>
+              {c.content}
+              <p>{c.author}</p>
+              <p>{c.id}</p>
+            </div>
+          ))
+        ) : (
+          <h1 className="text-center text-red-700">No hay commentarios</h1>
+        )}
+      </div>
     </div>
   );
 };

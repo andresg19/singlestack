@@ -14,7 +14,11 @@ import {
   DISLIKE_UP,
   DISLIKE_DOWN,
   GET_FEEDPOSTS,
-  POST_FEEDCOMMENTS,
+  FEEDCOMMENTS,
+  FEEDLIKES,
+  GETLIKES,
+  FEEDDISLIKES,
+  GETDISLIKES,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -27,6 +31,8 @@ const initialState = {
   dislikes: [],
   feedPosts: [],
   feedComments: [],
+  feedlikes: [],
+  feeddislikes: [],
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -103,11 +109,33 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
         feedPosts: payload,
       };
-    case POST_FEEDCOMMENTS:
+    case FEEDCOMMENTS:
       return {
         ...state,
         feedComments: payload,
       };
+    case GETLIKES: {
+      return {
+        ...state,
+        feedlikes: payload,
+      };
+    }
+    case GETDISLIKES: {
+      return {
+        ...state,
+        feeddislikes: payload,
+      };
+    }
+    case FEEDLIKES: {
+      return {
+        ...state,
+      };
+    }
+    case FEEDDISLIKES: {
+      return {
+        ...state,
+      };
+    }
     default:
       return state;
   }

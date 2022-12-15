@@ -5,7 +5,7 @@ const { Feeddislikes } = require("../db.js");
 router.get("/", async (req, res) => {
   try {
     let dislikes = await Feeddislikes.findAll();
-    res.status(200).send(likes);
+    res.status(200).send(dislikes);
   } catch (error) {
     res.status(400).json(error);
   }
