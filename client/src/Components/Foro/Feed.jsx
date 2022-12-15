@@ -3,10 +3,11 @@ import { useDispatch } from "react-redux";
 //import { feedAllComments } from "./../../Redux/Actions/Actions";
 
 const Feed = ({ post, comments, id }) => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
-  const postComments = comments.map((c) => c.postId === id);
-  console.log(postComments);
+  const postComments = comments.filter((c) => c.feedPostId === id);
+  console.log("🚀 ~ file: Feed.jsx:9 ~ Feed ~ postComments", postComments);
+
   //todos los post van a foro y de ahi se mapean
   //post solo
   //likes y dislikes de ese post
