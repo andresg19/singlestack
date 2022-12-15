@@ -14,3 +14,6 @@ export const DISLIKE_UP = "DISLIKE_UP";
 export const DISLIKE_DOWN = "DISLIKE_DOWN";
 export const GET_FEEDPOSTS = "GET_FEEDPOSTS";
 export const POST_FEEDPOSTS = "POST_FEEDPOSTS";
+export const POST_FEEDCOMMENTS = "FEEDCOMMENTS";
+export const FEEDLIKES = "FEEDLIKES";
+export const FEEDDISLIKES = "FEEDPOSTS";

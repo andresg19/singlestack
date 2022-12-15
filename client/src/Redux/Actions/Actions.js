@@ -16,6 +16,7 @@ import {
   ALL_DISLIKES,
   GET_FEEDPOSTS,
   POST_FEEDPOSTS,
+  POST_FEEDCOMMENTS,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -174,13 +175,10 @@ export const GetDislikes = () => {
 export const likeComment = (commentId, userId) => {
   return async function (dispatch) {
     try {
-      console.log('entre al action')
-      let result = await axios.put(
-        'http://localhost:3001/likes/' + commentId,
-        {
+      console.log("entre al action");
+      let result = await axios.put("http://localhost:3001/likes/" + commentId, {
         userId,
-        }
-      );
+      });
       return dispatch({
         type: LIKE,
       });
@@ -193,41 +191,60 @@ export const likeComment = (commentId, userId) => {
 export const dislikeComment = (commentId, userId) => {
   return async function (dispatch) {
     try {
-      console.log('entre al dislike action')
-      let result = await axios.put('http://localhost:3001/dislikes/' + commentId, {userId} );
+      console.log("entre al dislike action");
+      let result = await axios.put(
+        "http://localhost:3001/dislikes/" + commentId,
+        { userId }
+      );
       return dispatch({
         type: DISLIKE,
-      })
+      });
     } catch (error) {
       console.log(error);
     }
-  }
-}
-
+  };
+};
 
 export const getFeedPosts = () => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
-      let result = await axios.get('http://localhost:3001/feedposts');
+      let result = await axios.get("http://localhost:3001/feedposts");
       return dispatch({
         type: GET_FEEDPOSTS,
-        payload: result.data
-      })
+        payload: result.data,
+      });
     } catch (error) {
       console.log(error);
     }
-  }
-}
+  };
+};
 
 export const postFeedPosts = (payload) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
-      let posteo = await axios.post('http://localhost:3001/feedposts', payload);
+      let posteo = await axios.post("http://localhost:3001/feedposts", payload);
       return dispatch({
         type: POST_FEEDPOSTS,
-    })
+      });
     } catch (error) {
-      
+      console.log(error);
     }
-  }
-}
+  };
+};
+
+export const feedAllComments = () => {
+  //get
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feedcomments");
+      return dispatch({
+        type: POST_FEEDCOMMENTS,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+//post
