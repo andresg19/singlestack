@@ -74,8 +74,8 @@ const {
   Likes,
   Dislikes,
   Feedposts,
-  FeedLikes,
-  FeedDislikes,
+  Feedlikes,
+  Feeddislikes,
   FeedComments,
 } = sequelize.models;
 

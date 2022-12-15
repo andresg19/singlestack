@@ -23,4 +23,6 @@ router.post("/", async (req, res) => {
   }
 });
 
+//falta editar y borrar || ponerle likes?
+
 module.exports = router;
