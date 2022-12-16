@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFeedDislikes, getFeedLikes } from "../../Redux/Actions/Actions";
-//import { feedAllComments } from "./../../Redux/Actions/Actions";
+import fingerSVG from "../../assets/imgs/fingerSVG.svg";
 
 const Feed = ({ post, comments, id }) => {
   const dispatch = useDispatch();
@@ -29,24 +29,27 @@ const Feed = ({ post, comments, id }) => {
     <div className=" mt-10 pt-8 mb-10 text-gray-100 w-[60%] h-[60vh] ml-auto mr-auto rounded-xl bg-[#0f1629ac] shadow-md shadow-[#0f0f0fbd] ">
       <div className="pt-4 mx-8 bg-gray-400 rounded-xl">
         <div className="mx-auto">
-          <hr className="max-w-[83%] ml-8 border border-[#ffffffcb]" />
-          <p className="ml-[88%] -mt-4">Ordenar por ↓</p>
+          <hr className="max-w-[80%] ml-8 border border-[#ffffffcb]" />
+          <p className="ml-[85%] -mt-4">Ordenar por ↓</p>
         </div>
 
-        <div className="flex pt-5 border border-green-300">
-          <h1>POST</h1>
+        <div className=" pt-5 border border-green-300">
+          <h1 className="text-green-600">POST</h1>
           <p>{post.author}</p>
           <p>{post.content}</p>
           <p>{post.createdAt}</p>
-          <h2 className="text-green-600">
-            Likes: {postLikes ? postLikes.length : 0}
-          </h2>
-          <h2 className="text-red-600">
-            DisLikes: {postDislikes ? postDislikes.length : 0}
-          </h2>
+
+          <div className="border border-yellow-400">
+            <h2 className="text-green-600">
+              Likes: {postLikes ? postLikes.length : 0}
+            </h2>
+            <h2 className="text-red-600">
+              DisLikes: {postDislikes ? postDislikes.length : 0}
+            </h2>
+          </div>
         </div>
-        <div className="flex pt-5 ">
-          <h1>COMMENT</h1>
+        <div className="pt-5 border border-orange-800">
+          <h1 className="text-orange-800">COMMENT</h1>
 
           {postComments ? (
             postComments.map((c) => (
