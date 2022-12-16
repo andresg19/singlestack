@@ -83,36 +83,40 @@ const Feed = ({ post, comments, id }) => {
             </h2>
           </div>
         </div>
-        <div className="pt-5 mx-10 border border-yellow-500">
+        <div className="pt-5 mx-10 ">
           <div className="flex border-b border-gray-400 mb-2 pb-5">
             <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
             <input
               type="text"
               placeholder="Agregar un comentario"
-              className="w-full rounded-lg mx-2 outline-none text-black bg-gray-200"
+              className="w-full rounded-lg mx-2 outline-none text-black bg-gray-200 placeholder:pl-3"
             />
           </div>
           {postComments.length ? (
             postComments.map((c) => (
-              <div className="flex text-black pb-4" key={c.id}>
-                <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
-                <div className="bg-[#304786] rounded-xl w-full mx-2 px-1">
-                  <div className="flex justify-between mx-1">
-                    <p className="text-xl ml-2">{c.author}</p>
-                    <p>{dateFormatter(c.createdAt)}</p>
-                  </div>
+              <div className="">
+                <div className="flex text-black pb-4" key={c.id}>
+                  <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
+                  <div className="bg-[#4a6fd356] rounded-xl w-full mx-2 px-1">
+                    <div className="flex justify-between mx-1">
+                      <p className="text-xl ml-2">{c.author}</p>
+                      <p>{dateFormatter(c.createdAt)}</p>
+                    </div>
 
-                  <p className="text-center">{c.content}</p>
+                    <p className="text-center">{c.content}</p>
+                  </div>
                 </div>
+                <p className="flex justify-end text-blue-700 underline mr-10 cursor-pointer pb-2">
+                  cargar mas comentarios...
+                </p>
               </div>
             ))
           ) : (
-            <h1 className="text-center text-red-700">No hay commentarios</h1>
+            <h1 className="text-center text-red-700 pb-2 text-3xl">
+              No hay comentarios aún
+            </h1>
           )}
         </div>
-        <p className="flex justify-end text-blue-700 underline mr-10 cursor-pointer pb-2">
-          cargar mas comentarios...
-        </p>
       </div>
     </div>
   );
