@@ -25,34 +25,41 @@ const Feed = ({ post, comments, id }) => {
   //likes y dislikes de ese post
 
   return (
-    <div className="text-white">
-      <div className="">
-        <h1>POST</h1>
-        <p>{post.author}</p>
-        <p>{post.content}</p>
-        <p>{post.createdAt}</p>
-        <h2 className="text-green-600">
-          Likes: {postLikes ? postLikes.length : 0}
-        </h2>
-        <h2 className="text-red-600">
-          DisLikes: {postDislikes ? postDislikes.length : 0}
-        </h2>
-      </div>
-      <hr />
-      <div className="border ">
-        <h1>COMMENT</h1>
+    //div padre
+    <div className=" mt-10 pt-8 mb-10 text-gray-100 w-[60%] h-[60vh] ml-auto mr-auto rounded-xl bg-[#0f1629ac] shadow-md shadow-[#0f0f0fbd] ">
+      <div className="pt-4 mx-8 bg-gray-400 rounded-xl">
+        <div className="mx-auto">
+          <hr className="max-w-[83%] ml-8 border border-[#ffffffcb]" />
+          <p className="ml-[88%] -mt-4">Ordenar por ↓</p>
+        </div>
 
-        {postComments ? (
-          postComments.map((c) => (
-            <div className=" " key={c.id}>
-              {c.content}
-              <p>{c.author}</p>
-              <p>{c.id}</p>
-            </div>
-          ))
-        ) : (
-          <h1 className="text-center text-red-700">No hay commentarios</h1>
-        )}
+        <div className="flex pt-5 border border-green-300">
+          <h1>POST</h1>
+          <p>{post.author}</p>
+          <p>{post.content}</p>
+          <p>{post.createdAt}</p>
+          <h2 className="text-green-600">
+            Likes: {postLikes ? postLikes.length : 0}
+          </h2>
+          <h2 className="text-red-600">
+            DisLikes: {postDislikes ? postDislikes.length : 0}
+          </h2>
+        </div>
+        <div className="flex pt-5 ">
+          <h1>COMMENT</h1>
+
+          {postComments ? (
+            postComments.map((c) => (
+              <div className=" " key={c.id}>
+                {c.content}
+                <p>{c.author}</p>
+                <p>{c.id}</p>
+              </div>
+            ))
+          ) : (
+            <h1 className="text-center text-red-700">No hay commentarios</h1>
+          )}
+        </div>
       </div>
     </div>
   );
