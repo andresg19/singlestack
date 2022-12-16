@@ -34,17 +34,43 @@ const Feed = ({ post, comments, id }) => {
         </div>
 
         <div className=" pt-5 border border-green-300">
-          <h1 className="text-green-600">POST</h1>
-          <p>{post.author}</p>
-          <p>{post.content}</p>
-          <p>{post.createdAt}</p>
+          <div className="flex justify-between">
+            <p>UserIcon {post.author}</p>
+            <p>Bookmark</p>
+          </div>
 
-          <div className="border border-yellow-400">
+          <div className="border border-green-700">
+            <h1 className="text-green-600">POST</h1>
+
+            <p>{post.content}</p>
+            <p>{post.createdAt}</p>
+            <div className="flex justify-evenly p-4">
+              <img
+                src="https://www.economist.com/sites/default/files/images/2015/09/blogs/economist-explains/code2.png"
+                alt=""
+                className="w-48"
+              />
+              <img
+                src="https://www.economist.com/sites/default/files/images/2015/09/blogs/economist-explains/code2.png"
+                alt=""
+                className="w-48"
+              />
+              <img
+                src="https://www.economist.com/sites/default/files/images/2015/09/blogs/economist-explains/code2.png"
+                alt=""
+                className="w-48"
+              />
+            </div>
+          </div>
+
+          <div className=" flex border border-yellow-400">
             <h2 className="text-green-600">
-              Likes: {postLikes ? postLikes.length : 0}
+              Fue útil {postLikes ? postLikes.length : 0}
+              <img src={fingerSVG} alt="" className="w-8" />
             </h2>
-            <h2 className="text-red-600">
-              DisLikes: {postDislikes ? postDislikes.length : 0}
+            <h2 className="ml-2 text-red-600">
+              No fué útil {postDislikes ? postDislikes.length : 0}
+              <img src={fingerSVG} alt="" className="w-8 rotate-180" />
             </h2>
           </div>
         </div>
