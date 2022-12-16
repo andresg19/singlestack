@@ -179,7 +179,7 @@ const Question = () => {
           </div>
         </div>
         <hr className="m-7 box-border border-slate-400" />
-        <div className="flex justify-center ">
+        <div className="flex justify-center">
           <div className="w-[100vh]">
             {currentComments &&
               currentComments.map((c) => {

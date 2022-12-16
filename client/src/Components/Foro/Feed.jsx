@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFeedDislikes, getFeedLikes } from "../../Redux/Actions/Actions";
 import fingerSVG from "../../assets/imgs/fingerSVG.svg";
+import userWhite from "../../assets/imgs/userWhite.png";
+import bookmark from "../../assets/imgs/bookmark.png";
+import { dateFormatter } from "../QA/Question";
 
 const Feed = ({ post, comments, id }) => {
   const dispatch = useDispatch();
@@ -26,24 +29,30 @@ const Feed = ({ post, comments, id }) => {
 
   return (
     //div padre
-    <div className=" mt-10 pt-8 mb-10 text-gray-100 w-[60%] h-[60vh] ml-auto mr-auto rounded-xl bg-[#0f1629ac] shadow-md shadow-[#0f0f0fbd] ">
-      <div className="pt-4 mx-8 bg-gray-400 rounded-xl">
+    <div className=" mt-10 pt-8 pb-8 mb-10 text-gray-100 w-[60%]  ml-auto mr-auto rounded-xl bg-[#0f1629ac] shadow-md shadow-[#0f0f0fbd]">
+      <div className="pt-4 mx-8 bg-gray-300 rounded-xl">
         <div className="mx-auto">
           <hr className="max-w-[80%] ml-8 border border-[#ffffffcb]" />
           <p className="ml-[85%] -mt-4">Ordenar por ↓</p>
         </div>
 
-        <div className=" pt-5 border border-green-300">
-          <div className="flex justify-between">
-            <p>UserIcon {post.author}</p>
-            <p>Bookmark</p>
+        <div className="pt-5 ">
+          <div className="flex justify-between mb-2 mx-2 text-black">
+            <div className="flex -mt-2">
+              <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
+              <div className="ml-2 -mt-2">
+                <p className="text-3xl">{post.author}</p>
+                <p className="text-blue-700">{dateFormatter(post.createdAt)}</p>
+              </div>
+            </div>
+            <img src={bookmark} alt="" className="w-10 h-10" />
           </div>
 
-          <div className="border border-green-700">
-            <h1 className="text-green-600">POST</h1>
+          <div className="m-5 p-4 ">
+            <p className="flex justify-center text-2xl text-black">
+              {post.content}
+            </p>
 
-            <p>{post.content}</p>
-            <p>{post.createdAt}</p>
             <div className="flex justify-evenly p-4">
               <img
                 src="https://www.economist.com/sites/default/files/images/2015/09/blogs/economist-explains/code2.png"
@@ -63,32 +72,47 @@ const Feed = ({ post, comments, id }) => {
             </div>
           </div>
 
-          <div className=" flex border border-yellow-400">
+          <div className=" flex border-black border-t border-b mx-10 py-2 justify-around">
             <h2 className="text-green-600">
-              Fue útil {postLikes ? postLikes.length : 0}
+              Fue útil: {postLikes ? postLikes.length : 0}
               <img src={fingerSVG} alt="" className="w-8" />
             </h2>
             <h2 className="ml-2 text-red-600">
-              No fué útil {postDislikes ? postDislikes.length : 0}
+              No fué útil: {postDislikes ? postDislikes.length : 0}
               <img src={fingerSVG} alt="" className="w-8 rotate-180" />
             </h2>
           </div>
         </div>
-        <div className="pt-5 border border-orange-800">
-          <h1 className="text-orange-800">COMMENT</h1>
-
-          {postComments ? (
+        <div className="pt-5 mx-10 border border-yellow-500">
+          <div className="flex border-b border-gray-400 mb-2 pb-5">
+            <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
+            <input
+              type="text"
+              placeholder="Agregar un comentario"
+              className="w-full rounded-lg mx-2 outline-none text-black bg-gray-200"
+            />
+          </div>
+          {postComments.length ? (
             postComments.map((c) => (
-              <div className=" " key={c.id}>
-                {c.content}
-                <p>{c.author}</p>
-                <p>{c.id}</p>
+              <div className="flex text-black pb-4" key={c.id}>
+                <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
+                <div className="bg-[#304786] rounded-xl w-full mx-2 px-1">
+                  <div className="flex justify-between mx-1">
+                    <p className="text-xl ml-2">{c.author}</p>
+                    <p>{dateFormatter(c.createdAt)}</p>
+                  </div>
+
+                  <p className="text-center">{c.content}</p>
+                </div>
               </div>
             ))
           ) : (
             <h1 className="text-center text-red-700">No hay commentarios</h1>
           )}
         </div>
+        <p className="flex justify-end text-blue-700 underline mr-10 cursor-pointer pb-2">
+          cargar mas comentarios...
+        </p>
       </div>
     </div>
   );
