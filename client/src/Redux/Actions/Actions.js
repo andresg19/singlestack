@@ -21,6 +21,7 @@ import {
   FEEDCOMMENTS,
   GETLIKES,
   GETDISLIKES,
+  POST_FEEDCOMMENTS,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -310,3 +311,18 @@ export const feedDislikes = (postId, userId) => {
     }
   };
 };
+
+
+export const postFeedComments = ( payload ) => {
+    return async function (dispatch) {
+      try {
+        let result = await axios.post(`http://localhost:3001/feedcomments`, payload);
+  
+        return dispatch({
+          type: POST_FEEDCOMMENTS,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+}

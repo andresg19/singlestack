@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFeedDislikes, getFeedLikes } from "../../Redux/Actions/Actions";
+import { getFeedDislikes, getFeedLikes, postFeedComments } from "../../Redux/Actions/Actions";
 import fingerSVG from "../../assets/imgs/fingerSVG.svg";
 import userWhite from "../../assets/imgs/userWhite.png";
 import bookmark from "../../assets/imgs/bookmark.png";
@@ -15,6 +15,13 @@ const Feed = ({ post, comments, id }) => {
   const dislikes = useSelector((state) => state.feeddislikes);
   const postDislikes = dislikes.filter((l) => l.postId === id);
 
+  const [content, setContent] = useState("");
+  console.log(content)
+  const payload = {
+    author: JSON.parse(localStorage.getItem("currentUser")).fullname,
+    feedPostId: post.id,
+  };
+
   console.log("postLikes", postLikes);
   //console.log("dislikes", dislikes);
   useEffect(() => {
@@ -22,10 +29,13 @@ const Feed = ({ post, comments, id }) => {
     dispatch(getFeedDislikes());
   }, []);
 
-  //todos los post van a foro y de ahi se mapean
-  //post solo
-  //comentarios de ese post
-  //likes y dislikes de ese post
+ const handleCommentSubmit = (e) => {
+  e.preventDefault()
+  payload.content = content;
+  dispatch(postFeedComments(payload));
+  window.location.reload();
+ }
+
 
   return (
     //div padre
@@ -88,9 +98,12 @@ const Feed = ({ post, comments, id }) => {
             <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
             <input
               type="text"
+              value = {content}
+              onChange = {(e) => setContent(e.target.value)}
               placeholder="Agregar un comentario"
               className="w-full rounded-lg mx-2 outline-none text-black bg-gray-200 placeholder:pl-3"
             />
+            <button type="submit" onClick={handleCommentSubmit}>Comentar</button>
           </div>
           {postComments.length ? (
             postComments.map((c) => (
