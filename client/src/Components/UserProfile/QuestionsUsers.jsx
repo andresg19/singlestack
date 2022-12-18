@@ -61,7 +61,7 @@ const QuestionsUsers = () => {
                 Ver pregunta completa
                 </Link>
               </p>
-            </div>
+            </div> 
           </div>
         );
       })}
