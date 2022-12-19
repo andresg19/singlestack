@@ -32,7 +32,7 @@ const Foro = () => {
   return (
     <div>
       <Nav />
-      <div className="flex bg-[#AAAAA] w-[40%] h-[20vh] ml-auto mr-auto mt-10 rounded-xl bg-[#1d2b50] shadow-md shadow-[#0f0f0fbd]">
+      <div className="flex w-[40%] h-[20vh] ml-auto mr-auto mt-10 rounded-xl shadow-md shadow-[#0f0f0fbd]">
         <img
           src="https://thumbs.dreamstime.com/b/default-profile-picture-avatar-photo-placeholder-vector-illustration-default-profile-picture-avatar-photo-placeholder-vector-189495158.jpg"
           alt="not found"
@@ -52,10 +52,16 @@ const Foro = () => {
           />
         )}
       </div>
-      <hr className="mt-10 max-w-[80%] mx-auto border border-[#ffffffcb]" />
-      {posts?.map((p) => (
-        <Feed post={p} comments={comments} key={p.id} id={p.id} />
-      ))}
+      <hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb]" />
+      <div className="bg-[#0f1629ac] ml-auto mr-auto shadow-md shadow-[#0f0f0fbd] max-w-[50%]">
+      <div className="mx-auto mt-10">
+          <hr className="max-w-[70%] mt-[] ml-12 border-[#ffffffcb]" />
+          <p className="ml-[82%] text-gray-400 text-sm mb-1">Ordenar por ↓</p>
+        </div>
+        {posts?.map((p) => (
+          <Feed post={p} comments={comments} key={p.id} id={p.id} />
+        ))}
+      </div>
     </div>
   );
 };
