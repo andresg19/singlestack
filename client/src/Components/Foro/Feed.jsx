@@ -52,23 +52,23 @@ const Feed = ({ post, comments, id }) => {
 
   return (
     //div padre
-    <div className="mt-10  w-[90%] bg-[#AAAAA] ml-auto mr-auto">
+    <div className="mt-10  w-[90%] ml-auto mr-auto">
       <div className="pt-4 mx-8 rounded-xl">
 
-        <div className="pt-5 shadow-md shadow-[#0f0f0fbd]">
+        <div className="pt-5 shadow-md bg-[#0f1629ac] shadow-[#0f0f0fbd]">
           <div className="flex justify-between mb-2 mx-2 text-black">
             <div className="flex -mt-2">
               <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
-              <div className="ml-2 -mt-2">
-                <p className="text-xl text-gray-500">{post.author}</p>
-                <p className="text-black">{dateFormatter(post.createdAt)}</p>
+              <div className="ml-2 t-mt-2">
+                <p className="text-xl  text-gray-300">{post.author}</p>
+                <p className="text-gray-400">{dateFormatter(post.createdAt)}</p>
               </div>
             </div>
             <img src={bookmark} alt="" className="w-6 h-6" />
           </div>
 
           <div className="m-5 p-4 ">
-            <p className="flex justify-center text-2xl text-black">
+            <p className="flex justify-center text-2xl text-gray-300">
               {post.content}
             </p>
 
@@ -102,7 +102,7 @@ const Feed = ({ post, comments, id }) => {
             </h2>
           </div>
         </div>
-        <div className="pt-5 mx-10 shadow-md mt-4 bg-[#191919] shadow-[#0f0f0fbd]">
+        <div className="pt-5 mx-10 shadow-md mt-2 bg-[#0f1629ac] shadow-[#0f0f0fbd]">
           <div className="flex border-b border-gray-400 mb-2 pb-5">
             <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
             <input
@@ -128,9 +128,6 @@ const Feed = ({ post, comments, id }) => {
                     <p className="text-center">{c.content}</p>
                   </div>
                 </div>
-                <p className="flex justify-end text-blue-700 underline mr-10 cursor-pointer pb-2">
-                  cargar mas comentarios...
-                </p>
               </div>
             ))
           ) : (
@@ -139,6 +136,9 @@ const Feed = ({ post, comments, id }) => {
             </h1>
           )}
         </div>
+              <p className="flex justify-end text-blue-700 underline mr-10 cursor-pointer pb-2">
+                  cargar mas comentarios...
+                </p>
       </div>
     </div>
   );
