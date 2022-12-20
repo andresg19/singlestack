@@ -300,7 +300,7 @@ export const feedDislikes = (postId, userId) => {
   return async function (dispatch) {
     try {
       let result = await axios.put(
-        "http://localhost:3001/feedlikes/" + postId,
+        "http://localhost:3001/feeddislikes/" + postId,
         { userId }
       );
       return dispatch({

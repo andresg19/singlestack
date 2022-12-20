@@ -4,15 +4,24 @@ const router = Router();
 const { Feedposts } = require("../db.js");
 
 router.get("/", async (req, res) => {
-  try {
-    
-    let allPosts = await Feedposts.findAll();
-    res.status(200).json(allPosts);
+  const filter = req.body;
+  console.log(filter);
 
+  try {
+    let allPosts = await Feedposts.findAll();
+    console.log(allPosts);
+    if (req.body.filter === "filter") {
+      let dateFilter = await allPosts.reverse();
+      res.status(200).send(dateFilter);
+    } else {
+      console.log("else");
+
+      res.status(200).send(allPosts);
+    }
   } catch (error) {
     res.status(400).json(`Error del catch post, ${error}`);
   }
-})
+});
 
 router.post("/", async (req, res) => {
   let { content, author, img } = req.body;
@@ -61,6 +70,9 @@ router.get("/:id", async(req, res) => {
     res.status(400).json(console.log(error));
   }
 })
+
+//filtros feed
+
 
 
 module.exports = router
