@@ -14,12 +14,16 @@ module.exports = (sequelize) => {
     },
 
     author: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
-    
+
     img: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
     },
- 
+
+    likes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   });
 };

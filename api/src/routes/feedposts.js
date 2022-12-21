@@ -5,23 +5,25 @@ const { Feedposts } = require("../db.js");
 const { Feedlikes } = require("../db.js");
 
 router.get("/", async (req, res) => {
-  const filter = req.body;
-  console.log(filter);
+  const { filter } = req.body;
 
   try {
     let allPosts = await Feedposts.findAll();
-    let allLikes = await Feedlikes.findAll();
-    console.log(allPosts);
-    if (req.body.filter === "filter") {
-      let dateFilter = await allPosts.reverse();
-      res.status(200).send(dateFilter);
-    } else if (req.body.filter === "likes") {
-      let result = filterLikesFeed(allPosts, allLikes);
-      res.status(200).send(result);
-    } else {
-      console.log("else");
+    //let allLikes = await Feedlikes.findAll();
 
-      res.status(200).send(allPosts);
+    switch (filter) {
+      case "date":
+        let dateFilter = await allPosts.reverse();
+        return res.status(200).send(dateFilter);
+
+      case "likes":
+        let postsLikesSort = allPosts.sort((a, b) => {
+          return b.likes - a.likes;
+        });
+        return res.status(200).send(postsLikesSort);
+
+      default:
+        return res.status(200).send(allPosts);
     }
   } catch (error) {
     res.status(400).json(`Error del catch post, ${error}`);
