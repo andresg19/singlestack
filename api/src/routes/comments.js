@@ -3,7 +3,7 @@ const { Router } = require("express");
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
 const axios = require("axios");
-const { Users, Posts, Comments, Posts_Comments } = require("../db.js");
+const { Comments, Likes } = require("../db.js");
 
 router.get("/", async (req, res) => {
   let { id } = req.params;
@@ -28,13 +28,24 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  let { content, author, postId } = req.body;
+  let { content, author, postId, img } = req.body;
+  console.log(req.body.img.length);
   try {
-    let comment = await Comments.create({ content, author, postId });
+    let comment = await Comments.create({ content, author, postId, img });
     res.status(200).json(comment);
   } catch (err) {
     console.log(err);
   }
+});
+
+router.put("/:id", async (req, res) => {
+  /* let { id } = req.params;
+  let param = req.body;
+  try {
+    let comments = await Comments.findOne({ where: { id } });
+  } catch (error) {
+    res.send(error);
+  } */
 });
 
 module.exports = router;

@@ -1,21 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #050D1A;
+background: radial-gradient(circle, rgba(22,50,80,1) 0%, rgba(15,22,43,1) 100%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+/* code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 .navbar {
   display: block;
-  background-color: #15273F;
+  background-color: #15273f;
   height: 50px;
 }
 
@@ -26,12 +31,11 @@ code {
   margin-top: 0.2%;
   width: auto;
   justify-content: space-around;
-
 }
 
 .navigation button {
-  background-color: #050D1A;
-  color: #FDF8F5;
+  background-color: #050d1a;
+  color: #fdf8f5;
   font-size: 14px;
 }
 
@@ -40,7 +44,7 @@ code {
   bottom: 0;
   width: 100%;
   height: 30%;
-  background-color: #15273F;
+  background-color: #15273f;
 }
 
 .landingWeAre {
@@ -56,18 +60,17 @@ code {
   color: #456685;
   margin: 10%;
 }
-.lightextlanding{
-  color: #FDF8F5;
+.lightextlanding {
+  color: #fdf8f5;
   margin: 10%;
 }
 
 .titleLanding {
-  color: #B3C4D4;
+  color: #b3c4d4;
   font-size: 35px;
   margin-top: 5%;
   width: 17%;
   margin-left: 6.5%;
-
 }
 
 .containerQa {
@@ -77,12 +80,10 @@ code {
 }
 
 .qaLeft {
-
 }
 .qaRight {
   display: grid;
   background-color: #456685;
- 
 }
 
 .containerFeedQA {
@@ -94,18 +95,17 @@ code {
   margin-top: 10%;
   border-right: #15273f solid 0.5px;
   border-bottom: #15273f solid 0.5px;
-  border-top:#15273f solid 0.1px;
+  border-top: #15273f solid 0.1px;
 }
 
 .containerQuestions {
-
   width: 80%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10%;
   border-right: #15273f solid 0.5px;
   border-bottom: #15273f solid 0.5px;
-  border-top:#15273f solid 0.1px;
+  border-top: #15273f solid 0.1px;
 }
 
 .containerQuestionDetail {
@@ -118,7 +118,17 @@ code {
   background-color: #456685;
 }
 
-.containerQuestionDetail h1, p {
+.inputComment {
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 60%;
+  margin-bottom: 5%;
+}
+
+.containerQuestionDetail h1,
+p {
   margin-left: auto;
   margin-right: auto;
 }
@@ -126,3 +136,38 @@ code {
 .containerQuestionDetail p {
   margin-top: 5%;
 }
+
+
+.profileContainer {
+  display: grid;
+}
+
+.profileUser {
+  display:block;
+  margin-top: 5%;
+  width: 40%;
+  height: 50vh;
+  border-radius: 2%;
+  background-color: #456685;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.profileUser h1, p {
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  max-width:auto;
+  font-size: 18px;
+  text-align: center;
+}
+
+.profileUser img {
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+}
+
+ */

@@ -6,6 +6,22 @@ import {
   POST_POSTS,
   SEARCH_BY_ID,
   CLEAR_STATE,
+  POST_COMMENT,
+  SEARCH_TAG,
+  LIKE,
+  DISLIKE,
+  ALL_LIKES,
+  DISLIKE_UP,
+  DISLIKE_DOWN,
+  ALL_DISLIKES,
+  GET_FEEDPOSTS,
+  POST_FEEDPOSTS,
+  FEEDLIKES,
+  FEEDDISLIKES,
+  FEEDCOMMENTS,
+  GETLIKES,
+  GETDISLIKES,
+  POST_FEEDCOMMENTS,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -88,7 +104,7 @@ export const searchPost = (id) => {
   return async function (dispatch) {
     try {
       let result = await axios.get(`http://localhost:3001/posts/${id}`);
-      console.log(result.data);
+      console.log("result.data", result.data);
       return dispatch({
         type: SEARCH_BY_ID,
         payload: result.data,
@@ -104,3 +120,209 @@ export const clearState = () => {
     type: CLEAR_STATE,
   };
 };
+
+export const postComment = (payload) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.post(`http://localhost:3001/comments`, payload);
+
+      return dispatch({
+        type: POST_COMMENT,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const searchByTag = (tag) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get(`http://localhost:3001/posts/ematch/${tag}`);
+      return dispatch({
+        type: SEARCH_TAG,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const GetLikes = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get(`http://localhost:3001/likes`);
+      return dispatch({
+        type: ALL_LIKES,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const GetDislikes = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get(`http://localhost:3001/dislikes`);
+      return dispatch({
+        type: ALL_DISLIKES,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const likeComment = (commentId, userId) => {
+  return async function (dispatch) {
+    try {
+      console.log("entre al action");
+      let result = await axios.put("http://localhost:3001/likes/" + commentId, {
+        userId,
+      });
+      return dispatch({
+        type: LIKE,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const dislikeComment = (commentId, userId) => {
+  return async function (dispatch) {
+    try {
+      console.log("entre al dislike action");
+      let result = await axios.put(
+        "http://localhost:3001/dislikes/" + commentId,
+        { userId }
+      );
+      return dispatch({
+        type: DISLIKE,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getFeedPosts = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feedposts");
+      return dispatch({
+        type: GET_FEEDPOSTS,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const postFeedPosts = (payload) => {
+  return async function (dispatch) {
+    try {
+      let posteo = await axios.post("http://localhost:3001/feedposts", payload);
+      return dispatch({
+        type: POST_FEEDPOSTS,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const feedAllComments = () => {
+  //get
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feedcomments");
+      return dispatch({
+        type: FEEDCOMMENTS,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getFeedLikes = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feedlikes");
+      return dispatch({
+        type: GETLIKES,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getFeedDislikes = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feeddislikes");
+      return dispatch({
+        type: GETDISLIKES,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const feedLikes = (postId, userId) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.put(
+        "http://localhost:3001/feedlikes/" + postId,
+        { userId }
+      );
+      return dispatch({
+        type: FEEDLIKES,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const feedDislikes = (postId, userId) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.put(
+        "http://localhost:3001/feeddislikes/" + postId,
+        { userId }
+      );
+      return dispatch({
+        type: FEEDDISLIKES,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+
+export const postFeedComments = ( payload ) => {
+    return async function (dispatch) {
+      try {
+        let result = await axios.post(`http://localhost:3001/feedcomments`, payload);
+  
+        return dispatch({
+          type: POST_FEEDCOMMENTS,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+}
