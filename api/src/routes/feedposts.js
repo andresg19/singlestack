@@ -1,7 +1,8 @@
 const { Router } = require("express");
-
+const { filterLikesFeed } = require("../helpers/filterLikesFeed")
 const router = Router();
 const { Feedposts } = require("../db.js");
+const { Feedlikes } = require("../db.js");
 
 router.get("/", async (req, res) => {
   const filter = req.body;
@@ -9,11 +10,16 @@ router.get("/", async (req, res) => {
 
   try {
     let allPosts = await Feedposts.findAll();
+    let allLikes = await Feedlikes.findAll();
     console.log(allPosts);
     if (req.body.filter === "filter") {
       let dateFilter = await allPosts.reverse();
       res.status(200).send(dateFilter);
-    } else {
+    } else if (req.body.filter === "likes") {
+      let result = filterLikesFeed(allPosts, allLikes)
+      res.status(200).send(result);
+    }
+    else {
       console.log("else");
 
       res.status(200).send(allPosts);
