@@ -12,8 +12,10 @@ router.get("/", async (req, res) => {
     //let allLikes = await Feedlikes.findAll();
 
     switch (filter) {
-      case "date":
-        let dateFilter = await allPosts.reverse();
+      case "date": // los mas viejos
+        let dateFilter = await Feedposts.findAll({
+          order: [["createdAt", "ASC"]],
+        });
         return res.status(200).send(dateFilter);
 
       case "likes":
@@ -22,8 +24,12 @@ router.get("/", async (req, res) => {
         });
         return res.status(200).send(postsLikesSort);
 
-      default:
-        return res.status(200).send(allPosts);
+      default: // mas nuevos
+        let dateDefault = await Feedposts.findAll({
+          order: [["createdAt", "DESC"]],
+        });
+
+        return res.status(200).send(dateDefault); //
     }
   } catch (error) {
     res.status(400).json(`Error del catch post, ${error}`);
