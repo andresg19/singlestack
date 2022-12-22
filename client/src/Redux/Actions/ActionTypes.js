@@ -20,3 +20,4 @@ export const GETDISLIKES = "GETDISLIKES";
 export const FEEDLIKES = "FEEDLIKES";
 export const FEEDDISLIKES = "FEEDPOSTS";
 export const POST_FEEDCOMMENTS = "POST_FEEDCOMMENTS";
+export const FILTER = "FILTER";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFeedPosts } from "../../Redux/Actions/Actions";
+import { filterFeedPost, getFeedPosts } from "../../Redux/Actions/Actions";
 import Nav from "../NavBar/Nav";
 import PostsForo from "./PostForo";
 import Feed from "./Feed";
@@ -12,8 +12,16 @@ const Foro = () => {
   const actualUser = JSON.parse(localStorage.getItem("currentUser"));
   const posts = useSelector((state) => state.feedPosts);
   const comments = useSelector((state) => state.feedComments);
+  const postFilter = useSelector((state) => state.feedPostFilter);
+  console.log("🚀 ~ file: Foro.jsx:16 ~ Foro ~ postFilter", postFilter);
 
   const [modal, setModal] = useState(false);
+  const [filterBool, setFilterBool] = useState(false);
+
+  useEffect(() => {
+    dispatch(getFeedPosts());
+    dispatch(feedAllComments());
+  }, []);
 
   const modalOpen = () => {
     setModal(true);
@@ -24,10 +32,11 @@ const Foro = () => {
     console.log("close");
   };
 
-  useEffect(() => {
-    dispatch(getFeedPosts());
-    dispatch(feedAllComments());
-  }, []);
+  const handleFilter = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    dispatch(filterFeedPost({ filter: e.target.value }));
+  };
 
   return (
     <div>
@@ -56,11 +65,54 @@ const Foro = () => {
       <div className="bg-[#0f1629ac] ml-auto mr-auto shadow-md shadow-[#0f0f0fbd] max-w-[50%]">
         <div className="mx-auto mt-10">
           <hr className="max-w-[70%] mt-[] ml-12 border-[#ffffffcb]" />
-          <p className="ml-[82%] text-gray-400 text-sm mb-1">Ordenar por ↓</p>
+          <p
+            className="ml-[82%] text-gray-400 text-sm mb-1 cursor-pointer"
+            onClick={() => setFilterBool(!filterBool)}
+          >
+            Ordenar por ↓
+          </p>
+          {filterBool ? (
+            <div className="flex justify-between">
+              <button
+                value="likes"
+                onClick={handleFilter}
+                className="cursor-pointer"
+              >
+                Más likes
+              </button>
+              <button
+                value="comments"
+                onClick={handleFilter}
+                className="cursor-pointer"
+              >
+                Más comentarios
+              </button>
+              <button
+                value=""
+                onClick={handleFilter}
+                className="cursor-pointer"
+              >
+                Más Nuevos
+              </button>
+              <button
+                value="date"
+                onClick={handleFilter}
+                className="cursor-pointer"
+              >
+                Más antiguos
+              </button>
+            </div>
+          ) : null}
         </div>
-        {posts?.map((p) => (
-          <Feed post={p} comments={comments} key={p.id} id={p.id} />
-        ))}
+        {postFilter.length
+          ? postFilter.map((p) => (
+              <Feed post={p} comments={comments} key={p.id} id={p.id} />
+            ))
+          : posts.length
+          ? posts.map((p) => (
+              <Feed post={p} comments={comments} key={p.id} id={p.id} />
+            ))
+          : null}
       </div>
     </div>
   );
