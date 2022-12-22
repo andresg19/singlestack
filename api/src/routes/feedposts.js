@@ -19,10 +19,16 @@ router.get("/", async (req, res) => {
         return res.status(200).send(dateFilter);
 
       case "likes":
-        let postsLikesSort = allPosts.sort((a, b) => {
+        let likesSort = allPosts.sort((a, b) => {
           return b.likes - a.likes;
         });
-        return res.status(200).send(postsLikesSort);
+        return res.status(200).send(likesSort);
+
+      case "comments":
+        let commentsSort = allPosts.sort((a, b) => {
+          return b.comments - a.comments;
+        });
+        return res.status(200).send(commentsSort);
 
       default: // mas nuevos
         let dateDefault = await Feedposts.findAll({
