@@ -54,7 +54,7 @@ const Foro = () => {
       </div>
       <hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb]" />
       <div className="bg-[#0f1629ac] ml-auto mr-auto shadow-md shadow-[#0f0f0fbd] max-w-[50%]">
-      <div className="mx-auto mt-10">
+        <div className="mx-auto mt-10">
           <hr className="max-w-[70%] mt-[] ml-12 border-[#ffffffcb]" />
           <p className="ml-[82%] text-gray-400 text-sm mb-1">Ordenar por ↓</p>
         </div>

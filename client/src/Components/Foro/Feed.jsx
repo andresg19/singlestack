@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { feedDislikes, feedLikes, getFeedDislikes, getFeedLikes, postFeedComments } from "../../Redux/Actions/Actions";
+import {
+  feedDislikes,
+  feedLikes,
+  getFeedDislikes,
+  getFeedLikes,
+  postFeedComments,
+} from "../../Redux/Actions/Actions";
 import fingerSVG from "../../assets/imgs/fingerSVG.svg";
 import userWhite from "../../assets/imgs/userWhite.png";
 import bookmark from "../../assets/imgs/bookmark.png";
@@ -14,12 +20,10 @@ const Feed = ({ post, comments, id }) => {
   const postLikes = likes.filter((l) => l.postId === id);
   const dislikes = useSelector((state) => state.feeddislikes);
   const postDislikes = dislikes.filter((l) => l.postId === id);
-  const actualUser = JSON.parse(localStorage.getItem("currentUser")).id
-
-    
+  const actualUser = JSON.parse(localStorage.getItem("currentUser")).id;
 
   const [content, setContent] = useState("");
-  console.log(content)
+  console.log(content);
   const payload = {
     author: JSON.parse(localStorage.getItem("currentUser")).fullname,
     feedPostId: post.id,
@@ -32,29 +36,28 @@ const Feed = ({ post, comments, id }) => {
     dispatch(getFeedDislikes());
   }, []);
 
- 
- const handleLike = (e) => {
-  e.preventDefault();
-  dispatch(feedLikes(post.id, actualUser))
- }
- const handleDislike = (e) => {
-  e.preventDefault();
-  dispatch(feedDislikes(post.id, actualUser))
- }
+  const handleLike = (e) => {
+    e.preventDefault();
+    dispatch(feedLikes(post.id, actualUser));
+    window.location.reload();
+  };
+  const handleDislike = (e) => {
+    e.preventDefault();
+    dispatch(feedDislikes(post.id, actualUser));
+    window.location.reload();
+  };
 
- const handleCommentSubmit = (e) => {
-  e.preventDefault()
-  payload.content = content;
-  dispatch(postFeedComments(payload));
-  window.location.reload()
- }
-
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+    payload.content = content;
+    dispatch(postFeedComments(payload));
+    window.location.reload();
+  };
 
   return (
     //div padre
     <div className="mt-10  w-[90%] ml-auto mr-auto">
       <div className="pt-4 mx-8 rounded-xl">
-
         <div className="pt-5 shadow-md bg-[#0f1629ac] shadow-[#0f0f0fbd]">
           <div className="flex justify-between mb-2 mx-2 text-black">
             <div className="flex -mt-2">
@@ -94,11 +97,21 @@ const Feed = ({ post, comments, id }) => {
           <div className=" flex shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
             <h2 className="text-green-600">
               Útil: {postLikes ? postLikes.length : 0}
-              <img src={fingerSVG} alt="" className="w-8"  onClick={handleLike}/>
+              <img
+                src={fingerSVG}
+                alt=""
+                className="w-8"
+                onClick={handleLike}
+              />
             </h2>
             <h2 className="ml-2 text-red-600">
               No util: {postDislikes ? postDislikes.length : 0}
-              <img src={fingerSVG} alt="" className="w-8 rotate-180" onClick={handleDislike}/>
+              <img
+                src={fingerSVG}
+                alt=""
+                className="w-8 rotate-180"
+                onClick={handleDislike}
+              />
             </h2>
           </div>
         </div>
@@ -107,12 +120,14 @@ const Feed = ({ post, comments, id }) => {
             <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
             <input
               type="text"
-              value = {content}
-              onChange = {(e) => setContent(e.target.value)}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
               placeholder="Agregar un comentario"
               className="w-full rounded-lg mx-2 outline-none text-black bg-gray-200 placeholder:pl-3"
             />
-            <button type="submit" onClick={handleCommentSubmit}>Comentar</button>
+            <button type="submit" onClick={handleCommentSubmit}>
+              Comentar
+            </button>
           </div>
           {postComments.length ? (
             postComments.map((c) => (
@@ -136,9 +151,9 @@ const Feed = ({ post, comments, id }) => {
             </h1>
           )}
         </div>
-              <p className="flex justify-end text-blue-700 underline mr-10 cursor-pointer pb-2">
-                  cargar mas comentarios...
-                </p>
+        <p className="flex justify-end text-blue-700 underline mr-10 cursor-pointer pb-2">
+          cargar mas comentarios...
+        </p>
       </div>
     </div>
   );
