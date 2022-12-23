@@ -7,23 +7,41 @@ const { Feedlikes } = require("../db.js");
 router.get("/", async (req, res) => {
   const { filter } = req.body;
 
+  console.log("body", req.body);
+  console.log("filter", filter);
+
   try {
     let allPosts = await Feedposts.findAll();
     //let allLikes = await Feedlikes.findAll();
 
     switch (filter) {
-      case "date":
-        let dateFilter = await allPosts.reverse();
+      case "date": // los mas viejos
+        let dateFilter = await Feedposts.findAll({
+          order: [["createdAt", "ASC"]],
+        });
+
         return res.status(200).send(dateFilter);
 
       case "likes":
-        let postsLikesSort = allPosts.sort((a, b) => {
+        let likesSort = allPosts.sort((a, b) => {
           return b.likes - a.likes;
         });
-        return res.status(200).send(postsLikesSort);
 
-      default:
-        return res.status(200).send(allPosts);
+        return res.status(200).send(likesSort);
+
+      case "comments":
+        let commentsSort = allPosts.sort((a, b) => {
+          return b.comments - a.comments;
+        });
+
+        return res.status(200).send(commentsSort);
+
+      default: // mas nuevos
+        let dateDefault = await Feedposts.findAll({
+          order: [["createdAt", "DESC"]],
+        });
+
+        return res.status(200).send(dateDefault); //
     }
   } catch (error) {
     res.status(400).json(`Error del catch post, ${error}`);
@@ -79,3 +97,5 @@ router.get("/:id", async (req, res) => {
 //filtros feed
 
 module.exports = router;
+
+//AHI VENGO

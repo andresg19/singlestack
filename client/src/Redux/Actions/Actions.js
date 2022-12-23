@@ -22,6 +22,7 @@ import {
   GETLIKES,
   GETDISLIKES,
   POST_FEEDCOMMENTS,
+  FILTER,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -312,17 +313,35 @@ export const feedDislikes = (postId, userId) => {
   };
 };
 
+export const postFeedComments = (payload) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.post(
+        `http://localhost:3001/feedcomments`,
+        payload
+      );
 
-export const postFeedComments = ( payload ) => {
-    return async function (dispatch) {
-      try {
-        let result = await axios.post(`http://localhost:3001/feedcomments`, payload);
-  
-        return dispatch({
-          type: POST_FEEDCOMMENTS,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-}
+      return dispatch({
+        type: POST_FEEDCOMMENTS,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const filterFeedPost = (payload) => {
+  return async function (dispatch) {
+    try {
+      console.log(payload);
+      let result = await axios.get("http://localhost:3001/feedposts", payload);
+      console.log(result.data);
+      return dispatch({
+        type: FILTER,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

@@ -29,7 +29,6 @@ const Feed = ({ post, comments, id }) => {
     feedPostId: post.id,
   };
 
-  console.log("postLikes", postLikes);
   //console.log("dislikes", dislikes);
   useEffect(() => {
     dispatch(getFeedLikes());
