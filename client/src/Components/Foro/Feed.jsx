@@ -16,12 +16,15 @@ const Feed = ({ post, comments, id }) => {
   const dispatch = useDispatch();
 
   const postComments = comments.filter((c) => c.feedPostId === id);
+  const initialComments = postComments.slice(0, 2);
+  console.log(initialComments)
   const likes = useSelector((state) => state.feedlikes);
   const postLikes = likes.filter((l) => l.postId === id);
   const dislikes = useSelector((state) => state.feeddislikes);
   const postDislikes = dislikes.filter((l) => l.postId === id);
   const actualUser = JSON.parse(localStorage.getItem("currentUser")).id;
-
+  const [moreComments, setMoreComments] = useState(false);
+  console.log(moreComments)
   const [content, setContent] = useState("");
   console.log(content);
   const payload = {
@@ -128,7 +131,26 @@ const Feed = ({ post, comments, id }) => {
               Comentar
             </button>
           </div>
-          {postComments.length ? (
+          {
+           !moreComments && initialComments.length ? 
+            initialComments.map((d) => (
+              <div className="">
+                <div className="flex text-black pb-4" key={d.id}>
+                  <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
+                  <div className="bg-[#4a6fd356] rounded-xl w-full mx-2 px-1">
+                    <div className="flex justify-between mx-1">
+                      <p className="text-xl ml-2">{d.author}</p>
+                      <p>{dateFormatter(d.createdAt)}</p>
+                    </div>
+
+                    <p className="text-center">{d.content}</p>
+                  </div>
+                </div>
+              </div>
+              ))
+           :
+           moreComments === true ?
+           (
             postComments.map((c) => (
               <div className="">
                 <div className="flex text-black pb-4" key={c.id}>
@@ -143,16 +165,18 @@ const Feed = ({ post, comments, id }) => {
                   </div>
                 </div>
               </div>
-            ))
-          ) : (
+            )) 
+            ) 
+           : 
+            (
             <h1 className="text-center text-red-700 pb-2 text-3xl">
               No hay comentarios aún
             </h1>
           )}
         </div>
-        <p className="flex justify-end text-blue-700 underline mr-10 cursor-pointer pb-2">
+        <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
           cargar mas comentarios...
-        </p>
+        </button>
       </div>
     </div>
   );
