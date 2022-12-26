@@ -5,44 +5,13 @@ const { Feedposts } = require("../db.js");
 const { Feedlikes } = require("../db.js");
 
 router.get("/", async (req, res) => {
-  const { filter } = req.body;
 
-  console.log("body", req.body);
-  console.log("filter", filter);
 
   try {
     let allPosts = await Feedposts.findAll();
-    //let allLikes = await Feedlikes.findAll();
-
-    switch (filter) {
-      case "date": // los mas viejos
-        let dateFilter = await Feedposts.findAll({
-          order: [["createdAt", "ASC"]],
-        });
-
-        return res.status(200).send(dateFilter);
-
-      case "likes":
-        let likesSort = allPosts.sort((a, b) => {
-          return b.likes - a.likes;
-        });
-
-        return res.status(200).send(likesSort);
-
-      case "comments":
-        let commentsSort = allPosts.sort((a, b) => {
-          return b.comments - a.comments;
-        });
-
-        return res.status(200).send(commentsSort);
-
-      default: // mas nuevos
-        let dateDefault = await Feedposts.findAll({
-          order: [["createdAt", "DESC"]],
-        });
-
-        return res.status(200).send(dateDefault); //
-    }
+ 
+    res.status(200).send(allPosts); //
+    
   } catch (error) {
     res.status(400).json(`Error del catch post, ${error}`);
   }
