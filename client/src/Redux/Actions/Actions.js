@@ -22,7 +22,7 @@ import {
   GETLIKES,
   GETDISLIKES,
   POST_FEEDCOMMENTS,
-  FILTER,
+  FILTER_FEED_POSTS,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -330,18 +330,18 @@ export const postFeedComments = (payload) => {
   };
 };
 
-export const filterFeedPost = (payload) => {
+export const filterFeedPost = (filter) => {
   return async function (dispatch) {
+    console.log(filter)
     try {
-      console.log(payload);
-      let result = await axios.get("http://localhost:3001/feedposts", payload);
-      console.log(result.data);
       return dispatch({
-        type: FILTER,
-        payload: result.data,
+        type: FILTER_FEED_POSTS,
+        payload: filter,
       });
     } catch (error) {
       console.log(error);
     }
   };
 };
+
+

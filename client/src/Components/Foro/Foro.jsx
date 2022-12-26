@@ -14,7 +14,6 @@ const Foro = () => {
   const comments = useSelector((state) => state.feedComments);
   const postFilter = useSelector((state) => state.feedPostFilter);
   console.log("🚀 ~ file: Foro.jsx:16 ~ Foro ~ postFilter", postFilter);
-
   const [modal, setModal] = useState(false);
   const [filterBool, setFilterBool] = useState(false);
 
@@ -34,8 +33,9 @@ const Foro = () => {
 
   const handleFilter = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    dispatch(filterFeedPost({ filter: e.target.value }));
+    console.log(e.target.value)
+    dispatch(filterFeedPost(e.target.value));
+    
   };
 
   return (
@@ -88,7 +88,7 @@ const Foro = () => {
                 Más comentarios
               </button>
               <button
-                value=""
+                value="nuevos"
                 onClick={handleFilter}
                 className="cursor-pointer"
               >

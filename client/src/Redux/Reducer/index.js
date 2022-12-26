@@ -20,6 +20,7 @@ import {
   FEEDDISLIKES,
   GETDISLIKES,
   FILTER,
+  FILTER_FEED_POSTS,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -138,13 +139,33 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
       };
     }
-    case FILTER: {
+
+    case FILTER_FEED_POSTS: {
+      console.log(payload)
+
+
+      let filterPosts =
+        payload === "likes" ? state.feedPosts.sort((a, b) => {
+            return b.likes - a.likes;
+          })
+          : 
+          payload === "comments" ? 
+          state.feedPosts.sort((a, b) => {
+            return b.comments - a.comments;
+          })
+          :
+          payload === "date" ?
+          state.feedPosts.reverse()
+          :
+          state.feedPosts      
+        
       return {
         ...state,
-        feedPostFilter: payload,
+        feedPostFilter: [...filterPosts],
       };
     }
-    default:
-      return state;
+  
+  default:
+    return state;
   }
 }
