@@ -59,6 +59,9 @@ const Register = () => {
   };
   return (
     <div className="mt-[5%] opacity-80 shadow-md shadow-[#0f0f0fbd] rounded-xl bg-black max-w-[40%] h-[60vh] ml-auto mr-auto">
+      <div className="flex w-[25%] p-1 text-gray-500 ml-auto mr-auto">
+        <h1>Ingrese sus datos</h1>
+      </div>
       <form className="flex flex-col p-10 max-w-[50%] ml-auto mr-auto" onSubmit={handleSubmit}>
         <input
           id="small-input" 
