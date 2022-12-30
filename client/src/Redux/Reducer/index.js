@@ -21,6 +21,7 @@ import {
   GETDISLIKES,
   FILTER,
   FILTER_FEED_POSTS,
+  GET_POSTSRECIENTES,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -163,6 +164,14 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
         feedPostFilter: [...filterPosts],
       };
+    }
+    case GET_POSTSRECIENTES: {
+      let copyState = state.posts.reverse();
+      console.log(copyState)
+      return {
+        ...state,
+        posts: [...copyState]
+      }
     }
   
   default:

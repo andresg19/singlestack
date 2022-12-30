@@ -4,7 +4,7 @@ import FeedQA from "./FeedQA";
 import Footer from "./../Footer/Footer";
 import Questions from "./Questions";
 import { useDispatch, useSelector } from "react-redux";
-import { clearState, searchByTag } from "../../Redux/Actions/Actions";
+import { clearState, getPosts,  getRecientesPosts, searchByTag } from "../../Redux/Actions/Actions";
 import { useState } from "react";
 
 const Qa = () => {
@@ -27,11 +27,12 @@ const Qa = () => {
         post.content.toLowerCase().includes(search.toLowerCase())
     );
 
-  /*   useEffect(() => {
-    return () => {
-      dispatch(clearState());
-    };
-  }, []); */
+  const handleFilter = (e) => {
+    e.preventDefault();
+    dispatch(getRecientesPosts())
+  }
+
+
   return (
     <div className="">
       <Nav />
@@ -78,12 +79,9 @@ const Qa = () => {
               #Preguntas
             </h3>
             <div className=" ml-8 mb-4 w-[30%] text-center font-bold text-[#3B3A3A]">
-              <p className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white">
+              <button value='recientes' onClick={handleFilter} className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white">
                 Recientes
-              </p>
-              <p className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white">
-                #Semanal
-              </p>
+              </button>
             </div>
           </div>
         </div>

@@ -23,6 +23,7 @@ import {
   GETDISLIKES,
   POST_FEEDCOMMENTS,
   FILTER_FEED_POSTS,
+  GET_POSTSRECIENTES,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -73,7 +74,8 @@ export const register = (payload) => {
   };
 };
 
-export const getPosts = (payload) => {
+export const getPosts = () => {
+
   return async function (dispatch) {
     try {
       let result = await axios.get("http://localhost:3001/posts");
@@ -344,4 +346,14 @@ export const filterFeedPost = (filter) => {
   };
 };
 
-
+export const getRecientesPosts = () => {
+  return async function (dispatch) {
+    try {
+      return dispatch({
+        type: GET_POSTSRECIENTES,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
