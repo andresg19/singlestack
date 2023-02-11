@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const axios = require("axios");
 const { Dislikes } = require("../db.js");
-const { likeSetter } = require("../helpers/likeSetter.js");
+
 
 router.get("/", async (req, res) => {
   try {

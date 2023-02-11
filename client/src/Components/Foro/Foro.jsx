@@ -1,0 +1,121 @@
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { filterFeedPost, getFeedPosts } from "../../Redux/Actions/Actions";
+import Nav from "../NavBar/Nav";
+import PostsForo from "./PostForo";
+import Feed from "./Feed";
+import { feedAllComments } from "./../../Redux/Actions/Actions";
+
+const Foro = () => {
+  const dispatch = useDispatch();
+  const actualUser = JSON.parse(localStorage.getItem("currentUser"));
+  const posts = useSelector((state) => state.feedPosts);
+  const comments = useSelector((state) => state.feedComments);
+  const postFilter = useSelector((state) => state.feedPostFilter);
+  console.log("🚀 ~ file: Foro.jsx:16 ~ Foro ~ postFilter", postFilter);
+  const [modal, setModal] = useState(false);
+  const [filterBool, setFilterBool] = useState(false);
+
+  useEffect(() => {
+    dispatch(getFeedPosts());
+    dispatch(feedAllComments());
+  }, []);
+
+  const modalOpen = () => {
+    setModal(true);
+    console.log("open");
+  };
+  const modalClose = () => {
+    setModal(false);
+    console.log("close");
+  };
+
+  const handleFilter = (e) => {
+    e.preventDefault();
+    console.log(e.target.value)
+    dispatch(filterFeedPost(e.target.value));
+    
+  };
+
+  return (
+    <div>
+      <Nav />
+      <div className="flex w-[40%] h-[20vh] bg-[#0f1629ac] ml-auto mr-auto mt-10 rounded-xl shadow-md shadow-[#0f0f0fbd]">
+        <img
+          src="https://thumbs.dreamstime.com/b/default-profile-picture-avatar-photo-placeholder-vector-illustration-default-profile-picture-avatar-photo-placeholder-vector-189495158.jpg"
+          alt="not found"
+          width={50}
+          className="flex w-[10%] h-[40%] rounded-[50%] mt-[7%] ml-10"
+        />
+        {modal ? (
+          <div>
+            <PostsForo />
+            <button onClick={modalClose}>Cerrar ventana</button>
+          </div>
+        ) : (
+          <input
+            onClick={modalOpen}
+            placeholder="Haz un posteo"
+            className="grid w-[60%] placeholder:text-slate-400 py-2 pl-3 pr-3 h-7 mt-12 ml-10 rounded-xl"
+          />
+        )}
+      </div>
+      <hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb]" />
+      <div className="bg-[#0f1629ac] ml-auto mr-auto shadow-md shadow-[#0f0f0fbd] max-w-[50%]">
+        <div className="mx-auto mt-10">
+          <hr className="max-w-[70%] mt-[] ml-12 border-[#ffffffcb]" />
+          <p
+            className="ml-[82%] text-gray-400 text-sm mb-1 cursor-pointer"
+            onClick={() => setFilterBool(!filterBool)}
+          >
+            Ordenar por ↓
+          </p>
+          {filterBool ? (
+            <div className="flex justify-between">
+              <button
+                value="likes"
+                onClick={handleFilter}
+                className="cursor-pointer"
+              >
+                Más likes
+              </button>
+              <button
+                value="comments"
+                onClick={handleFilter}
+                className="cursor-pointer"
+              >
+                Más comentarios
+              </button>
+              <button
+                value="nuevos"
+                onClick={handleFilter}
+                className="cursor-pointer"
+              >
+                Más Nuevos
+              </button>
+              <button
+                value="date"
+                onClick={handleFilter}
+                className="cursor-pointer"
+              >
+                Más antiguos
+              </button>
+            </div>
+          ) : null}
+        </div>
+        {postFilter.length
+          ? postFilter.map((p) => (
+              <Feed post={p} comments={comments} key={p.id} id={p.id} />
+            ))
+          : posts.length
+          ? posts.map((p) => (
+              <Feed post={p} comments={comments} key={p.id} id={p.id} />
+            ))
+          : null}
+      </div>
+    </div>
+  );
+};
+
+export default Foro;

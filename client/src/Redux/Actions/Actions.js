@@ -14,6 +14,16 @@ import {
   DISLIKE_UP,
   DISLIKE_DOWN,
   ALL_DISLIKES,
+  GET_FEEDPOSTS,
+  POST_FEEDPOSTS,
+  FEEDLIKES,
+  FEEDDISLIKES,
+  FEEDCOMMENTS,
+  GETLIKES,
+  GETDISLIKES,
+  POST_FEEDCOMMENTS,
+  FILTER_FEED_POSTS,
+  GET_POSTSRECIENTES,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -64,7 +74,8 @@ export const register = (payload) => {
   };
 };
 
-export const getPosts = (payload) => {
+export const getPosts = () => {
+
   return async function (dispatch) {
     try {
       let result = await axios.get("http://localhost:3001/posts");
@@ -172,13 +183,10 @@ export const GetDislikes = () => {
 export const likeComment = (commentId, userId) => {
   return async function (dispatch) {
     try {
-      console.log('entre al action')
-      let result = await axios.put(
-        'http://localhost:3001/likes/' + commentId,
-        {
+      console.log("entre al action");
+      let result = await axios.put("http://localhost:3001/likes/" + commentId, {
         userId,
-        }
-      );
+      });
       return dispatch({
         type: LIKE,
       });
@@ -191,13 +199,161 @@ export const likeComment = (commentId, userId) => {
 export const dislikeComment = (commentId, userId) => {
   return async function (dispatch) {
     try {
-      console.log('entre al dislike action')
-      let result = await axios.put('http://localhost:3001/dislikes/' + commentId, {userId} );
+      console.log("entre al dislike action");
+      let result = await axios.put(
+        "http://localhost:3001/dislikes/" + commentId,
+        { userId }
+      );
       return dispatch({
         type: DISLIKE,
-      })
+      });
     } catch (error) {
       console.log(error);
     }
-  }
-}
+  };
+};
+
+export const getFeedPosts = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feedposts");
+      return dispatch({
+        type: GET_FEEDPOSTS,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const postFeedPosts = (payload) => {
+  return async function (dispatch) {
+    try {
+      let posteo = await axios.post("http://localhost:3001/feedposts", payload);
+      return dispatch({
+        type: POST_FEEDPOSTS,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const feedAllComments = () => {
+  //get
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feedcomments");
+      return dispatch({
+        type: FEEDCOMMENTS,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getFeedLikes = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feedlikes");
+      return dispatch({
+        type: GETLIKES,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getFeedDislikes = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feeddislikes");
+      return dispatch({
+        type: GETDISLIKES,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const feedLikes = (postId, userId) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.put(
+        "http://localhost:3001/feedlikes/" + postId,
+        { userId }
+      );
+      return dispatch({
+        type: FEEDLIKES,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const feedDislikes = (postId, userId) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.put(
+        "http://localhost:3001/feeddislikes/" + postId,
+        { userId }
+      );
+      return dispatch({
+        type: FEEDDISLIKES,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const postFeedComments = (payload) => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.post(
+        `http://localhost:3001/feedcomments`,
+        payload
+      );
+
+      return dispatch({
+        type: POST_FEEDCOMMENTS,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const filterFeedPost = (filter) => {
+  return async function (dispatch) {
+    console.log(filter)
+    try {
+      return dispatch({
+        type: FILTER_FEED_POSTS,
+        payload: filter,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getRecientesPosts = () => {
+  return async function (dispatch) {
+    try {
+      return dispatch({
+        type: GET_POSTSRECIENTES,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

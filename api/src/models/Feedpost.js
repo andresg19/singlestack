@@ -2,14 +2,11 @@ const sequelize = require("sequelize");
 const { DataTypes, STRING } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("posts", {
+  sequelize.define("feedposts", {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-    },
-    title: {
-      type: DataTypes.TEXT,
     },
 
     content: {
@@ -17,15 +14,21 @@ module.exports = (sequelize) => {
     },
 
     author: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
     },
 
-    etiquetas: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
     img: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
     },
-  
+
+    likes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+
+    comments: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   });
 };

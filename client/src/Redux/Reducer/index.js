@@ -13,6 +13,15 @@ import {
   ALL_DISLIKES,
   DISLIKE_UP,
   DISLIKE_DOWN,
+  GET_FEEDPOSTS,
+  FEEDCOMMENTS,
+  FEEDLIKES,
+  GETLIKES,
+  FEEDDISLIKES,
+  GETDISLIKES,
+  FILTER,
+  FILTER_FEED_POSTS,
+  GET_POSTSRECIENTES,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -23,6 +32,11 @@ const initialState = {
   commentsDetail: [],
   likes: [],
   dislikes: [],
+  feedPosts: [],
+  feedComments: [],
+  feedlikes: [],
+  feeddislikes: [],
+  feedPostFilter: [],
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -94,7 +108,73 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
-    default:
-      return state;
+    case GET_FEEDPOSTS:
+      return {
+        ...state,
+        feedPosts: payload,
+      };
+    case FEEDCOMMENTS:
+      return {
+        ...state,
+        feedComments: payload,
+      };
+    case GETLIKES: {
+      return {
+        ...state,
+        feedlikes: payload,
+      };
+    }
+    case GETDISLIKES: {
+      return {
+        ...state,
+        feeddislikes: payload,
+      };
+    }
+    case FEEDLIKES: {
+      return {
+        ...state,
+      };
+    }
+    case FEEDDISLIKES: {
+      return {
+        ...state,
+      };
+    }
+
+    case FILTER_FEED_POSTS: {
+      console.log(payload)
+
+
+      let filterPosts =
+        payload === "likes" ? state.feedPosts.sort((a, b) => {
+            return b.likes - a.likes;
+          })
+          : 
+          payload === "comments" ? 
+          state.feedPosts.sort((a, b) => {
+            return b.comments - a.comments;
+          })
+          :
+          payload === "date" ?
+          state.feedPosts.reverse()
+          :
+          state.feedPosts      
+        
+      return {
+        ...state,
+        feedPostFilter: [...filterPosts],
+      };
+    }
+    case GET_POSTSRECIENTES: {
+      let copyState = state.posts.reverse();
+      console.log(copyState)
+      return {
+        ...state,
+        posts: [...copyState]
+      }
+    }
+  
+  default:
+    return state;
   }
 }
