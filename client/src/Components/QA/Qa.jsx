@@ -6,6 +6,7 @@ import Questions from "./Questions";
 import { useDispatch, useSelector } from "react-redux";
 import { clearState, getPosts,  getRecientesPosts, searchByTag } from "../../Redux/Actions/Actions";
 import { useState } from "react";
+import { etiquetas } from "./etiquetas";
 
 const Qa = () => {
   const dispatch = useDispatch();
@@ -49,29 +50,19 @@ const Qa = () => {
             <h3 className="ml-2 underline text-[#46899B] font-bold">
               #Etiquetas
             </h3>
-            <div className="ml-8 w-[30%] text-center font-bold text-[#3B3A3A]">
+            {
+                etiquetas.map(etiqueta => (
+              <div className="ml-8 w-[30%] text-center font-bold text-[#3B3A3A]">
               <p
                 value="javascript"
                 className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white"
                 onClick={handleTagFilter}
-              >
-                #javascript
-              </p>
-              <p
-                value="node"
-                className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white"
-                onClick={handleTagFilter}
-              >
-                #node
-              </p>
-              <p
-                value="python"
-                className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white"
-                onClick={handleTagFilter}
-              >
-                #python
+                >
+                {etiqueta}
               </p>
             </div>
+                )) 
+            }    
             <hr className="mt-[10%] mr-[7%] border border-[#939393]" />
           </div>
           <div className="mt-[10%] ml-[10%] mb-[10%] text-xl">
