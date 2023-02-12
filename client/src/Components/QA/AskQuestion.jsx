@@ -11,8 +11,9 @@ const AskQuestion = ({}) => {
     title: "",
     content: "",
     author: JSON.parse(localStorage.getItem("currentUser")).fullname,
-    etiquetas: "",
+    etiquetas:[],
   });
+
   console.log(input);
   const [img, setImg] = useState("");
   const [imgArr, setImgArr] = useState([]);
@@ -23,6 +24,21 @@ const AskQuestion = ({}) => {
     }
     console.log(imgArr);
   }, [img]);
+
+
+    const handleEtiquetas = (e) => {
+    if (e.target.checked) {
+      setInput({
+        ...input,
+        etiquetas: [...input.etiquetas, e.target.name],
+      });
+    } else {
+      setInput({
+        ...input,
+        etiquetas: input.etiquetas.filter((et) => et !== e.target.name),
+      });
+    }
+  }
 
   const handlePost = (e) => {
     e.preventDefault();
@@ -74,12 +90,9 @@ const AskQuestion = ({}) => {
               <input
                 className="m-3 placeholder:text-center shadow-lg rounded-b-lg bg-[#aaabac5b] shadow-[#1919191c]"
                 type="checkbox"
-                name='etiquetas'
+                name={etiqueta}
                 value={etiqueta.slice(1)}
-                onChange={(e) => {
-                  setInput({ ...input, [e.target.name]: e.target.value });
-        
-                }}
+                onChange={(e) => handleEtiquetas(e)}
               />
               <label>{etiqueta}</label>
             </div>
