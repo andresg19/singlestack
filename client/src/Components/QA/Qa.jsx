@@ -55,7 +55,7 @@ const Qa = () => {
                 etiquetas.map(etiqueta => (
               <div className="ml-8 w-[30%] text-center font-bold text-[#3B3A3A]">
               <p
-                value={etiqueta.slice(1)}
+                value={etiqueta}
                 className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white"
                 onClick={handleTagFilter}
                 >
