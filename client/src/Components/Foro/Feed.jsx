@@ -14,6 +14,7 @@ import { dateFormatter } from "../QA/Question";
 
 const Feed = ({ post, comments, id }) => {
   const dispatch = useDispatch();
+  console.log(post)
 
   const postComments = comments.filter((c) => c.feedPostId === id);
   const initialComments = postComments.slice(0, 2);
@@ -75,21 +76,13 @@ const Feed = ({ post, comments, id }) => {
             </p>
 
             <div className="flex justify-evenly p-4">
-              <img
-                src="https://www.economist.com/sites/default/files/images/2015/09/blogs/economist-explains/code2.png"
-                alt=""
-                className="w-40"
-              />
-              <img
-                src="https://www.economist.com/sites/default/files/images/2015/09/blogs/economist-explains/code2.png"
-                alt=""
-                className="w-40"
-              />
-              <img
-                src="https://www.economist.com/sites/default/files/images/2015/09/blogs/economist-explains/code2.png"
-                alt=""
-                className="w-40"
-              />
+             {
+             
+              post.img?.map((postimg) => (
+                <img src={postimg} alt="" />
+                
+                )) 
+             }
             </div>
           </div>
 
