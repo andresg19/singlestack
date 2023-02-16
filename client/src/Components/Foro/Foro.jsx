@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterFeedPost, getFeedPosts } from "../../Redux/Actions/Actions";
+import {  filterCommentsForo, filterDateForo, filterLikesForo, getFeedPosts } from "../../Redux/Actions/Actions";
 import Nav from "../NavBar/Nav";
 import PostsForo from "./PostForo";
 import Feed from "./Feed";
@@ -11,6 +11,7 @@ const Foro = () => {
   const dispatch = useDispatch();
   const actualUser = JSON.parse(localStorage.getItem("currentUser"));
   const posts = useSelector((state) => state.feedPosts);
+  console.log(posts)
   const comments = useSelector((state) => state.feedComments);
   const postFilter = useSelector((state) => state.feedPostFilter);
   console.log("🚀 ~ file: Foro.jsx:16 ~ Foro ~ postFilter", postFilter);
@@ -31,11 +32,24 @@ const Foro = () => {
     console.log("close");
   };
 
-  const handleFilter = (e) => {
+  const handleFilterLikes = (e) => {
     e.preventDefault();
-    console.log(e.target.value)
-    dispatch(filterFeedPost(e.target.value));
-    
+    dispatch(filterLikesForo());
+  }
+
+  const handleComments = (e) => {
+    e.preventDefault();
+    dispatch(filterCommentsForo());
+  }
+
+  const handleDate = (e) => {
+    e.preventDefault();
+    dispatch(filterDateForo());
+  }
+
+  const handleReload = (e) => {
+    e.preventDefault();
+    window.location.reload();
   };
 
   return (
@@ -74,32 +88,32 @@ const Foro = () => {
           {filterBool ? (
             <div className="flex justify-between">
               <button
-                value="likes"
-                onClick={handleFilter}
+                value="reload"
+                onClick={handleReload}
                 className="cursor-pointer"
               >
-                Más likes
+                Recargar
               </button>
               <button
-                value="comments"
-                onClick={handleFilter}
-                className="cursor-pointer"
-              >
-                Más comentarios
-              </button>
-              <button
-                value="nuevos"
-                onClick={handleFilter}
+                value="date"
+                onClick={handleDate}
                 className="cursor-pointer"
               >
                 Más Nuevos
               </button>
               <button
-                value="date"
-                onClick={handleFilter}
+                value="likes"
+                onClick={handleFilterLikes}
                 className="cursor-pointer"
               >
-                Más antiguos
+                Más Likes
+              </button>
+              <button
+                value="comments"
+                onClick={handleComments}
+                className="cursor-pointer"
+              >
+                Más Comentarios
               </button>
             </div>
           ) : null}

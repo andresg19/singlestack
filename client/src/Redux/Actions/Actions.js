@@ -24,6 +24,9 @@ import {
   POST_FEEDCOMMENTS,
   FILTER_FEED_POSTS,
   GET_POSTSRECIENTES,
+  FILTER_LIKES_FORO,
+  FILTER_COMMENTS_FORO,
+  FILTER_DATE_FORO,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -215,6 +218,7 @@ export const dislikeComment = (commentId, userId) => {
 
 export const getFeedPosts = () => {
   return async function (dispatch) {
+
     try {
       let result = await axios.get("http://localhost:3001/feedposts");
       return dispatch({
@@ -226,6 +230,50 @@ export const getFeedPosts = () => {
     }
   };
 };
+
+export const filterLikesForo = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feedposts/likes");
+      return dispatch({
+        type: FILTER_LIKES_FORO,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+export const filterCommentsForo = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feedposts/comments");
+      return dispatch({
+        type: FILTER_COMMENTS_FORO,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+export const filterDateForo = () => {
+  return async function (dispatch) {
+    try {
+      let result = await axios.get("http://localhost:3001/feedposts/date");
+      return dispatch({
+        type: FILTER_DATE_FORO,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+
 
 export const postFeedPosts = (payload) => {
   return async function (dispatch) {
@@ -332,19 +380,6 @@ export const postFeedComments = (payload) => {
   };
 };
 
-export const filterFeedPost = (filter) => {
-  return async function (dispatch) {
-    console.log(filter)
-    try {
-      return dispatch({
-        type: FILTER_FEED_POSTS,
-        payload: filter,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
 
 export const getRecientesPosts = () => {
   return async function (dispatch) {
