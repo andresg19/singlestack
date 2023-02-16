@@ -17,16 +17,13 @@ const Feed = ({ post, comments, id }) => {
 
   const postComments = comments.filter((c) => c.feedPostId === id);
   const initialComments = postComments.slice(0, 2);
-  console.log(initialComments)
   const likes = useSelector((state) => state.feedlikes);
   const postLikes = likes.filter((l) => l.postId === id);
   const dislikes = useSelector((state) => state.feeddislikes);
   const postDislikes = dislikes.filter((l) => l.postId === id);
   const actualUser = JSON.parse(localStorage.getItem("currentUser")).id;
   const [moreComments, setMoreComments] = useState(false);
-  console.log(moreComments)
   const [content, setContent] = useState("");
-  console.log(content);
   const payload = {
     author: JSON.parse(localStorage.getItem("currentUser")).fullname,
     feedPostId: post.id,

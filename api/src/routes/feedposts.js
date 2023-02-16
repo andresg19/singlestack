@@ -5,18 +5,49 @@ const { Feedposts } = require("../db.js");
 const { Feedlikes } = require("../db.js");
 
 router.get("/", async (req, res) => {
-
-
   try {
-    let allPosts = await Feedposts.findAll();
- 
-    res.status(200).send(allPosts); //
-    
-  } catch (error) {
-    res.status(400).json(`Error del catch post, ${error}`);
+  let allPosts = await Feedposts.findAll();
+  res.status(200).send(allPosts); //
   }
-});
+  catch (error) {
+  res.status(400).json(console.log(error));
+      
+  }
+  });
 
+router.get("/likes", async (req, res) => {
+  try {
+    let allPosts = await Feedposts.findAll({
+      order: [ ['likes', 'DESC'], ],
+    });
+    res.status(200).send(allPosts);
+  } catch (error) {
+    res.status(400).json(console.log(error))
+  }
+})
+
+router.get("/comments", async (req, res) => {
+  try {
+    let allPosts = await Feedposts.findAll({
+      order: [ ['comments', 'DESC'], ],
+    });
+    res.status(200).send(allPosts);
+  } catch (error) {
+    res.status(400).json(console.log(error))
+  }
+})
+
+router.get("/date", async (req, res) => {
+  try {
+    let allPosts =  await Feedposts.findAll({
+        order: [ ['createdAt', 'DESC'], ],
+      });
+      res.status(200).send(allPosts);
+  } catch (error) {
+    res.status(400).json(console.log(error))
+  }
+})
+ 
 router.post("/", async (req, res) => {
   let { content, author, img } = req.body;
   console.log(req.body);
@@ -62,6 +93,7 @@ router.get("/:id", async (req, res) => {
     res.status(400).json(console.log(error));
   }
 });
+
 
 //filtros feed
 
