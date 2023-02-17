@@ -10,6 +10,7 @@ import QuestionsUsers from "./Components/UserProfile/QuestionsUsers";
 import PostsResourcesUser from "./Components/UserProfile/PostsResourcesUser";
 import DefaultSectionUser from "./Components/UserProfile/DefaultSectionUser";
 import Foro from "./Components/Foro/Foro";
+import FeedPost from "./Components/Foro/FeedPost";
 
 
 
@@ -23,6 +24,7 @@ function App() {
     { path: "/register", element: <Register /> },
     { path: "/profile", element: <Profile /> },
     { path: "/question/:id", element: <Question /> },
+    { path: "/feedpost/:id", element: <FeedPost /> },
     { path: "/questionsusers", element: <QuestionsUsers /> },
     { path: "/postsresourcesuser", element: <PostsResourcesUser />},
     { path: "/defaultsectionuser", element: <DefaultSectionUser /> },

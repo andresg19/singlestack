@@ -40,6 +40,7 @@ const initialState = {
   feedlikes: [],
   feeddislikes: [],
   feedPostFilter: [],
+  feedPostDetail: [],
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -116,6 +117,12 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
         feedPosts: payload,
       };
+
+    case SEARCH_BY_ID:
+        return {
+          ...state,
+          feedPostDetail: payload[0], 
+        }
     case FILTER_LIKES_FORO: {
       return {
         ...state,
@@ -162,19 +169,8 @@ export default function rootReducer(state = initialState, { type, payload }) {
       };
     }
 
-     case FILTER_FEED_POSTS: {
-      return {
-        ...state,
-      }
-     }
-    case GET_POSTSRECIENTES: {
-      let copyState = state.posts.reverse();
-      console.log(copyState)
-      return {
-        ...state,
-        posts: [...copyState]
-      }
-    }
+  
+   
   
   default:
     return state;

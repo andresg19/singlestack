@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {  filterCommentsForo, filterDateForo, filterLikesForo, getFeedPosts } from "../../Redux/Actions/Actions";
 import Nav from "../NavBar/Nav";
 import PostsForo from "./PostForo";
-import Feed from "./Feed";
 import { feedAllComments } from "./../../Redux/Actions/Actions";
+import { AllFeedPosts } from "./AllFeedPosts"
+import { Link } from "react-router-dom";
 
 const Foro = () => {
   const dispatch = useDispatch();
@@ -13,8 +14,6 @@ const Foro = () => {
   const posts = useSelector((state) => state.feedPosts);
   console.log(posts)
   const comments = useSelector((state) => state.feedComments);
-  const postFilter = useSelector((state) => state.feedPostFilter);
-  console.log("🚀 ~ file: Foro.jsx:16 ~ Foro ~ postFilter", postFilter);
   const [modal, setModal] = useState(false);
   const [filterBool, setFilterBool] = useState(false);
 
@@ -118,16 +117,11 @@ const Foro = () => {
             </div>
           ) : null}
         </div>
-        {postFilter.length
-          ? postFilter.map((p) => (
-              <Feed post={p} comments={comments} key={p.id} id={p.id} />
-            ))
-          : posts.length
-          ? posts.map((p) => (
-              <Feed post={p} comments={comments} key={p.id} id={p.id} />
-            ))
-          : null}
+        
+          
+        <AllFeedPosts />
       </div>
+
     </div>
   );
 };

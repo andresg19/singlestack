@@ -27,6 +27,7 @@ import {
   FILTER_LIKES_FORO,
   FILTER_COMMENTS_FORO,
   FILTER_DATE_FORO,
+  SEARCH_FEEDPOST_ID,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -230,6 +231,22 @@ export const getFeedPosts = () => {
     }
   };
 };
+
+export const searchFeedPost = (id) => {
+  return async function (dispatch) {
+    console.log('entre')
+    try {
+      let result = await axios.get(`http://localhost:3001/feedposts/${id}`);
+      return dispatch({
+        type: SEARCH_FEEDPOST_ID,
+        payload: result.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 
 export const filterLikesForo = () => {
   return async function (dispatch) {

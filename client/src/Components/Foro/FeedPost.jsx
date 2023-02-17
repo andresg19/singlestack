@@ -6,16 +6,22 @@ import {
   getFeedDislikes,
   getFeedLikes,
   postFeedComments,
+  searchFeedPost,
 } from "../../Redux/Actions/Actions";
 import fingerSVG from "../../assets/imgs/fingerSVG.svg";
 import userWhite from "../../assets/imgs/userWhite.png";
 import bookmark from "../../assets/imgs/bookmark.png";
 import { dateFormatter } from "../QA/Question";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
-const Feed = ({ post, comments, id }) => {
+const FeedPost = ({ post, comments }) => {
   const dispatch = useDispatch();
   console.log(post)
-
+  const { id } = useParams();
+  console.log(id)
+  const currentPost = useSelector((state) => state.feedPostDetail);
+  console.log(currentPost)
   const postComments = comments.filter((c) => c.feedPostId === id);
   const initialComments = postComments.slice(0, 2);
   const likes = useSelector((state) => state.feedlikes);
@@ -34,6 +40,7 @@ const Feed = ({ post, comments, id }) => {
   useEffect(() => {
     dispatch(getFeedLikes());
     dispatch(getFeedDislikes());
+    dispatch(searchFeedPost(id))
   }, []);
 
   const handleLike = (e) => {
@@ -53,6 +60,8 @@ const Feed = ({ post, comments, id }) => {
     dispatch(postFeedComments(payload));
     window.location.reload();
   };
+
+  
 
   return (
     //div padre
@@ -171,4 +180,4 @@ const Feed = ({ post, comments, id }) => {
     </div>
   );
 };
-export default Feed;
+export default FeedPost;
