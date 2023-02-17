@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { postPost } from "../../Redux/Actions/Actions";
 import Nav from "../NavBar/Nav";
 import Footer from "../Footer/Footer";
+import { etiquetas } from "./etiquetas"
 
 const AskQuestion = ({}) => {
   const dispatch = useDispatch();
@@ -10,8 +11,9 @@ const AskQuestion = ({}) => {
     title: "",
     content: "",
     author: JSON.parse(localStorage.getItem("currentUser")).fullname,
-    etiquetas: "",
+    etiquetas:[],
   });
+
   console.log(input);
   const [img, setImg] = useState("");
   const [imgArr, setImgArr] = useState([]);
@@ -22,6 +24,21 @@ const AskQuestion = ({}) => {
     }
     console.log(imgArr);
   }, [img]);
+
+
+    const handleEtiquetas = (e) => {
+    if (e.target.checked) {
+      setInput({
+        ...input,
+        etiquetas: [...input.etiquetas, e.target.name],
+      });
+    } else {
+      setInput({
+        ...input,
+        etiquetas: input.etiquetas.filter((et) => et !== e.target.name),
+      });
+    }
+  }
 
   const handlePost = (e) => {
     e.preventDefault();
@@ -66,16 +83,23 @@ const AskQuestion = ({}) => {
             setInput({ ...input, [e.target.name]: e.target.value });
           }}
         />
-        <input
-          className="m-3 placeholder:text-center shadow-lg rounded-b-lg bg-[#aaabac5b] shadow-[#1919191c]"
-          type="text"
-          name="etiquetas"
-          placeholder="javascript python node"
-          value={input.etiquetas}
-          onChange={(e) => {
-            setInput({ ...input, [e.target.name]: e.target.value });
-          }}
-        />
+        <div>
+        {
+          etiquetas.map(etiqueta => (
+            <div>
+              <input
+                className="m-3 placeholder:text-center shadow-lg rounded-b-lg bg-[#aaabac5b] shadow-[#1919191c]"
+                type="checkbox"
+                name={etiqueta}
+                value={etiqueta.slice(1)}
+                onChange={(e) => handleEtiquetas(e)}
+              />
+              <label>{etiqueta}</label>
+            </div>
+              ))
+        }
+
+        </div>
         {/* <input
           id="dropzone-file" className="hidden" 
           type="file"

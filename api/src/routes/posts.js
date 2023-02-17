@@ -25,15 +25,13 @@ router.post("/", async (req, res) => {
   let { title, content, author, etiquetas, img } = req.body;
   console.log(req.body);
 
-  let splitEtiquetas = etiquetas.split(" ");
-
   try {
     let [posts, created] = await Posts.findOrCreate({
       where: {
         title,
         content,
         author,
-        etiquetas: splitEtiquetas,
+        etiquetas,
         img,
       },
     });
@@ -61,9 +59,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 //EDITA UN POST
-router.get("/", async (req, res) => {
-  console.log("Hola desde el get");
-});
+
 
 //BUSCA UN POST
 router.get("/:id", async (req, res) => {
@@ -105,5 +101,7 @@ router.get("/ematch/:etiqueta", async (req, res, next) => {
     res.status(404).json(next(error));
   }
 });
+
+
 
 module.exports = router;

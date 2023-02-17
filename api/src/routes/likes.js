@@ -17,28 +17,25 @@ router.put("/:commentId", async (req, res, next) => {
   let { userId } = req.body;
 
   const matchLike = await Likes.findOne({
-      where: {commentId, userId}
-    })
+    where: { commentId, userId },
+  });
 
-  if ( !matchLike ) {
+  if (!matchLike) {
     let newMatch = await Likes.create({
       likes: 1,
       commentId,
       userId,
-    }) 
-    res.status(200).send(newMatch)
-
+    });
+    res.status(200).send(newMatch);
   } else {
     let deleteLike = await Likes.destroy({
       where: { commentId, userId },
-    })
-    res.status(200).send('borrado')
+    });
+    res.status(200).send("borrado");
   }
- 
-})  
-     
-  
-  module.exports = router
+});
+
+module.exports = router;
 
 /* 
   //  if (like.length) {
@@ -110,5 +107,3 @@ router.put("/:commentId", async (req, res, next) => {
 //muestre todos los likes
 //muestre todos los dislikes
 //put
-
-

@@ -5,9 +5,9 @@ import { getPosts } from "../../Redux/Actions/Actions";
 
 const Questions = ({ handleSearch }) => {
   const dispatch = useDispatch();
-  const posteos = useSelector((state) => state.posts);
   useEffect(() => {
     dispatch(getPosts());
+
   }, []);
 
   return (

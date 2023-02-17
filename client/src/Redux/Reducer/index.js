@@ -13,6 +13,19 @@ import {
   ALL_DISLIKES,
   DISLIKE_UP,
   DISLIKE_DOWN,
+  GET_FEEDPOSTS,
+  FEEDCOMMENTS,
+  FEEDLIKES,
+  GETLIKES,
+  FEEDDISLIKES,
+  GETDISLIKES,
+  FILTER,
+  FILTER_FEED_POSTS,
+  GET_POSTSRECIENTES,
+  FILTER_LIKES_FORO,
+  FILTER_COMMENTS_FORO,
+  FILTER_DATE_FORO,
+  SEARCH_FEEDPOST_ID,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -23,6 +36,12 @@ const initialState = {
   commentsDetail: [],
   likes: [],
   dislikes: [],
+  feedPosts: [],
+  feedComments: [],
+  feedlikes: [],
+  feeddislikes: [],
+  feedPostFilter: [],
+  feedPostDetail: [],
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -94,7 +113,67 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
-    default:
-      return state;
+    case GET_FEEDPOSTS:
+      return {
+        ...state,
+        feedPosts: payload,
+      };
+
+    case SEARCH_FEEDPOST_ID:
+        return {
+          ...state,
+          feedPostDetail: payload[0], 
+        }
+    case FILTER_LIKES_FORO: {
+      return {
+        ...state,
+        feedPosts: payload,
+      }
+    }
+    case FILTER_COMMENTS_FORO: {
+      return {
+        ...state,
+        feedPosts: payload,
+      }
+    }
+    case FILTER_DATE_FORO: {
+      return {
+        ...state,
+        feedPosts: payload,
+      }
+    }
+    case FEEDCOMMENTS:
+      return {
+        ...state,
+        feedComments: payload,
+      };
+    case GETLIKES: {
+      return {
+        ...state,
+        feedlikes: payload,
+      };
+    }
+    case GETDISLIKES: {
+      return {
+        ...state,
+        feeddislikes: payload,
+      };
+    }
+    case FEEDLIKES: {
+      return {
+        ...state,
+      };
+    }
+    case FEEDDISLIKES: {
+      return {
+        ...state,
+      };
+    }
+
+  
+   
+  
+  default:
+    return state;
   }
 }
