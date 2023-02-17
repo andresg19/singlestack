@@ -25,6 +25,7 @@ import {
   FILTER_LIKES_FORO,
   FILTER_COMMENTS_FORO,
   FILTER_DATE_FORO,
+  SEARCH_FEEDPOST_ID,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -118,7 +119,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
         feedPosts: payload,
       };
 
-    case SEARCH_BY_ID:
+    case SEARCH_FEEDPOST_ID:
         return {
           ...state,
           feedPostDetail: payload[0], 

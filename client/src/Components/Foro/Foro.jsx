@@ -5,7 +5,7 @@ import {  filterCommentsForo, filterDateForo, filterLikesForo, getFeedPosts } fr
 import Nav from "../NavBar/Nav";
 import PostsForo from "./PostForo";
 import { feedAllComments } from "./../../Redux/Actions/Actions";
-import { AllFeedPosts } from "./AllFeedPosts"
+import  AllFeedPosts  from "./AllFeedPosts"
 import { Link } from "react-router-dom";
 
 const Foro = () => {

@@ -4,47 +4,26 @@ import { getFeedPosts } from '../../Redux/Actions/Actions';
 import userWhite from "../../assets/imgs/userWhite.png";
 import bookmark from "../../assets/imgs/bookmark.png";
 import { dateFormatter } from "../QA/Question";
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
-const AllFeedPosts = ({post}) => {
+const AllFeedPosts = () => {
     const dispatch = useDispatch();
     const feedPosts = useSelector((state) => state.feedPosts);
-  
-    //console.log("dislikes", dislikes);
     useEffect(() => {
       dispatch(getFeedPosts())
-      // dispatch(getFeedLikes());
-      // dispatch(getFeedDislikes());
-      // dispatch(searchFeedPost(id))
     }, []);
   
-    // const handleLike = (e) => {
-    //   e.preventDefault();
-    //   dispatch(feedLikes(post.id, actualUser));
-    //   window.location.reload();
-    // };
-    // const handleDislike = (e) => {
-    //   e.preventDefault();
-    //   dispatch(feedDislikes(post.id, actualUser));
-    //   window.location.reload();
-    // };
-  
-    // const handleCommentSubmit = (e) => {
-    //   e.preventDefault();
-    //   payload.content = content;
-    //   dispatch(postFeedComments(payload));
-    //   window.location.reload();
-    // };
-  
+
     
   
     return (
       //div padre
       <div className="mt-10  w-[90%] ml-auto mr-auto">
         {feedPosts.length ? 
-        feedPosts.map((post) => {
-          
-        }): null}
+        feedPosts.map((post) => (
+
         <div className="pt-4 mx-8 rounded-xl">
           <div className="pt-5 shadow-md bg-[#0f1629ac] shadow-[#0f0f0fbd]">
             <div className="flex justify-between mb-2 mx-2 text-black">
@@ -71,8 +50,21 @@ const AllFeedPosts = ({post}) => {
                   
                   )) 
                }
+         <p className="underline ml-[80%]">
+                <Link to={"/feedpost/" + post.id}>Saber mas...</Link>
+              </p>
               </div>
             </div>
+                  </div>
+                  </div>
+        )
+          
+        ): null}
+                </div>
+              ); 
+          }
+           
+          export default AllFeedPosts;
   
             {/* <div className=" flex shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
               <h2 className="text-green-600">
@@ -94,7 +86,6 @@ const AllFeedPosts = ({post}) => {
                 />
               </h2>
             </div> */}
-          </div>
           {/* <div className="pt-5 mx-10 shadow-md mt-2 bg-[#0f1629ac] shadow-[#0f0f0fbd]">
             <div className="flex border-b border-gray-400 mb-2 pb-5">
               <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
@@ -155,9 +146,3 @@ const AllFeedPosts = ({post}) => {
           <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
             cargar mas comentarios...
           </button> */}
-        </div>
-      </div>
-    ); 
-}
- 
-export default AllFeedPosts;

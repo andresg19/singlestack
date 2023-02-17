@@ -236,7 +236,8 @@ export const searchFeedPost = (id) => {
   return async function (dispatch) {
     console.log('entre')
     try {
-      let result = await axios.get(`http://localhost:3001/feedposts/${id}`);
+      let result = await axios.get('http://localhost:3001/feedposts/' + id);
+      console.log(result.data)
       return dispatch({
         type: SEARCH_FEEDPOST_ID,
         payload: result.data,
