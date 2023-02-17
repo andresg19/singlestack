@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { filterLikesFeed } = require("../helpers/filterLikesFeed");
 const router = Router();
-const { Feedposts } = require("../db.js");
+const { Feedposts, Feedcomments } = require("../db.js");
 const { Feedlikes } = require("../db.js");
 
 router.get("/", async (req, res) => {
@@ -81,14 +81,17 @@ router.delete("/:id", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-
+  console.log(id)
+  console.log('entre')
+ 
   try {
-    let search = Feedposts.findOne({
+    let search = await Feedposts.findOne({
       where: {
         id: id,
       },
     });
-    res.status(200).send(search);
+    let allComments = await Feedcomments.findAll({ where: { feedPostId: id } });
+    res.status(200).send([search, allComments]);
   } catch (error) {
     res.status(400).json(console.log(error));
   }
