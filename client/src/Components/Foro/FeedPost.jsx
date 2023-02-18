@@ -20,15 +20,15 @@ const FeedPost = () => {
   const { id } = useParams();
   console.log(id)
   const currentPost = useSelector((state) => state.feedPostDetail);
-  const comments = useSelector((state) => state.feedComments);
+  const comments = useSelector((state) => state.feedPostComments);
   console.log(comments)
   console.log(currentPost)
   const postComments = comments.filter((c) => c.feedPostId === id);
   const initialComments = postComments.slice(0, 2);
   const likes = useSelector((state) => state.feedlikes);
-  // const postLikes = likes.filter((l) => l.postId === id);
+  const postLikes = likes.filter((l) => l.postId === id);
   const dislikes = useSelector((state) => state.feeddislikes);
-  // const postDislikes = dislikes.filter((l) => l.postId === id);
+  const postDislikes = dislikes.filter((l) => l.postId === id);
   const actualUser = JSON.parse(localStorage.getItem("currentUser")).id;
   const [moreComments, setMoreComments] = useState(false);
   const [content, setContent] = useState("");
@@ -39,21 +39,21 @@ const FeedPost = () => {
 
   //console.log("dislikes", dislikes);
   useEffect(() => {
-    // dispatch(getFeedLikes());
-    // dispatch(getFeedDislikes());
+    dispatch(getFeedLikes());
+    dispatch(getFeedDislikes());
     dispatch(searchFeedPost(id))
   }, []);
 
-  // const handleLike = (e) => {
-  //   e.preventDefault();
-  //   dispatch(feedLikes(post.id, actualUser));
-  //   window.location.reload();
-  // };
-  // const handleDislike = (e) => {
-  //   e.preventDefault();
-  //   dispatch(feedDislikes(post.id, actualUser));
-  //   window.location.reload();
-  // };
+  const handleLike = (e) => {
+    e.preventDefault();
+    dispatch(feedLikes(id, actualUser));
+    window.location.reload();
+  };
+  const handleDislike = (e) => {
+    e.preventDefault();
+    dispatch(feedDislikes(id, actualUser));
+    window.location.reload();
+  };
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
@@ -96,7 +96,7 @@ const FeedPost = () => {
             </div>
           </div>
 
-          {/* <div className=" flex shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
+          <div className=" flex shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
             <h2 className="text-green-600">
               Útil: {postLikes ? postLikes.length : 0}
               <img
@@ -115,7 +115,7 @@ const FeedPost = () => {
                 onClick={handleDislike}
               />
             </h2>
-          </div> */}
+          </div>
         </div>
         <div className="pt-5 mx-10 shadow-md mt-2 bg-[#0f1629ac] shadow-[#0f0f0fbd]">
           <div className="flex border-b border-gray-400 mb-2 pb-5">

@@ -13,7 +13,6 @@ const Foro = () => {
   const actualUser = JSON.parse(localStorage.getItem("currentUser"));
   const posts = useSelector((state) => state.feedPosts);
   console.log(posts)
-  const comments = useSelector((state) => state.feedComments);
   const [modal, setModal] = useState(false);
   const [filterBool, setFilterBool] = useState(false);
 

@@ -37,6 +37,7 @@ const initialState = {
   likes: [],
   dislikes: [],
   feedPosts: [],
+  feedPostComments: [],
   feedComments: [],
   feedlikes: [],
   feeddislikes: [],
@@ -123,6 +124,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
         return {
           ...state,
           feedPostDetail: payload[0], 
+          feedPostComments: payload[1]
         }
     case FILTER_LIKES_FORO: {
       return {
