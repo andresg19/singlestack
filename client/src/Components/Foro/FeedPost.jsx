@@ -20,9 +20,11 @@ const FeedPost = () => {
   const { id } = useParams();
   console.log(id)
   const currentPost = useSelector((state) => state.feedPostDetail);
+  const comments = useSelector((state) => state.feedComments);
+  console.log(comments)
   console.log(currentPost)
-  // const postComments = comments.filter((c) => c.feedPostId === id);
-  // const initialComments = postComments.slice(0, 2);
+  const postComments = comments.filter((c) => c.feedPostId === id);
+  const initialComments = postComments.slice(0, 2);
   const likes = useSelector((state) => state.feedlikes);
   // const postLikes = likes.filter((l) => l.postId === id);
   const dislikes = useSelector((state) => state.feeddislikes);
@@ -115,7 +117,7 @@ const FeedPost = () => {
             </h2>
           </div> */}
         </div>
-        {/* <div className="pt-5 mx-10 shadow-md mt-2 bg-[#0f1629ac] shadow-[#0f0f0fbd]">
+        <div className="pt-5 mx-10 shadow-md mt-2 bg-[#0f1629ac] shadow-[#0f0f0fbd]">
           <div className="flex border-b border-gray-400 mb-2 pb-5">
             <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
             <input
@@ -149,7 +151,7 @@ const FeedPost = () => {
            :
            moreComments === true ?
            (
-            postComments.map((c) => (
+            comments.map((c) => (
               <div className="">
                 <div className="flex text-black pb-4" key={c.id}>
                   <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
@@ -171,7 +173,7 @@ const FeedPost = () => {
               No hay comentarios aún
             </h1>
           )}
-        </div> */}
+        </div>
         <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
           cargar mas comentarios...
         </button>
