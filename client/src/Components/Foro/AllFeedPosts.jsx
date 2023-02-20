@@ -7,6 +7,8 @@ import { dateFormatter } from "../QA/Question";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import fingerSVG from "../../assets/imgs/fingerSVG.svg";
+import commentSVG from "../../assets/imgs/comment.svg";
+import FeedPost from "./FeedPost";
 
 const AllFeedPosts = () => {
   const dispatch = useDispatch();
@@ -17,6 +19,8 @@ const AllFeedPosts = () => {
 
   useEffect(() => {
     dispatch(getFeedPosts());
+    dispatch(feedLikes());
+    dispatch(feedDislikes());
   }, []);
 
 
@@ -27,6 +31,7 @@ const AllFeedPosts = () => {
     <div className="mt-10  w-[90%] ml-auto mr-auto">
       {feedPosts.length
         ? feedPosts.map((post) => (
+    
             <div className="pt-4 mx-8 rounded-xl">
               <div className="pt-5 shadow-md bg-[#0f1629ac] shadow-[#0f0f0fbd]">
                 <div className="flex justify-between mb-2 mx-2 text-black">
@@ -59,17 +64,17 @@ const AllFeedPosts = () => {
               
                 <div className=" flex shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
             <h2 className="text-green-600">
-              Útil: {likes.filter((l) => l.postId === post.id).length}
+              {post.likes}
               <img
                 src={fingerSVG}
                 alt=""
                 className="w-8"
               />
             </h2>
-            <h2 className="ml-2 text-red-600">
-              No util: {dislikes.filter((l) => l.postId === post.id).length}
+            <h2 className="text-sm mr-1 text-white">
+               {post.comments}
               <img
-                src={fingerSVG}
+                src={commentSVG}
                 alt=""
                 className="w-8 rotate-180"
               />
