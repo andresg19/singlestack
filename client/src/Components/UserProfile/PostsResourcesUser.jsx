@@ -47,7 +47,7 @@ const PostsResourcesUser = () => {
               <div className="grid mt-[2%] ml-auto w-[25%]">
                 <p>{p.date}</p>
                 <p>
-                  <Link to={ + p.id} >
+                  <Link to={ "/feedpost/" + p.id } >
                   Ver posteo
                   </Link>
                 </p>

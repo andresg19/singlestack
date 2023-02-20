@@ -41,7 +41,6 @@ const Profile = () => {
       </div>
       <div className="m-[10%] ml-auto mr-auto py-4 text-[#0000FF] text-xs text-center">
        <p>Configurar perfil</p>
-       <p>Cambiar contraseña</p>
       </div>
     </div>
     {
