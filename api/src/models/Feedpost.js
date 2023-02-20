@@ -26,6 +26,11 @@ module.exports = (sequelize) => {
       defaultValue: 0,
     },
 
+    dislikes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+
     comments: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
