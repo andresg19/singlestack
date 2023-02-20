@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { Feeddislikes } = require("../db.js");
+const { Feeddislikes, Feedposts } = require("../db.js");
 
 router.get("/", async (req, res) => {
   try {
@@ -26,16 +26,29 @@ router.put("/:postId", async (req, res, next) => {
         postId,
         userId,
       });
+
+      let newLikeInPost = await Feedposts.increment("dislikes", {
+        by: 1,
+        where: { id: postId },
+      });
+
       res.status(200).send(newMatch);
     } else {
       let deleteLike = await Feeddislikes.destroy({
         where: { postId, userId },
       });
+
+      let newDislikeInPost = await Feedposts.decrement("dislikes", {
+        by: 1,
+        where: { id: postId },
+      });
+
       res.status(200).send("borrado");
     }
   } catch (error) {
     console.log(error);
   }
 });
+
 
 module.exports = router;
