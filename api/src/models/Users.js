@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
       email: {
         type: DataTypes.TEXT,
       },
+      
+      img: {
+        type: DataTypes.TEXT,
+      },
 
       password: {
         type: DataTypes.STRING,

@@ -59,6 +59,26 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
+router.put("/:userId", async (req, res, next) => {
+  try {
+    let { userId } = req.params
+    const { fullname, img, password } = req.body
+    console.log(req.body)
+    
+    const user = await Users.update({
+      fullname, img, password,
+    },
+    {
+      where: {id: userId},
+    });
+
+    res.status(200).send(user);
+
+  } catch (error) {
+    next(error);
+  }
+})
+
 //DELETE USER
 router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
