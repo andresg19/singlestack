@@ -1,8 +1,8 @@
 import React from "react";
 
-const FingerDislike = ({ dislikes, comment, userId }) => {
-  let likeFilter = dislikes.filter((l) => l.commentId === comment.id);
-  let userLike = likeFilter.filter((l) => l.userId === userId);
+const FingerDislikesForo = ({ dislikes,  userId }) => {
+  let result = dislikes.filter((d) => d.userId === userId)
+  console.log(result)
 
   /*   useEffect(() => {
       
@@ -17,7 +17,7 @@ const FingerDislike = ({ dislikes, comment, userId }) => {
     >
       <g
         transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-        fill={userLike.length ? "red" : "black"}
+        fill={result.length ? "red" : "black"}
       >
         <path
           d="M1725 5106 c-65 -21 -99 -42 -142 -89 -84 -91 -93 -134 -93 -458 l0
@@ -54,4 +54,4 @@ m-1400 1327 c38 -19 62 -40 82 -72 l29 -46 0 -384 c0 -430 1 -424 -72 -487
   );
 };
 
-export default FingerDislike;
+export default FingerDislikesForo;

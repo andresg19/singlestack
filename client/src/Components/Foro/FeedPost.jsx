@@ -14,6 +14,9 @@ import bookmark from "../../assets/imgs/bookmark.png";
 import { dateFormatter } from "../QA/Question";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import FingerDislikesForo from "./FingerDislikesForo";
+import FingerLikesForo from "./FingerLikesForo";
+
 
 const FeedPost = () => {
   const dispatch = useDispatch();
@@ -96,26 +99,36 @@ const FeedPost = () => {
             </div>
           </div>
 
-          <div className=" flex shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
-            <h2 className="text-green-600">
-              Útil: {postLikes ? postLikes.length : 0}
-              <img
-                src={fingerSVG}
-                alt=""
-                className="w-8"
-                onClick={handleLike}
-              />
-            </h2>
-            <h2 className="ml-2 text-red-600">
-              No util: {postDislikes ? postDislikes.length : 0}
-              <img
-                src={fingerSVG}
-                alt=""
-                className="w-8 rotate-180"
-                onClick={handleDislike}
-              />
-            </h2>
-          </div>
+          <div className="-mt-10">
+                        <div className="">
+                          <p className="text-[#1b7161] ml-[2.5%]">
+                            {postLikes.length}
+                          </p>
+                          <div
+                            className="cursor-pointer hover:cursor-pointer"
+                            onClick={(e) => handleLike(e)}
+                          >
+                            <FingerLikesForo
+                              likes={postLikes}
+                              userId={actualUser}
+                            />
+                          </div>
+                        </div>
+                        <div className="">
+                          <div
+                            className="cursor-pointer hover:cursor-pointer"
+                            onClick={(e) => handleDislike(e)}
+                          >
+                            <FingerDislikesForo
+                              dislikes={postDislikes}
+                              userId={actualUser}
+                            />
+                          </div>
+                          <p className="text-[#C20000] ml-[2.5%]">
+                            {postDislikes.length}
+                          </p>
+                        </div>
+                      </div>
         </div>
         <div className="pt-5 mx-10 shadow-md mt-2 bg-[#0f1629ac] shadow-[#0f0f0fbd]">
           <div className="flex border-b border-gray-400 mb-2 pb-5">
