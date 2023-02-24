@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
       },
       
       img: {
-        type: DataTypes.TEXT,
+        type:  DataTypes.ARRAY(DataTypes.TEXT),
       },
 
       password: {

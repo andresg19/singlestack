@@ -59,17 +59,19 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.put("/:userId", async (req, res, next) => {
+router.put("/", async (req, res, next) => {
   try {
-    let { userId } = req.params
-    const { fullname, img, password } = req.body
-    console.log(req.body)
+    const { input } = req.body
+    console.log(input)
     
     const user = await Users.update({
-      fullname, img, password,
+      fullname: input.fullname,
+      img: input.img,
+      password: input.password, 
+
     },
     {
-      where: {id: userId},
+      where: {id: input.id},
     });
 
     res.status(200).send(user);
