@@ -26,6 +26,7 @@ import {
   FILTER_COMMENTS_FORO,
   FILTER_DATE_FORO,
   SEARCH_FEEDPOST_ID,
+  PUT_PROFILE,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -167,6 +168,11 @@ export default function rootReducer(state = initialState, { type, payload }) {
       };
     }
     case FEEDDISLIKES: {
+      return {
+        ...state,
+      };
+    }
+    case PUT_PROFILE: {
       return {
         ...state,
       };
