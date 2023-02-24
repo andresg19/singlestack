@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { feedDislikes, feedLikes, getFeedPosts } from "../../Redux/Actions/Actions";
 import userWhite from "../../assets/imgs/userWhite.png";
@@ -8,6 +8,8 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import fingerSVG from "../../assets/imgs/fingerSVG.svg";
 import commentSVG from "../../assets/imgs/comment.svg";
+import close from "../../assets/imgs/close.svg";
+
 import FeedPost from "./FeedPost";
 
 const AllFeedPosts = () => {
@@ -24,6 +26,13 @@ const AllFeedPosts = () => {
   }, []);
 
 
+  const [model, setModel] = useState(false);
+  const [imgSrc, setImgSrc] = useState("");
+
+  const getImg = (img) => {
+    setImgSrc(img);
+    setModel(true);
+  };
   
 
   return (
@@ -52,9 +61,23 @@ const AllFeedPosts = () => {
                     {post.content}
                   </p>
 
+                  {model ? (
+              <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+                <img src={imgSrc} alt="" className="max-w-3xl" />
+                <img
+                  src={close}
+                  alt=""
+                  className="mb-[89vh] ml-2 cursor-pointer w-[2rem] h-[2rem]"
+                  onClick={() => setModel(false)}
+                />
+              </div>
+            ) : null}
                   <div className="flex justify-evenly p-4">
-                    {post.img?.map((postimg) => (
-                      <img src={postimg} alt="" />
+                    {post.img?.map((postimg, index) => (
+                      <div key={index} onClick={() => getImg(postimg)}>
+                        <img src={postimg} alt="img not found"
+                         className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg" />
+                      </div>
                     ))}
                     <p className="underline ml-[80%]">
                       <Link to={"/feedpost/" + post.id}>Saber mas...</Link>

@@ -16,6 +16,8 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import FingerDislikesForo from "./FingerDislikesForo";
 import FingerLikesForo from "./FingerLikesForo";
+import close from "../../assets/imgs/close.svg";
+
 
 
 const FeedPost = () => {
@@ -65,6 +67,15 @@ const FeedPost = () => {
     window.location.reload();
   };
 
+
+  const [model, setModel] = useState(false);
+  const [imgSrc, setImgSrc] = useState("");
+
+  const getImg = (img) => {
+    setImgSrc(img);
+    setModel(true);
+  };
+
   
 
   return (
@@ -88,14 +99,29 @@ const FeedPost = () => {
               {currentPost.content}
             </p>
 
-            <div className="flex justify-evenly p-4">
-             {
-             
-              currentPost.img?.map((postimg) => (
-                <img src={postimg} alt="" />
-                
-                )) 
-             }
+            {model ? (
+              <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+                <img src={imgSrc} alt="" className="max-w-3xl" />
+                <img
+                  src={close}
+                  alt=""
+                  className="mb-[89vh] ml-2 cursor-pointer w-[2rem] h-[2rem]"
+                  onClick={() => setModel(false)}
+                />
+              </div>
+            ) : null}
+            <div className=" justify-center space-x-8 m-8 mt-12">
+              {currentPost.img?.map((img, index) => {
+                return (
+                  <div key={index} onClick={() => getImg(img)}>
+                    <img
+                      src={img}
+                      alt="img not found"
+                      className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
 
