@@ -28,6 +28,7 @@ import {
   FILTER_COMMENTS_FORO,
   FILTER_DATE_FORO,
   SEARCH_FEEDPOST_ID,
+  PUT_PROFILE,
 } from "../Actions/ActionTypes";
 
 export const getUsers = (payload) => {
@@ -410,3 +411,19 @@ export const getRecientesPosts = () => {
     }
   };
 };
+
+export const putProfile = (input) => {
+  return async function (dispatch) {
+    try {
+      console.log('entre')
+      const result = await axios.put("http://localhost:3001/users",
+      {input});
+      console.log(result.data)
+      return dispatch({
+        type: PUT_PROFILE,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}

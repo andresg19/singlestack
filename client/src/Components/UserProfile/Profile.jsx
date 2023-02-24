@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { dateFormatter } from "../QA/Question";
+import Config from "./Config";
 import DefaultSectionUser from "./DefaultSectionUser";
 import PostsResourcesUser from "./PostsResourcesUser";
 import QuestionsUsers from "./QuestionsUsers";
@@ -11,6 +13,16 @@ const Profile = () => {
       : []
   );
   console.log(user);
+  const [modal, setModal] = useState(false);
+  
+  const modalOpen = () => {
+    setModal(true);
+    console.log("open");
+  };
+  const modalClose = () => {
+    setModal(false);
+    console.log("close");
+  };
 
   const [sectionUser, setSectionUser] = useState(('initialValue'));
   console.log(sectionUser)
@@ -22,7 +34,7 @@ const Profile = () => {
     <div className="justify-center  grid m-[10%] w-[20%] py-2  bg-[#1C1C1C] rounded-xl">
       <div className="m-[10%] ml-auto mr-auto text-white text-sm py-4 text-center">
         <img
-          src="https://thumbs.dreamstime.com/b/default-profile-picture-avatar-photo-placeholder-vector-illustration-default-profile-picture-avatar-photo-placeholder-vector-189495158.jpg"
+          src={user.img}
           alt="not found"
           width={50}
           className="ml-auto mr-auto"
@@ -40,10 +52,23 @@ const Profile = () => {
         >Ver mis publicaciones</p>
       </div>
       <div className="m-[10%] ml-auto mr-auto py-4 text-[#0000FF] text-xs text-center">
-       <p>Configurar perfil</p>
+       <p 
+       onClick={modalOpen}>
+        Configurar perfil
+      </p>
+
+      
+
       </div>
     </div>
+      
     {
+        modal ? (
+          <div className="w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-[#1C1C1C]  rounded-xl">
+            <Config />
+            <button onClick={modalClose}>Cerrar ventana</button>
+          </div>
+        ) :
      sectionUser && sectionUser === 'initialValue' ? 
      ( 
      <div className="w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-[#1C1C1C]  rounded-xl">
