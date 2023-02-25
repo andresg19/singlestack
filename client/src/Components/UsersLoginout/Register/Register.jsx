@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { register } from "../../../Redux/Actions/Actions";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Swal from 'sweetalert2'
+
 
 export function validate(input) {
   let errors = {};
@@ -43,6 +45,11 @@ const Register = () => {
     );
   };
 
+  
+  const handleNavigate = () => {
+    navigate('/login')
+  }
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     const errorsValidations = validate(input);
@@ -54,7 +61,17 @@ const Register = () => {
         email: "",
         password: "",
       });
-      navigate("/login");
+      Swal.fire({
+        icon: 'success',
+        text: 'Registro exitoso',
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload()
+      } 
+      
+    })
+      
     }
   };
   return (
@@ -99,6 +116,13 @@ const Register = () => {
           Confirm
           </button>
       </form>
+
+      <button 
+        className="flex text-sm bg-[#aaabac5b] shadow-lg shadow-[#19191980] w-[14%] mr-auto ml-auto"
+        onClick={handleNavigate} 
+        type="submit">
+          Iniciar sesión
+      </button>
       <div className="w-[30%] text-gray-900 p-10 ml-auto mr-auto">
         <h1>singlestack</h1>
       </div>
