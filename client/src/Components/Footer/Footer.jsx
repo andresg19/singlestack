@@ -6,7 +6,7 @@ const Footer = () => {
     <footer class="flex w-full mt-8 h-40 bg-[#000000] justify-between">
       <div className="ml-4">
         <div className=" text-3xl">
-          <h2 className="text-white mt-4">singlestack co</h2>
+          <h2 className="text-blue-900 mt-4">singlestack co</h2>
           <img src={linkedin} alt="" className="w-12 h-12 mt-8" />
         </div>
       </div>
