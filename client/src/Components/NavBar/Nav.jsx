@@ -26,7 +26,7 @@ const Nav = () => {
         <Link to="/q-a">
           <button
             type="button"
-            className="font-light text-white bg-black opacity-75 rounded-[5px] w-[130px] py-1"
+            className="font-light text-white bg-black opacity-75 rounded-[5px] w-[130px] py-1 shadow-sm shadow-black"
           >
             Q-A
           </button>
@@ -34,7 +34,7 @@ const Nav = () => {
         <Link to="/foro">
           <button
             type="button"
-            className="font-light bg-black opacity-75 rounded-[8px] w-[130px] py-1"
+            className="font-light bg-black opacity-75 rounded-[8px] w-[130px] py-1 shadow-sm shadow-black"
           >
             Foro
           </button>
