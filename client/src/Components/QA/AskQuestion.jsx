@@ -16,6 +16,7 @@ const AskQuestion = ({}) => {
 
   console.log(input);
   const [img, setImg] = useState("");
+  console.log('soy img', img)
   const [imgArr, setImgArr] = useState([]);
 
   useEffect(() => {
@@ -61,9 +62,9 @@ const AskQuestion = ({}) => {
     <div className="">
       <Nav />
 
-      <div className="grid  w-[100%] justify-center mt-[2%]">
+      <div className="grid text-slate-200 w-[100%] font-sans text-md justify-center mt-[2%]">
         <input
-          className="w-[60%] placeholder:text-center rounded-b-lg bg-[#aaabac5b] ml-auto shadow-lg shadow-[#1919191c] mr-auto m-3"
+          className="w-[60%] placeholder:text-center shadow-md shadow-black box-shadow rounded-b-lg bg-[#191919] opacity-75 ml-auto  mr-auto m-3"
           type="text"
           name="title"
           placeholder="Titulo"
@@ -73,43 +74,43 @@ const AskQuestion = ({}) => {
           }}
         />
         <textarea
-          className="m-3 shadow-lg bg-[#aaabac5b] shadow-[#1919191c] rounded-b-lg "
+          className="m-3 bg-[#191919] placeholder:italic opacity-75 shadow-md shadow-black box-shadow  rounded-b-lg "
           rows="10"
           cols="80"
           name="content"
-          placeholder="Contenido"
+          placeholder="Escribe tu duda..."
           value={input.content}
           onChange={(e) => {
             setInput({ ...input, [e.target.name]: e.target.value });
           }}
         />
-        <div>
+
+<div className="ml-auto mr-auto max-h-[30vh] mt-10 w-[60%] cursor-pointer bg-[#191919] opacity-75 shadow-md shadow-black box-shadow  rounded-b-md overflow-scroll scrollbar-hide">
+<h1 className="font-medium underline">Busca tus etiquetas</h1>
         {
           etiquetas.map(etiqueta => (
-            <div>
+            <div  className="flex mt-5 justify-between font-bold italic">
               <input
-                className="m-3 placeholder:text-center shadow-lg rounded-b-lg bg-[#aaabac5b] shadow-[#1919191c]"
+                className= "" 
                 type="checkbox"
                 name={etiqueta}
                 value={etiqueta.slice(1)}
                 onChange={(e) => handleEtiquetas(e)}
               />
               <label>{etiqueta}</label>
+              
             </div>
               ))
         }
+</div>
+      
 
-        </div>
-        {/* <input
-          id="dropzone-file" className="hidden" 
-          type="file"
-          multiple
-          onChange={handleImage}
-        /> */}
-        <div class="flex justify-center items-center w-[60%] ml-auto mr-auto">
+
+        
+        <div class="flex justify-center items-center w-[60%] mt-10 ml-auto mr-auto">
           <label
             for="dropzone-file"
-            class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+            class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#191919] opacity-75 "
           >
             <div class="flex flex-col justify-center items-center pt-5 pb-6">
               <svg
@@ -129,6 +130,8 @@ const AskQuestion = ({}) => {
               </svg>
               <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                 <span class="font-semibold">Click para cargar tu captura del código</span>
+                <br />
+                <span class="font-light ml-[4.3%]">(seleccionar y cargar de a una imagen)</span>
               </p>
               <p class="text-xs text-gray-500 dark:text-gray-400">
                 SVG, PNG, JPG or GIF
@@ -142,13 +145,20 @@ const AskQuestion = ({}) => {
             />
           </label>
         </div>
-        {img ? <img src={img} alt="" width={25} /> : <p>No hay imagen</p>}
+
+        <div className="mt-10 ml-auto mr-auto">
+        {img ?
+          <img src={img} alt="" width={80} className="box-shadow shadow-black shadow-md" /> 
+        : 
+        <p className="">No hay imágenes</p>
+        }
+        </div>
 
         <button
-          className="text-sm bg-[#aaabac5b] shadow-lg shadow-[#19191980] w-[30%] ml-auto mr-auto"
+          className="text-sm mt-[8%] font-normal rounded hover:bg-black bg-[#191919] shadow-lg shadow-[#19191980] w-[30%] ml-auto mr-auto"
           onClick={handlePost}
         >
-          POSTEA Y QUITATE LA DUDA
+          REALIZAR PREGUNTA
         </button>
       </div>
 
