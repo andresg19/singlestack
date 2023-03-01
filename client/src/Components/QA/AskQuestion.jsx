@@ -4,6 +4,8 @@ import { postPost } from "../../Redux/Actions/Actions";
 import Nav from "../NavBar/Nav";
 import Footer from "../Footer/Footer";
 import { etiquetas } from "./etiquetas"
+import Swal from 'sweetalert2'
+
 
 const AskQuestion = ({}) => {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ const AskQuestion = ({}) => {
   }, [img]);
 
 
+
     const handleEtiquetas = (e) => {
     if (e.target.checked) {
       setInput({
@@ -43,9 +46,18 @@ const AskQuestion = ({}) => {
 
   const handlePost = (e) => {
     e.preventDefault();
-    input.img = imgArr;
-    dispatch(postPost(input));
-    window.location.reload();
+    if (!input.title || !input.content) {
+      Swal.fire({
+        icon: 'error',
+        text: 'Ingrese el título o contenido de su pregunta.',
+
+    })
+    } else {
+      input.img = imgArr;
+      dispatch(postPost(input));
+      window.location.reload();
+
+    }
   };
 
   const handleImage = (e) => {
@@ -85,7 +97,7 @@ const AskQuestion = ({}) => {
           }}
         />
 
-<div className="ml-auto mr-auto max-h-[30vh] mt-10 w-[60%] cursor-pointer bg-[#191919] opacity-75 shadow-md shadow-black box-shadow  rounded-b-md overflow-scroll scrollbar-hide">
+<div className="ml-auto mr-auto max-h-[30vh] mt-10 w-[60%] cursor-pointer bg-[#191919] opacity-75 shadow-md shadow-black box-shadow  rounded-b-md overflow-y-auto">
 <h1 className="font-medium underline">Busca tus etiquetas</h1>
         {
           etiquetas.map(etiqueta => (
@@ -98,6 +110,8 @@ const AskQuestion = ({}) => {
                 onChange={(e) => handleEtiquetas(e)}
               />
               <label>{etiqueta}</label>
+
+              <hr />
               
             </div>
               ))

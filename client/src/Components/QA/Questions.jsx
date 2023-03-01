@@ -11,7 +11,7 @@ const Questions = ({ handleSearch }) => {
   }, []);
 
   return (
-    <div className="mt-[6%] ml-[10%] font-sans max-h-[90vh] overflow-scroll scrollbar-hide">
+    <div className="mt-[6%] ml-[10%] font-sans max-h-[90vh] overflow-y-auto">
       {handleSearch.map((p) => {
         return (
           <div
