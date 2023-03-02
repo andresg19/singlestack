@@ -11,20 +11,20 @@ const Questions = ({ handleSearch }) => {
   }, []);
 
   return (
-    <div className="mt-[6%] ml-[10%] text-xl max-h-[90vh] overflow-scroll scrollbar-hide">
+    <div className="mt-[6%] ml-[10%] font-sans max-h-[90vh] overflow-y-auto">
       {handleSearch.map((p) => {
         return (
           <div
             key={p.id}
-            className="bg-[#163250] mr-[3%] mb-[10%] text-white shadow-[#191919] shadow-lg"
+            className="bg-black mr-[3%] mb-[10%] text-white shadow-[#191919] shadow-md"
           >
-            <div className="flex justify-between">
-              <div className="ml-2 mt-2 font-thin">
+            <div className="flex justify-between italic">
+              <div className="ml-2 ">
                 {p.etiquetas?.map((e) => {
                   return `#${e} `;
                 })}
               </div>
-              <div className="flex mr-2 mt-2 font-bold">
+              <div className="flex mr-2 font-medium ">
                 {p.author}
 
                 <img
@@ -36,11 +36,12 @@ const Questions = ({ handleSearch }) => {
             </div>
             <div className="ml-[20%]">
               {/* contenido */}
-              <h5>{p.title}</h5>
-              <h5 className="truncate mr-2">{p.content}</h5>
+              <h5 className="mt-5 underline">{p.title}</h5>
+            <br className="" />
+              <h5 className="truncate mt-5">{p.content}</h5>
             </div>
             <div className="">
-              <p className="underline ml-[80%]">
+              <p className="underline text-blue-800 ml-[80%] mt-8">
                 <Link to={"/question/" + p.id}>Saber mas...</Link>
               </p>
             </div>

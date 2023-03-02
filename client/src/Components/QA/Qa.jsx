@@ -38,25 +38,25 @@ const Qa = () => {
   return (
     <div className="">
       <Nav />
-      <div className="flex">
-        <div className="mt-[7%] shadow-[#191919] shadow-lg  rounded-[2%]  bg-[#1d2b50] ml-[10%] w-[60vh]">
+      <div className="flex font-sans text-lg">
+        <div className="bg-black opacity-50  shadow-md shadow-black mt-[7%] rounded-[2%] ml-[10%] w-[60vh]">
           {/* PRIMER DIV */}
           <input
             type="text"
             placeholder="busca tu duda"
-            className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#0f162b] placeholder:text-[#fffff] placeholder:text-center placeholder:font-bold outline-none text-center text-lg"
+            className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#0f162b]  placeholder:text-center  outline-none text-center"
             onChange={(e) => {setSearch(e.target.value)}}
           />
-          <div className=" mt-[10%] ml-[10%] text-xl">
-            <h3 className="ml-2 underline text-[#46899B] font-bold">
+          <div className=" mt-[10%] ml-[10%] ">
+            <h3 className="ml-2 underline text-[#46899B]">
               #Etiquetas
             </h3>
             {
                 etiquetas.map(etiqueta => (
-              <div className="ml-8 w-[30%] text-center font-bold text-[#3B3A3A]">
+              <div className="inline-flex w-[40%] ml-5 text-center text-black font-medium justify-around">
               <p
                 value={etiqueta}
-                className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white"
+                className="bg-[#B0B0B0] mt-6 rounded-[3px] text-lg cursor-pointer hover:bg-[#0f162b]  hover:text-white"
                 onClick={handleTagFilter}
                 >
                 {etiqueta}
@@ -64,20 +64,10 @@ const Qa = () => {
             </div>
                 )) 
             }    
-            <hr className="mt-[10%] mr-[7%] border border-[#939393]" />
-          </div>
-          <div className="mt-[10%] ml-[10%] mb-[10%] text-xl">
-            <h3 className="ml-2 underline text-[#46899B] font-bold">
-              #Preguntas
-            </h3>
-            <div className=" ml-8 mb-4 w-[30%] text-center font-bold text-[#3B3A3A]">
-              <button value='recientes' onClick={handleFilter} className="bg-[#B0B0B0] mt-6 rounded-[3px] cursor-pointer hover:bg-[#46899B] hover:text-white">
-                Recientes
-              </button>
-            </div>
+           
           </div>
         </div>
-        <div className="mt-[7%] rounded-[2%] bg-[#1d2b50] ml-[10%] w-[100vh] shadow-[#191919] shadow-lg ">
+        <div className="bg-black opacity-50 shadow-md shadow-black mt-[7%] rounded-[2%]  ml-[10%] w-[100vh] ">
           {/* SEGUNDO DIV */}
 
           <Questions handleSearch={filterPosts} />
