@@ -44,7 +44,7 @@ const Question = () => {
   const currentComments = useSelector((state) => state.commentsDetail);
   const likes = useSelector((state) => state.likes);
   const dislikes = useSelector((state) => state.dislikes);
-
+console.log(currentPost)
   const { id } = useParams(); //postId
   const postId = currentPost.id;
   const userId = JSON.parse(localStorage.getItem("currentUser")).id;
@@ -109,7 +109,7 @@ const Question = () => {
   return (
     <div className="">
       <Nav />
-      <div className="mt-[7%] inline-block ml-[25%] rounded-[8px] shadow-[#0f0f0fbd] shadow-lg">
+      <div className="mt-[7%] bg-black opacity-50 w-[80%] shadow-md shadow-black font-sans  ml-auto mr-auto rounded-[8px]">
         <div className="flex justify-between  mt-3 ml-2 mr-2 font-medium">
           <div className="ml-auto mr-auto">
             <h1 className="text-xl justify-center text-[#aaabac] ">
@@ -120,10 +120,10 @@ const Question = () => {
             <p className="text-sm cursor-pointer text-[#aaabac]">
               {currentPost.author}
             </p>
-            <img src={userWhite} alt="" className="w-8 ml-2" />
+            <img src={userWhite} alt="" className="w-8 bg-white" />
           </div>
         </div>
-        <div className=" mt-2 m-7 w-[100vh] rounded-[8px] bg-[#1d2b50] shadow-[#191919] shadow-lg ">
+        <div className="ml-auto mr-auto mt-2 m-7 w-[100vh] rounded-[8px]">
           <div className="flex justify-between ">
             <div className="flex space-x-3 ml-2 ">
               {currentPost.etiquetas?.map((t) => {
@@ -141,14 +141,14 @@ const Question = () => {
               className="mt-2 w-8 mr-1 cursor-pointer"
             />
           </div>
-          <div className="mt-1 mb-2 mx-10">
+          <div className="mt-1 mb-2 mx-10 ml-auto mr-auto">
             <p className="text-[#aaabac] text-xl m-8 mt-12">
               {currentPost.content}
             </p>
 
             {model ? (
               <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
-                <img src={imgSrc} alt="" className="max-w-3xl" />
+                <img src={imgSrc} alt="" className="w-[40%]" />
                 <img
                   src={close}
                   alt=""
@@ -157,14 +157,16 @@ const Question = () => {
                 />
               </div>
             ) : null}
-            <div className=" justify-center space-x-8 m-8 mt-12">
+            <div className=" inline-flex max-w-[100%]">
               {currentPost.img?.map((img, index) => {
                 return (
-                  <div key={index} onClick={() => getImg(img)}>
+                  <div
+                  className="w-[100%]" 
+                  key={index} onClick={() => getImg(img)}>
                     <img
                       src={img}
                       alt="img not found"
-                      className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
+                      className="w-[50%] mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
                     />
                   </div>
                 );

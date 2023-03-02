@@ -55,7 +55,7 @@ const AskQuestion = ({}) => {
     } else {
       input.img = imgArr;
       dispatch(postPost(input));
-      window.location.reload();
+
 
     }
   };
