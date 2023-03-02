@@ -110,22 +110,8 @@ console.log(currentPost)
     <div className="">
       <Nav />
       <div className="mt-[7%] bg-black opacity-50 w-[80%] shadow-md shadow-black font-sans  ml-auto mr-auto rounded-[8px]">
-        <div className="flex justify-between  mt-3 ml-2 mr-2 font-medium">
-          <div className="ml-auto mr-auto">
-            <h1 className="text-xl justify-center text-[#aaabac] ">
-              {currentPost.title}
-            </h1>
-          </div>
-          <div className="flex">
-            <p className="text-sm cursor-pointer text-[#aaabac]">
-              {currentPost.author}
-            </p>
-            <img src={userWhite} alt="" className="w-8 bg-white" />
-          </div>
-        </div>
-        <div className="ml-auto mr-auto mt-2 m-7 w-[100vh] rounded-[8px]">
-          <div className="flex justify-between ">
-            <div className="flex space-x-3 ml-2 ">
+        <div className="inline-flex justify-between w-[100%] mt-3  font-medium">
+            <div className="inline-flex ">
               {currentPost.etiquetas?.map((t) => {
                 return (
                   <p className="px-1 rounded-xl font-semibold text-center self-center bg-[#191919] text-[#aaabac]">
@@ -134,17 +120,23 @@ console.log(currentPost)
                 );
               })}
             </div>
-
-            <img
-              src={bookmark}
-              alt=""
-              className="mt-2 w-8 mr-1 cursor-pointer"
-            />
-          </div>
-          <div className="mt-1 mb-2 mx-10 ml-auto mr-auto">
-            <p className="text-[#aaabac] text-xl m-8 mt-12">
-              {currentPost.content}
+            <h1 className="text-xl ml-auto mr-auto text-[#aaabac] ">
+              {currentPost.title}
+            </h1>
+            <div className="inline-flex  w-[12%] justify-around">
+            <p className="text-sm cursor-pointer text-[#aaabac]">
+              {currentPost.author}
             </p>
+            <img src={userWhite} alt="" className="w-8 bg-white" />
+          </div>
+          </div>
+
+
+        <div className="w-[100%] ml-auto mr-auto mt-2 m-7 w-[100%] rounded-[8px]">
+          <div className="block mt-1 mb-2 mx-10 ml-auto mr-auto ">
+            <span className="grid break-all text-lg text-slate-200 w-[60%] indent-1 ml-auto mr-auto">
+              {currentPost.content}
+            </span>
 
             {model ? (
               <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
@@ -157,7 +149,7 @@ console.log(currentPost)
                 />
               </div>
             ) : null}
-            <div className=" inline-flex max-w-[100%]">
+            <div className=" inline-flex max-w-[100%] mt-10">
               {currentPost.img?.map((img, index) => {
                 return (
                   <div
@@ -174,8 +166,7 @@ console.log(currentPost)
             </div>
           </div>
           <div className="flex justify-between mr-2">
-            <img src={share} alt="" className="w-8 ml-2 mb-2 cursor-pointer" />
-            <p className="font-medium hover:text-white">
+            <p className="font-medium text-white">
               {dateFormatter(currentPost.createdAt)}
             </p>
           </div>
