@@ -38,17 +38,17 @@ const Qa = () => {
   return (
     <div className="">
       <Nav />
-      <div className="flex font-sans text-lg">
+      <div className="flex font-sans text-lg font-light">
         <div className="bg-black opacity-50  shadow-md shadow-black mt-[7%] rounded-[2%] ml-[10%] w-[60vh]">
           {/* PRIMER DIV */}
           <input
             type="text"
             placeholder="busca tu duda"
-            className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#0f162b]  placeholder:text-center  outline-none text-center"
+            className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#070a13]  placeholder:text-center  outline-none text-center"
             onChange={(e) => {setSearch(e.target.value)}}
           />
           <div className=" mt-[10%] ml-[10%] ">
-            <h3 className="ml-2 underline text-[#46899B]">
+            <h3 className="ml-2 underline font-medium text-[#46899B]">
               #Etiquetas
             </h3>
             {

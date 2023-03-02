@@ -37,7 +37,7 @@ const Questions = ({ handleSearch }) => {
             <div className="ml-[20%]">
               {/* contenido */}
               <h5 className="mt-5 underline">{p.title}</h5>
-            <br className="" />
+
               <h5 className="truncate mt-5">{p.content}</h5>
             </div>
             <div className="">
