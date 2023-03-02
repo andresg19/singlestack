@@ -17,7 +17,7 @@ const FingerDislike = ({ dislikes, comment, userId }) => {
     >
       <g
         transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-        fill={userLike.length ? "red" : "black"}
+        fill={userLike.length ? "red" : "white"}
       >
         <path
           d="M1725 5106 c-65 -21 -99 -42 -142 -89 -84 -91 -93 -134 -93 -458 l0

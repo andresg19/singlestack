@@ -107,24 +107,24 @@ console.log(currentPost)
   };
 
   return (
-    <div className="">
+    <div className=" text-slate-200 font-sans font-normal leading-loose">
       <Nav />
-      <div className="mt-[7%] bg-black opacity-50 w-[80%] shadow-md shadow-black font-sans  ml-auto mr-auto rounded-[8px]">
-        <div className="inline-flex justify-between w-[100%] mt-3  font-medium">
+      <div className="mt-[7%] bg-black opacity-50 w-[80%] shadow-md shadow-black ml-auto mr-auto rounded-[8px]">
+        <div className="inline-flex justify-between w-[100%] mt-3">
             <div className="inline-flex ">
               {currentPost.etiquetas?.map((t) => {
                 return (
-                  <p className="px-1 rounded-xl font-semibold text-center self-center bg-[#191919] text-[#aaabac]">
+                  <p className="px-1 rounded-xl text-center self-center bg-[#191919]">
                     #{t}{" "}
                   </p>
                 );
               })}
             </div>
-            <h1 className="text-xl ml-auto mr-auto text-[#aaabac] ">
+            <h1 className=" ml-auto mr-auto text-lg underline ">
               {currentPost.title}
             </h1>
             <div className="inline-flex  w-[12%] justify-around">
-            <p className="text-sm cursor-pointer text-[#aaabac]">
+            <p className=" cursor-pointer underline">
               {currentPost.author}
             </p>
             <img src={userWhite} alt="" className="w-8 bg-white" />
@@ -134,7 +134,7 @@ console.log(currentPost)
 
         <div className="w-[100%] ml-auto mr-auto mt-2 m-7 w-[100%] rounded-[8px]">
           <div className="block mt-1 mb-2 mx-10 ml-auto mr-auto ">
-            <span className="grid break-all text-lg text-slate-200 w-[60%] indent-1 ml-auto mr-auto">
+            <span className="grid text-slate-200 font-light text-lg  break-all w-[60%] indent-1 ml-auto mr-auto">
               {currentPost.content}
             </span>
 
@@ -149,7 +149,7 @@ console.log(currentPost)
                 />
               </div>
             ) : null}
-            <div className=" inline-flex max-w-[100%] mt-10">
+            <div className="flex max-w-[100%] mt-10">
               {currentPost.img?.map((img, index) => {
                 return (
                   <div
@@ -166,14 +166,14 @@ console.log(currentPost)
             </div>
           </div>
           <div className="flex justify-between mr-2">
-            <p className="font-medium text-white">
+            <p className="text-slate-400 text-lg ml-auto mt-5">
               {dateFormatter(currentPost.createdAt)}
             </p>
           </div>
         </div>
         <hr className="m-7 box-border border-slate-400" />
         <div className="flex justify-center">
-          <div className="w-[100vh]">
+          <div className="w-[80%] mt-[5%]">
             {currentComments &&
               currentComments.map((c) => {
                 let countLikes = likes.filter((l) => l.commentId === c.id);
@@ -181,22 +181,21 @@ console.log(currentPost)
                   (dl) => dl.commentId === c.id
                 );
                 return (
-                  <div className="">
+                  <div className="text-slate-200 font-light text-lg">
                     <div
                       key={c.id}
-                      className="bg-[#1d2b50] rounded-[8px] shadow-[#191919] shadow-lg"
+                      className="bg-black rounded-[8px] shadow-[#000000] shadow-lg"
                     >
-                      <div className="flex justify-between">
-                        <p></p>
-                        <div className="flex mt-2 ">
-                          <p className="text-xl cursor-pointer text-[#aaabac]">
-                            {c.author}
-                          </p>
+                      <div className="flex ml-[10.5%]">
                           <img
                             src={userWhite}
                             alt=""
-                            className="w-8 ml-2 mr-2"
+                            className="w-10 ml-2 bg-white mr-2"
                           />
+                        <div className="flex mt-2 ">
+                          <p className="font-ligth cursor-pointer underline">
+                            {c.author} 
+                          </p>
                         </div>
                       </div>
                       <div className="-mt-10">
@@ -231,8 +230,8 @@ console.log(currentPost)
                           </p>
                         </div>
                       </div>
-                      <div className="px-[30px] -mt-20 min-h-[80px]">
-                        <p className="text-[#aaabac] text-xl ml-[8%] mr-[8%]">
+                      <div className="block px-[30px] -mt-20 min-h-[80px]">
+                        <p className="  ml-[8%] mr-[8%]">
                           {c.content}
                         </p>
                         {modelComment ? (
@@ -250,7 +249,7 @@ console.log(currentPost)
                             />
                           </div>
                         ) : null}
-                        <div className="">
+                        <div className="flex max-w-[100%] mt-10">
                           {c &&
                             c.img.map((img, index) => {
                               return (
@@ -262,21 +261,16 @@ console.log(currentPost)
                                   <img
                                     src={img}
                                     alt="img not found"
-                                    className="max-w-lg cursor-pointer mx-auto rounded-[8px] shadow-[#5a5959] shadow-lg"
+                                    className="w-[90%] mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
                                   />
                                 </div>
                               );
                             })}
                         </div>
                       </div>
-                      <div className="flex justify-between mx-2 pb-2">
-                        <img
-                          src={share}
-                          alt=""
-                          className="w-8 rotate-180 cursor-pointer"
-                        />
-                        <p className="text-lg">{dateFormatter(c.createdAt)}</p>
-                      </div>
+                     
+                        <p className="mt-5 text-lg ml-[80%] text-slate-400">{dateFormatter(c.createdAt)}</p>
+            
                     </div>
 
                     <hr className="m-7 box-border border-slate-400" />
