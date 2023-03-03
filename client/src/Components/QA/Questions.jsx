@@ -16,7 +16,7 @@ const Questions = ({ handleSearch }) => {
         return (
           <div
             key={p.id}
-            className="bg-black mr-[3%] mb-[10%] text-white shadow-[#191919] shadow-md"
+            className="bg-black mr-[3%] mb-[10%] text-slate-200 shadow-[#19191958] shadow-md"
           >
             <div className="flex justify-between italic">
               <div className="ml-2 ">
@@ -41,8 +41,8 @@ const Questions = ({ handleSearch }) => {
               <h5 className="truncate mt-5">{p.content}</h5>
             </div>
             <div className="">
-              <p className="underline text-blue-800 ml-[80%] mt-8">
-                <Link to={"/question/" + p.id}>Saber mas...</Link>
+              <p className="underline text-[#181cff] ml-[80%] mt-8">
+                <Link to={"/question/" + p.id}>Saber más...</Link>
               </p>
             </div>
           </div>

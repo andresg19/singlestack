@@ -53,7 +53,7 @@ const Foro = () => {
   return (
     <div>
       <Nav />
-      <div className="flex w-[40%] h-[20vh] bg-[#0f1629ac] ml-auto mr-auto mt-10 rounded-xl shadow-md shadow-[#0f0f0fbd]">
+      <div className="flex w-[40%] h-[20vh] bg-[#0a0b0e] ml-auto mr-auto mt-10 rounded-xl shadow-md shadow-[#0f0f0fbd]">
         <img
           src="https://thumbs.dreamstime.com/b/default-profile-picture-avatar-photo-placeholder-vector-illustration-default-profile-picture-avatar-photo-placeholder-vector-189495158.jpg"
           alt="not found"
@@ -74,42 +74,42 @@ const Foro = () => {
         )}
       </div>
       <hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb]" />
-      <div className="bg-[#0f1629ac] ml-auto mr-auto shadow-md shadow-[#0f0f0fbd] max-w-[50%]">
-        <div className="mx-auto mt-10">
-          <hr className="max-w-[70%] mt-[] ml-12 border-[#ffffffcb]" />
+      <div className="bg-[#0a0b0e] ml-auto mr-auto shadow-md shadow-[#0f0f0fbd] max-w-[60%]">
+        <div className="grid mx-auto justi mt-10">
+          <hr className="flex max-w-[70%] mt-5 ml-12 border-[#ffffffcb]" />
           <p
-            className="ml-[82%] text-gray-400 text-sm mb-1 cursor-pointer"
+            className="ml-[82%] text-gray-400 text-sm  cursor-pointer"
             onClick={() => setFilterBool(!filterBool)}
           >
             Ordenar por ↓
           </p>
           {filterBool ? (
-            <div className="flex justify-between">
+            <div className="flex justify-between font-normal mt-5  text-slate-500">
               <button
                 value="reload"
                 onClick={handleReload}
-                className="cursor-pointer"
+                className="cursor-pointer bg-black hover:bg-[#191919] rounded-md"
               >
                 Recargar
               </button>
               <button
                 value="date"
                 onClick={handleDate}
-                className="cursor-pointer"
+                className="cursor-pointer bg-black hover:bg-[#191919] rounded-md"
               >
                 Más Nuevos
               </button>
               <button
                 value="likes"
                 onClick={handleFilterLikes}
-                className="cursor-pointer"
+                className="cursor-pointer bg-black hover:bg-[#191919] rounded-md"
               >
                 Más Likes
               </button>
               <button
                 value="comments"
                 onClick={handleComments}
-                className="cursor-pointer"
+                className="cursor-pointer bg-black hover:bg-[#191919] rounded-md" 
               >
                 Más Comentarios
               </button>

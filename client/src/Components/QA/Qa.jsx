@@ -8,6 +8,8 @@ import { clearState, getPosts,  getRecientesPosts, searchByTag } from "../../Red
 import { useState } from "react";
 import { etiquetas } from "./etiquetas";
 
+
+
 const Qa = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts)
@@ -39,12 +41,12 @@ const Qa = () => {
     <div className="">
       <Nav />
       <div className="flex font-sans text-lg font-light">
-        <div className="bg-black opacity-50  shadow-md shadow-black mt-[7%] rounded-[2%] ml-[10%] w-[60vh]">
+        <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[10%] w-[60vh]">
           {/* PRIMER DIV */}
           <input
             type="text"
             placeholder="busca tu duda"
-            className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#070a13]  placeholder:text-center  outline-none text-center"
+            className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#070a13] text-slate-200 placeholder:text-center  outline-none text-center"
             onChange={(e) => {setSearch(e.target.value)}}
           />
           <div className=" mt-[10%] ml-[10%] ">
@@ -56,7 +58,7 @@ const Qa = () => {
               <div className="inline-flex w-[40%] ml-5 text-center text-black font-medium justify-around">
               <p
                 value={etiqueta}
-                className="bg-[#B0B0B0] mt-6 rounded-[3px] text-lg cursor-pointer hover:bg-[#0f162b]  hover:text-white"
+                className="bg-[#B0B0B0] mt-6 rounded-[3px] text-lg cursor-pointer hover:bg-[#0a0b0e]  hover:text-white"
                 onClick={handleTagFilter}
                 >
                 {etiqueta}
@@ -67,7 +69,7 @@ const Qa = () => {
            
           </div>
         </div>
-        <div className="bg-black opacity-50 shadow-md shadow-black mt-[7%] rounded-[2%]  ml-[10%] w-[100vh] ">
+        <div className="bg-black  shadow-md shadow-[#090808]  mt-[7%] rounded-[2%] ml-[10%] w-[100vh] ">
           {/* SEGUNDO DIV */}
 
           <Questions handleSearch={filterPosts} />

@@ -19,8 +19,7 @@ import close from "../../assets/imgs/close.svg";
 import { likeComment } from "./../../Redux/Actions/Actions";
 import FingerLike from "./FingerLike";
 import FingerDislike from "./FingerDislike";
-import ModalImage from "react-modal-image";
-import { Lightbox } from "react-modal-image";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 export function dateFormatter(state) {
   //date "2022-10-26T13:25:39.855Z"
@@ -42,13 +41,15 @@ const Question = () => {
   const dispatch = useDispatch();
   const currentPost = useSelector((state) => state.postDetail);
   const currentComments = useSelector((state) => state.commentsDetail);
+  const initialComments = currentComments.slice(0, 1);
+  console.log(initialComments);
+  const [moreComments, setMoreComments] = useState(false);
   const likes = useSelector((state) => state.likes);
   const dislikes = useSelector((state) => state.dislikes);
-console.log(currentPost)
+  console.log(currentPost);
   const { id } = useParams(); //postId
   const postId = currentPost.id;
   const userId = JSON.parse(localStorage.getItem("currentUser")).id;
-
   const switcher = ["up", "down"];
   const [dispatchLike, setDispatchLike] = useState({
     model: "Likes",
@@ -90,76 +91,63 @@ console.log(currentPost)
     dispatch(dislikeComment(commentId[0].id, userId));
     window.location.reload();
   };
-  const [model, setModel] = useState(false);
-  const [imgSrc, setImgSrc] = useState("");
 
-  const getImg = (img) => {
-    setImgSrc(img);
-    setModel(true);
-  };
 
-  const [modelComment, setModelComment] = useState(false);
-  const [imgCommentSrc, setImgCommentSrc] = useState("");
-
-  const getCommentImg = (img) => {
-    setImgCommentSrc(img);
-    setModelComment(true);
-  };
 
   return (
     <div className=" text-slate-200 font-sans font-normal leading-loose">
       <Nav />
-      <div className="mt-[7%] bg-black opacity-50 w-[80%] shadow-md shadow-black ml-auto mr-auto rounded-[8px]">
+      <div className="mt-[7%] bg-black w-[80%] shadow-md shadow-[#19191950] ml-auto mr-auto rounded-[8px]">
         <div className="inline-flex justify-between w-[100%] mt-3">
-            <div className="inline-flex ">
-              {currentPost.etiquetas?.map((t) => {
-                return (
-                  <p className="px-1 rounded-xl text-center self-center bg-[#191919]">
-                    #{t}{" "}
-                  </p>
-                );
-              })}
-            </div>
-            <h1 className=" ml-auto mr-auto text-lg underline ">
-              {currentPost.title}
-            </h1>
-            <div className="inline-flex  w-[12%] justify-around">
-            <p className=" cursor-pointer underline">
-              {currentPost.author}
-            </p>
+          <div className="inline-flex ">
+            {currentPost.etiquetas?.map((t) => {
+              return (
+                <p className="px-1 rounded-xl text-center self-center bg-[#191919]">
+                  #{t}{" "}
+                </p>
+              );
+            })}
+          </div>
+          <h1 className=" ml-auto mr-auto text-lg underline ">
+            {currentPost.title}
+          </h1>
+          <div className="inline-flex  w-[12%] justify-around">
+            <p className=" cursor-pointer underline">{currentPost.author}</p>
             <img src={userWhite} alt="" className="w-8 bg-white" />
           </div>
-          </div>
+        </div>
 
-
-        <div className="w-[100%] ml-auto mr-auto mt-2 m-7 w-[100%] rounded-[8px]">
-          <div className="block mt-1 mb-2 mx-10 ml-auto mr-auto ">
-            <span className="grid text-slate-200 font-light text-lg  break-all w-[60%] indent-1 ml-auto mr-auto">
+        <div className="w-[100%] ml-auto mr-auto mt-2 m-7 rounded-[8px]">
+          <div className="block  mt-1 mb-2 mx-10 ml-auto mr-auto ">
+            <span className="grid  shadow-md shadow-[#0b0b0b] text-slate-200 font-light text-lg  break-all w-[60%] indent-1 ml-auto mr-auto">
               {currentPost.content}
             </span>
 
-            {model ? (
-              <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
-                <img src={imgSrc} alt="" className="w-[40%]" />
-                <img
-                  src={close}
-                  alt=""
-                  className="mb-[89vh] ml-2 cursor-pointer w-[2rem] h-[2rem]"
-                  onClick={() => setModel(false)}
-                />
-              </div>
-            ) : null}
-            <div className="flex max-w-[100%] mt-10">
+            <div className="block max-w-[100%] mt-[10%] text-slate-200">
+              <p className="w-[40%] ml-auto mr-auto">Haz zoom en las imagenes con tu scroll wheel o doble toque</p>
               {currentPost.img?.map((img, index) => {
                 return (
                   <div
-                  className="w-[100%]" 
-                  key={index} onClick={() => getImg(img)}>
-                    <img
-                      src={img}
-                      alt="img not found"
-                      className="w-[50%] mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
-                    />
+                    className="w-[60%] mt-5 ml-auto mr-auto"
+                    key={index}
+            
+                  >
+                    <TransformWrapper
+                      defaultScale={1}
+                      defaultPositionX={100}
+                      defaultPositionY={200}
+                    >
+                    
+                          <TransformComponent>
+                            <img
+                              src={img}
+                              alt="img not found"
+                              className="w-[100%] mb-4 mx-auto cursor-pointer rounded-[8px]  shadow-md shadow-[#131313]"
+                            />
+                          </TransformComponent>
+
+                
+                    </TransformWrapper>
                   </div>
                 );
               })}
@@ -174,110 +162,208 @@ console.log(currentPost)
         <hr className="m-7 box-border border-slate-400" />
         <div className="flex justify-center">
           <div className="w-[80%] mt-[5%]">
-            {currentComments &&
-              currentComments.map((c) => {
-                let countLikes = likes.filter((l) => l.commentId === c.id);
-                let countdislikes = dislikes.filter(
-                  (dl) => dl.commentId === c.id
-                );
-                return (
-                  <div className="text-slate-200 font-light text-lg">
-                    <div
-                      key={c.id}
-                      className="bg-black rounded-[8px] shadow-[#000000] shadow-lg"
-                    >
-                      <div className="flex ml-[10.5%]">
+            {!moreComments && initialComments.length
+              ? initialComments.map((c) => {
+                  let countLikes = likes.filter((l) => l.commentId === c.id);
+                  let countdislikes = dislikes.filter(
+                    (dl) => dl.commentId === c.id
+                  );
+                  return (
+                    <div className="text-slate-200 font-light text-lg">
+                      <div
+                        key={c.id}
+                        className="bg-black rounded-[8px] shadow-[#000000] shadow-lg"
+                      >
+                        <div className="flex ml-[10.5%]">
                           <img
                             src={userWhite}
                             alt=""
                             className="w-10 ml-2 bg-white mr-2"
                           />
-                        <div className="flex mt-2 ">
-                          <p className="font-ligth cursor-pointer underline">
-                            {c.author} 
-                          </p>
-                        </div>
-                      </div>
-                      <div className="-mt-10">
-                        <div className="">
-                          <p className="text-[#1b7161] ml-[2.5%]">
-                            {countLikes.length}
-                          </p>
-                          <div
-                            className="cursor-pointer hover:cursor-pointer"
-                            onClick={(e) => handleLike(e, c)}
-                          >
-                            <FingerLike
-                              likes={likes}
-                              comment={c}
-                              userId={userId}
-                            />
+                          <div className="flex mt-2 ">
+                            <p className="font-ligth cursor-pointer underline">
+                              {c.author}
+                            </p>
                           </div>
                         </div>
-                        <div className="">
-                          <div
-                            className="cursor-pointer hover:cursor-pointer"
-                            onClick={(e) => handleDislike(e, c)}
-                          >
-                            <FingerDislike
-                              dislikes={dislikes}
-                              comment={c}
-                              userId={userId}
-                            />
+                        <div className="-mt-10">
+                          <div className="">
+                            <p className="text-[#1b7161] ml-[2.5%]">
+                              {countLikes.length}
+                            </p>
+                            <div
+                              className="cursor-pointer hover:cursor-pointer"
+                              onClick={(e) => handleLike(e, c)}
+                            >
+                              <FingerLike
+                                likes={likes}
+                                comment={c}
+                                userId={userId}
+                              />
+                            </div>
                           </div>
-                          <p className="text-[#C20000] ml-[2.5%]">
-                            {countdislikes.length}
-                          </p>
+                          <div className="">
+                            <div
+                              className="cursor-pointer hover:cursor-pointer"
+                              onClick={(e) => handleDislike(e, c)}
+                            >
+                              <FingerDislike
+                                dislikes={dislikes}
+                                comment={c}
+                                userId={userId}
+                              />
+                            </div>
+                            <p className="text-[#C20000] ml-[2.5%]">
+                              {countdislikes.length}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="block px-[30px] -mt-20 min-h-[80px]">
-                        <p className="  ml-[8%] mr-[8%]">
-                          {c.content}
-                        </p>
-                        {modelComment ? (
-                          <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+                        <div className="block px-[30px] -mt-20 min-h-[80px]">
+                          <p className="  ml-[8%] mr-[8%]">{c.content}</p>
+                          <div className="block max-w-[100%] mt-10">
+                            {c &&
+                              c.img.map((img, index) => {
+                                return (
+                              <div
+                    className="w-[80%] mt-5 ml-auto mr-auto"
+                    key={index}
+                  
+                  >
+                    <TransformWrapper
+                      defaultScale={1}
+                      defaultPositionX={100}
+                      defaultPositionY={200}
+                    >
+                    
+                          <TransformComponent>
                             <img
-                              src={imgCommentSrc}
-                              alt=""
-                              className="max-w-3xl"
+                              src={img}
+                              alt="img not found"
+                              className="w-[100%] mb-4 mx-auto cursor-pointer rounded-[8px]  shadow-md shadow-[#131313]"
                             />
-                            <img
-                              src={close}
-                              alt=""
-                              className="mb-[89vh] ml-2 cursor-pointer w-[2rem] h-[2rem]"
-                              onClick={() => setModelComment(false)}
-                            />
-                          </div>
-                        ) : null}
-                        <div className="flex max-w-[100%] mt-10">
-                          {c &&
-                            c.img.map((img, index) => {
-                              return (
-                                <div
-                                  className="my-3"
-                                  key={index}
-                                  onClick={() => getCommentImg(img)}
-                                >
-                                  <img
-                                    src={img}
-                                    alt="img not found"
-                                    className="w-[90%] mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
-                                  />
-                                </div>
-                              );
-                            })}
-                        </div>
-                      </div>
-                     
-                        <p className="mt-5 text-lg ml-[80%] text-slate-400">{dateFormatter(c.createdAt)}</p>
-            
-                    </div>
+                          </TransformComponent>
 
-                    <hr className="m-7 box-border border-slate-400" />
+                
+                    </TransformWrapper>
                   </div>
-                );
-              })}
+                                );
+                              })}
+                          </div>
+                        </div>
 
+                        <p className="mt-5 text-lg ml-[80%] text-slate-400">
+                          {dateFormatter(c.createdAt)}
+                        </p>
+                      </div>
+
+                      <hr className="m-7 box-border border-slate-400" />
+                      <button
+                        className="flex justify-end bg-[#0b0b0b] hover:bg-[#0f0f0fef] font-normal rounded-md text-slate-300 cursor-buttonointer "
+                        onClick={() => setMoreComments(!moreComments)}
+                      >
+                        Cargar todos los comentarios...
+                      </button>
+                    </div>
+                  );
+                })
+              : moreComments === true &&
+                currentComments.map((c) => {
+                  let countLikes = likes.filter((l) => l.commentId === c.id);
+                  let countdislikes = dislikes.filter(
+                    (dl) => dl.commentId === c.id
+                  );
+                  return (
+                    <div className="text-slate-200 font-light text-lg">
+                      <div
+                        key={c.id}
+                        className="bg-black rounded-[8px] shadow-[#000000] shadow-lg"
+                      >
+                        <div className="flex ml-[10.5%]">
+                          <img
+                            src={userWhite}
+                            alt=""
+                            className="w-10 ml-2 bg-white mr-2"
+                          />
+                          <div className="flex mt-2 ">
+                            <p className="font-ligth cursor-pointer underline">
+                              {c.author}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="-mt-10">
+                          <div className="">
+                            <p className="text-[#1b7161] ml-[2.5%]">
+                              {countLikes.length}
+                            </p>
+                            <div
+                              className="cursor-pointer hover:cursor-pointer"
+                              onClick={(e) => handleLike(e, c)}
+                            >
+                              <FingerLike
+                                likes={likes}
+                                comment={c}
+                                userId={userId}
+                              />
+                            </div>
+                          </div>
+                          <div className="">
+                            <div
+                              className="cursor-pointer hover:cursor-pointer"
+                              onClick={(e) => handleDislike(e, c)}
+                            >
+                              <FingerDislike
+                                dislikes={dislikes}
+                                comment={c}
+                                userId={userId}
+                              />
+                            </div>
+                            <p className="text-[#C20000] ml-[2.5%]">
+                              {countdislikes.length}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="block px-[30px] -mt-20 min-h-[80px]">
+                          <p className="  ml-[8%] mr-[8%]">{c.content}</p>
+                          <div className="block max-w-[100%] mt-10">
+                            {c &&
+                              c.img.map((img, index) => {
+                                return (
+                                  <div
+                                  className="w-[80%] mt-5 ml-auto mr-auto"
+                                  key={index}
+                             
+                                >
+                                  <TransformWrapper
+                                    defaultScale={1}
+                                    defaultPositionX={100}
+                                    defaultPositionY={200}
+                                  >
+                                  
+                                        <TransformComponent>
+                                          <img
+                                            src={img}
+                                            alt="img not found"
+                                            className="w-[100%] mb-4 mx-auto cursor-pointer rounded-[8px]  shadow-md shadow-[#131313]"
+                                          />
+                                        </TransformComponent>
+              
+                              
+                                  </TransformWrapper>
+                                </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+
+                        <p className="mt-5 text-lg ml-[80%] text-slate-400">
+                          {dateFormatter(c.createdAt)}
+                        </p>
+                      </div>
+
+                      <hr className="m-7 box-border border-slate-400" />
+                    </div>
+                  );
+                })}
             <InputComment postId={postId} />
           </div>
         </div>
