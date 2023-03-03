@@ -17,6 +17,8 @@ import { Link } from "react-router-dom";
 import FingerDislikesForo from "./FingerDislikesForo";
 import FingerLikesForo from "./FingerLikesForo";
 import close from "../../assets/imgs/close.svg";
+import Nav from "../NavBar/Nav";
+import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch"
 
 
 
@@ -80,51 +82,55 @@ const FeedPost = () => {
 
   return (
     //div padre
-    <div className="mt-10  w-[90%] ml-auto mr-auto">
-      <div className="pt-4 mx-8 rounded-xl">
-        <div className="pt-5 shadow-md bg-[#0f1629ac] shadow-[#0f0f0fbd]">
-          <div className="flex justify-between mb-2 mx-2 text-black">
-            <div className="flex -mt-2">
-              <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
+    <div className="mt-10 text-slate-200 font-sans font-normal leading-loose w-[90%] ml-auto mr-auto">
+        <div className="bg-black mx-auto w-[70%] rounded-xl shadow-md shadow-[#201d1d67] ">
+          <div className="flex justify-between mx-2">
+            <div className="flex mt-5">
+              <img src={userWhite} alt="" className="bg-white w-10 h-10  ml-2" />
               <div className="ml-2 t-mt-2">
-                <p className="text-xl  text-gray-300">{currentPost.author}</p>
-                <p className="text-gray-400">{dateFormatter(currentPost.createdAt)}</p>
+                <p className="">{currentPost.author}</p>
+                <p className="">{dateFormatter(currentPost.createdAt)}</p>
               </div>
             </div>
-            <img src={bookmark} alt="" className="w-6 h-6" />
           </div>
 
-          <div className="m-5 p-4 ">
-            <p className="flex justify-center text-2xl text-gray-300">
+          <div className="w-[100%] ml-auto mr-auto mt-2 m-7 rounded-[8px]">
+          <div className="block  mt-1 mb-2 mx-10 ml-auto mr-auto ">
+            <span className="grid  shadow-md shadow-[#0b0b0b] text-slate-200 font-light text-lg  break-all w-[60%] indent-1 ml-auto mr-auto">
               {currentPost.content}
-            </p>
+            </span>
 
-            {model ? (
-              <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
-                <img src={imgSrc} alt="" className="max-w-3xl" />
-                <img
-                  src={close}
-                  alt=""
-                  className="mb-[89vh] ml-2 cursor-pointer w-[2rem] h-[2rem]"
-                  onClick={() => setModel(false)}
-                />
-              </div>
-            ) : null}
-            <div className=" justify-center space-x-8 m-8 mt-12">
+            <div className="block max-w-[100%] mt-[10%] text-slate-200">
+              <p className="w-[50%] ml-auto mr-auto">Haz zoom en las imagenes con tu scroll wheel o doble toque</p>
               {currentPost.img?.map((img, index) => {
                 return (
-                  <div key={index} onClick={() => getImg(img)}>
-                    <img
-                      src={img}
-                      alt="img not found"
-                      className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg"
-                    />
+                  <div
+                    className="w-[60%] mt-5 ml-auto mr-auto"
+                    key={index}
+            
+                  >
+                    <TransformWrapper
+                      defaultScale={1}
+                      defaultPositionX={100}
+                      defaultPositionY={200}
+                    >
+                    
+                          <TransformComponent>
+                            <img
+                              src={img}
+                              alt="img not found"
+                              className="w-[100%] mb-4 mx-auto cursor-pointer rounded-[8px]  shadow-md shadow-[#131313]"
+                            />
+                          </TransformComponent >
+
+                
+                    </TransformWrapper>
                   </div>
                 );
               })}
             </div>
           </div>
-
+          </div>
           <div className="-mt-10">
                         <div className="">
                           <p className="text-[#1b7161] ml-[2.5%]">
@@ -156,15 +162,15 @@ const FeedPost = () => {
                         </div>
                       </div>
         </div>
-        <div className="pt-5 mx-10 shadow-md mt-2 bg-[#0f1629ac] shadow-[#0f0f0fbd]">
+        <div className= "pt-5 bg-[#050505] mx-auto w-[70%] rounded-xl shadow-md shadow-[#201d1d67] ">
           <div className="flex border-b border-gray-400 mb-2 pb-5">
-            <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
+            <img src={userWhite} alt="" className="bg-white w-10 h-10  ml-2" />
             <input
               type="text"
               value={content}
               onChange={(e) => setContent(e.target.value)}
               placeholder="Agregar un comentario"
-              className="w-full rounded-lg mx-2 outline-none text-black bg-gray-200 placeholder:pl-3"
+              className="w-full rounded-lg mx-2 outline-none bg-[#191919] placeholder:pl-3"
             />
             <button type="submit" onClick={handleCommentSubmit}>
               Comentar
@@ -174,49 +180,45 @@ const FeedPost = () => {
            !moreComments && initialComments.length ? 
             initialComments.map((d) => (
               <div className="">
-                <div className="flex text-black pb-4" key={d.id}>
+                <div className="flex pb-4" key={d.id}>
                   <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
-                  <div className="bg-[#4a6fd356] rounded-xl w-full mx-2 px-1">
+                  <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
                     <div className="flex justify-between mx-1">
                       <p className="text-xl ml-2">{d.author}</p>
                       <p>{dateFormatter(d.createdAt)}</p>
                     </div>
-
-                    <p className="text-center">{d.content}</p>
+                    <span className="text-center grid w-[60%] break-all text-lg  indent-1 ml-auto mr-auto">{d.content}</span>
                   </div>
                 </div>
+                <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
+                  cargar mas comentarios...
+                </button>
+            
               </div>
               ))
+      
            :
            moreComments === true ?
            (
             comments.map((c) => (
               <div className="">
-                <div className="flex text-black pb-4" key={c.id}>
+                <div className="flex pb-4" key={c.id}>
                   <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
-                  <div className="bg-[#4a6fd356] rounded-xl w-full mx-2 px-1">
+                  <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
                     <div className="flex justify-between mx-1">
                       <p className="text-xl ml-2">{c.author}</p>
                       <p>{dateFormatter(c.createdAt)}</p>
                     </div>
 
-                    <p className="text-center">{c.content}</p>
+                    <span className="text-center grid w-[60%] break-all text-lg  indent-1 ml-auto mr-auto">{c.content}</span>
                   </div>
                 </div>
               </div>
             )) 
             ) 
            : 
-            (
-            <h1 className="text-center text-red-700 pb-2 text-3xl">
-              No hay comentarios aún
-            </h1>
-          )}
+          null}
         </div>
-        <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
-          cargar mas comentarios...
-        </button>
-      </div>
     </div>
   );
 };

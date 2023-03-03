@@ -57,7 +57,7 @@ const AllFeedPosts = () => {
                 </div>
 
                 <div className="block w-[90%] m-5 p-4 ">
-                  <span className="flex w-[60%] ml-auto mr-auto justify-center break-all text-lg text-slate-200">
+                  <span className="flex truncate w-[60%] ml-auto mr-auto justify-center text-xl text-slate-200">
                     {post.content}
                   </span>
               <hr className="mt-5 max-w-[100%] mx-auto border-[#ffffff08]" />
@@ -79,7 +79,7 @@ const AllFeedPosts = () => {
                              <img
                                src={postimg}
                                alt="img not found"
-                               className="w-[80%] mb-4 ml-auto mr-auto cursor-pointer rounded-[8px]  shadow-md shadow-[#131313]"
+                               className="w-[80%] mx-auto cursor-pointer rounded-[8px]  shadow-md shadow-[#131313]"
                              />
                            </TransformComponent>
  

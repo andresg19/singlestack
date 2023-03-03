@@ -60,19 +60,21 @@ const Foro = () => {
           width={50}
           className="flex w-[10%] h-[40%] rounded-[50%] mt-[7%] ml-10"
         />
-        {modal ? (
-          <div>
-            <PostsForo />
-            <button onClick={modalClose}>Cerrar ventana</button>
-          </div>
-        ) : (
+     
           <input
             onClick={modalOpen}
             placeholder="Haz un posteo"
             className="grid w-[60%] placeholder:text-slate-400 py-2 pl-3 pr-3 h-7 mt-12 ml-10 rounded-xl"
           />
-        )}
+
+        
       </div>
+{modal ? (
+          <div className="ml-auto mr-auto w-[50%]  ">
+            <PostsForo />
+            <button onClick={modalClose} className="bg-[#191919]  text-slate-200" >No postear</button>
+          </div>
+) : null}
       <hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb]" />
       <div className="bg-[#0a0b0e] ml-auto mr-auto shadow-md shadow-[#0f0f0fbd] max-w-[60%]">
         <div className="grid mx-auto justi mt-10">
