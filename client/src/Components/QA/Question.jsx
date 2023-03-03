@@ -91,21 +91,8 @@ const Question = () => {
     dispatch(dislikeComment(commentId[0].id, userId));
     window.location.reload();
   };
-  const [model, setModel] = useState(false);
-  const [imgSrc, setImgSrc] = useState("");
 
-  const getImg = (img) => {
-    setImgSrc(img);
-    setModel(true);
-  };
 
-  const [modelComment, setModelComment] = useState(false);
-  const [imgCommentSrc, setImgCommentSrc] = useState("");
-
-  const getCommentImg = (img) => {
-    setImgCommentSrc(img);
-    setModelComment(true);
-  };
 
   return (
     <div className=" text-slate-200 font-sans font-normal leading-loose">
@@ -130,7 +117,7 @@ const Question = () => {
           </div>
         </div>
 
-        <div className="w-[100%] ml-auto mr-auto mt-2 m-7 w-[100%] rounded-[8px]">
+        <div className="w-[100%] ml-auto mr-auto mt-2 m-7 rounded-[8px]">
           <div className="block  mt-1 mb-2 mx-10 ml-auto mr-auto ">
             <span className="grid  shadow-md shadow-[#0b0b0b] text-slate-200 font-light text-lg  break-all w-[60%] indent-1 ml-auto mr-auto">
               {currentPost.content}
@@ -143,7 +130,7 @@ const Question = () => {
                   <div
                     className="w-[60%] mt-5 ml-auto mr-auto"
                     key={index}
-                    onClick={() => getImg(img)}
+            
                   >
                     <TransformWrapper
                       defaultScale={1}
@@ -240,7 +227,7 @@ const Question = () => {
                               <div
                     className="w-[80%] mt-5 ml-auto mr-auto"
                     key={index}
-                    onClick={() => getImg(img)}
+                  
                   >
                     <TransformWrapper
                       defaultScale={1}
@@ -344,7 +331,7 @@ const Question = () => {
                                   <div
                                   className="w-[80%] mt-5 ml-auto mr-auto"
                                   key={index}
-                                  onClick={() => getImg(img)}
+                             
                                 >
                                   <TransformWrapper
                                     defaultScale={1}

@@ -11,6 +11,7 @@ import commentSVG from "../../assets/imgs/comment.svg";
 import close from "../../assets/imgs/close.svg";
 
 import FeedPost from "./FeedPost";
+import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 const AllFeedPosts = () => {
   const dispatch = useDispatch();
@@ -37,55 +38,61 @@ const AllFeedPosts = () => {
 
   return (
     //div padre
-    <div className="mt-10  w-[90%] ml-auto mr-auto">
+    <div className="mt-10  w-[100%] font-light font-sans">
       {feedPosts.length
         ? feedPosts.map((post) => (
     
             <div className="pt-4 mx-8 rounded-xl">
-              <div className="pt-5 shadow-md bg-[#0f1629ac] shadow-[#0f0f0fbd]">
-                <div className="flex justify-between mb-2 mx-2 text-black">
+              <div className="pt-5 shadow-mdshadow-[#0f0f0fbd]">
+                <div className="flex justify-between mb-2 mx-2">
                   <div className="flex -mt-2">
                     <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
                     <div className="ml-2 t-mt-2">
-                      <p className="text-xl  text-gray-300">{post.author}</p>
+                      <p className="text-xl underline text-gray-300">{post.author}</p>
                       <p className="text-gray-400">
                         {dateFormatter(post.createdAt)}
                       </p>
                     </div>
                   </div>
-                  <img src={bookmark} alt="" className="w-6 h-6" />
                 </div>
 
-                <div className="m-5 p-4 ">
-                  <p className="flex justify-center text-2xl text-gray-300">
+                <div className="block w-[90%] m-5 p-4 ">
+                  <span className="flex w-[60%] ml-auto mr-auto justify-center break-all text-lg text-slate-200">
                     {post.content}
-                  </p>
+                  </span>
+              <hr className="mt-5 max-w-[100%] mx-auto border-[#ffffff08]" />
+                  <div className="block mt-[10%]">
 
-                  {model ? (
-              <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
-                <img src={imgSrc} alt="" className="max-w-3xl" />
-                <img
-                  src={close}
-                  alt=""
-                  className="mb-[89vh] ml-2 cursor-pointer w-[2rem] h-[2rem]"
-                  onClick={() => setModel(false)}
-                />
-              </div>
-            ) : null}
-                  <div className="flex justify-evenly p-4">
+                  <p className="w-[60%] text-slate-200 ml-auto mr-auto">Haz zoom en las imagenes con tu scroll wheel o doble toque</p>
                     {post.img?.map((postimg, index) => (
-                      <div key={index} onClick={() => getImg(postimg)}>
-                        <img src={postimg} alt="img not found"
-                         className="max-w-lg mb-4 mx-auto cursor-pointer rounded-[8px] shadow-[#191919] shadow-lg" />
-                      </div>
+                     <div
+                     className="w-[100%] mt-5 ml-auto mr-auto"
+                     key={index}
+                   >
+                     <TransformWrapper
+                       defaultScale={1}
+                       defaultPositionX={100}
+                       defaultPositionY={200}
+                     >
+                     
+                           <TransformComponent>
+                             <img
+                               src={postimg}
+                               alt="img not found"
+                               className="w-[80%] mb-4 ml-auto mr-auto cursor-pointer rounded-[8px]  shadow-md shadow-[#131313]"
+                             />
+                           </TransformComponent>
+ 
+                 
+                     </TransformWrapper>
+                   </div>
                     ))}
-                    <p className="underline ml-[80%]">
-                      <Link to={"/feedpost/" + post.id}>Saber mas...</Link>
+                    <p className="underline text-[#000ac7] ml-[80%]">
+                      <Link to={"/feedpost/" + post.id}>Saber más...</Link>
                     </p>
                   </div>
                 </div>
-              
-                <div className=" flex shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
+              <div className=" flex shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
             <h2 className="text-green-600">
               {post.likes}
               <img
@@ -104,9 +111,12 @@ const AllFeedPosts = () => {
             </h2>
           </div>
               </div>
+              <hr className="mt-10 max-w-[100%] mx-auto border-[#ffffff21]" />
             </div>
           ))
-        : null}
+          : null}
+          
+          
     </div>
   );
 };
