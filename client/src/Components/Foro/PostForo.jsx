@@ -39,11 +39,12 @@ const PostsForo = () => {
   };
 
   return (
-    <div>
+    <div className="block w-[100%] text-slate-200 font-sans text-lg font-light">
+      <div className="w-[100%">
       <textarea
-        className="m-3 shadow-lg bg-[#aaabac5b] shadow-[#1919191c] rounded-b-lg "
-        rows="10"
-        cols="80"
+        className="flex m-3 ml-auto mr-auto shadow-lg bg-[#1715158b] shadow-[#1919191c] rounded-b-lg "
+        rows="5"
+        cols="70"
         name="content"
         placeholder="Contenido"
         value={input.content}
@@ -52,10 +53,12 @@ const PostsForo = () => {
         }}
       />
 
+      </div>
+
       <div class="flex justify-center items-center w-[60%] mx-auto">
         <label
           for="dropzone-file"
-          class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+          class="flex flex-col justify-center items-center w-80 h-54 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
         >
           <div class="flex flex-col justify-center items-center pt-5 pb-6">
             <svg
@@ -74,7 +77,9 @@ const PostsForo = () => {
               ></path>
             </svg>
             <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-              <span class="font-semibold">Subir una imagen</span>
+              <span class="font-semibold ml-4">Subir una imágen</span>
+              <br />
+              <span class="font-light">(Cargar de a una imágen)</span>
             </p>
             <p class="text-xs text-gray-500 dark:text-gray-400">
               SVG, PNG, JPG or GIF
@@ -89,14 +94,23 @@ const PostsForo = () => {
           />
         </label>
       </div>
-      {img ? <img src={img} alt="" width={25} /> : <p>No hay imagen</p>}
+     
+     
+      <div className="flex justify-around mt-4">
+      {img ? <img src={img} alt="" width={100} /> : <p className="ml-auto mr-auto">No hay imágenes</p>}
+      
+      </div>
 
+      <div className="flex justify-center mt-4 mb-2">
       <button
-        className="text-sm bg-[#aaabac5b] shadow-lg shadow-[#19191980] w-[30%] mx-auto"
+        className="text-sm bg-[#aaabac5b] shadow-lg shadow-[#19191980] w-[15%]"
         onClick={handlePost}
       >
         Postear
       </button>
+      </div>
+
+
     </div>
   );
 };
