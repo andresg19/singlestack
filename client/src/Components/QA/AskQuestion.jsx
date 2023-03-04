@@ -124,7 +124,7 @@ const AskQuestion = ({}) => {
         <div class="flex justify-center items-center w-[60%] mt-10 ml-auto mr-auto">
           <label
             for="dropzone-file"
-            class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#191919] opacity-75 "
+            class="flex flex-col justify-center items-center w-full h-64  rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#191919] opacity-75 "
           >
             <div class="flex flex-col justify-center items-center pt-5 pb-6">
               <svg
