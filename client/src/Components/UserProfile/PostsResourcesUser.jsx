@@ -20,7 +20,7 @@ const PostsResourcesUser = () => {
         <div className="">
         {resultUserPosts.map((p) => {
           return (
-            <div className="bg-[#15273f] ml-auto mr-auto m-2 w-[90%] text-white rounded-[2%]">
+            <div className="bg-[#191919] ml-auto mr-auto m-2 w-[90%] text-white rounded-[2%]">
               <div className="text-m text-center">
                 <h1
                 className="mt-3"

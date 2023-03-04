@@ -41,6 +41,7 @@ const Question = () => {
   const dispatch = useDispatch();
   const currentPost = useSelector((state) => state.postDetail);
   const currentComments = useSelector((state) => state.commentsDetail);
+  console.log(currentComments)
   const initialComments = currentComments.slice(0, 1);
   console.log(initialComments);
   const [moreComments, setMoreComments] = useState(false);
@@ -257,12 +258,7 @@ const Question = () => {
                       </div>
 
                       <hr className="m-7 box-border border-slate-400" />
-                      <button
-                        className="flex justify-end bg-[#0b0b0b] hover:bg-[#0f0f0fef] font-normal rounded-md text-slate-300 cursor-buttonointer "
-                        onClick={() => setMoreComments(!moreComments)}
-                      >
-                        Cargar todos los comentarios...
-                      </button>
+              
                     </div>
                   );
                 })
@@ -364,6 +360,19 @@ const Question = () => {
                     </div>
                   );
                 })}
+                       {
+            moreComments === true ? (
+              <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
+              Ocultar comentarios
+            </button>
+
+            ) : 
+                  (
+                <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
+                  Cargar más comentarios...
+                </button>
+            )
+          }
             <InputComment postId={postId} />
           </div>
         </div>

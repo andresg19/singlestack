@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { getUsers, login, userLogged } from "../../../Redux/Actions/Actions";
+import Swal from 'sweetalert2'
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -30,19 +31,25 @@ const Login = () => {
       if (u.email === input.email && u.password === input.password) {
         dispatch(userLogged(u));
         navigate("/");
+      } else  {
+        Swal.fire({
+          icon: 'error',
+          text: 'No se encontraron usuarios con sus datos. Revise los campos',
+  
+      })
       }
     });
   };
 
   return (
-    <div className="mt-[5%] opacity-80 shadow-md shadow-[#0f0f0fbd] rounded-xl bg-black max-w-[40%] h-[60vh] ml-auto mr-auto">
-      <div className="flex w-[20%] p-2 text-gray-500 ml-auto mr-auto">
-        <h1>Inicie sesión</h1>
+    <div className="block mt-[5%] bg-black shadow-md shadow-[#0f0f0fbd] rounded-xl  max-w-[40%] h-[50vh] ml-auto mr-auto text-slate-200 font-sans font-light ">
+      <div className="flex w-[25%] p-1 ml-auto mr-auto">
+        <h1 className="mx-auto text-lg text-slate-300 italic font-medium">Iniciar sesión</h1>
       </div>
-      <form className="flex flex-col p-10 max-w-[50%] ml-auto mr-auto" onSubmit={handleSubmit}>
+      <form className="flex flex-col mt-10 max-w-[50%] ml-auto mr-auto" onSubmit={handleSubmit}>
         <input
           id="small-input" 
-          className="mt-5 text-center block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="text-center block w-full p-2 bg-[#191919] rounded-md"
           type="text"
           autoComplete="off"
           name="email"
@@ -51,7 +58,7 @@ const Login = () => {
         />
         <input
           id="small-input" 
-          className="mt-5 text-center block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="text-center mt-10 block w-full p-2 bg-[#191919] rounded-md"
           type="password"
           autoComplete="off"
           name="password"
@@ -59,14 +66,14 @@ const Login = () => {
           onChange={handleChange}
         />
         <button
-        className="mt-10 text-sm bg-[#aaabac5b] shadow-lg shadow-[#19191980] w-[50%] mr-auto ml-auto" 
+        className="text-sm mt-10 bg-[#191919] font-medium text-slate-300 hover:bg-[#060606] hover:text-slate-200 shadow-sm shadow-[#1d1d1de6] w-[50%] mr-auto ml-auto" 
         type="submit">
           Confirm
           </button>
+        <h1 className="mx-auto mt-12 text-slate-500 italic font-medium">singlestack</h1>
       </form>
-      <div className="w-[30%] text-gray-900 p-10 ml-auto mr-auto">
-        <h1>singlestack</h1>
-      </div>
+
+
     </div>
   );
 };

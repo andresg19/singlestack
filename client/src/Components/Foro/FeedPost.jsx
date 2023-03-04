@@ -190,9 +190,6 @@ const FeedPost = () => {
                     <span className="text-center grid w-[60%] break-all text-lg  indent-1 ml-auto mr-auto">{d.content}</span>
                   </div>
                 </div>
-                <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
-                  cargar mas comentarios...
-                </button>
             
               </div>
               ))
@@ -218,6 +215,19 @@ const FeedPost = () => {
             ) 
            : 
           null}
+          {
+            moreComments === true ? (
+              <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
+              Ocultar comentarios
+            </button>
+
+            ) : 
+                  (
+                <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
+                  Cargar más comentarios...
+                </button>
+            )
+          }
         </div>
     </div>
   );

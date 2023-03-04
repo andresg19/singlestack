@@ -33,7 +33,7 @@ const Profile = () => {
 
   return (
     <div className="flex">
-    <div className="justify-center  grid m-[10%] w-[20%] py-2  bg-[#1C1C1C] rounded-xl">
+    <div className="justify-center  grid m-[10%] w-[20%] py-2  bg-[#000000] rounded-xl">
       <div className="m-[10%] ml-auto mr-auto text-white text-sm py-4 text-center">
         {
           user.img ?(
@@ -75,28 +75,28 @@ const Profile = () => {
       
     {
         modal ? (
-          <div className="w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-[#1C1C1C]  rounded-xl">
+          <div className="w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-black  rounded-xl">
             <Config />
             <button onClick={modalClose}>Cerrar ventana</button>
           </div>
         ) :
      sectionUser && sectionUser === 'initialValue' ? 
      ( 
-     <div className="w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-[#1C1C1C]  rounded-xl">
+     <div className="w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-black  rounded-xl">
        <DefaultSectionUser /> 
        </div> 
      ) 
      :
      sectionUser === 'questions' ?
     (
-    <div className="grid overflow-scroll scrollbar-hide w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-[#1C1C1C]  rounded-xl">
+    <div className="grid overflow-scroll scrollbar-hide w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-black  rounded-xl">
       <QuestionsUsers />
     </div>
     ) 
     :
     sectionUser === 'posts' ?
     (
-      <div className="grid overflow-scroll scrollbar-hide w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-[#1C1C1C]  rounded-xl">
+      <div className="grid overflow-scroll scrollbar-hide w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-black  rounded-xl">
         <PostsResourcesUser />
       </div>
     ) 
