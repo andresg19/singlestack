@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { getUsers, login, userLogged } from "../../../Redux/Actions/Actions";
+import Swal from 'sweetalert2'
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,12 @@ const Login = () => {
       if (u.email === input.email && u.password === input.password) {
         dispatch(userLogged(u));
         navigate("/");
+      } else  {
+        Swal.fire({
+          icon: 'error',
+          text: 'No se encontraron usuarios con sus datos. Revise los campos',
+  
+      })
       }
     });
   };

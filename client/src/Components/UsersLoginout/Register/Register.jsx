@@ -82,6 +82,11 @@ const Register = () => {
       
     })
       
+    } else {
+      Swal.fire({
+        icon: 'error',
+        text: 'Revise los campos',
+    })
     }
   };
   return (
