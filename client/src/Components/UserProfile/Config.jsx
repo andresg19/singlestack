@@ -48,23 +48,25 @@ const Config = () => {
         };
       };
     return (
-      <div>
+      <div className='ml-auto mr-auto w-[50%] text-slate-200'>
         <input 
         type="text"
         name="fullname"
+        className='text-center block w-60 p-2 mx-auto mt-5 bg-[#191919] rounded-md '
         placeholder='Nombre de Usuario' 
         value={input.fullname}
         onChange={(e) => {setInput({...input, [e.target.name]: e.target.value})}} />
          <input 
         type="password"
         name="password"
+        className='text-center block w-60 p-2 mx-auto mt-5 bg-[#191919] rounded-md '
         placeholder='Contraseña' 
         value={input.password}
         onChange={(e) => {setInput({...input, [e.target.name]: e.target.value})}} />
-        <div class="flex justify-center items-center w-[60%] mx-auto">
+        <div class="flex justify-center items-center w-[60%] mx-auto mt-10">
           <label
             for="dropzone-file"
-            class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+            class="flex flex-col justify-center items-center w-60 h-40 bg-[#191919] shadow-md shadow-[#191919f6] rounded-md"
           >
             <div class="flex flex-col justify-center items-center pt-5 pb-6">
               <svg
@@ -83,7 +85,7 @@ const Config = () => {
                 ></path>
               </svg>
               <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                <span class="font-semibold">Subir una imagen</span>
+                <span class="font-semibold">Cambiar imágen de perfil</span>
               </p>
               <p class="text-xs text-gray-500 dark:text-gray-400">
                 SVG, PNG, JPG or GIF
@@ -98,15 +100,21 @@ const Config = () => {
             />
           </label>
         </div>
-        {img ? <img src={img} alt="" width={25} /> : <p>No hay imagen</p>}
-
+        <div className="flex mt-10 mx-auto w-50">
+        {img ?
+          <img src={img} alt="" width={80} className="box-shadow mx-auto shadow-black shadow-md" /> 
+        : 
+        <span className="ml-100 mx-auto">No hay imágen</span>
+        }
+        </div>
         <button
-          className="text-sm bg-[#aaabac5b] shadow-lg shadow-[#19191980] w-[30%] mx-auto"
+          className="flex p-1 text-sm mt-[8%] font-medium rounded mx-auto hover:bg-black bg-[#191919] shadow-lg shadow-[#19191980] w-[25%]"
           onClick={handlePut}
         >
-          Postear
+          Guardar cambios
         </button>
-      </div>
+
+        </div>
     );
 }
  
