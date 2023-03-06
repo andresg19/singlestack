@@ -5,6 +5,7 @@ import {
   feedLikes,
   getFeedDislikes,
   getFeedLikes,
+  getUsers,
   postFeedComments,
   searchFeedPost,
 } from "../../Redux/Actions/Actions";
@@ -36,7 +37,9 @@ const FeedPost = () => {
   const postLikes = likes.filter((l) => l.postId === id);
   const dislikes = useSelector((state) => state.feeddislikes);
   const postDislikes = dislikes.filter((l) => l.postId === id);
+  const users = useSelector((state) => state.users);
   const actualUser = JSON.parse(localStorage.getItem("currentUser")).id;
+  const actualUserImg = JSON.parse(localStorage.getItem("currentUser"));
   const [moreComments, setMoreComments] = useState(false);
   const [content, setContent] = useState("");
   const payload = {
@@ -48,7 +51,8 @@ const FeedPost = () => {
   useEffect(() => {
     dispatch(getFeedLikes());
     dispatch(getFeedDislikes());
-    dispatch(searchFeedPost(id))
+    dispatch(searchFeedPost(id));
+    dispatch(getUsers());
   }, []);
 
   const handleLike = (e) => {
@@ -86,7 +90,18 @@ const FeedPost = () => {
         <div className="bg-black mx-auto w-[70%] rounded-xl shadow-md shadow-[#201d1d67] ">
           <div className="flex justify-between mx-2">
             <div className="flex mt-5">
-              <img src={userWhite} alt="" className="bg-white w-10 h-10  ml-2" />
+            {
+                      users.map(element => {
+                        const imgUser = []
+                        console.log(imgUser)
+                        if(element.fullname === currentPost.author) {
+                          imgUser.push(element.img)
+                        }
+                        return(
+                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                        )
+                      })
+                    }
               <div className="ml-2 t-mt-2">
                 <p className="">{currentPost.author}</p>
                 <p className="">{dateFormatter(currentPost.createdAt)}</p>
@@ -164,7 +179,7 @@ const FeedPost = () => {
         </div>
         <div className= "pt-5 bg-[#050505] mx-auto w-[70%] rounded-xl shadow-md shadow-[#201d1d67] ">
           <div className="flex border-b border-gray-400 mb-2 pb-5">
-            <img src={userWhite} alt="" className="bg-white w-10 h-10  ml-2" />
+            <img src={actualUserImg.img} alt="" className="bg-white w-10 h-10 rounded-3xl ml-2" />
             <input
               type="text"
               value={content}
@@ -181,7 +196,18 @@ const FeedPost = () => {
             initialComments.map((d) => (
               <div className="">
                 <div className="flex pb-4" key={d.id}>
-                  <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
+                {
+                      users.map(element => {
+                        const imgUser = []
+                        console.log(imgUser)
+                        if(element.fullname === d.author) {
+                          imgUser.push(element.img)
+                        }
+                        return(
+                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                        )
+                      })
+                    }
                   <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
                     <div className="flex justify-between mx-1">
                       <p className="text-xl ml-2">{d.author}</p>
@@ -200,7 +226,18 @@ const FeedPost = () => {
             comments.map((c) => (
               <div className="">
                 <div className="flex pb-4" key={c.id}>
-                  <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
+                {
+                      users.map(element => {
+                        const imgUser = []
+                        console.log(imgUser)
+                        if(element.fullname === c.author) {
+                          imgUser.push(element.img)
+                        }
+                        return(
+                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                        )
+                      })
+                    }
                   <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
                     <div className="flex justify-between mx-1">
                       <p className="text-xl ml-2">{c.author}</p>
@@ -217,14 +254,14 @@ const FeedPost = () => {
           null}
           {
             moreComments === true ? (
-              <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
+              <button className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#0004ff] text-sm ml-[1%] mt-4" onClick={() => setMoreComments(!moreComments) }>
               Ocultar comentarios
             </button>
 
             ) : 
                   (
-                <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
-                  Cargar más comentarios...
+                <button className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#0004ff] text-sm ml-[1%] mt-4" onClick={() => setMoreComments(!moreComments) }>
+                  Cargar comentarios...
                 </button>
             )
           }

@@ -7,19 +7,21 @@ import {
   GetLikes,
   GetDislikes,
   dislikeComment,
+  getUsers,
 } from "../../Redux/Actions/Actions";
 import InputComment from "./InputComment";
 import Nav from "../NavBar/Nav";
 import Footer from "../Footer/Footer";
 import bookmark from "../../assets/imgs/bookmark.png";
 import share from "../../assets/imgs/share.png";
-import userWhite from "../../assets/imgs/userWhite.png";
+import userwhite from "../../assets/imgs/programmer.png";
 import finger from "../../assets/imgs/finger.png";
 import close from "../../assets/imgs/close.svg";
 import { likeComment } from "./../../Redux/Actions/Actions";
 import FingerLike from "./FingerLike";
 import FingerDislike from "./FingerDislike";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { Link } from "react-router-dom";
 
 export function dateFormatter(state) {
   //date "2022-10-26T13:25:39.855Z"
@@ -40,8 +42,9 @@ export function dateFormatter(state) {
 const Question = () => {
   const dispatch = useDispatch();
   const currentPost = useSelector((state) => state.postDetail);
+  const users = useSelector((state) => state.users)
+  console.log(currentPost)
   const currentComments = useSelector((state) => state.commentsDetail);
-  console.log(currentComments)
   const initialComments = currentComments.slice(0, 1);
   console.log(initialComments);
   const [moreComments, setMoreComments] = useState(false);
@@ -69,6 +72,7 @@ const Question = () => {
     dispatch(searchPost(id));
     dispatch(GetLikes());
     dispatch(GetDislikes());
+    dispatch(getUsers());
 
     return () => {
       dispatch(clearState());
@@ -98,6 +102,11 @@ const Question = () => {
   return (
     <div className=" text-slate-200 font-sans font-normal leading-loose">
       <Nav />
+      <Link to="/q-a">
+      <button className="bg-[#070a13] hover:bg-[#030509] w-[10%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-lg ml-[10%] mt-8">
+        Volver
+      </button>
+      </Link>
       <div className="mt-[7%] bg-black w-[80%] shadow-md shadow-[#19191950] ml-auto mr-auto rounded-[8px]">
         <div className="inline-flex justify-between w-[100%] mt-3">
           <div className="inline-flex ">
@@ -113,8 +122,19 @@ const Question = () => {
             {currentPost.title}
           </h1>
           <div className="inline-flex  w-[12%] justify-around">
-            <p className=" cursor-pointer underline">{currentPost.author}</p>
-            <img src={userWhite} alt="" className="w-8 bg-white" />
+            <p className=" cursor-pointer underline">{currentPost.author}</p>    
+            {
+                      users.map(element => {
+                        const imgUser = []
+                        console.log(imgUser)
+                        if(element.fullname === currentPost.author) {
+                          imgUser.push(element.img)
+                        }
+                        return(
+                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                        )
+                      })
+                    }
           </div>
         </div>
 
@@ -176,11 +196,18 @@ const Question = () => {
                         className="bg-black rounded-[8px] shadow-[#000000] shadow-lg"
                       >
                         <div className="flex ml-[10.5%]">
-                          <img
-                            src={userWhite}
-                            alt=""
-                            className="w-10 ml-2 bg-white mr-2"
-                          />
+                        {
+                      users.map(element => {
+                        const imgUser = []
+                        console.log(imgUser)
+                        if(element.fullname === c.author) {
+                          imgUser.push(element.img)
+                        }
+                        return(
+                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                        )
+                      })
+                    }
                           <div className="flex mt-2 ">
                             <p className="font-ligth cursor-pointer underline">
                               {c.author}
@@ -275,11 +302,18 @@ const Question = () => {
                         className="bg-black rounded-[8px] shadow-[#000000] shadow-lg"
                       >
                         <div className="flex ml-[10.5%]">
-                          <img
-                            src={userWhite}
-                            alt=""
-                            className="w-10 ml-2 bg-white mr-2"
-                          />
+                        {
+                      users.map(element => {
+                        const imgUser = []
+                        console.log(imgUser)
+                        if(element.fullname === c.author) {
+                          imgUser.push(element.img)
+                        }
+                        return(
+                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                        )
+                      })
+                    }
                           <div className="flex mt-2 ">
                             <p className="font-ligth cursor-pointer underline">
                               {c.author}
@@ -362,14 +396,14 @@ const Question = () => {
                 })}
                        {
             moreComments === true ? (
-              <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
+              <button className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-sm ml-[1%] mt-8" onClick={() => setMoreComments(!moreComments) }>
               Ocultar comentarios
             </button>
 
             ) : 
                   (
-                <button className="flex justify-end text-blue-700 underline mr-10 cursor-buttonointer pb-2" onClick={() => setMoreComments(!moreComments) }>
-                  Cargar más comentarios...
+                <button className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-sm ml-[1%] mt-8" onClick={() => setMoreComments(!moreComments) }>
+                  Cargar comentarios...
                 </button>
             )
           }

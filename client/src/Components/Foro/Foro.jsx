@@ -7,6 +7,8 @@ import PostsForo from "./PostForo";
 import { feedAllComments } from "./../../Redux/Actions/Actions";
 import  AllFeedPosts  from "./AllFeedPosts"
 import { Link } from "react-router-dom";
+import userwhite from "../../assets/imgs/programmer.png";
+
 
 const Foro = () => {
   const dispatch = useDispatch();
@@ -55,7 +57,7 @@ const Foro = () => {
       <Nav />
       <div className="flex w-[40%] h-[20vh] bg-[#0a0b0e] ml-auto mr-auto mt-10 rounded-xl shadow-md shadow-[#0f0f0fbd]">
         <img
-          src="https://thumbs.dreamstime.com/b/default-profile-picture-avatar-photo-placeholder-vector-illustration-default-profile-picture-avatar-photo-placeholder-vector-189495158.jpg"
+          src={actualUser.img}
           alt="not found"
           width={50}
           className="flex w-[10%] h-[40%] rounded-[50%] mt-[7%] ml-10"
@@ -72,7 +74,7 @@ const Foro = () => {
 {modal ? (
           <div className="ml-auto mr-auto w-[50%]  ">
             <PostsForo />
-            <button onClick={modalClose} className="bg-[#191919]  text-slate-200" >No postear</button>
+            <button onClick={modalClose} className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#0004d2e8] text-sm ml-[1%]" >Cerrar ventana</button>
           </div>
 ) : null}
       <hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb]" />

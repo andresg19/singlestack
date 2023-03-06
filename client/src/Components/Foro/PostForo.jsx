@@ -58,7 +58,7 @@ const PostsForo = () => {
       <div class="flex justify-center items-center w-[60%] mx-auto">
         <label
           for="dropzone-file"
-          class="flex flex-col justify-center items-center w-80 h-54 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+          class="flex flex-col justify-center items-center w-80 h-54 rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#191919] opacity-75"
         >
           <div class="flex flex-col justify-center items-center pt-5 pb-6">
             <svg
@@ -97,13 +97,15 @@ const PostsForo = () => {
      
      
       <div className="flex justify-around mt-4">
-      {img ? <img src={img} alt="" width={100} /> : <p className="ml-auto mr-auto">No hay imágenes</p>}
+      {imgArr?.map((i) => {
+          return <img src={i} alt="" className="w-32" />;
+        })}
       
       </div>
 
       <div className="flex justify-center mt-4 mb-2">
       <button
-        className="text-sm bg-[#aaabac5b] shadow-lg shadow-[#19191980] w-[15%]"
+        className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#0004d2] text-sm ml-[1%] mt-8"
         onClick={handlePost}
       >
         Postear

@@ -14,6 +14,7 @@ const AskQuestion = ({}) => {
     content: "",
     author: JSON.parse(localStorage.getItem("currentUser")).fullname,
     etiquetas:[],
+
   });
 
   console.log(input);
@@ -160,12 +161,10 @@ const AskQuestion = ({}) => {
           </label>
         </div>
 
-        <div className="mt-10 ml-auto mr-auto">
-        {img ?
-          <img src={img} alt="" width={80} className="box-shadow shadow-black shadow-md" /> 
-        : 
-        <p className="">No hay imágenes</p>
-        }
+        <div className="flex justify-around mt-4">
+        {imgArr?.map((i) => {
+          return <img src={i} alt="" className="w-32" />;
+        })}
         </div>
 
         <button

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../../Redux/Actions/Actions";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Swal from 'sweetalert2'
+import userwhite from "../../../assets/imgs/programmer.png"
 
 
 export function validate(input) {
@@ -35,14 +36,19 @@ const Register = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
+
   const [input, setInput] = useState({
     fullname: "",
     email: "",
     password: "",
+    img: [userwhite]
   });
   console.log(input);
 
   const [errors, setErrors] = useState({});
+
+  
+
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -54,6 +60,7 @@ const Register = () => {
       })
     );
   };
+
 
   
   const handleNavigate = () => {
@@ -131,6 +138,14 @@ const Register = () => {
         />
         <p className="text-red-600">{errors.password}</p>
         <br />
+        <input
+              id="dropzone"
+              type="dropzone"
+              class="hidden"
+              multiple
+              onChange
+            />
+
         <button 
         className="text-sm bg-[#191919] font-medium text-slate-300 hover:bg-[#060606] hover:text-slate-200 shadow-sm shadow-[#1d1d1de6] w-[50%] mr-auto ml-auto" 
         type="submit">
