@@ -105,7 +105,7 @@ const PostsForo = () => {
 
       <div className="flex justify-center mt-4 mb-2">
       <button
-        className="text-sm bg-[#aaabac5b] shadow-lg shadow-[#19191980] w-[15%]"
+        className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#0004d2] text-sm ml-[1%] mt-8"
         onClick={handlePost}
       >
         Postear

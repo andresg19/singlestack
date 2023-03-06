@@ -41,9 +41,9 @@ const Questions = ({ handleSearch }) => {
               <h5 className="truncate mt-5">{p.content}</h5>
             </div>
             <div className="">
-              <p className="underline text-[#181cff] ml-[80%] mt-8">
-                <Link to={"/question/" + p.id}>Saber más...</Link>
-              </p>
+              <button className="bg-[#070a13] rounded-sm shadow-md shadow-[#000000] hover:bg-[#030509] font-semibold text-[#181cff70] ml-[80%] mt-8">
+                <Link to={"/question/" + p.id}>Ver más...</Link>
+              </button>
             </div>
           </div>
         );

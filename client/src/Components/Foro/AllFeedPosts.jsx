@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { feedDislikes, feedLikes, getFeedPosts } from "../../Redux/Actions/Actions";
+import { feedDislikes, feedLikes, getFeedPosts, getUsers } from "../../Redux/Actions/Actions";
 import userWhite from "../../assets/imgs/userWhite.png";
 import bookmark from "../../assets/imgs/bookmark.png";
 import { dateFormatter } from "../QA/Question";
@@ -16,6 +16,9 @@ import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 const AllFeedPosts = () => {
   const dispatch = useDispatch();
   const feedPosts = useSelector((state) => state.feedPosts);
+  const users = useSelector((state) => state.users);
+  console.log(users)
+  console.log(feedPosts);
   const likes = useSelector((state) => state.feedlikes);
   const actualUser = JSON.parse(localStorage.getItem("currentUser")).id;
   const dislikes = useSelector((state) => state.feeddislikes);
@@ -24,6 +27,7 @@ const AllFeedPosts = () => {
     dispatch(getFeedPosts());
     dispatch(feedLikes());
     dispatch(feedDislikes());
+    dispatch(getUsers());
   }, []);
 
 
@@ -46,7 +50,19 @@ const AllFeedPosts = () => {
               <div className="pt-5 shadow-mdshadow-[#0f0f0fbd]">
                 <div className="flex justify-between mb-2 mx-2">
                   <div className="flex -mt-2">
-                    <img src={userWhite} alt="" className="w-10 h-10  ml-2" />
+                  
+                    {
+                      users.map(element => {
+                        const imgUser = []
+                        console.log(imgUser)
+                        if(element.fullname === post.author) {
+                          imgUser.push(element.img)
+                        }
+                        return(
+                          <img src={imgUser[0]} alt="" className="w-10 h-10  ml-2" />
+                        )
+                      })
+                    }
                     <div className="ml-2 t-mt-2">
                       <p className="text-xl underline text-gray-300">{post.author}</p>
                       <p className="text-gray-400">
@@ -57,7 +73,7 @@ const AllFeedPosts = () => {
                 </div>
 
                 <div className="block w-[90%] m-5 p-4 ">
-                  <span className="flex truncate w-[60%] ml-auto mr-auto justify-center text-xl text-slate-200">
+                  <span className="flex truncate ml-auto mr-auto justify-center text-xl text-slate-200">
                     {post.content}
                   </span>
               <hr className="mt-5 max-w-[100%] mx-auto border-[#ffffff08]" />

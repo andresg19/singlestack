@@ -42,10 +42,12 @@ const Qa = () => {
     <div className="">
       <Nav />
       <Link to="/ask-question">
-      <button className=" bg-[#131f1f6d] hover:bg-[#060606] hover:text-slate-300 h-[2%] w-[6%] rounded-md  shadow-md shadow-[#090808] ml-[10%] mt-[5%]  text-white  font-sans text-sm font-semibold ">Hacer una pregunta</button>
+      <button className=" bg-[#070a13] hover:bg-[#030509] w-[10%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-lg ml-[1%] mt-8 ">
+        Preguntar
+        </button>
       </Link>
       <div className="flex font-sans text-lg font-light">
-        <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[10%] w-[60vh]">
+        <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[1%] w-[50%]">
           {/* PRIMER DIV */}
           <input
             type="text"
@@ -73,7 +75,7 @@ const Qa = () => {
            
           </div>
         </div>
-        <div className="bg-black  shadow-md shadow-[#090808]  mt-[7%] rounded-[2%] ml-[10%] w-[100vh] ">
+        <div className="bg-black  shadow-md shadow-[#090808]  mt-[7%] rounded-[2%] ml-[1%] w-[70%] ">
           {/* SEGUNDO DIV */}
 
           <Questions handleSearch={filterPosts} />
