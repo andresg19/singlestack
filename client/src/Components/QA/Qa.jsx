@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearState, getPosts,  getRecientesPosts, searchByTag } from "../../Redux/Actions/Actions";
 import { useState } from "react";
 import { etiquetas } from "./etiquetas";
+import { Link } from "react-router-dom";
 
 
 
@@ -40,6 +41,9 @@ const Qa = () => {
   return (
     <div className="">
       <Nav />
+      <Link to="/ask-question">
+      <button className=" bg-[#131f1f6d] hover:bg-[#060606] hover:text-slate-300 h-[2%] w-[6%] rounded-md  shadow-md shadow-[#090808] ml-[10%] mt-[5%]  text-white  font-sans text-sm font-semibold ">Hacer una pregunta</button>
+      </Link>
       <div className="flex font-sans text-lg font-light">
         <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[10%] w-[60vh]">
           {/* PRIMER DIV */}

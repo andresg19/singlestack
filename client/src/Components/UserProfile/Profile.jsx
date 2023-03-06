@@ -5,7 +5,7 @@ import Config from "./Config";
 import DefaultSectionUser from "./DefaultSectionUser";
 import PostsResourcesUser from "./PostsResourcesUser";
 import QuestionsUsers from "./QuestionsUsers";
-import userWhite from "../../assets/imgs/userWhite.png";
+import userwhite from "../../assets/imgs/programmer.png";
 
 
 const Profile = () => {
@@ -14,7 +14,7 @@ const Profile = () => {
       ? JSON.parse(localStorage.getItem("currentUser")) 
       : []
   );
-  console.log(user);
+  console.log(user.img);
   const [modal, setModal] = useState(false);
   
   const modalOpen = () => {
@@ -35,21 +35,14 @@ const Profile = () => {
     <div className="flex">
     <div className="justify-center  grid m-[10%] w-[20%] py-2  bg-[#000000] rounded-xl">
       <div className="m-[10%] ml-auto mr-auto text-white text-sm py-4 text-center">
-        {
-          user.img ?(
+      
         <img
-          src={user.img}
-          alt="not found"
-          width={50}
-          className="ml-auto mr-auto"
-        />) :
-        <img
-          src={userWhite}
+          src= {user.img}
           alt="not found"
           width={50}
           className="ml-auto mr-auto"
         />
-        }
+
         <h1>{user.fullname}</h1>
         <h3>{user.email}</h3>
       </div>

@@ -7,13 +7,14 @@ import {
   GetLikes,
   GetDislikes,
   dislikeComment,
+  getUsers,
 } from "../../Redux/Actions/Actions";
 import InputComment from "./InputComment";
 import Nav from "../NavBar/Nav";
 import Footer from "../Footer/Footer";
 import bookmark from "../../assets/imgs/bookmark.png";
 import share from "../../assets/imgs/share.png";
-import userWhite from "../../assets/imgs/userWhite.png";
+import userwhite from "../../assets/imgs/programmer.png";
 import finger from "../../assets/imgs/finger.png";
 import close from "../../assets/imgs/close.svg";
 import { likeComment } from "./../../Redux/Actions/Actions";
@@ -40,8 +41,8 @@ export function dateFormatter(state) {
 const Question = () => {
   const dispatch = useDispatch();
   const currentPost = useSelector((state) => state.postDetail);
+  console.log(currentPost)
   const currentComments = useSelector((state) => state.commentsDetail);
-  console.log(currentComments)
   const initialComments = currentComments.slice(0, 1);
   console.log(initialComments);
   const [moreComments, setMoreComments] = useState(false);
@@ -69,6 +70,7 @@ const Question = () => {
     dispatch(searchPost(id));
     dispatch(GetLikes());
     dispatch(GetDislikes());
+    dispatch(getUsers());
 
     return () => {
       dispatch(clearState());
@@ -113,8 +115,7 @@ const Question = () => {
             {currentPost.title}
           </h1>
           <div className="inline-flex  w-[12%] justify-around">
-            <p className=" cursor-pointer underline">{currentPost.author}</p>
-            <img src={userWhite} alt="" className="w-8 bg-white" />
+            <p className=" cursor-pointer underline">{currentPost.author}</p>    
           </div>
         </div>
 
@@ -177,9 +178,9 @@ const Question = () => {
                       >
                         <div className="flex ml-[10.5%]">
                           <img
-                            src={userWhite}
+                            src={userwhite}
                             alt=""
-                            className="w-10 ml-2 bg-white mr-2"
+                            className="w-10 ml-2 mr-2"
                           />
                           <div className="flex mt-2 ">
                             <p className="font-ligth cursor-pointer underline">
@@ -276,9 +277,9 @@ const Question = () => {
                       >
                         <div className="flex ml-[10.5%]">
                           <img
-                            src={userWhite}
+                            src={userwhite}
                             alt=""
-                            className="w-10 ml-2 bg-white mr-2"
+                            className="w-10 ml-2mr-2"
                           />
                           <div className="flex mt-2 ">
                             <p className="font-ligth cursor-pointer underline">

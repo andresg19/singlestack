@@ -58,7 +58,7 @@ const PostsForo = () => {
       <div class="flex justify-center items-center w-[60%] mx-auto">
         <label
           for="dropzone-file"
-          class="flex flex-col justify-center items-center w-80 h-54 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+          class="flex flex-col justify-center items-center w-80 h-54 rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#191919] opacity-75"
         >
           <div class="flex flex-col justify-center items-center pt-5 pb-6">
             <svg
@@ -97,7 +97,9 @@ const PostsForo = () => {
      
      
       <div className="flex justify-around mt-4">
-      {img ? <img src={img} alt="" width={100} /> : <p className="ml-auto mr-auto">No hay imágenes</p>}
+      {imgArr?.map((i) => {
+          return <img src={i} alt="" className="w-32" />;
+        })}
       
       </div>
 

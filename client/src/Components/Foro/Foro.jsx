@@ -7,6 +7,8 @@ import PostsForo from "./PostForo";
 import { feedAllComments } from "./../../Redux/Actions/Actions";
 import  AllFeedPosts  from "./AllFeedPosts"
 import { Link } from "react-router-dom";
+import userwhite from "../../assets/imgs/programmer.png";
+
 
 const Foro = () => {
   const dispatch = useDispatch();
@@ -55,7 +57,7 @@ const Foro = () => {
       <Nav />
       <div className="flex w-[40%] h-[20vh] bg-[#0a0b0e] ml-auto mr-auto mt-10 rounded-xl shadow-md shadow-[#0f0f0fbd]">
         <img
-          src="https://thumbs.dreamstime.com/b/default-profile-picture-avatar-photo-placeholder-vector-illustration-default-profile-picture-avatar-photo-placeholder-vector-189495158.jpg"
+          src={userwhite}
           alt="not found"
           width={50}
           className="flex w-[10%] h-[40%] rounded-[50%] mt-[7%] ml-10"

@@ -58,7 +58,7 @@ const InputComment = ({ postId }) => {
       <div class="flex justify-center items-center w-[60%] ml-auto mr-auto mt-4">
         <label
           for="dropzone-file"
-          class="flex flex-col justify-center items-center w-60 h-36 rounded-lg  cursor-pointer shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#191919] opacity-75"
+          class="flex flex-col justify-center items-center w-60 h-36 rounded-lg  cursor-pointer shadow-sm shadow-black box-shadow hover:bg-black  bg-[#191919] opacity-75"
         >
           <div class="flex flex-col justify-center items-center pt-5 pb-6">
             <svg
