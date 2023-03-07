@@ -15,7 +15,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-
+  console.log(input)
   useEffect(() => {
     dispatch(getUsers());
   }, []);
@@ -27,16 +27,10 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("aprieta");
-    users.forEach((u) => {
-      if (u.email === input.email && u.password === input.password) {
+    users.filter((u) => {
+      if (u.email === input.email && u.password === input.password) { 
         dispatch(userLogged(u));
-        navigate("/");
-      } else  {
-        Swal.fire({
-          icon: 'error',
-          text: 'No se encontraron usuarios con sus datos. Revise los campos',
-  
-      })
+        navigate("/") 
       }
     });
   };

@@ -96,10 +96,10 @@ const FeedPost = () => {
                         console.log(imgUser)
                         if(element.fullname === currentPost.author) {
                           imgUser.push(element.img)
+                          return(
+                            <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                          )
                         }
-                        return(
-                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
-                        )
                       })
                     }
               <div className="ml-2 t-mt-2">
@@ -116,7 +116,10 @@ const FeedPost = () => {
             </span>
 
             <div className="block max-w-[100%] mt-[10%] text-slate-200">
-              <p className="w-[50%] ml-auto mr-auto">Haz zoom en las imagenes con tu scroll wheel o doble toque</p>
+             {
+              currentPost.img ?
+              <p className="w-[50%] ml-auto mr-auto">Haz zoom en las imagenes con tu scroll wheel o doble toque</p> : null
+             }
               {currentPost.img?.map((img, index) => {
                 return (
                   <div
@@ -163,7 +166,7 @@ const FeedPost = () => {
                         </div>
                         <div className="">
                           <div
-                            className="cursor-pointer hover:cursor-pointer"
+                            className="cursor-pointer mt-1 hover:cursor-pointer"
                             onClick={(e) => handleDislike(e)}
                           >
                             <FingerDislikesForo
@@ -202,10 +205,10 @@ const FeedPost = () => {
                         console.log(imgUser)
                         if(element.fullname === d.author) {
                           imgUser.push(element.img)
+                          return(
+                            <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                          )
                         }
-                        return(
-                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
-                        )
                       })
                     }
                   <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
@@ -232,10 +235,10 @@ const FeedPost = () => {
                         console.log(imgUser)
                         if(element.fullname === c.author) {
                           imgUser.push(element.img)
+                          return(
+                            <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                          )
                         }
-                        return(
-                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
-                        )
                       })
                     }
                   <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
