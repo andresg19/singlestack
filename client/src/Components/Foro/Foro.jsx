@@ -7,7 +7,7 @@ import PostsForo from "./PostForo";
 import { feedAllComments } from "./../../Redux/Actions/Actions";
 import  AllFeedPosts  from "./AllFeedPosts"
 import { Link } from "react-router-dom";
-import userwhite from "../../assets/imgs/programmer.png";
+import userwhite from "../../assets/imgs/userWhite.png";
 
 
 const Foro = () => {
@@ -56,17 +56,25 @@ const Foro = () => {
     <div>
       <Nav />
       <div className="flex w-[40%] h-[20vh] bg-[#0a0b0e] ml-auto mr-auto mt-10 rounded-xl shadow-md shadow-[#0f0f0fbd]">
-        <img
+     { actualUser?  <img
           src={actualUser.img}
           alt="not found"
           width={50}
           className="flex w-[10%] h-[40%] rounded-[50%] mt-[7%] ml-10"
-        />
+        /> 
+        :
+        <img
+          src={userwhite}
+          alt="not found"
+          width={50}
+          className="flex w-[10%] h-[40%] rounded-[50%] mt-[7%] ml-10"
+        /> 
+      }
      
           <input
             onClick={modalOpen}
             placeholder="Haz un posteo"
-            className="grid w-[60%] placeholder:text-slate-400 py-2 pl-3 pr-3 h-7 mt-12 ml-10 rounded-xl"
+            className="grid w-[60%] placeholder:text-[#191919] font-medieum py-2 pl-3 pr-3 h-7 mt-12 ml-10 rounded-xl"
           />
 
         

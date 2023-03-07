@@ -16,6 +16,7 @@ const AskQuestion = ({}) => {
     etiquetas:[],
 
   });
+  const actualUser = JSON.parse(localStorage.getItem("currentUser"));
 
   console.log(input);
   const [img, setImg] = useState("");
@@ -74,8 +75,7 @@ const AskQuestion = ({}) => {
   return (
     <div className="">
       <Nav />
-
-      <div className="grid text-slate-200 w-[100%] font-sans text-md justify-center mt-[2%]">
+        <div className="grid text-slate-200 w-[100%] font-sans text-md justify-center mt-[2%]">
         <input
           className="w-[60%] placeholder:text-center shadow-md shadow-black box-shadow rounded-b-lg bg-[#191919] opacity-75 ml-auto  mr-auto m-3"
           type="text"
@@ -173,7 +173,9 @@ const AskQuestion = ({}) => {
         >
           REALIZAR PREGUNTA
         </button>
-      </div>
+      </div> 
+      
+   
 
       <Footer />
     </div>

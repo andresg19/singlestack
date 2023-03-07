@@ -28,6 +28,18 @@ const Nav = () => {
   })
   }
 
+  const handleControlForo = (e) => {
+    e.preventDefault();
+    if (!actualUser) {
+      Swal.fire({
+        icon:'warning',
+        text: 'Inicie sesión para ver nuestro foro'
+      })
+    } else {
+      navigate('/foro')
+    }
+  }
+
   const navigateToHome = () => {
     navigate('/')
   };
@@ -72,7 +84,7 @@ const Nav = () => {
         <li className="border-b border-gray-400 ">
           <a href="/q-a">Q-A</a>
         </li>
-        <li className="border-b border-gray-400 ">
+        <li className="border-b border-gray-400" onClick={handleControlForo}>
           <a href="/foro">Foro</a>
         </li>
         <li className="border-b border-gray-400 ">
@@ -89,8 +101,8 @@ const Nav = () => {
           <li className="border-b border-gray-400 ">
             <a href="/q-a">Q-A</a>
           </li>
-          <li className="border-b border-gray-400 ">
-            <a href="/foro">Foro</a>
+          <li className="border-b border-gray- cursor-pointer "  onClick={handleControlForo}>
+            <a>Foro</a>
           </li>
           <li className="border-b border-gray-400 ">
             <a href="/register">Iniciar sesión o registro</a>
@@ -108,8 +120,8 @@ const Nav = () => {
         <li className="border-b border-gray-400 font-semibold text-[#140ed2]">
           <a href="/q-a">Q-A</a>
         </li>
-        <li className="border-b border-gray-400 font-semibold text-[#140ed2]">
-          <a href="/foro">Foro</a>
+        <li className="border-b border-gray-400 font-semibold text-[#140ed2] cursor-pointer"  onClick={handleControlForo}>
+          <a>Foro</a>
         </li>
         <li className="border-b border-gray-400 font-semibold text-[#140ed2]">
           <a href="/profile">Mi perfil</a>
@@ -125,8 +137,8 @@ const Nav = () => {
           <li className="border-b border-gray-400 font-semibold text-[#140ed2]">
             <a href="/q-a">Q-A</a>
           </li>
-          <li className="border-b border-gray-400 font-semibold text-[#140ed2]">
-            <a href="/foro">Foro</a>
+          <li className="border-b border-gray-400 font-semibold text-[#140ed2] cursor-pointer"  onClick={handleControlForo}>
+            <a>Foro</a>
           </li>
           <li className="border-b border-gray-400 font-semibold text-[#140ed2]">
             <a href="/register">Iniciar sesión o registro</a>
