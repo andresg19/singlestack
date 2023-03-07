@@ -151,8 +151,11 @@ const Register = () => {
         type="submit">
           Confirmar
           </button>
+          <p className="underline mt-8 mx-auto font-normal text-[#0a0ac5]">
+            Ya tienes una cuenta?
+          </p>
       <button 
-        className="text-xs mt-10 bg-[#191919] font-medium text-slate-700 hover:bg-[#060606] hover:text-slate-200 shadow-sm shadow-[#1d1d1de6] w-[35%] mr-auto ml-auto"
+        className="text-xs mt-3 bg-[#191919] font-medium text-[#dddde2df] hover:bg-[#060606] hover:text-slate-200 shadow-sm shadow-[#1d1d1de6] w-[35%] mr-auto ml-auto"
         onClick={handleNavigate} 
         type="submit">
           Iniciar sesión
