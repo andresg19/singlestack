@@ -67,6 +67,15 @@ const Question = () => {
     userId: userId,
     commentId: "",
   });
+  const imgUser = [];
+  const usersImg =  users.map(element => {
+                        console.log(imgUser)
+                        if(element.fullname === currentPost.author) {
+                          imgUser.push(element.img)
+                        }});
+
+
+ 
 
   useEffect(() => {
     dispatch(searchPost(id));
@@ -78,6 +87,8 @@ const Question = () => {
       dispatch(clearState());
     };
   }, []);
+
+
 
   /* useEffect(() =>{
 
@@ -123,18 +134,8 @@ const Question = () => {
           </h1>
           <div className="inline-flex  w-[12%] justify-around">
             <p className=" cursor-pointer underline">{currentPost.author}</p>    
-            {
-                      users.map(element => {
-                        const imgUser = []
-                        console.log(imgUser)
-                        if(element.fullname === currentPost.author) {
-                          imgUser.push(element.img)
-                        }
-                        return(
+          
                           <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
-                        )
-                      })
-                    }
           </div>
         </div>
 
@@ -197,16 +198,16 @@ const Question = () => {
                       >
                         <div className="flex ml-[10.5%]">
                         {
-                      users.map(element => {
-                        const imgUser = []
-                        console.log(imgUser)
-                        if(element.fullname === c.author) {
-                          imgUser.push(element.img)
-                        }
-                        return(
-                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
-                        )
-                      })
+                        users.map(element => {
+                          const imgUserC = []
+                          if (element.fullname === c.author) {
+                            imgUserC.push(element.img)
+                            return(
+                              <img src={imgUserC[0]} alt="" className="w-12 h-10  ml-2" />
+                            )
+                          } 
+                        })
+                        
                     }
                           <div className="flex mt-2 ">
                             <p className="font-ligth cursor-pointer underline">
@@ -303,16 +304,16 @@ const Question = () => {
                       >
                         <div className="flex ml-[10.5%]">
                         {
-                      users.map(element => {
-                        const imgUser = []
-                        console.log(imgUser)
-                        if(element.fullname === c.author) {
-                          imgUser.push(element.img)
-                        }
-                        return(
-                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
-                        )
-                      })
+                        users.map(element => {
+                          const imgUserC = []
+                          if (element.fullname === c.author) {
+                            imgUserC.push(element.img)
+                            return(
+                              <img src={imgUserC[0]} alt="" className="w-12 h-10  ml-2" />
+                            )
+                          } 
+                        })
+                        
                     }
                           <div className="flex mt-2 ">
                             <p className="font-ligth cursor-pointer underline">

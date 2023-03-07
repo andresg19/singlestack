@@ -57,10 +57,10 @@ const AllFeedPosts = () => {
                         console.log(imgUser)
                         if(element.fullname === post.author) {
                           imgUser.push(element.img)
+                          return(
+                            <img src={imgUser[0]} alt="" className="w-10 h-10  ml-2" />
+                          )
                         }
-                        return(
-                          <img src={imgUser[0]} alt="" className="w-10 h-10  ml-2" />
-                        )
                       })
                     }
                     <div className="ml-2 t-mt-2">

@@ -96,10 +96,10 @@ const FeedPost = () => {
                         console.log(imgUser)
                         if(element.fullname === currentPost.author) {
                           imgUser.push(element.img)
+                          return(
+                            <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                          )
                         }
-                        return(
-                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
-                        )
                       })
                     }
               <div className="ml-2 t-mt-2">
@@ -202,10 +202,10 @@ const FeedPost = () => {
                         console.log(imgUser)
                         if(element.fullname === d.author) {
                           imgUser.push(element.img)
+                          return(
+                            <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                          )
                         }
-                        return(
-                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
-                        )
                       })
                     }
                   <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
@@ -232,10 +232,10 @@ const FeedPost = () => {
                         console.log(imgUser)
                         if(element.fullname === c.author) {
                           imgUser.push(element.img)
+                          return(
+                            <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                          )
                         }
-                        return(
-                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
-                        )
                       })
                     }
                   <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
