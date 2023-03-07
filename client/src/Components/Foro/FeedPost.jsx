@@ -116,7 +116,10 @@ const FeedPost = () => {
             </span>
 
             <div className="block max-w-[100%] mt-[10%] text-slate-200">
-              <p className="w-[50%] ml-auto mr-auto">Haz zoom en las imagenes con tu scroll wheel o doble toque</p>
+             {
+              currentPost.img ?
+              <p className="w-[50%] ml-auto mr-auto">Haz zoom en las imagenes con tu scroll wheel o doble toque</p> : null
+             }
               {currentPost.img?.map((img, index) => {
                 return (
                   <div
@@ -163,7 +166,7 @@ const FeedPost = () => {
                         </div>
                         <div className="">
                           <div
-                            className="cursor-pointer hover:cursor-pointer"
+                            className="cursor-pointer mt-1 hover:cursor-pointer"
                             onClick={(e) => handleDislike(e)}
                           >
                             <FingerDislikesForo

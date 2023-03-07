@@ -217,7 +217,7 @@ const Question = () => {
                         </div>
                         <div className="-mt-10">
                           <div className="">
-                            <p className="text-[#1b7161] ml-[2.5%]">
+                            <p className="text-[#1b7161] font-bold ml-[2.5%]">
                               {countLikes.length}
                             </p>
                             <div
@@ -233,7 +233,7 @@ const Question = () => {
                           </div>
                           <div className="">
                             <div
-                              className="cursor-pointer hover:cursor-pointer"
+                              className="cursor-pointer mt-1 hover:cursor-pointer"
                               onClick={(e) => handleDislike(e, c)}
                             >
                               <FingerDislike
@@ -242,7 +242,7 @@ const Question = () => {
                                 userId={userId}
                               />
                             </div>
-                            <p className="text-[#C20000] ml-[2.5%]">
+                            <p className="text-[#C20000] font-bold ml-[2.5%]">
                               {countdislikes.length}
                             </p>
                           </div>
@@ -323,7 +323,7 @@ const Question = () => {
                         </div>
                         <div className="-mt-10">
                           <div className="">
-                            <p className="text-[#1b7161] ml-[2.5%]">
+                            <p className="text-[#1b7161] font-bold ml-[2.5%]">
                               {countLikes.length}
                             </p>
                             <div
@@ -339,7 +339,7 @@ const Question = () => {
                           </div>
                           <div className="">
                             <div
-                              className="cursor-pointer hover:cursor-pointer"
+                              className="cursor-pointer mt-1 hover:cursor-pointer"
                               onClick={(e) => handleDislike(e, c)}
                             >
                               <FingerDislike
@@ -348,7 +348,7 @@ const Question = () => {
                                 userId={userId}
                               />
                             </div>
-                            <p className="text-[#C20000] ml-[2.5%]">
+                            <p className="text-[#C20000] font-bold ml-[2.5%]">
                               {countdislikes.length}
                             </p>
                           </div>

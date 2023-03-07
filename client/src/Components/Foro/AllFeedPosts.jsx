@@ -79,7 +79,10 @@ const AllFeedPosts = () => {
               <hr className="mt-5 max-w-[100%] mx-auto border-[#ffffff08]" />
                   <div className="block mt-[10%]">
 
-                  <p className="w-[60%] text-slate-200 ml-auto mr-auto">Haz zoom en las imagenes con tu scroll wheel o doble toque</p>
+                  {
+              post.img.length ?
+              <p className="w-[50%] ml-auto mr-auto">Haz zoom en las imagenes con tu scroll wheel o doble toque</p> : null
+             }
                     {post.img?.map((postimg, index) => (
                      <div
                      className="w-[100%] mt-5 ml-auto mr-auto"
