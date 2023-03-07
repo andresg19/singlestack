@@ -8,11 +8,13 @@ import { clearState, getPosts,  getRecientesPosts, searchByTag } from "../../Red
 import { useState } from "react";
 import { etiquetas } from "./etiquetas";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 
 const Qa = () => {
   const dispatch = useDispatch();
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const posts = useSelector((state) => state.posts)
   console.log(posts)
 
@@ -37,15 +39,33 @@ const Qa = () => {
     dispatch(getRecientesPosts())
   }
 
+  const handleUserControll = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      icon: 'warning',
+      text: 'Debe iniciar sesión para preguntar'
+    })
+  }
+
 
   return (
     <div className="">
       <Nav />
+        {
+          currentUser ?
+          <Link to="/ask-question">
+          <button className=" bg-[#070a13] hover:bg-[#030509] w-[10%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-lg ml-[1%] mt-8 ">
+            Preguntar
+            </button>
+          </Link>
+          :
       <Link to="/ask-question">
-      <button className=" bg-[#070a13] hover:bg-[#030509] w-[10%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-lg ml-[1%] mt-8 ">
+      <button className=" bg-[#070a13] hover:bg-[#030509] w-[10%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-lg ml-[1%] mt-8 "
+      onClick={handleUserControll}>
         Preguntar
         </button>
       </Link>
+        }
       <div className="flex font-sans text-lg font-light">
         <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[1%] w-[50%]">
           {/* PRIMER DIV */}

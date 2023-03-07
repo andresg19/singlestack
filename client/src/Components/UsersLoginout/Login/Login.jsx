@@ -30,10 +30,30 @@ const Login = () => {
     users.filter((u) => {
       if (u.email === input.email && u.password === input.password) { 
         dispatch(userLogged(u));
-        navigate("/") 
-      }
-    });
+        Swal.fire({
+          icon: 'success',
+          text: 'Inicio exitoso, "OK" para continuar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/") 
+        } 
+        
+      })
+  } else {
+    Swal.fire({
+      icon: 'error',
+      text: 'Revise los campos',
+  })
+  }
+});
   };
+      
+      // if (u.email !== input.email && u.password !== input.password || !input.email || !input.password) {
+      //   Swal.fire({
+      //     icon: 'error',
+      //     text: 'Revise los campos',
+      // })
+      // }
 
   return (
     <div className="block mt-[5%] bg-black shadow-md shadow-[#0f0f0fbd] rounded-xl  max-w-[40%] h-[50vh] ml-auto mr-auto text-slate-200 font-sans font-light ">

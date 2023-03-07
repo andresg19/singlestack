@@ -135,7 +135,7 @@ const Question = () => {
           <div className="inline-flex  w-[12%] justify-around">
             <p className=" cursor-pointer underline">{currentPost.author}</p>    
           
-                          <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                          <img src={imgUser[0]} alt="" className="w-16 h-14  ml-2" />
           </div>
         </div>
 
