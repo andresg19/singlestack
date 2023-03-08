@@ -86,8 +86,9 @@ const FeedPost = () => {
 
   return (
     //div padre
-    <div className="mt-10 text-slate-200 font-sans font-normal leading-loose w-[90%] ml-auto mr-auto">
-        <div className="bg-black mx-auto w-[70%] rounded-xl shadow-md shadow-[#201d1d67] ">
+    <div className="text-slate-200 font-sans font-normal leading-loose w-[100%] ml-auto mr-auto">
+       <Nav />
+        <div className="bg-black mx-auto mt-10 w-[70%] rounded-xl shadow-md shadow-[#201d1d67] ">
           <div className="flex justify-between mx-2">
             <div className="flex mt-5">
             {
@@ -182,7 +183,7 @@ const FeedPost = () => {
         </div>
         <div className= "pt-5 bg-[#050505] mx-auto w-[70%] rounded-xl shadow-md shadow-[#201d1d67] ">
           <div className="flex border-b border-gray-400 mb-2 pb-5">
-            <img src={actualUserImg.img} alt="" className="bg-white w-10 h-10 rounded-3xl ml-2" />
+            <img src={actualUserImg.img} alt="" className="w-10 h-10 rounded-3xl ml-2" />
             <input
               type="text"
               value={content}

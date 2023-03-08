@@ -7,6 +7,7 @@ import PostsResourcesUser from "./PostsResourcesUser";
 import QuestionsUsers from "./QuestionsUsers";
 import userwhite from "../../assets/imgs/programmer.png";
 import Nav from "../NavBar/Nav";
+import Footer from "../Footer/Footer";
 
 
 const Profile = () => {
@@ -33,7 +34,9 @@ const Profile = () => {
   const date = dateFormatter(user.createdAt);
 
   return (
-    <div className="flex">
+    <div className="">
+      <Nav />
+      <div className="flex">
     <div className="justify-center  grid m-[10%] w-[20%] py-2  bg-[#000000] rounded-xl">
       <div className="m-[10%] ml-auto mr-auto text-white text-sm py-4 text-center">
       
@@ -66,37 +69,40 @@ const Profile = () => {
 
       </div>
     </div>
-      
+ 
     {
         modal ? (
-          <div className="w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-black  rounded-xl">
+          <div className=" w-[100%] mr-[5%] max-h-[80vh] mt-[2%] bg-black  rounded-xl">
             <Config />
             <button onClick={modalClose}>Cerrar ventana</button>
           </div>
         ) :
      sectionUser && sectionUser === 'initialValue' ? 
      ( 
-     <div className="w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-black  rounded-xl">
+     <div className=" w-[100%] mr-[5%] max-h-[80vh] mt-[2%] bg-black  rounded-xl">
        <DefaultSectionUser /> 
        </div> 
      ) 
      :
      sectionUser === 'questions' ?
     (
-    <div className="grid overflow-scroll scrollbar-hide w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-black  rounded-xl">
+    <div className=" overflow-scroll scrollbar-hide w-[100%] mr-[5%] max-h-[80vh] mt-[2%] bg-black  rounded-xl">
       <QuestionsUsers />
     </div>
     ) 
     :
     sectionUser === 'posts' ?
     (
-      <div className="grid overflow-scroll scrollbar-hide w-[100%] mr-[5%] max-h-[80vh] mt-[5%] bg-black  rounded-xl">
+      <div className=" overflow-scroll scrollbar-hide w-[100%] mr-[5%] max-h-[80vh] mt-[2%] bg-black  rounded-xl">
         <PostsResourcesUser />
       </div>
     ) 
     :
     null
     }
+
+      </div>
+      <Footer />
     </div>
   );
 };

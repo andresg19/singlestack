@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Swal from 'sweetalert2'
 import userwhite from "../../../assets/imgs/programmer.png"
-
+import Nav from "../../NavBar/Nav"
+import Footer from "../../Footer/Footer"
 
 export function validate(input) {
   let errors = {};
@@ -97,6 +98,9 @@ const Register = () => {
     }
   };
   return (
+    <div>
+
+    <Nav />
     <div className="block mt-[5%] bg-black shadow-md shadow-[#0f0f0fbd] rounded-xl  max-w-[40%] h-[75vh] ml-auto mr-auto text-slate-200 font-sans font-light ">
       <div className="flex w-[25%] p-1 ml-auto mr-auto">
         <h1 className="mx-autotext-slate-300 italic font-medium">Ingrese sus datos</h1>
@@ -162,8 +166,10 @@ const Register = () => {
       </button>
         <h1 className="mx-auto mt-12 text-slate-500 italic font-medium">singlestack</h1>
       </form>
-
     </div>
+    <Footer />
+    </div>
+
   );
 };
 
