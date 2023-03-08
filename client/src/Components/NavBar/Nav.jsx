@@ -23,7 +23,7 @@ const Nav = () => {
   }).then((result) => {
     if (result.isConfirmed) {
       localStorage.clear();
-      window.location.reload()
+      navigate('/')
     } 
   })
   }
