@@ -3,7 +3,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { getUsers, login, userLogged } from "../../../Redux/Actions/Actions";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import Nav from "../../NavBar/Nav";
+import Footer from "../../Footer/Footer"
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -56,6 +58,8 @@ const Login = () => {
       // }
 
   return (
+    <div>
+      <Nav />
     <div className="block mt-[5%] bg-black shadow-md shadow-[#0f0f0fbd] rounded-xl  max-w-[40%] h-[50vh] ml-auto mr-auto text-slate-200 font-sans font-light ">
       <div className="flex w-[25%] p-1 ml-auto mr-auto">
         <h1 className="mx-auto text-lg text-slate-300 italic font-medium">Iniciar sesión</h1>
@@ -88,6 +92,8 @@ const Login = () => {
       </form>
 
 
+    </div>
+    <Footer />
     </div>
   );
 };
