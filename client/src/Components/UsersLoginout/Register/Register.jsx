@@ -4,7 +4,7 @@ import { register } from "../../../Redux/Actions/Actions";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Swal from 'sweetalert2'
-import userwhite from "../../../assets/imgs/programmer.png"
+import userwhite from "../../../assets/imgs/userWhite.png"
 import Nav from "../../NavBar/Nav"
 import Footer from "../../Footer/Footer"
 

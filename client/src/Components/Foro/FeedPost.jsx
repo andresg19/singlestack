@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  clearState,
   feedDislikes,
   feedLikes,
   getFeedDislikes,
@@ -9,15 +10,11 @@ import {
   postFeedComments,
   searchFeedPost,
 } from "../../Redux/Actions/Actions";
-import fingerSVG from "../../assets/imgs/fingerSVG.svg";
-import userWhite from "../../assets/imgs/userWhite.png";
-import bookmark from "../../assets/imgs/bookmark.png";
 import { dateFormatter } from "../QA/Question";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import FingerDislikesForo from "./FingerDislikesForo";
 import FingerLikesForo from "./FingerLikesForo";
-import close from "../../assets/imgs/close.svg";
 import Nav from "../NavBar/Nav";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch"
 
@@ -53,6 +50,9 @@ const FeedPost = () => {
     dispatch(getFeedDislikes());
     dispatch(searchFeedPost(id));
     dispatch(getUsers());
+    return () => {
+      dispatch(clearState());
+    };
   }, []);
 
   const handleLike = (e) => {
@@ -155,25 +155,29 @@ const FeedPost = () => {
                           <p className="text-[#1b7161] ml-[2.5%]">
                             {postLikes.length}
                           </p>
-                          <div
-                            className="cursor-pointer hover:cursor-pointer"
+                          <div>
+                            <button
                             onClick={(e) => handleLike(e)}
-                          >
+                            className="cursor-grappin"
+                            >
                             <FingerLikesForo
                               likes={postLikes}
                               userId={actualUser}
                             />
+                          </button>
                           </div>
                         </div>
-                        <div className="">
-                          <div
-                            className="cursor-pointer mt-1 hover:cursor-pointer"
+                        <div >
+                          <div>
+                            <button
                             onClick={(e) => handleDislike(e)}
-                          >
+                            className="cursor-grappin">
+
                             <FingerDislikesForo
                               dislikes={postDislikes}
                               userId={actualUser}
                             />
+                            </button>
                           </div>
                           <p className="text-[#C20000] ml-[2.5%]">
                             {postDislikes.length}
@@ -207,7 +211,7 @@ const FeedPost = () => {
                         if(element.fullname === d.author) {
                           imgUser.push(element.img)
                           return(
-                            <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                            <img src={imgUser[0]} alt="" className="w-12 h-10 rounded-full ml-2" />
                           )
                         }
                       })
@@ -237,7 +241,7 @@ const FeedPost = () => {
                         if(element.fullname === c.author) {
                           imgUser.push(element.img)
                           return(
-                            <img src={imgUser[0]} alt="" className="w-12 h-10  ml-2" />
+                            <img src={imgUser[0]} alt="" className="w-12 h-10 rounded-full ml-2" />
                           )
                         }
                       })

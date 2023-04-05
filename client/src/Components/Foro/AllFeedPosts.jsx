@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { feedDislikes, feedLikes, getFeedPosts, getUsers } from "../../Redux/Actions/Actions";
-import userWhite from "../../assets/imgs/userWhite.png";
-import bookmark from "../../assets/imgs/bookmark.png";
+import likegreen from "../../assets/imgs/likegreen.png"
+import comments from "../../assets/imgs/comment.png"
 import { dateFormatter } from "../QA/Question";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import fingerSVG from "../../assets/imgs/fingerSVG.svg";
-import commentSVG from "../../assets/imgs/comment.svg";
-import close from "../../assets/imgs/close.svg";
+
+
 
 import FeedPost from "./FeedPost";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
@@ -47,7 +46,7 @@ const AllFeedPosts = () => {
         ? feedPosts.map((post) => (
     
             <div className="pt-4 mx-8 rounded-xl">
-              <div className="pt-5 shadow-mdshadow-[#0f0f0fbd]">
+              <div className="pt-5 shadow-md shadow-[#0f0f0fbd]">
                 <div className="flex justify-between mb-2 mx-2">
                   <div className="flex -mt-2">
                   
@@ -72,18 +71,26 @@ const AllFeedPosts = () => {
                   </div>
                 </div>
 
-                <div className="block w-[90%] m-5 p-4 ">
-                  <span className="flex truncate ml-auto mr-auto justify-center text-xl text-slate-200">
+                <div className="block w-[100%] m-5 p-4 ">
+                  <span className="flex truncate justify-center text-lg text-slate-200">
                     {post.content}
                   </span>
               <hr className="mt-5 max-w-[100%] mx-auto border-[#ffffff08]" />
-                  <div className="block mt-[10%]">
+              <div className="block mt-[10%]">
 
                   {
-              post.img.length ?
-              <p className="w-[50%] ml-auto mr-auto">Haz zoom en las imagenes con tu scroll wheel o doble toque</p> : null
+              post.img.length ? 
+              <div className="text-white italic mx-auto w-[20%]">
+                <span >Este posteo contiene archivos</span>
+              </div>  :
+              <div  className="text-white italic mx-auto w-[20%]">
+                <span>No contiene archivos</span>
+              </div>
+
+              
              }
-                    {post.img?.map((postimg, index) => (
+             
+                    {/* {post.img?.map((postimg, index) => (
                      <div
                      className="w-[100%] mt-5 ml-auto mr-auto"
                      key={index}
@@ -105,29 +112,35 @@ const AllFeedPosts = () => {
                  
                      </TransformWrapper>
                    </div>
-                    ))}
+                    ))} */}
                     <p className="underline text-[#000ac7] ml-[80%]">
                       <Link to={"/feedpost/" + post.id}>Saber más...</Link>
                     </p>
                   </div>
                 </div>
               <div className=" flex shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
-            <h2 className="text-green-600">
+           <div>
+            <h2 className="text-green-600 ml-3">
               {post.likes}
+              </h2>
               <img
-                src={fingerSVG}
+                src={likegreen}
                 alt=""
-                className="w-8"
+                className="w-8 mt-1"
               />
-            </h2>
-            <h2 className="text-sm mr-1 text-white">
+
+           </div>
+           <div>
+
+            <h2 className="text-sm ml-3 text-white">
                {post.comments}
+               </h2>
               <img
-                src={commentSVG}
+                src={comments}
                 alt=""
-                className="w-8 rotate-180"
+                className="w-8 rotate-180 mt-1"
               />
-            </h2>
+           </div>
           </div>
               </div>
               <hr className="mt-10 max-w-[100%] mx-auto border-[#ffffff21]" />

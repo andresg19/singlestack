@@ -1,5 +1,5 @@
 import React from "react";
-import like from "../../assets/imgs/likepng.png";
+import like from "../../assets/imgs/like.png";
 import likegreen from "../../assets/imgs/likegreen.png";
 
 

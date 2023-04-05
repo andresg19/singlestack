@@ -44,9 +44,8 @@ const PostsResourcesUser = () => {
                   : null}
               </div>
   
-              <div className="grid mt-[2%] ml-auto w-[25%]">
-                <p>{p.date}</p>
-                <p>
+              <div className="grid mt-[2%] ml-[85%] w-[25%]">
+                <p className='bg-[#070a13] rounded-sm shadow-md shadow-[#000000] hover:bg-[#030509] font-semibold text-[#181cff70] w-[40%]'>
                   <Link to={ "/feedpost/" + p.id } >
                   Ver posteo
                   </Link>

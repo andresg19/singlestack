@@ -1,6 +1,7 @@
 import React from "react";
-import dislike from "../../assets/imgs/likered.png";
-import disred from "../../assets/imgs/likereedd.png";
+import dislikereed from "../../assets/imgs/likereedd.png"
+import dislike from "../../assets/imgs/dislike.png"
+
 
 const FingerDislikesForo = ({ dislikes,  userId }) => {
   let result = dislikes.filter((d) => d.userId === userId)
@@ -12,9 +13,9 @@ const FingerDislikesForo = ({ dislikes,  userId }) => {
 
   return (
 result.length ? 
-      <img src={disred} alt="" className="w-12" />
+      <img src={dislikereed} alt="" className="w-12" />
       :
-     <img src={dislike} alt="" className="w-12" />
+     <img src={dislike} alt="" className="w-12 " />
   );
 };
 

@@ -29,7 +29,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("aprieta");
-    users.filter((u) => {
+    users.map((u) => {
       if (u.email === input.email && u.password === input.password) { 
         dispatch(userLogged(u));
         Swal.fire({
@@ -41,12 +41,7 @@ const Login = () => {
         } 
         
       })
-  } else {
-    Swal.fire({
-      icon: 'error',
-      text: 'Revise los campos',
-  })
-  }
+  } 
 });
   };
       
