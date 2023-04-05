@@ -1,5 +1,6 @@
 import React from "react";
-import linkedin from "../../assets/imgs/linkedin.png";
+import linkedin from "../../assets/imgs/linkedin.png"
+
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
       <h1
       className="text-3xl h-10 italic mt-5 ml-5"
       >singlestack</h1>
-      <div className="inline-flex ml-4 mt-[10%]  ml-[15%] h-[10vh] cursor-pointer">
+      <div className="inline-flex mt-[10%]  ml-[15%] h-[10vh] cursor-pointer">
         <div className="flex text-xl font-light">
           <img src={linkedin} alt="" className="w-12 h-12  mt-5" />
           <a href="https://www.linkedin.com/in/andres-germain-dev/" className=" mt-5 underline text-blue-600 p-2">Andrés Germain</a>

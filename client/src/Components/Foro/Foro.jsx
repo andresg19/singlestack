@@ -7,7 +7,7 @@ import PostsForo from "./PostForo";
 import { feedAllComments } from "./../../Redux/Actions/Actions";
 import  AllFeedPosts  from "./AllFeedPosts"
 import { Link } from "react-router-dom";
-import userwhite from "../../assets/imgs/userWhite.png";
+
 
 
 const Foro = () => {
@@ -64,7 +64,7 @@ const Foro = () => {
         /> 
         :
         <img
-          src={userwhite}
+          src='./imgs/userWhite.png'
           alt="not found"
           width={50}
           className="flex w-[10%] h-[40%] rounded-[50%] mt-[7%] ml-10"
@@ -86,11 +86,10 @@ const Foro = () => {
           </div>
 ) : null}
       <hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb]" />
-      <div className="bg-[#0a0b0e] ml-auto mr-auto shadow-md shadow-[#0f0f0fbd] max-w-[60%]">
+      <div className="bg-[#0a0b0e] ml-auto mr-auto shadow-md shadow-[#0f0f0fbd] max-w-[80%]">
         <div className="grid mx-auto justi mt-10">
-          <hr className="flex max-w-[70%] mt-5 ml-12 border-[#ffffffcb]" />
           <p
-            className="ml-[82%] text-gray-400 text-sm  cursor-pointer"
+            className="ml-[90%] text-gray-400 text-sm mt-5 cursor-pointer"
             onClick={() => setFilterBool(!filterBool)}
           >
             Ordenar por ↓
@@ -129,7 +128,6 @@ const Foro = () => {
           ) : null}
         </div>
         
-          
         <AllFeedPosts />
       </div>
 

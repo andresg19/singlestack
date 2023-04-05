@@ -12,11 +12,6 @@ import {
 import InputComment from "./InputComment";
 import Nav from "../NavBar/Nav";
 import Footer from "../Footer/Footer";
-import bookmark from "../../assets/imgs/bookmark.png";
-import share from "../../assets/imgs/share.png";
-import userwhite from "../../assets/imgs/programmer.png";
-import finger from "../../assets/imgs/finger.png";
-import close from "../../assets/imgs/close.svg";
 import { likeComment } from "./../../Redux/Actions/Actions";
 import FingerLike from "./FingerLike";
 import FingerDislike from "./FingerDislike";
@@ -222,25 +217,29 @@ const Question = () => {
                             </p>
                             <div
                               className="cursor-pointer hover:cursor-pointer"
-                              onClick={(e) => handleLike(e, c)}
                             >
+                              <button 
+                               className="cursor-grappin"
+                              onClick={(e) => handleLike(e, c)}>
                               <FingerLike
                                 likes={likes}
                                 comment={c}
                                 userId={userId}
                               />
+                              </button>
                             </div>
                           </div>
                           <div className="">
-                            <div
-                              className="cursor-pointer mt-1 hover:cursor-pointer"
-                              onClick={(e) => handleDislike(e, c)}
-                            >
+                            <div>
+                              <button 
+                              className="cursor-grappin"
+                              onClick={(e) => handleDislike(e, c)}>
                               <FingerDislike
                                 dislikes={dislikes}
                                 comment={c}
                                 userId={userId}
                               />
+                              </button>
                             </div>
                             <p className="text-[#C20000] font-bold ml-[2.5%]">
                               {countdislikes.length}

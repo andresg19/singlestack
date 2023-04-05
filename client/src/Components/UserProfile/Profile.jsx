@@ -5,7 +5,6 @@ import Config from "./Config";
 import DefaultSectionUser from "./DefaultSectionUser";
 import PostsResourcesUser from "./PostsResourcesUser";
 import QuestionsUsers from "./QuestionsUsers";
-import userwhite from "../../assets/imgs/programmer.png";
 import Nav from "../NavBar/Nav";
 import Footer from "../Footer/Footer";
 

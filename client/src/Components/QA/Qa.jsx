@@ -9,6 +9,7 @@ import { useState } from "react";
 import { etiquetas } from "./etiquetas";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import Loading from "../loadPage";
 
 
 
@@ -19,6 +20,10 @@ const Qa = () => {
   console.log(posts)
 
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    dispatch(getPosts)
+  })
 
   const handleTagFilter = (e) => {
     e.preventDefault();
@@ -48,7 +53,8 @@ const Qa = () => {
   }
 
 
-  return (
+
+  return(
     <div className="">
       <Nav />
         {
@@ -66,6 +72,7 @@ const Qa = () => {
         </button>
       </Link>
         }
+      
       <div className="flex font-sans text-lg font-light">
         <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[1%] w-[50%]">
           {/* PRIMER DIV */}
@@ -97,13 +104,16 @@ const Qa = () => {
         </div>
         <div className="bg-black  shadow-md shadow-[#090808]  mt-[7%] rounded-[2%] ml-[1%] w-[70%] ">
           {/* SEGUNDO DIV */}
-
+  
           <Questions handleSearch={filterPosts} />
         </div>
-      </div>
+      </div> 
+
       <Footer />
+     
+   
     </div>
-  );
+  )
 };
 
 export default Qa;

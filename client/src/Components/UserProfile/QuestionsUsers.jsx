@@ -30,10 +30,10 @@ const QuestionsUsers = () => {
     <div className="">
       {resultQuestionsUser.map((q) => {
         return (
-          <div className="bg-[#191919] ml-auto mr-auto m-2 w-[90%] text-white rounded-[2%]">
+          <div className="bg-[#191919] ml-auto mr-auto font-sans m-2 w-[90%] text-white rounded-[2%]">
             <div className="text-m text-center">
               <h1
-              className="mt-3"
+              className="mt-3 underline"
               >
                 {q.title}
                 </h1>
@@ -54,11 +54,10 @@ const QuestionsUsers = () => {
                 : null}
             </div>
 
-            <div className="grid mt-[2%] ml-auto w-[25%]">
-              <p>{q.date}</p>
-              <p>
+            <div className="grid mt-[2%] ml-[85%] w-[25%]">
+              <p className="bg-[#070a13] rounded-sm shadow-md shadow-[#000000] hover:bg-[#030509]  w-[48%] font-semibold text-[#181cff70]">
                 <Link to={"/question/" + q.id} >
-                Ver pregunta completa
+                Ver pregunta
                 </Link>
               </p>
             </div> 

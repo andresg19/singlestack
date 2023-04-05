@@ -5,10 +5,12 @@ import Nav from "../NavBar/Nav";
 import Footer from "../Footer/Footer";
 import { etiquetas } from "./etiquetas"
 import Swal from 'sweetalert2'
+import { useNavigate } from "react-router";
 
 
 const AskQuestion = ({}) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     title: "",
     content: "",
@@ -57,6 +59,15 @@ const AskQuestion = ({}) => {
     } else {
       input.img = imgArr;
       dispatch(postPost(input));
+      Swal.fire({
+        icon: 'success',
+        text: 'Enviaste una pregunta, "OK" para continuar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/q-a") 
+      } 
+      
+    })
 
 
     }
