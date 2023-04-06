@@ -73,16 +73,16 @@ const Qa = () => {
       </Link>
         }
       
-      <div className="flex font-sans text-lg font-light">
-        {/* /*<div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[1%] w-[50%]"> */}
+      <div className="font-sans text-lg font-light">
+        <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[1%] w-[100%]">
           {/* PRIMER DIV */}
-          {/* <input
+          <input
             type="text"
             placeholder="busca tu duda"
             className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#070a13] text-slate-200 placeholder:text-center  outline-none text-center"
             onChange={(e) => {setSearch(e.target.value)}}
-          /> */}
-          {/* <div className=" mt-[10%] ml-[10%] ">
+          />
+          <div className="mt-[10%] mx-auto max-h-[30vh] overflow-y-auto shadow-sm shadow-[#2b5d6641]">
             <h3 className="ml-2 underline font-medium text-[#46899B]">
               #Etiquetas
             </h3>
@@ -91,7 +91,7 @@ const Qa = () => {
               <div className="inline-flex w-[40%] ml-5 text-center text-black font-medium justify-around">
               <p
                 value={etiqueta}
-                className="bg-[#B0B0B0] mt-6 rounded-[3px] text-lg cursor-pointer hover:bg-[#0a0b0e]  hover:text-white"
+                className="text-white bg-[#19191959] mt-6 rounded-[3px] text-lg cursor-pointer hover:bg-[#0a0b0e]"
                 onClick={handleTagFilter}
                 >
                 {etiqueta}
@@ -100,8 +100,12 @@ const Qa = () => {
                 )) 
             }    
            
-          </div> */}
-        {/* </div> */}
+          </div>
+        </div>
+        <button className="text-white text-sm mt-5 bg-[#19191911] hover:bg-[#191919]" onClick={() => window.location.reload()}>
+          RECARGAR
+        </button>
+        <hr className="mt-[25%] border-none h-1 bg-[#28282848] "/>
         <div className="mx-auto w-[100%] mt-[20%]">
           {/* SEGUNDO DIV */}
   

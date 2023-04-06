@@ -30,7 +30,7 @@ const Questions = ({ handleSearch }) => {
             className="text-white text-sm py-5 text-center shadow-sm shadow-[#2b5d6641] mt-[10%] bg-[#19191923]"
           >
             <div className="flex justify-between italic">
-              <div className="ml-2 text-[#48ffc558] font-black">
+              <div className="ml-2 text-[#46899B] font-black">
                 {p.etiquetas?.map((e) => {
                   return `#${e} `;
                 })}
