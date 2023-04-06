@@ -1,49 +1,120 @@
-import React from "react";
+import React, { useRef, useState } from 'react';
+import swal from "sweetalert"
+import emailjs from '@emailjs/browser';
 import linkedin from "../../assets/imgs/linkedin.png"
 
 
+
 const Footer = () => {
-  return (
-    <footer class="flex w-full  shadow-lg text-slate-200 font-sans  shadow-black mt-8  bg-[#000000e7] justify-between">
-      <h1
-      className="text-3xl h-10 italic mt-5 ml-5"
-      >singlestack</h1>
-      <div className="inline-flex mt-[10%]  ml-[15%] h-[10vh] cursor-pointer">
-        <div className="flex text-xl font-light">
-          <img src={linkedin} alt="" className="w-12 h-12  mt-5" />
-          <a href="https://www.linkedin.com/in/andres-germain-dev/" className=" mt-5 underline text-blue-600 p-2">Andrés Germain</a>
-        </div>
-        <div className="flex text-xl font-light">
-          <img src={linkedin} alt="" className="w-12 h-12  mt-5" />
-          <a href="https://www.linkedin.com/in/valentinomartz/" className=" mt-5 underline text-blue-600 p-2">Valentino Martinez</a>
-        </div>
-      </div>
-      <div className="mr-4 mt-[3.5%]">
-        <div className=" mr-[40vh] mt-[8vh]">
-          <h3 className="text-center text-semibold text-2xl">CONTACTO</h3>
-        </div>
-        <div className="ml-[20vh] -mt-[20%] ">
-          <div className="">
-            <input
-              type="text"
-              placeholder="mail address"
-              className="text-center w-full placeholder:text-center shadow-md shadow-black box-shadow rounded-b-lg bg-[#191919] opacity-75 outline-0"
-            />
+    const form = useRef();
+    const [input, setInput] = useState({
+      email : "",
+      message : ""
+    })
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+    
+        emailjs
+        .send(
+          "service_pnwe6gb",
+          "template_lmj2k5k",
+            input,
+            "UcXhrFVfZhUn4qCR8"
+          )
+          .then(
+            (result) => {
+              console.log(result.text);
+              swal({
+                title: "Mensaje enviado con exito ",
+                type: "success",
+                icon: "success",
+                buttons: false,
+                timer: 800,
+              })
+              
+              setInput({
+                email: "",
+                message: ""
+              });
+              window.location.reload()
+    
+            },
+            (error) => {
+              console.log(error.text);
+              swal({
+                title: "Error al enviar el mensaje",
+                icon: "Warning",
+              });
+            }
+          );
+      };
+
+
+    return ( 
+        <div className='grid mt-40 py-5 lg:flex'>
+       
+          <div>
+		<h1 className='text-center text-white text-2xl lg:ml-5'>Andrés Germain dev</h1>
+       <br />
+       <a href="https://www.linkedin.com/in/andres-germain-dev/">
+       <img 
+       className=' w-[15%] mx-auto sm:w-[10%] lg:w-[25%]' 
+       src={linkedin} alt="linkeding img not found" />
+       </a>
+
           </div>
-          <div className="mt-2">
-            <textarea
-              name=""
-              id=""
-              cols="30"
-              rows="4"
-              placeholder="insert your message"
-              className="w-full  bg-[#191919] placeholder:italic opacity-75 shadow-md shadow-black box-shadow  rounded-b-lg outline-0"
-            ></textarea>
-          </div>
-        </div>
+          <div>
+		<h1 className='font-light text-white mt-5 text-center text-2xl lg:ml-5'>Valentino Martinez dev</h1>
+       <br />
+       <a href="https://www.linkedin.com/in/valentinomartz/">
+       <img 
+       className=' w-[15%] mx-auto sm:w-[10%] lg:w-[25%]' 
+       src={linkedin} alt="linkeding img not found" />
+       </a>
+
+  
       </div>
-    </footer>
-  );
-};
+ <div className='grid mt-[5%] text-white w-[100%] mx-auto lg:mr-2 lg:w-[15%] '>
+        <h1 className='text-lg text-center lg:mx-auto'>CONTACTO</h1>
+        <form
+        onSubmit={sendEmail}
+         className='block mt-5 mx-auto lg:mx-auto'>
+          <input 
+          className='flex mt-2 text-white font-light shadow-lg rounded-md mx-auto bg-[#191919bd]'
+          type="text" 
+          placeholder='Email'
+          name='email'
+          onChange={(e) =>  setInput({
+            ...input,
+            [e.target.name] : e.target.value
+          })}/>
+          <textarea
+          className='flex bg-[#191919bd] text-white font-light shadow-md shadow-[#191919] mt-2 rounded-md sm:mx-auto '
+          rows={4} 
+          cols={25} 
+          type="text"
+          name='message'
+          placeholder='Inserte su mensaje'
+          onChange={(e) => setInput({
+            ...input,
+            [e.target.name] : e.target.value
+          })}
+          />
+          <button
+          className='flex mt-5 text-white bg-[#19191998] mx-auto rounded-md' 
+          type='submit'
+          >
+            Enviar
+          </button>
+          <h1 className="mx-auto mt-5 text-2xl text-center text-[#235760fa]">
+      SingleStack
+    </h1>
+        </form>
+      </div>
+    
+        </div>
+     );
+}
 
 export default Footer;
