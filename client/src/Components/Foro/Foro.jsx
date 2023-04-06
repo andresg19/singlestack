@@ -87,11 +87,11 @@ const Foro = () => {
             <button onClick={modalClose} className="bg-[#070a13] hover:bg-[#030509] w-[30%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#6f6f6f] text-sm ml-[1%]" >Cerrar ventana</button>
           </div>
 ) : null}
-      <hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb]" />
-      <div className="bg-[#0a0b0e] ml-auto mr-auto shadow-md shadow-[#0f0f0fbd] max-w-[80%]">
-        <div className="grid mx-auto justi mt-10">
+<hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb]" />
+      <div className="grid bg-[#0a0b0e] mx-auto shadow-md shadow-[#0f0f0fbd] w-[90%]">
+        <div className="">
           <p
-            className="ml-[90%] text-gray-400 text-sm mt-5 cursor-pointer"
+            className="mx-auto text-center  text-gray-400 text-sm mt-5 cursor-pointer"
             onClick={() => setFilterBool(!filterBool)}
           >
             Ordenar por ↓
@@ -101,35 +101,34 @@ const Foro = () => {
               <button
                 value="reload"
                 onClick={handleReload}
-                className="cursor-pointer bg-black hover:bg-[#191919] rounded-md"
+                className="cursor-pointer text-sm font-black bg-black hover:bg-[#191919] rounded-md"
               >
                 Recargar
               </button>
               <button
                 value="date"
                 onClick={handleDate}
-                className="cursor-pointer bg-black hover:bg-[#191919] rounded-md"
+                className="cursor-pointer text-sm font-black bg-black hover:bg-[#191919] rounded-md"
               >
                 Más Nuevos
               </button>
               <button
                 value="likes"
                 onClick={handleFilterLikes}
-                className="cursor-pointer bg-black hover:bg-[#191919] rounded-md"
+                className="cursor-pointer text-sm font-black bg-black hover:bg-[#191919] rounded-md"
               >
                 Más Likes
               </button>
               <button
                 value="comments"
                 onClick={handleComments}
-                className="cursor-pointer bg-black hover:bg-[#191919] rounded-md" 
+                className="cursor-pointer text-sm font-black bg-black hover:bg-[#191919] rounded-md" 
               >
                 Más Comentarios
               </button>
             </div>
           ) : null}
         </div>
-        
         <AllFeedPosts />
       </div>
 
