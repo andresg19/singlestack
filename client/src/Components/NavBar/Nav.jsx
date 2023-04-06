@@ -58,7 +58,7 @@ const scrollToTop = () => {
       
       src={close}
       alt='img not found'
-        className="flex text-4xl text-white items-center w-[10%] cursor-pointer fixed right-1 top-6 z-50 lg:w-[3%]"
+        className="flex text-4xl text-white items-center w-[5%] cursor-pointer fixed right-1 top-6 z-50 lg:w-[3%]"
         onClick={() => setShowSidebar(!showSidebar)}
       />
         
@@ -72,7 +72,7 @@ const scrollToTop = () => {
         onClick={() => setShowSidebar(!showSidebar)}
       />
     )}
-    <div  className={`flex top-0 right-0 w-[50vw] shadow-md shadow-black bg-black bg-opacity-95 ease-in-out duration-300 text-white fixed h-full z-40 lg:w-[25vw] ${
+    <div  className={`flex top-0 right-0 w-[100vw] shadow-md shadow-black bg-black bg-opacity-95 ease-in-out duration-300 text-white fixed h-full z-40 lg:w-[25vw] ${
     showSidebar ? "translate-x-0 " : "translate-x-full"
   }`}>
   {actualUser ?
