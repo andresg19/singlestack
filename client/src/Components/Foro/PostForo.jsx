@@ -39,12 +39,12 @@ const PostsForo = () => {
   };
 
   return (
-    <div className="block w-[100%] text-slate-200 font-sans text-lg font-light">
-      <div className="w-[100%">
+    <div className="text-slate-200 font-sans text-lg font-light">
+      <div className="">
       <textarea
-        className="flex m-3 ml-auto mr-auto shadow-lg bg-[#1715158b] shadow-[#1919191c] rounded-b-lg "
+        className=" shadow-lg bg-[#0a0b0e] rounded-md  shadow-[#1919191c] rounded-b-lg "
         rows="5"
-        cols="70"
+        cols="30"
         name="content"
         placeholder="Contenido"
         value={input.content}
@@ -55,10 +55,10 @@ const PostsForo = () => {
 
       </div>
 
-      <div class="flex justify-center items-center w-[60%] mx-auto">
+      <div class="flex justify-center items-center mt-5 w-[100%] mx-auto">
         <label
           for="dropzone-file"
-          class="flex flex-col justify-center items-center w-80 h-54 rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#191919] opacity-75"
+          class="flex flex-col justify-center items-center w-[80%] h-54 rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#0a0b0e] "
         >
           <div class="flex flex-col justify-center items-center pt-5 pb-6">
             <svg
@@ -105,7 +105,7 @@ const PostsForo = () => {
 
       <div className="flex justify-center mt-4 mb-2">
       <button
-        className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#0004d2] text-sm ml-[1%] mt-8"
+        className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#ababae] text-sm ml-[1%] mt-8"
         onClick={handlePost}
       >
         Postear

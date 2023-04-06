@@ -55,7 +55,7 @@ const Foro = () => {
   return (
     <div>
       <Nav />
-      <div className="flex w-[40%] h-[20vh] bg-[#0a0b0e] ml-auto mr-auto mt-10 rounded-xl shadow-md shadow-[#0f0f0fbd]">
+      <div className="flex w-[80%] h-[10vh] bg-[#0a0b0e] ml-auto mr-auto mt-[30%] rounded-xl shadow-md shadow-[#0f0f0fbd]">
      { actualUser?  <img
           src={actualUser.img}
           alt="not found"
@@ -67,22 +67,24 @@ const Foro = () => {
           src='./imgs/userWhite.png'
           alt="not found"
           width={50}
-          className="flex w-[10%] h-[40%] rounded-[50%] mt-[7%] ml-10"
+          className="flex w-[10%]  rounded-[50%] ml-10"
         /> 
       }
      
           <input
             onClick={modalOpen}
             placeholder="Haz un posteo"
-            className="grid w-[60%] placeholder:text-[#191919] font-medieum py-2 pl-3 pr-3 h-7 mt-12 ml-10 rounded-xl"
+            className="grid w-[60%] placeholder:text-[#000000] font-medieum py-2 pl-3 pr-3 h-5 mt-7 ml-3 rounded-xl bg-[#ffffffaa]"
           />
 
         
       </div>
 {modal ? (
-          <div className="ml-auto mr-auto w-[50%]  ">
+          <div className="grid w-[100%] mt-10 ">
+            <div className="grid w-[80%] mx-auto">
             <PostsForo />
-            <button onClick={modalClose} className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#0004d2e8] text-sm ml-[1%]" >Cerrar ventana</button>
+            </div>
+            <button onClick={modalClose} className="bg-[#070a13] hover:bg-[#030509] w-[30%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#6f6f6f] text-sm ml-[1%]" >Cerrar ventana</button>
           </div>
 ) : null}
       <hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb]" />
