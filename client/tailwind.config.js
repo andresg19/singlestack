@@ -22,7 +22,9 @@ module.exports = {
         },
         animation: {
           floating: '3s ease-in-out infinite',
+          safelist: 'slide-in-left 1s ease-in-out'
         }
+
     },
   },
   plugins: [require("tailwind-scrollbar-hide")],

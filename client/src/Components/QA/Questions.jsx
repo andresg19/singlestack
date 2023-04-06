@@ -22,15 +22,15 @@ const Questions = ({ handleSearch }) => {
   }
 
   return (
-    <div className="mt-[6%] ml-[10%] font-sans max-h-[90vh] overflow-y-auto">
+    <div className="max-h-[75vh] overflow-auto">
       {handleSearch.map((p) => {
         return (
           <div
             key={p.id}
-            className="bg-black mr-[3%] mb-[10%] text-slate-200 shadow-[#19191958] shadow-md"
+            className="text-white text-sm py-5 text-center shadow-sm shadow-[#2b5d6641] mt-[10%] bg-[#19191923]"
           >
             <div className="flex justify-between italic">
-              <div className="ml-2 ">
+              <div className="ml-2 text-[#48ffc558] font-black">
                 {p.etiquetas?.map((e) => {
                   return `#${e} `;
                 })}
@@ -53,11 +53,11 @@ const Questions = ({ handleSearch }) => {
             </div>
             <div className="">
             {currentUser ?
-              <button className="bg-[#070a13] rounded-sm shadow-md shadow-[#000000] hover:bg-[#030509] font-semibold text-[#181cff70] ml-[80%] mt-8">
+              <button className="flex hover:text-blue-600 text-sm h-8 text-white font-semibold py-2 px-4 ml-auto rounded shadow">
                 <Link to={"/question/" + p.id}>Ver más...</Link>
               </button>
               :
-              <button className="bg-[#070a13] rounded-sm shadow-md shadow-[#000000] hover:bg-[#030509] font-semibold text-[#181cff70] ml-[80%] mt-8"
+              <button className="flex text-sm h-8 text-white font-semibold py-2 px-4 ml-auto rounded shadow"
               onClick={handleUserControll}>
                Ver más...
             </button>

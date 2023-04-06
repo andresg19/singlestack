@@ -72,7 +72,7 @@ const scrollToTop = () => {
         onClick={() => setShowSidebar(!showSidebar)}
       />
     )}
-    <div  className={`flex top-0 right-0 w-[100vw] shadow-md shadow-black bg-black bg-opacity-95 ease-in-out duration-300 text-white fixed h-full z-40 lg:w-[25vw] ${
+    <div  className={`flex top-0 right-0 w-[100%] shadow-md shadow-black bg-black bg-opacity-95 ease-in-out duration-300 text-white fixed h-full z-40 lg:w-[25vw] ${
     showSidebar ? "translate-x-0 " : "translate-x-full"
   }`}>
   {actualUser ?
