@@ -68,13 +68,13 @@ const scrollToTop = () => {
   
       src={menu}
       alt='img not found'
-        className="flex text-4xl text-white items-center cursor-pointer fixed right-10 top-5 z-50 animate-pulse"
+        className="flex text-4xl text-white items-center cursor-pointer fixed right-10 top-5 z-50 animate-pulse sm:w-[5%]"
         onClick={() => setShowSidebar(!showSidebar)}
       />
     )}
     <div  className={`flex top-0 right-0 w-[100%] shadow-md shadow-black bg-black bg-opacity-95 ease-in-out duration-300 text-white fixed h-full z-40 lg:w-[25vw] ${
     showSidebar ? "translate-x-0 " : "translate-x-full"
-  }`}>
+  } sm:w-[50%]`}>
   {actualUser ?
       (
         
@@ -98,7 +98,7 @@ const scrollToTop = () => {
       
       ) :
       (
-        <ul className='grid text-lg font-bold  text-center w-[51%] mx-auto mt-[50%] max-h-[20vh] lg:mt-[60%]'>
+        <ul className='grid text-md font-bold  text-center w-[51%] mx-auto mt-[50%] max-h-[20vh] sm:mt-[25%] sm:w-[100%]'>
           <li className=" underline-offset-8 underline mt-10 ">
             <a href="/q-a">Q-A</a>
           </li>
