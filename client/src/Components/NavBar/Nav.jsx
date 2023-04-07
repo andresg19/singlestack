@@ -78,37 +78,37 @@ const scrollToTop = () => {
   {actualUser ?
       (
         
-        <ul className='grid text-lg font-bold  text-center w-[51%] mx-auto mt-[50%] max-h-[20vh] lg:mt-[60%]'>
+        <ul className='grid text-lg font-bold  text-center w-[51%] mx-auto mt-[70%] max-h-[20vh] sm:mt-[40%] '>
         <li className="underline-offset-8 underline ">
           <a href="/q-a">Q-A</a>
         </li>
-        <li className="underline-offset-8 underline" onClick={handleControlForo}>
+        <li className="underline-offset-8 underline mt-5" onClick={handleControlForo}>
           <a href="/foro">Foro</a>
         </li>
-        <li className="underline-offset-8 underline ">
+        <li className="underline-offset-8 underline mt-5">
           <a href="/profile">Mi perfil</a>
         </li>
-        <li className="underline-offset-8 underline " onClick={handleLogOut}>
+        <li className="underline-offset-8 underline mt-5" onClick={handleLogOut}>
           <a href="/" >Cerrar sesión</a>
         </li>
-        <li className="underline-offset-8 underline ">
+        <li className="underline-offset-8 underline mt-5">
           <a href="/" >Home</a>
         </li>
         </ul>
       
       ) :
       (
-        <ul className='grid text-md font-bold  text-center w-[51%] mx-auto mt-[50%] max-h-[20vh] sm:mt-[25%] sm:w-[100%]'>
-          <li className=" underline-offset-8 underline mt-10 ">
+        <ul className='grid text-lg font-bold  text-center w-[51%] mx-auto mt-[70%] max-h-[20vh] sm:mt-[40%]'>
+          <li className=" underline-offset-8 underline mt-5 ">
             <a href="/q-a">Q-A</a>
           </li>
-          <li className=" underline-offset-8 underline mt-10 "  onClick={handleControlForo}>
+          <li className=" underline-offset-8 underline mt-5 "  onClick={handleControlForo}>
             <a>Foro</a>
           </li>
-          <li className=" underline-offset-8 underline mt-10 ">
+          <li className=" underline-offset-8 underline mt-5 ">
             <a href="/register">Iniciar sesión o registro</a>
           </li>
-          <li className=" underline-offset-8 underline mt-10 ">
+          <li className=" underline-offset-8 underline mt-5 ">
           <a href="/" >Home</a>
         </li>
         </ul>

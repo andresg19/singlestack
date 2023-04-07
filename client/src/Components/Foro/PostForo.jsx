@@ -40,9 +40,9 @@ const PostsForo = () => {
 
   return (
     <div className="text-slate-200 font-sans text-lg font-light">
-      <div className="">
+      <div className="sm:grid">
       <textarea
-        className=" shadow-lg bg-[#0a0b0e] rounded-md  shadow-[#1919191c] rounded-b-lg "
+        className=" shadow-lg bg-[#0a0b0e] rounded-md  shadow-[#1919191c] rounded-b-lg sm:mx-auto"
         rows="5"
         cols="30"
         name="content"

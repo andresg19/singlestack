@@ -35,7 +35,7 @@ const Profile = () => {
   return (
     <div className="">
       <Nav />
-      <div className="grid mt-[15%]">
+      <div className="grid mt-[15%] sm:mt-[3%]">
     <div className="justify-center  grid m-[10%] w-[80%] py-2  bg-[#1616165d] rounded-xl">
       <div className="m-[10%] ml-auto mr-auto text-white py-4 text-center">
       

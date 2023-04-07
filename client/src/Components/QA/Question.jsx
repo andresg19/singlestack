@@ -110,7 +110,7 @@ const Question = () => {
     <div className="text-slate-200 font-sans font-normal leading-loose">
       <Nav />
       <Link to="/q-a">
-      <button className="bg-[#070a13] hover:bg-[#030509] w-[10%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-lg ml-[10%] mt-[15%]">
+      <button className=" rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-lg ml-[10%] mt-[15%]">
         <img src={backarrow} alt="" className="bg-black" />
       </button>
       </Link>
