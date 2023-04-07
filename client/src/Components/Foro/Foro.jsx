@@ -55,26 +55,26 @@ const Foro = () => {
   return (
     <div>
       <Nav />
-      <div className="flex w-[80%] h-[10vh] bg-[#0a0b0e] ml-auto mr-auto mt-[30%] rounded-xl shadow-md shadow-[#0f0f0fbd]">
+      <div className="flex w-[80%] h-[10vh] bg-[#0a0b0e] ml-auto mr-auto mt-[30%] rounded-xl shadow-md shadow-[#0f0f0fbd] sm:mt-[15%] sm:w-[50%]">
      { actualUser?  <img
           src={actualUser.img}
           alt="not found"
           width={50}
-          className="flex w-[10%] h-[40%] rounded-[50%] mt-[7%] ml-10"
+          className="flex w-[10%] h-[40%] rounded-[50%] mt-[7%] ml-10 sm:mt-4"
         /> 
         :
         <img
           src='./imgs/userWhite.png'
           alt="not found"
           width={50}
-          className="flex w-[10%]  rounded-[50%] ml-10"
+          className="flex w-[10%] h-[40%] rounded-[50%] mt-[7%] ml-10 sm:mt-4"
         /> 
       }
      
           <input
             onClick={modalOpen}
             placeholder="Haz un posteo"
-            className="grid w-[60%] placeholder:text-[#000000] font-medieum py-2 pl-3 pr-3 h-5 mt-7 ml-3 rounded-xl bg-[#ffffffaa]"
+            className="grid w-[60%] placeholder:text-[#000000] font-medieum py-2 pl-3 pr-3 h-5 mt-7 ml-3 rounded-xl bg-[#ffffffaa] sm:mt-4 text-sm"
           />
 
         

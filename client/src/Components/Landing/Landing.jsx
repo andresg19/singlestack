@@ -29,17 +29,17 @@ const Landing = () => {
         <Nav />
       </header>
       <main className="">
-        <div className="grid mt-[30%]">
-          <div className="grid mt-[20%] ">
+        <div className="grid mt-[30%] sm:mt-[5%]">
+          <div className="grid mt-[20%] sm:mt-10 ">
             <h1 className="mx-auto text-5xl text-[#235760fa] animate-[floating_3s_ease-in-out_infinite]">
               SingleStack
             </h1>
             <img
               src={bannerone}
               alt=""
-              className="shadow-md mt-[40%] border-t-[#2c54592c] shadow-[#2b5d6641] rounded-br-full rounded-tl-full"
+              className="shadow-md mt-[40%] border-t-[#2c54592c] shadow-[#2b5d6641] rounded-br-full rounded-tl-full sm:mt-[12%] sm:w-[70%] sm:mx-auto"
             />
-            <div className="text-2xl mx-auto border-none mt-[40%] text-[#ffffff57] lg:text-4xl lg:ml-[20%]">
+            <div className="text-2xl mx-auto border-none mt-[40%] text-[#ffffff57] sm:mt-[12%]">
               <Typewriter
                 options={{
                   autoStart: true,
