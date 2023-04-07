@@ -26,6 +26,9 @@ module.exports = (sequelize) => {
     img: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
     },
+    imgprofile: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+    },
   
   });
 };

@@ -76,25 +76,20 @@ const {
   Feedposts,
   Feedlikes,
   Feeddislikes,
-  FeedComments,
+  Feedcomments,
 } = sequelize.models;
 
-Users.belongsToMany(Posts, { through: "Users_Posts" });
-Posts.belongsToMany(Users, { through: "Users_Posts" });
-Posts.belongsToMany(Comments, { through: "Comments_Posts" });
-Comments.hasOne(Posts);
+Users.belongsTo(Posts)
+Posts.hasMany(Users)
 
-Users.belongsToMany(Likes, { through: "Users_Likes" });
-Likes.hasOne(Users);
+Users.belongsTo(Comments)
+Comments.hasMany(Users)
 
-Users.belongsToMany(Dislikes, { through: "Users_Dislikes" });
-Dislikes.hasOne(Users);
+Users.belongsTo(Feedposts)
+Feedposts.hasMany(Users)
 
-Comments.belongsToMany(Likes, { through: "Likes_Comments" });
-Likes.hasOne(Comments);
-
-Comments.belongsToMany(Dislikes, { through: "Dislikes_Comments" });
-Dislikes.hasOne(Comments);
+Users.belongsTo(Feedcomments)
+Feedcomments.hasMany(Users)
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
