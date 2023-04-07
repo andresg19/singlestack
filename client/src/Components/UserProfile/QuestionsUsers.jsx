@@ -30,15 +30,15 @@ const QuestionsUsers = () => {
     <div className="">
       {resultQuestionsUser.map((q) => {
         return (
-          <div className="bg-[#191919] ml-auto mr-auto font-sans m-2 w-[90%] text-white rounded-[2%]">
-            <div className="text-m text-center">
+          <div className="bg-[#080808] ml-auto mr-auto font-sans m-2 w-[90%] text-white rounded-[2%]">
+            <div className="text-center">
               <h1
-              className="mt-3 underline"
+              className="mt-5 text-md underline"
               >
                 {q.title}
                 </h1>
               <p
-              className="mt-3"
+              className="mt-3 text-sm"
               >
                 {q.content}
                 </p>
@@ -48,19 +48,19 @@ const QuestionsUsers = () => {
               {q.img
                 ? q.img.map((i) => {
                     return <img src={i} alt="not found" 
-                    className="w-[15%] ml-auto mr-auto mt-[2%]" 
+                    className="w-[80%] ml-auto mr-auto mt-[2%]" 
                     />;
                   })
                 : null}
             </div>
 
-            <div className="grid mt-[2%] ml-[85%] w-[25%]">
-              <p className="bg-[#070a13] rounded-sm shadow-md shadow-[#000000] hover:bg-[#030509]  w-[48%] font-semibold text-[#181cff70]">
+            
+              <p className="bg-[#070a13] rounded-sm shadow-md shadow-[#000000] mt-5 ml-auto hover:bg-[#030509]  w-[30%] font-semibold text-[#181cff70]">
                 <Link to={"/question/" + q.id} >
                 Ver pregunta
                 </Link>
               </p>
-            </div> 
+            
           </div>
         );
       })}

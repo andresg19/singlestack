@@ -35,30 +35,29 @@ const Profile = () => {
   return (
     <div className="">
       <Nav />
-      <div className="flex">
-    <div className="justify-center  grid m-[10%] w-[20%] py-2  bg-[#000000] rounded-xl">
-      <div className="m-[10%] ml-auto mr-auto text-white text-sm py-4 text-center">
+      <div className="grid mt-[15%]">
+    <div className="justify-center  grid m-[10%] w-[80%] py-2  bg-[#1616165d] rounded-xl">
+      <div className="m-[10%] ml-auto mr-auto text-white py-4 text-center">
       
         <img
           src= {user.img}
           alt="not found"
-          width={50}
-          className="ml-auto mr-auto"
+          className="ml-auto mr-auto w-[25%] rounded-full"
         />
 
-        <h1>{user.fullname}</h1>
-        <h3>{user.email}</h3>
+        <h1 className="text-lg" >{user.fullname}</h1>
+        <h3 className="text-sm">{user.email}</h3>
       </div>
       <div className="m-[4%] ml-auto mr-auto py-4 text-white text-m text-center">
         <p 
-        className="cursor-pointer"
+        className="cursor-pointer text-[#0000ffa3] text-sm font-bold "
         onClick={() => setSectionUser('questions')}>Ver mis preguntas</p>
         <p
-        className="cursor-pointer"
+        className="cursor-pointer text-[#0000ffa3] text-sm font-bold "
         onClick={() => setSectionUser('posts')}
         >Ver mis publicaciones</p>
       </div>
-      <div className="m-[10%] ml-auto mr-auto py-4 text-[#0000FF] text-xs text-center">
+      <div className="m-[10%] ml-auto mr-auto py-4 text-[#0000ffa3] text-sm font-bold text-center">
        <p 
        onClick={modalOpen}>
         Configurar perfil
@@ -71,14 +70,14 @@ const Profile = () => {
  
     {
         modal ? (
-          <div className=" w-[100%] mr-[5%] max-h-[80vh] mt-[2%] bg-black  rounded-xl">
+          <div className="w-[100%]  max-h-[80vh] mt-[2%] bg-black  rounded-xl">
             <Config />
-            <button onClick={modalClose}>Cerrar ventana</button>
+            <button onClick={modalClose} className="text-white bg-[#191919] mt-5">Cerrar ventana</button>
           </div>
         ) :
      sectionUser && sectionUser === 'initialValue' ? 
      ( 
-     <div className=" w-[100%] mr-[5%] max-h-[80vh] mt-[2%] bg-black  rounded-xl">
+     <div className=" w-[100%] mr-[5%] max-h-[80vh] bg-black  rounded-xl">
        <DefaultSectionUser /> 
        </div> 
      ) 
