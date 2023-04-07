@@ -60,26 +60,26 @@ const Qa = () => {
         {
           currentUser ?
           <Link to="/ask-question">
-          <button className="mt-[35%] rounded-sm font-semibold ml-5 btn-primary bg-[#19191955]  text-[#a2abae] shadow-sm shadow-[#2b5d6641] border-collapse">
+          <button className="mt-[35%] rounded-sm font-semibold ml-5 btn-primary bg-[#19191955]  text-[#a2abae] shadow-sm shadow-[#2b5d6641] border-collapse sm:text-sm sm:mt-[8%]">
             Haz una pregunta
             </button>
           </Link>
           :
       <Link to="/ask-question">
-      <button className="mt-[35%] rounded-sm font-semibold ml-5 btn-primary bg-[#19191955]  text-[#a2abae] shadow-sm shadow-[#2b5d6641] border-collapse"
+      <button className="mt-[35%] rounded-sm font-semibold ml-5 btn-primary bg-[#19191955]  text-[#a2abae] shadow-sm shadow-[#2b5d6641] border-collapse sm:text-sm"
       onClick={handleUserControll}>
-        Preguntar
+        Haz una pregunta
         </button>
       </Link>
         }
       
       <div className="font-sans text-lg font-light">
-        <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[1%] w-[100%]">
+        <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[1%] w-[100%] sm:w-[60%] sm:mx-auto">
           {/* PRIMER DIV */}
           <input
             type="text"
             placeholder="busca tu duda"
-            className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#070a13] text-slate-200 placeholder:text-center  outline-none text-center"
+            className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#070a13] text-slate-200 placeholder:text-center  outline-none text-center sm:w-[60%] sm:text-sm sm:placeholder:text-sm"
             onChange={(e) => {setSearch(e.target.value)}}
           />
           <div className="mt-[10%] mx-auto max-h-[30vh] overflow-y-auto shadow-sm shadow-[#2b5d6641]">
@@ -102,11 +102,11 @@ const Qa = () => {
            
           </div>
         </div>
-        <button className="text-white text-sm mt-5 bg-[#19191911] hover:bg-[#191919]" onClick={() => window.location.reload()}>
+        <button className="text-slate-400 text-sm mt-5 bg-[#19191911] hover:bg-[#191919] sm:ml-5 sm:text-sm sm:font-semibold" onClick={() => window.location.reload()}>
           RECARGAR
         </button>
-        <hr className="mt-[25%] border-none h-1 bg-[#28282848] "/>
-        <div className="mx-auto w-[100%] mt-[20%]">
+        <hr className="mt-[25%] border-none h-1 bg-[#28282848] sm:mt-[2%]"/>
+        <div className="mx-auto w-[100%] mt-[20%] sm:mt-[2%] sm:w-[80%]">
           {/* SEGUNDO DIV */}
   
           <Questions handleSearch={filterPosts} />

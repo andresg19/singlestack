@@ -22,7 +22,7 @@ const Questions = ({ handleSearch }) => {
   }
 
   return (
-    <div className="max-h-[75vh] overflow-auto">
+    <div className="h-[120vh] overflow-visible overflow-y-auto">
       {handleSearch.map((p) => {
         return (
           <div
