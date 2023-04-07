@@ -29,17 +29,17 @@ const Landing = () => {
         <Nav />
       </header>
       <main className="">
-        <div className="grid mt-[30%] sm:mt-[5%]">
+        <div className="grid mt-[30%] sm:mt-[5%] lg:mt-[10%]">
           <div className="grid mt-[20%] sm:mt-10 ">
-            <h1 className="mx-auto text-5xl text-[#235760fa] animate-[floating_3s_ease-in-out_infinite]">
+            <h1 className="mx-auto text-5xl text-[#235760fa] animate-[floating_3s_ease-in-out_infinite] lg:ml-10 lg:mb-5">
               SingleStack
             </h1>
             <img
               src={bannerone}
               alt=""
-              className="shadow-md mt-[40%] border-t-[#2c54592c] shadow-[#2b5d6641] rounded-br-full rounded-tl-full sm:mt-[12%] sm:w-[70%] sm:mx-auto"
+              className="shadow-md mt-[40%] border-t-[#2c54592c] shadow-[#2b5d6641] rounded-br-full rounded-tl-full sm:mt-[12%] sm:w-[70%] sm:mx-auto lg:w-[50%] lg:mt-5"
             />
-            <div className="text-2xl mx-auto border-none mt-[40%] text-[#ffffff57] sm:mt-[12%]">
+            <div className="text-2xl mx-auto border-none mt-[40%] text-[#ffffff57] sm:mt-[12%] lg:mt-10 lg:ml-[70%]">
               <Typewriter
                 options={{
                   autoStart: true,
@@ -50,8 +50,8 @@ const Landing = () => {
             </div>
           </div>
 
-          <div className="grid mt-[20%]">
-            <hr className="border-0 h-1 bg-[#191919]" />
+            <hr className="border-0 h-1 bg-[#191919] lg:mt-10" />
+          <div className="grid mt-[20%] lg:mt-[2%] lg:grid-cols-2">
             <div className="grid mt-[20%] bg-[#0606063e] shadow-md shadow-[#439ea610] text-center text-slate-200 w-[90%] mx-auto animate-[floating_3s_ease-in-out_infinite]">
               <h1 className="ml-auto mr-auto font-bold text-slate-500  text-2xl ">Q-A</h1>
               <span className="w-[80%] text-xl ml-auto mr-auto indent-1">
@@ -62,7 +62,7 @@ const Landing = () => {
                 y detallando el problema a resolver mediante un texto.
               </span>
             </div>
-            <div className="grid mt-10 bg-[#0606063e] shadow-md shadow-[#439ea610] text-center text-slate-200 w-[90%] mx-auto rounded-xl animate-[floating_3s_ease-in-out_infinite]">
+            <div className="grid mt-10 bg-[#0606063e] shadow-md shadow-[#439ea610] text-center text-slate-200 w-[90%] mx-auto rounded-xl animate-[floating_3s_ease-in-out_infinite] lg:mt-[20%]">
               <h1 className="ml-auto mr-auto font-bold text-slate-500 text-2xl ">FORO</h1>
               <span className="grid w-[80%] text-xl ml-auto mr-auto indent-1">
                 En nuestro foro, los usuarios de SingleStack podran realizar

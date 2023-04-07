@@ -55,7 +55,7 @@ const Foro = () => {
   return (
     <div>
       <Nav />
-      <div className="flex w-[80%] h-[10vh] bg-[#0a0b0e] ml-auto mr-auto mt-[30%] rounded-xl shadow-md shadow-[#0f0f0fbd] sm:mt-[15%] sm:w-[50%]">
+      <div className="flex w-[80%] h-[10vh] bg-[#0a0b0e85] ml-auto mr-auto mt-[30%] rounded-xl shadow-md shadow-[#0f0f0fbd] sm:mt-[15%] sm:w-[50%] lg:w-[35%] lg:mt-[6%]">
      { actualUser?  <img
           src={actualUser.img}
           alt="not found"
@@ -84,11 +84,12 @@ const Foro = () => {
             <div className="grid w-[80%] mx-auto">
             <PostsForo />
             </div>
-            <button onClick={modalClose} className="bg-[#070a13] hover:bg-[#030509] w-[30%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#6f6f6f] text-sm ml-[1%]" >Cerrar ventana</button>
+            <button onClick={modalClose} className="bg-[#070a13] hover:bg-[#030509] w-[30%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#6f6f6f] text-sm ml-[1%] lg:w-[12%]" >Cerrar ventana</button>
           </div>
 ) : null}
-<hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb]" />
-      <div className="grid bg-[#0a0b0e] mx-auto shadow-md shadow-[#0f0f0fbd] w-[90%]">
+<hr className="mt-10 max-w-[80%] mx-auto border-[#ffffffcb] lg:w-[60%]" />
+<br />
+      <div className="grid bg-[#0a0b0e85] mx-auto  w-[90%] lg:w-[60%]">
         <div className="">
           <p
             className="mx-auto text-center  text-gray-400 text-sm mt-5 cursor-pointer"

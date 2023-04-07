@@ -68,17 +68,17 @@ const scrollToTop = () => {
   
       src={menu}
       alt='img not found'
-        className="flex text-4xl text-white items-center cursor-pointer fixed right-10 top-5 z-50 animate-pulse sm:w-[5%]"
+        className="flex text-4xl text-white items-center cursor-pointer fixed right-10 top-5 z-50 animate-pulse sm:w-[5%] lg:w-[4%]"
         onClick={() => setShowSidebar(!showSidebar)}
       />
     )}
     <div  className={`flex top-0 right-0 w-[100%] shadow-md shadow-black bg-black bg-opacity-95 ease-in-out duration-300 text-white fixed h-full z-40 lg:w-[25vw] ${
     showSidebar ? "translate-x-0 " : "translate-x-full"
-  } sm:w-[50%]`}>
+  } sm:w-[50%] lg:w-[30%]`}>
   {actualUser ?
       (
         
-        <ul className='grid text-lg font-bold  text-center w-[51%] mx-auto mt-[70%] max-h-[20vh] sm:mt-[40%] '>
+        <ul className='grid text-lg font-bold  text-center w-[51%] mx-auto mt-[70%] max-h-[20vh] sm:mt-[40%] lg:w-[60%] lg:text-sm '>
         <li className="underline-offset-8 underline ">
           <a href="/q-a">Q-A</a>
         </li>
@@ -98,7 +98,7 @@ const scrollToTop = () => {
       
       ) :
       (
-        <ul className='grid text-lg font-bold  text-center w-[51%] mx-auto mt-[70%] max-h-[20vh] sm:mt-[40%]'>
+        <ul className='grid text-lg font-bold  text-center w-[51%] mx-auto mt-[70%] max-h-[20vh] sm:mt-[40%] g:w-[60%] lg:text-sm'>
           <li className=" underline-offset-8 underline mt-5 ">
             <a href="/q-a">Q-A</a>
           </li>

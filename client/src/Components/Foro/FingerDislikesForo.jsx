@@ -13,9 +13,9 @@ const FingerDislikesForo = ({ dislikes,  userId }) => {
 
   return (
 result.length ? 
-      <img src={dislikereed} alt="" className="w-12" />
+      <img src={dislikereed} alt="" className="w-12 lg:w-10" />
       :
-     <img src={dislike} alt="" className="w-12 " />
+     <img src={dislike} alt="" className="w-12 lg:w-10" />
   );
 };
 

@@ -110,11 +110,11 @@ const Question = () => {
     <div className="text-slate-200 font-sans font-normal leading-loose">
       <Nav />
       <Link to="/q-a">
-      <button className=" rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-lg ml-[10%] mt-[15%]">
+      <button className=" rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-lg ml-[10%] mt-[15%] lg:mt-10">
         <img src={backarrow} alt="" className="bg-black" />
       </button>
       </Link>
-      <div className="mt-[7%] bg-black w-[80%] shadow-md shadow-[#19191950] ml-auto mr-auto rounded-[8px]">
+      <div className="mt-[7%] bg-black w-[80%] shadow-md shadow-[#19191950] ml-auto mr-auto rounded-[8px] lg:mt-0 lg:w-[60%]">
         <div className="inline-flex justify-between w-[100%] mt-3">
           <div className="inline-flex ">
             {currentPost.etiquetas?.map((t) => {
@@ -132,7 +132,7 @@ const Question = () => {
           </div>
         </div>
 
-        <div className="w-[100%] ml-auto mr-auto mt-2 m-7 rounded-[8px] text-center mt-5">
+        <div className="w-[100%] ml-auto mr-auto mt-2 m-7 rounded-[8px] text-center">
           <h1 className=" ml-auto mr-auto text-lg underline ">
             {currentPost.title}
           </h1>
