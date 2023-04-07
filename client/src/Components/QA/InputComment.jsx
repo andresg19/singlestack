@@ -55,10 +55,10 @@ const InputComment = ({ postId }) => {
         ></textarea>
       </div>
 
-      <div class="flex justify-center items-center w-[60%] ml-auto mr-auto mt-4">
+      <div class="flex justify-center items-center w-[100%] ml-auto mr-auto mt-4">
         <label
           for="dropzone-file"
-          class="flex flex-col justify-center items-center w-60 h-36 rounded-lg  cursor-pointer shadow-sm shadow-black box-shadow hover:bg-black  bg-[#191919] opacity-75"
+          class="flex flex-col justify-center items-center w-[80%] h-45 rounded-lg  cursor-pointer shadow-sm shadow-black box-shadow hover:bg-black  bg-[#191919] opacity-75"
         >
           <div class="flex flex-col justify-center items-center pt-5 pb-6">
             <svg
@@ -105,7 +105,7 @@ const InputComment = ({ postId }) => {
       <div className="flex justify-center mt-4 mb-2">
         <button
           onClick={handleSubmit}
-          className="bg-[#0a0d11] text-bold rounded-md h-8 hover:bg-black hover:text-white"
+          className="bg-[#0a0d11] font-semibold rounded-md h-8 hover:bg-black text-[#ffffffdb]"
         >
           Comentar
         </button>

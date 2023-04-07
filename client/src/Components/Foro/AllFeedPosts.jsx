@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 
 import FeedPost from "./FeedPost";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
+import Footer from "../Footer/Footer";
 
 const AllFeedPosts = () => {
   const dispatch = useDispatch();
@@ -41,12 +42,12 @@ const AllFeedPosts = () => {
 
   return (
     //div padre
-    <div className="mt-10  w-[100%] font-light font-sans">
+    <div className="grid mt-[10%] w-[100%] font-light font-sans">
       {feedPosts.length
         ? feedPosts.map((post) => (
     
-            <div className="pt-4 mx-8 rounded-xl">
-              <div className="pt-5 shadow-md shadow-[#0f0f0fbd]">
+            <div className="">
+              <div className="pt-5 shadow-md ">
                 <div className="flex justify-between mb-2 mx-2">
                   <div className="flex -mt-2">
                   
@@ -71,55 +72,32 @@ const AllFeedPosts = () => {
                   </div>
                 </div>
 
-                <div className="block w-[100%] m-5 p-4 ">
-                  <span className="flex truncate justify-center text-lg text-slate-200">
+                <div className="grid w-[100%] mt-[10%] ">
+                  <span className="flex w-[90%] truncate text-center mx-auto  text-sm text-slate-200">
                     {post.content}
                   </span>
               <hr className="mt-5 max-w-[100%] mx-auto border-[#ffffff08]" />
-              <div className="block mt-[10%]">
+              <div className="grid mt-[10%]">
 
                   {
               post.img.length ? 
-              <div className="text-white italic mx-auto w-[20%]">
+              <div className="grid text-white italic text-center w-[100%]">
                 <span >Este posteo contiene archivos</span>
               </div>  :
-              <div  className="text-white italic mx-auto w-[20%]">
+              <div  className="grid text-white italic text-center w-[100%]">
                 <span>No contiene archivos</span>
               </div>
 
               
              }
              
-                    {/* {post.img?.map((postimg, index) => (
-                     <div
-                     className="w-[100%] mt-5 ml-auto mr-auto"
-                     key={index}
-                   >
-                     <TransformWrapper
-                       defaultScale={1}
-                       defaultPositionX={100}
-                       defaultPositionY={200}
-                     >
-                     
-                           <TransformComponent>
-                             <img
-                               src={postimg}
-                               alt="img not found"
-                               className="w-[80%] mx-auto cursor-pointer rounded-[8px]  shadow-md shadow-[#131313]"
-                             />
-                           </TransformComponent>
- 
-                 
-                     </TransformWrapper>
-                   </div>
-                    ))} */}
-                    <p className="underline text-[#000ac7] ml-[80%]">
+                    <p className="underline text-[#000ac7] ml-[70%] mt-5 w-[30%]">
                       <Link to={"/feedpost/" + post.id}>Saber más...</Link>
                     </p>
                   </div>
                 </div>
-              <div className=" flex shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
-           <div>
+              <div className=" flex mt-10 shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
+           <div className="">
             <h2 className="text-green-600 ml-3">
               {post.likes}
               </h2>
@@ -147,8 +125,9 @@ const AllFeedPosts = () => {
             </div>
           ))
           : null}
-          
-          
+          <div className="mt-5 bg-black">
+          <Footer />
+          </div>
     </div>
   );
 };

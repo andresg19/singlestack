@@ -14,9 +14,9 @@ const FingerLike = ({ likes, comment, userId }) => {
   return (
     
       userLike.length ? 
-      <img src={likegreen} alt="" className="w-12" />
+      <img src={likegreen} alt="" className="w-[70%]" />
       :
-     <img src={like} alt="" className="w-12" />
+     <img src={like} alt="" className="w-[70%]" />
   );
 };
 

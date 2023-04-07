@@ -20,13 +20,8 @@ const PostsResourcesUser = () => {
         <div className="">
         {resultUserPosts.map((p) => {
           return (
-            <div className="bg-[#191919] ml-auto mr-auto m-2 w-[90%] text-white rounded-[2%]">
-              <div className="text-m text-center">
-                <h1
-                className="mt-3"
-                >
-                  {p.title}
-                  </h1>
+            <div className="bg-[#1313136d] ml-auto mr-auto mt-5 w-[90%] text-white rounded-[2%]">
+              <div className="text-sm text-center">
                 <p
                 className="mt-3"
                 >
@@ -38,19 +33,19 @@ const PostsResourcesUser = () => {
                 {p.img
                   ? p.img.map((i) => {
                       return <img src={i} alt="not found" 
-                      className="w-[15%] ml-auto mr-auto mt-[2%]" 
+                      className="w-[80%] ml-auto mr-auto mt-[5%]" 
                       />;
                     })
                   : null}
               </div>
   
-              <div className="grid mt-[2%] ml-[85%] w-[25%]">
-                <p className='bg-[#070a13] rounded-sm shadow-md shadow-[#000000] hover:bg-[#030509] font-semibold text-[#181cff70] w-[40%]'>
+            
+                <p className="bg-[#070a13] rounded-sm shadow-md shadow-[#000000] mt-5 ml-auto hover:bg-[#030509]  w-[30%] font-semibold text-[#181cff70]">
                   <Link to={ "/feedpost/" + p.id } >
                   Ver posteo
                   </Link>
                 </p>
-              </div> 
+  
             </div>
           );
         })}

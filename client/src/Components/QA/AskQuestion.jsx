@@ -86,9 +86,9 @@ const AskQuestion = ({}) => {
   return (
     <div className="">
       <Nav />
-        <div className="grid text-slate-200 w-[100%] font-sans text-md justify-center mt-[2%]">
+        <div className="grid text-white w-[100%] text-md justify-center mt-[30%]">
         <input
-          className="w-[60%] placeholder:text-center shadow-md shadow-black box-shadow rounded-b-lg bg-[#191919] opacity-75 ml-auto  mr-auto m-3"
+          className="w-[60%] placeholder:text-center shadow-md shadow-black box-shadow rounded-b-lg bg-[#19191977]  ml-auto  mr-auto m-3"
           type="text"
           name="title"
           placeholder="Titulo"
@@ -98,7 +98,7 @@ const AskQuestion = ({}) => {
           }}
         />
         <textarea
-          className="m-3 bg-[#191919] placeholder:italic opacity-75 shadow-md shadow-black box-shadow  rounded-b-lg "
+          className="m-3 bg-[#19191977] placeholder:italic shadow-md shadow-black box-shadow  rounded-b-lg "
           rows="10"
           cols="80"
           name="content"
@@ -109,11 +109,11 @@ const AskQuestion = ({}) => {
           }}
         />
 
-<div className="ml-auto mr-auto max-h-[30vh] mt-10 w-[60%] cursor-pointer bg-[#191919] opacity-75 shadow-md shadow-black box-shadow  rounded-b-md overflow-y-auto">
-<h1 className="font-medium underline">Busca tus etiquetas</h1>
+<div className="ml-auto mr-auto max-h-[30vh] mt-10 w-[60%] cursor-pointer bg-[#19191977] shadow-md shadow-black box-shadow  rounded-b-md overflow-y-auto">
+<h1 className="font-black text-slate-400">Busca tus etiquetas</h1>
         {
           etiquetas.map(etiqueta => (
-            <div  className="flex mt-5 justify-between font-bold italic">
+            <div  className="flex mt-5 justify-between text-slate-300 font-black italic">
               <input
                 className= "" 
                 type="checkbox"
@@ -133,10 +133,10 @@ const AskQuestion = ({}) => {
 
 
         
-        <div class="flex justify-center items-center w-[60%] mt-10 ml-auto mr-auto">
+        <div class="flex justify-center items-center w-[100%] mt-10 ml-auto mr-auto">
           <label
             for="dropzone-file"
-            class="flex flex-col justify-center items-center w-full h-64  rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#191919] opacity-75 "
+            class="flex flex-col justify-center text-center w-80 h-64  rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#191919] opacity-75 "
           >
             <div class="flex flex-col justify-center items-center pt-5 pb-6">
               <svg
@@ -179,7 +179,7 @@ const AskQuestion = ({}) => {
         </div>
 
         <button
-          className="text-sm mt-[8%] font-normal rounded hover:bg-black bg-[#191919] shadow-lg shadow-[#19191980] w-[30%] ml-auto mr-auto"
+          className="text-sm mt-[8%] font-black text-slate-200 rounded hover:bg-black bg-[#191919] shadow-lg shadow-[#19191980] w-[30%] ml-auto mr-auto"
           onClick={handlePost}
         >
           REALIZAR PREGUNTA

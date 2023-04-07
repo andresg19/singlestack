@@ -17,6 +17,7 @@ import FingerDislikesForo from "./FingerDislikesForo";
 import FingerLikesForo from "./FingerLikesForo";
 import Nav from "../NavBar/Nav";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch"
+import Footer from "../Footer/Footer";
 
 
 
@@ -88,7 +89,7 @@ const FeedPost = () => {
     //div padre
     <div className="text-slate-200 font-sans font-normal leading-loose w-[100%] ml-auto mr-auto">
        <Nav />
-        <div className="bg-black mx-auto mt-10 w-[70%] rounded-xl shadow-md shadow-[#201d1d67] ">
+        <div className="bg-black mx-auto mt-[25%] w-[100%] rounded-xl shadow-md shadow-[#201d1d67] ">
           <div className="flex justify-between mx-2">
             <div className="flex mt-5">
             {
@@ -111,20 +112,20 @@ const FeedPost = () => {
           </div>
 
           <div className="w-[100%] ml-auto mr-auto mt-2 m-7 rounded-[8px]">
-          <div className="block  mt-1 mb-2 mx-10 ml-auto mr-auto ">
-            <span className="grid  shadow-md shadow-[#0b0b0b] text-slate-200 font-light text-lg  break-all w-[60%] indent-1 ml-auto mr-auto">
+          <div className="block  mt-10 mx-auto ">
+            <span className="grid  shadow-md shadow-[#0b0b0b] text-slate-200 font-light text-sm  break-all w-[90%] indent-1 ml-auto mr-auto">
               {currentPost.content}
             </span>
 
-            <div className="block max-w-[100%] mt-[10%] text-slate-200">
+            <div className="block max-w-[100%] mt-[10%] text-slate-200 text-center">
              {
               currentPost.img ?
-              <p className="w-[50%] ml-auto mr-auto">Haz zoom en las imagenes con tu scroll wheel o doble toque</p> : null
+              <p className="w-[100%] text-sm">Haz zoom en las imagenes con tu scroll wheel o doble toque</p> : null
              }
               {currentPost.img?.map((img, index) => {
                 return (
                   <div
-                    className="w-[60%] mt-5 ml-auto mr-auto"
+                    className="w-[90%] mt-5 ml-auto mr-auto"
                     key={index}
             
                   >
@@ -150,7 +151,7 @@ const FeedPost = () => {
             </div>
           </div>
           </div>
-          <div className="-mt-10">
+          <div className="mt-5">
                         <div className="">
                           <p className="text-[#1b7161] ml-[2.5%]">
                             {postLikes.length}
@@ -185,7 +186,7 @@ const FeedPost = () => {
                         </div>
                       </div>
         </div>
-        <div className= "pt-5 bg-[#050505] mx-auto w-[70%] rounded-xl shadow-md shadow-[#201d1d67] ">
+        <div className= "pt-5 bg-[#050505] mx-auto w-[100%] rounded-xl shadow-md shadow-[#201d1d67] ">
           <div className="flex border-b border-gray-400 mb-2 pb-5">
             <img src={actualUserImg.img} alt="" className="w-10 h-10 rounded-3xl ml-2" />
             <input
@@ -218,10 +219,10 @@ const FeedPost = () => {
                     }
                   <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
                     <div className="flex justify-between mx-1">
-                      <p className="text-xl ml-2">{d.author}</p>
+                      <p className="text-md ml-2">{d.author}</p>
                       <p>{dateFormatter(d.createdAt)}</p>
                     </div>
-                    <span className="text-center grid w-[60%] break-all text-lg  indent-1 ml-auto mr-auto">{d.content}</span>
+                    <span className="text-center grid w-[100%] break-all text-lg mt-2 indent-1 ml-auto mr-auto">{d.content}</span>
                   </div>
                 </div>
             
@@ -241,18 +242,18 @@ const FeedPost = () => {
                         if(element.fullname === c.author) {
                           imgUser.push(element.img)
                           return(
-                            <img src={imgUser[0]} alt="" className="w-12 h-10 rounded-full ml-2" />
+                            <img src={imgUser[0]} alt="img not found" className="w-12 h-10 rounded-full ml-2" />
                           )
                         }
                       })
                     }
                   <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
                     <div className="flex justify-between mx-1">
-                      <p className="text-xl ml-2">{c.author}</p>
+                      <p className="text-md ml-2">{c.author}</p>
                       <p>{dateFormatter(c.createdAt)}</p>
                     </div>
 
-                    <span className="text-center grid w-[60%] break-all text-lg  indent-1 ml-auto mr-auto">{c.content}</span>
+                    <span className="text-center grid w-[100%] break-all text-lg mt-2 indent-1 ml-auto mr-auto">{c.content}</span>
                   </div>
                 </div>
               </div>
@@ -262,18 +263,19 @@ const FeedPost = () => {
           null}
           {
             moreComments === true ? (
-              <button className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#0004ff] text-sm ml-[1%] mt-4" onClick={() => setMoreComments(!moreComments) }>
+              <button className="bg-[#070a13] hover:bg-[#030509] w-auto rounded-sm shadow-md shadow-[#000000] font-semibold text-[#9ab6bec1] text-sm ml-[1%] mt-8" onClick={() => setMoreComments(!moreComments) }>
               Ocultar comentarios
             </button>
 
             ) : 
                   (
-                <button className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#0004ff] text-sm ml-[1%] mt-4" onClick={() => setMoreComments(!moreComments) }>
+                <button className="bg-[#070a13] hover:bg-[#030509] w-auto rounded-sm shadow-md shadow-[#000000] font-semibold text-[#9ab6bec1] text-sm ml-[1%] mt-8" onClick={() => setMoreComments(!moreComments) }>
                   Cargar comentarios...
                 </button>
             )
           }
         </div>
+        <Footer />
     </div>
   );
 };

@@ -48,7 +48,7 @@ const Config = () => {
         };
       };
     return (
-      <div className='ml-auto mr-auto w-[50%] text-slate-200'>
+      <div className='ml-auto mr-auto w-[80%] text-slate-200'>
         <input 
         type="text"
         name="fullname"
