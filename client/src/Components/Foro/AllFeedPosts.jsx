@@ -42,12 +42,12 @@ const AllFeedPosts = () => {
 
   return (
     //div padre
-    <div className="grid mt-[10%] w-[100%] font-light font-sans">
+    <div className="grid mt-[10%] w-[100%]">
       {feedPosts.length
         ? feedPosts.map((post) => (
     
-            <div className="">
-              <div className="pt-5 shadow-md ">
+            <div className="" key={post.id}>
+              <div className="pt-5  ">
                 <div className="flex justify-between mb-2 mx-2">
                   <div className="flex -mt-2">
                   
@@ -64,8 +64,8 @@ const AllFeedPosts = () => {
                       })
                     }
                     <div className="ml-2 t-mt-2">
-                      <p className="text-xl underline text-gray-300">{post.author}</p>
-                      <p className="text-gray-400">
+                      <p className="text-xl underline underline-offset-2 text-gray-300 lg:text-sm">{post.author}</p>
+                      <p className="text-gray-400 lg:text-xs">
                         {dateFormatter(post.createdAt)}
                       </p>
                     </div>
@@ -73,7 +73,7 @@ const AllFeedPosts = () => {
                 </div>
 
                 <div className="grid w-[100%] mt-[10%] ">
-                  <span className="flex w-[90%] truncate text-center mx-auto  text-sm text-slate-200">
+                  <span className="flex w-[90%] truncate text-center mx-auto  text-sm text-slate-200 lg:text-xs">
                     {post.content}
                   </span>
               <hr className="mt-5 max-w-[100%] mx-auto border-[#ffffff08]" />
@@ -81,22 +81,22 @@ const AllFeedPosts = () => {
 
                   {
               post.img.length ? 
-              <div className="grid text-white italic text-center w-[100%]">
+              <div className="grid text-white italic text-center w-[100%] lg:text-xs">
                 <span >Este posteo contiene archivos</span>
               </div>  :
-              <div  className="grid text-white italic text-center w-[100%]">
+              <div  className="grid text-white italic text-center w-[100%] lg:text-xs">
                 <span>No contiene archivos</span>
               </div>
 
               
              }
              
-                    <p className="underline text-[#000ac7] ml-[70%] mt-5 w-[30%]">
+                    <p className="underline text-[#000ac7] ml-[70%] mt-5 w-[30%] lg:text-sm">
                       <Link to={"/feedpost/" + post.id}>Saber más...</Link>
                     </p>
                   </div>
                 </div>
-              <div className=" flex mt-10 shadow-md shadow-[#0f0f0fbd] mx-10 py-2 justify-around">
+              <div className=" flex mt-10 shadow-md  mx-10 py-2 justify-around">
            <div className="">
             <h2 className="text-green-600 ml-3">
               {post.likes}
@@ -125,9 +125,7 @@ const AllFeedPosts = () => {
             </div>
           ))
           : null}
-          <div className="mt-5 bg-black">
-          <Footer />
-          </div>
+          
     </div>
   );
 };

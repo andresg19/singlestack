@@ -60,21 +60,21 @@ const Qa = () => {
         {
           currentUser ?
           <Link to="/ask-question">
-          <button className="mt-[35%] rounded-sm font-semibold ml-5 btn-primary bg-[#19191955]  text-[#a2abae] shadow-sm shadow-[#2b5d6641] border-collapse sm:text-sm sm:mt-[8%]">
+          <button className="mt-[35%] rounded-sm font-semibold ml-5 btn-primary bg-[#19191955]  text-[#a2abae] shadow-sm shadow-[#2b5d6641] border-collapse sm:text-sm lg:mt-10 lg:text-xs">
             Haz una pregunta
             </button>
           </Link>
           :
       <Link to="/ask-question">
-      <button className="mt-[35%] rounded-sm font-semibold ml-5 btn-primary bg-[#19191955]  text-[#a2abae] shadow-sm shadow-[#2b5d6641] border-collapse sm:text-sm"
+      <button className="mt-[35%] rounded-sm font-semibold ml-5 btn-primary bg-[#19191955]  text-[#a2abae] shadow-sm shadow-[#2b5d6641] border-collapse sm:text-sm lg:mt-10 lg:text-xs"
       onClick={handleUserControll}>
         Haz una pregunta
         </button>
       </Link>
         }
       
-      <div className="font-sans text-lg font-light">
-        <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[1%] w-[100%] sm:w-[60%] sm:mx-auto">
+      <div className="font-sans text-lg font-light lg:grid lg:grid-cols-2">
+        <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[1%] w-[100%] sm:w-[60%] sm:mx-auto lg:w-[60%] lg:ml-5 lg:mt-[10%]">
           {/* PRIMER DIV */}
           <input
             type="text"
@@ -82,13 +82,13 @@ const Qa = () => {
             className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#070a13] text-slate-200 placeholder:text-center  outline-none text-center sm:w-[60%] sm:text-sm sm:placeholder:text-sm"
             onChange={(e) => {setSearch(e.target.value)}}
           />
-          <div className="mt-[10%] mx-auto max-h-[30vh] overflow-y-auto shadow-sm shadow-[#2b5d6641]">
+          <div className="mt-[10%] mx-auto max-h-[30vh] overflow-y-auto lg:max-h-[45%]">
             <h3 className="ml-2 underline font-medium text-[#46899B]">
               #Etiquetas
             </h3>
             {
                 etiquetas.map(etiqueta => (
-              <div className="inline-flex w-[40%] ml-5 text-center text-black font-medium justify-around">
+              <div className="inline-flex w-[40%] ml-5 text-center text-black font-medium justify-around" key={etiqueta}>
               <p
                 value={etiqueta}
                 className="text-white bg-[#19191959] mt-6 rounded-[3px] text-lg cursor-pointer hover:bg-[#0a0b0e]"
@@ -101,12 +101,12 @@ const Qa = () => {
             }    
            
           </div>
-        </div>
-        <button className="text-slate-400 text-sm mt-5 bg-[#19191911] hover:bg-[#191919] sm:ml-5 sm:text-sm sm:font-semibold" onClick={() => window.location.reload()}>
+        <button className="text-slate-400 text-sm mt-5 bg-[#19191911] hover:bg-[#191919] sm:ml-5 sm:text-sm sm:font-semibold lg:text-xs" onClick={() => window.location.reload()}>
           RECARGAR
         </button>
-        <hr className="mt-[25%] border-none h-1 bg-[#28282848] sm:mt-[2%]"/>
-        <div className="mx-auto w-[100%] mt-[20%] sm:mt-[2%] sm:w-[80%]">
+        </div>
+    
+        <div className="mx-auto w-[100%] mt-[20%] sm:mt-[2%] sm:w-[80%] lg:w-[95%] lg:mx-auto lg:mt-10">
           {/* SEGUNDO DIV */}
   
           <Questions handleSearch={filterPosts} />

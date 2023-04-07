@@ -17,6 +17,7 @@ import FingerDislikesForo from "./FingerDislikesForo";
 import FingerLikesForo from "./FingerLikesForo";
 import Nav from "../NavBar/Nav";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch"
+import backarrow from "../../assets/imgs/backarrow.png"
 import Footer from "../Footer/Footer";
 
 
@@ -89,7 +90,12 @@ const FeedPost = () => {
     //div padre
     <div className="text-slate-200 font-sans font-normal leading-loose w-[100%] ml-auto mr-auto">
        <Nav />
-        <div className="bg-black mx-auto mt-[25%] w-[100%] rounded-xl shadow-md shadow-[#201d1d67] ">
+        <div className="bg-black mx-auto mt-[15%] w-[100%] rounded-xl shadow-md shadow-[#201d1d67] lg:mt-[5%] lg:w-[60%]">
+        <Link to="/foro">
+      <button className=" rounded-sm shadow-md shadow-[#000000] font-semibold text-[#181cff70] text-lg ml-[10%] mt-[15%] lg:mt-10">
+        <img src={backarrow} alt="" className="bg-black" />
+      </button>
+      </Link>
           <div className="flex justify-between mx-2">
             <div className="flex mt-5">
             {
@@ -105,22 +111,22 @@ const FeedPost = () => {
                       })
                     }
               <div className="ml-2 t-mt-2">
-                <p className="">{currentPost.author}</p>
-                <p className="">{dateFormatter(currentPost.createdAt)}</p>
+                <p className="underline-offset-2 underline lg:text-sm ">{currentPost.author}</p>
+                <p className="lg:text-xs">{dateFormatter(currentPost.createdAt)}</p>
               </div>
             </div>
           </div>
 
           <div className="w-[100%] ml-auto mr-auto mt-2 m-7 rounded-[8px]">
           <div className="block  mt-10 mx-auto ">
-            <span className="grid  shadow-md shadow-[#0b0b0b] text-slate-200 font-light text-sm  break-all w-[90%] indent-1 ml-auto mr-auto">
+            <span className="grid  shadow-md shadow-[#0b0b0b] text-slate-200 font-light text-sm  break-all w-[90%] indent-1 ml-auto mr-auto lg:text-xs">
               {currentPost.content}
             </span>
 
             <div className="block max-w-[100%] mt-[10%] text-slate-200 text-center">
              {
               currentPost.img ?
-              <p className="w-[100%] text-sm">Haz zoom en las imagenes con tu scroll wheel o doble toque</p> : null
+              <p className="w-[100%] text-sm lg:text-xs">Haz zoom en las imagenes con tu scroll wheel o doble toque</p> : null
              }
               {currentPost.img?.map((img, index) => {
                 return (
@@ -186,7 +192,7 @@ const FeedPost = () => {
                         </div>
                       </div>
         </div>
-        <div className= "pt-5 bg-[#050505] mx-auto w-[100%] rounded-xl shadow-md shadow-[#201d1d67] ">
+        <div className= "pt-5 bg-[#050505] mx-auto w-[100%] rounded-xl shadow-md shadow-[#201d1d67] lg:w-[60%]">
           <div className="flex border-b border-gray-400 mb-2 pb-5">
             <img src={actualUserImg.img} alt="" className="w-10 h-10 rounded-3xl ml-2" />
             <input
@@ -194,7 +200,7 @@ const FeedPost = () => {
               value={content}
               onChange={(e) => setContent(e.target.value)}
               placeholder="Agregar un comentario"
-              className="w-full rounded-lg mx-2 outline-none bg-[#191919] placeholder:pl-3"
+              className="w-full rounded-lg mx-2 outline-none bg-[#191919] placeholder:pl-3 lg:text-sm"
             />
             <button type="submit" onClick={handleCommentSubmit}>
               Comentar
@@ -219,10 +225,10 @@ const FeedPost = () => {
                     }
                   <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
                     <div className="flex justify-between mx-1">
-                      <p className="text-md ml-2">{d.author}</p>
-                      <p>{dateFormatter(d.createdAt)}</p>
+                      <p className="text-md ml-2 underline underline-offset-2 lg:text-sm ">{d.author}</p>
+                      <p className="lg:text-xs">{dateFormatter(d.createdAt)}</p>
                     </div>
-                    <span className="text-center grid w-[100%] break-all text-lg mt-2 indent-1 ml-auto mr-auto">{d.content}</span>
+                    <span className="text-center grid w-[100%] break-all text-lg mt-2 indent-1 ml-auto mr-auto lg:text-sm">{d.content}</span>
                   </div>
                 </div>
             
@@ -242,20 +248,20 @@ const FeedPost = () => {
                         if(element.fullname === c.author) {
                           imgUser.push(element.img)
                           return(
-                            <img src={imgUser[0]} alt="img not found" className="w-12 h-10 rounded-full ml-2" />
+                            <img src={imgUser[0]} alt="" className="w-12 h-10 rounded-full ml-2" />
                           )
                         }
                       })
                     }
                   <div className=" bg-[#191919] rounded-xl w-full mx-2 px-1">
                     <div className="flex justify-between mx-1">
-                      <p className="text-md ml-2">{c.author}</p>
-                      <p>{dateFormatter(c.createdAt)}</p>
+                      <p className="text-md ml-2 underline underline-offset-2 lg:text-sm ">{c.author}</p>
+                      <p className="lg:text-xs">{dateFormatter(c.createdAt)}</p>
                     </div>
-
-                    <span className="text-center grid w-[100%] break-all text-lg mt-2 indent-1 ml-auto mr-auto">{c.content}</span>
+                    <span className="text-center grid w-[100%] break-all text-lg mt-2 indent-1 ml-auto mr-auto lg:text-sm">{c.content}</span>
                   </div>
                 </div>
+            
               </div>
             )) 
             ) 

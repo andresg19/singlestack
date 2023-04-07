@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
       },
       content: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       author: {
         type: DataTypes.STRING,

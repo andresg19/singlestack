@@ -52,21 +52,21 @@ const Config = () => {
         <input 
         type="text"
         name="fullname"
-        className='text-center block w-60 p-2 mx-auto mt-5 bg-[#191919] rounded-md '
+        className='text-center block w-60 p-2 mx-auto mt-5 bg-[#191919] rounded-md lg:text-xs lg:mt-[15%]'
         placeholder='Nombre de Usuario' 
         value={input.fullname}
         onChange={(e) => {setInput({...input, [e.target.name]: e.target.value})}} />
          <input 
         type="password"
         name="password"
-        className='text-center block w-60 p-2 mx-auto mt-5 bg-[#191919] rounded-md '
+        className='text-center block w-60 p-2 mx-auto mt-5 bg-[#191919] rounded-md lg:text-xs '
         placeholder='Contraseña' 
         value={input.password}
         onChange={(e) => {setInput({...input, [e.target.name]: e.target.value})}} />
         <div class="flex justify-center items-center w-[60%] mx-auto mt-10">
           <label
             for="dropzone-file"
-            class="flex flex-col justify-center items-center w-60 h-40 bg-[#191919] shadow-md shadow-[#191919f6] rounded-md"
+            class="flex flex-col justify-center items-center w-60 h-40 bg-[#191919] shadow-md shadow-[#191919f6] rounded-md lg:w-40 lg:h-30"
           >
             <div class="flex flex-col justify-center items-center pt-5 pb-6">
               <svg
@@ -84,10 +84,10 @@ const Config = () => {
                   d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                 ></path>
               </svg>
-              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400 lg:text-xs">
                 <span class="font-semibold">Cambiar imágen de perfil</span>
               </p>
-              <p class="text-xs text-gray-500 dark:text-gray-400">
+              <p class="text-xs text-gray-500 dark:text-gray-400 lg:text-xs">
                 SVG, PNG, JPG or GIF
               </p>
             </div>
@@ -100,15 +100,15 @@ const Config = () => {
             />
           </label>
         </div>
-        <div className="flex mt-10 mx-auto w-50">
+        <div className="flex mt-10 mx-auto w-50 lg:mt-5">
         {img ?
           <img src={img} alt="" width={80} className="box-shadow mx-auto shadow-black shadow-md" /> 
         : 
-        <span className="ml-100 mx-auto">No hay imágen</span>
+        <span className="ml-100 mx-auto lg:text-xs">No hay imágen</span>
         }
         </div>
         <button
-          className="flex p-1 text-sm mt-[8%] font-medium rounded mx-auto hover:bg-black bg-[#191919] shadow-lg shadow-[#19191980] w-[25%]"
+          className="flex p-1 text-sm mt-[8%] font-medium rounded mx-auto hover:bg-black bg-[#191919] shadow-lg shadow-[#19191980] w-[25%] lg:text-xs"
           onClick={handlePut}
         >
           Guardar cambios

@@ -30,7 +30,7 @@ const QuestionsUsers = () => {
     <div className="">
       {resultQuestionsUser.map((q) => {
         return (
-          <div className="bg-[#080808] ml-auto mr-auto font-sans m-2 w-[90%] text-white rounded-[2%]">
+          <div className="bg-[#080808] ml-auto mr-auto font-sans m-2 w-[90%] text-white rounded-[2%] lg:grid lg:w-[100%] lg:mx-auto">
             <div className="text-center">
               <h1
               className="mt-5 text-md underline"
@@ -38,7 +38,7 @@ const QuestionsUsers = () => {
                 {q.title}
                 </h1>
               <p
-              className="mt-3 text-sm"
+              className="mt-3 text-sm lg:text-xs"
               >
                 {q.content}
                 </p>
@@ -48,14 +48,14 @@ const QuestionsUsers = () => {
               {q.img
                 ? q.img.map((i) => {
                     return <img src={i} alt="not found" 
-                    className="w-[80%] ml-auto mr-auto mt-[2%]" 
+                    className="w-[80%] ml-auto mr-auto mt-[2%] lg:w-[50%]" 
                     />;
                   })
                 : null}
             </div>
 
             
-              <p className="bg-[#070a13] rounded-sm shadow-md shadow-[#000000] mt-5 ml-auto hover:bg-[#030509]  w-[30%] font-semibold text-[#181cff70]">
+              <p className="bg-[#070a13] rounded-sm shadow-md shadow-[#000000] mt-5 ml-auto hover:bg-[#030509]  w-[30%] font-semibold text-[#181cff70] lg:w-[20%] lg:text-sm">
                 <Link to={"/question/" + q.id} >
                 Ver pregunta
                 </Link>

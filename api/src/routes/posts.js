@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
 
 //CREA UN POST
 router.post("/", async (req, res) => {
-  let { title, content, author, etiquetas, img } = req.body;
+  let { title, content, author, etiquetas, img} = req.body;
   console.log(req.body);
 
   try {

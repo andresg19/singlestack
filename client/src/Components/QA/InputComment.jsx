@@ -41,16 +41,16 @@ const InputComment = ({ postId }) => {
   };
 
   return (
-    <div className="justify-center  mt-10 text-slate-200 font-light ">
+    <div className="justify-center  mt-10 text-slate-200 font-light lg:w-[70%] lg:mx-auto">
       <div className="flex">
         <textarea
           name=""
           id=""
-          rows="10"
+          rows="5"
           cols="80"
           value={input.content}
           placeholder="Agrega un comentario..."
-          className=" bg-[#000000fd] shadow-sm shadow-[#151313] rounded-b-lg outline-none mx-auto"
+          className=" bg-[#000000fd] shadow-sm shadow-[#151313] rounded-b-lg outline-none mx-auto lg:text-sm"
           onChange={(e) => setInput(e.target.value)}
         ></textarea>
       </div>
@@ -58,7 +58,7 @@ const InputComment = ({ postId }) => {
       <div class="flex justify-center items-center w-[100%] ml-auto mr-auto mt-4">
         <label
           for="dropzone-file"
-          class="flex flex-col justify-center items-center w-[80%] h-45 rounded-lg  cursor-pointer shadow-sm shadow-black box-shadow hover:bg-black  bg-[#191919] opacity-75"
+          class="flex flex-col justify-center items-center w-[80%] h-45 rounded-lg  cursor-pointer shadow-sm shadow-black box-shadow hover:bg-black  bg-[#191919] opacity-75 lg:w-[60%]"
         >
           <div class="flex flex-col justify-center items-center pt-5 pb-6">
             <svg
@@ -81,7 +81,7 @@ const InputComment = ({ postId }) => {
                 Click para cargar tu captura del código
               </span>
               <br />
-              <span class="font-light ml-[4.3%]">(seleccionar y cargar de a una imagen)</span>
+              <span class="font-light ">(seleccionar y cargar de a una imagen)</span>
             </p>
             <p class="text-xs text-gray-500 dark:text-gray-400">
               SVG, PNG, JPG or GIF

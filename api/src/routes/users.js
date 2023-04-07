@@ -18,13 +18,16 @@ router.get("/", async (req, res) => {
 //CREATE USER
 router.post("/", async (req, res, next) => {
   try {
-    const { fullname, email, password } = req.body;
+    const { fullname, email, password, img} = req.body;
+
 
     /* const passHash = await encrypt(password); */
     const newUser = await Users.create({
       fullname,
       email,
       password,
+      img
+
     });
 
     res.send("User created");
