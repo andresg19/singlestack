@@ -101,11 +101,11 @@ const Register = () => {
     <div>
 
     <Nav />
-    <div className="mt-[25%] bg-black shadow-md shadow-[#0f0f0fbd] rounded-xl w-[100%] h-[75vh] ml-auto mr-auto text-slate-200 font-sans font-light sm:mt-[10%] sm:h-[80vh]">
+    <div className="mt-[25%] bg-black shadow-md shadow-[#0f0f0fbd] rounded-xl w-[100%] h-[75vh] ml-auto mr-auto text-slate-200 font-sans font-light sm:mt-[10%] sm:h-[80vh] lg:mt-[7%]">
       <div className="grid w-[90%] p-1 ml-auto mr-auto">
         <h1 className="mx-auto text-slate-300 italic font-medium">Ingrese sus datos</h1>
       </div>
-      <form className="flex flex-col p-10 max-w-[90%] ml-auto mr-auto sm:w-[50%]" onSubmit={handleSubmit}>
+      <form className="flex flex-col p-10 max-w-[90%] ml-auto mr-auto sm:w-[50%] lg:w-[30%] lg:text-sm" onSubmit={handleSubmit}>
         <input
           id="small-input" 
           className="text-center block w-full p-2 bg-[#191919] rounded-md "
@@ -164,7 +164,7 @@ const Register = () => {
         type="submit">
           Iniciar sesión
       </button>
-        <h1 className="mx-auto mt-12 text-slate-500 italic font-medium">singlestack</h1>
+        <h1 className="mx-auto mt-12 text-slate-500 italic font-medium lg:mt-5">singlestack</h1>
       </form>
     </div>
     <Footer />

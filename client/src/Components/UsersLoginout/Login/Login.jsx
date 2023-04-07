@@ -59,7 +59,7 @@ const Login = () => {
       <div className="flex w-[100%] p-1 ml-auto mr-auto">
         <h1 className="mx-auto text-lg text-slate-300 italic font-medium">Iniciar sesión</h1>
       </div>
-      <form className="flex flex-col mt-10 max-w-[80%] ml-auto mr-auto sm:w-[50%]" onSubmit={handleSubmit}>
+      <form className="flex flex-col mt-10 max-w-[80%] ml-auto mr-auto sm:w-[50%] lg:w-[25%] lg:text-xs" onSubmit={handleSubmit}>
         <input
           id="small-input" 
           className="text-center block w-full p-2 bg-[#191919] rounded-md"

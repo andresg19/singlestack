@@ -23,7 +23,7 @@ const PostsResourcesUser = () => {
             <div className="bg-[#1313136d] ml-auto mr-auto mt-5 w-[90%] text-white rounded-[2%]">
               <div className="text-sm text-center">
                 <p
-                className="mt-3"
+                className="mt-3 lg:text-xs"
                 >
                   {p.content}
                   </p>
@@ -40,7 +40,7 @@ const PostsResourcesUser = () => {
               </div>
   
             
-                <p className="bg-[#070a13] rounded-sm shadow-md shadow-[#000000] mt-5 ml-auto hover:bg-[#030509]  w-[30%] font-semibold text-[#181cff70]">
+                <p className="bg-[#070a13] rounded-sm shadow-md shadow-[#000000] mt-5 ml-auto hover:bg-[#030509]  w-[30%] font-semibold text-[#181cff70] lg:w-[16%] lg:text-xs">
                   <Link to={ "/feedpost/" + p.id } >
                   Ver posteo
                   </Link>

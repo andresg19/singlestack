@@ -35,8 +35,8 @@ const Profile = () => {
   return (
     <div className="">
       <Nav />
-      <div className="grid mt-[15%] sm:mt-[3%]">
-    <div className="justify-center  grid m-[10%] w-[80%] py-2  bg-[#1616165d] rounded-xl">
+      <div className="grid mt-[15%] sm:mt-[3%] lg:grid-cols-2 divide-x lg:mt-0">
+    <div className="justify-center  grid m-[10%] w-[80%] py-2  bg-[#1616165d] rounded-xl lg:w-[40%]">
       <div className="m-[10%] ml-auto mr-auto text-white py-4 text-center">
       
         <img
@@ -70,28 +70,28 @@ const Profile = () => {
  
     {
         modal ? (
-          <div className="w-[100%]  max-h-[80vh] mt-[2%] bg-black  rounded-xl">
+          <div className="w-[100%]  max-h-[80vh] mt-[2%] bg-black  rounded-xl lg:border-none">
             <Config />
-            <button onClick={modalClose} className="text-white bg-[#191919] mt-5">Cerrar ventana</button>
+            <button onClick={modalClose} className="text-white bg-[#191919] mt-5 lg:text-xs lg:mt-2">Cerrar ventana</button>
           </div>
         ) :
      sectionUser && sectionUser === 'initialValue' ? 
      ( 
-     <div className=" w-[100%] mr-[5%] max-h-[80vh] bg-black  rounded-xl">
+     <div className=" w-[100%] mr-[5%] max-h-[80vh] mt-[2%] bg-black  rounded-xl lg:w-[80%] lg:border-none lg:mt-[15%] lg:max-h-[70vh]">
        <DefaultSectionUser /> 
        </div> 
      ) 
      :
      sectionUser === 'questions' ?
     (
-    <div className=" overflow-scroll scrollbar-hide w-[100%] mr-[5%] max-h-[80vh] mt-[2%] bg-black  rounded-xl">
+    <div className=" overflow-scroll  w-[100%] mr-[5%] max-h-[80vh] mt-[2%] bg-black  rounded-xl lg:w-[80%] lg:border-none lg:mt-[15%] lg:max-h-[70vh]">
       <QuestionsUsers />
     </div>
     ) 
     :
     sectionUser === 'posts' ?
     (
-      <div className=" overflow-scroll scrollbar-hide w-[100%] mr-[5%] max-h-[80vh] mt-[2%] bg-black  rounded-xl">
+      <div className=" overflow-scroll  w-[100%] mr-[5%] max-h-[80vh] mt-[2%] bg-black  rounded-xl lg:w-[80%] lg:border-none lg:mt-[15%] lg:max-h-[70vh]">
         <PostsResourcesUser />
       </div>
     ) 
