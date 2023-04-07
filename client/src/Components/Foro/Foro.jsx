@@ -7,6 +7,7 @@ import PostsForo from "./PostForo";
 import { feedAllComments } from "./../../Redux/Actions/Actions";
 import  AllFeedPosts  from "./AllFeedPosts"
 import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 
 
@@ -132,6 +133,9 @@ const Foro = () => {
         </div>
         <AllFeedPosts />
       </div>
+      <div className="mt-5 bg-black">
+          <Footer />
+          </div>
 
     </div>
   );

@@ -109,11 +109,11 @@ const AskQuestion = ({}) => {
         }}
       />
 
-<div className="ml-auto mr-auto max-h-[30vh] mt-10 w-[60%] cursor-pointer bg-[#19191977] shadow-md shadow-black box-shadow  rounded-b-md overflow-y-auto">
+<div className="ml-auto mr-auto max-h-[30vh] mt-10 w-[60%] cursor-pointer bg-[#19191977] shadow-md shadow-black box-shadow  rounded-b-md  overflow-y-scroll">
 <h1 className="font-black text-slate-400 sm:text-sm">Busca tus etiquetas</h1>
       {
         etiquetas.map(etiqueta => (
-          <div  className="flex mt-5 justify-between text-slate-300 font-black italic sm:text-xs">
+          <div  className="flex mt-5 justify-between text-slate-300 font-black italic sm:text-xs" key={etiqueta}>
             <input
               className= "" 
               type="checkbox"
@@ -133,15 +133,15 @@ const AskQuestion = ({}) => {
 
 
       
-      <div class="flex justify-center items-center w-[100%] mt-10 ml-auto mr-auto">
+      <div className="flex justify-center items-center w-[100%] mt-10 ml-auto mr-auto">
         <label
           for="dropzone-file"
-          class="flex flex-col justify-center text-center w-80 h-64  rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#191919] opacity-75 sm:w-60 sm:h-44 "
+          className="flex flex-col justify-center text-center w-80 h-64  rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#191919] opacity-75 sm:w-60 sm:h-44 "
         >
-          <div class="flex flex-col justify-center items-center pt-5 pb-6">
+          <div className="flex flex-col justify-center items-center pt-5 pb-6">
             <svg
               aria-hidden="true"
-              class="mb-3 w-10 h-10 text-gray-400"
+              className="mb-3 w-10 h-10 text-gray-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -154,18 +154,18 @@ const AskQuestion = ({}) => {
                 d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
               ></path>
             </svg>
-            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-              <span class="font-semibold">Click para cargar tu captura del código</span>
+            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+              <span className="font-semibold">Click para cargar tu captura del código</span>
               <br />
-              <span class="font-light ">(seleccionar y cargar de a una imagen)</span>
+              <span className="font-light ">(seleccionar y cargar de a una imagen)</span>
             </p>
-            <p class="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               SVG, PNG, JPG or GIF
             </p>
           </div>
           <input id="dropzone-file"
           type="file" 
-          class="hidden" 
+          className="hidden" 
           multiple
           onChange={handleImage}
           />

@@ -74,7 +74,7 @@ const Qa = () => {
         }
       
       <div className="font-sans text-lg font-light lg:grid lg:grid-cols-2">
-        <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[1%] w-[100%] sm:w-[60%] sm:mx-auto lg:w-[60%] lg:ml-5 lg:mt-[20%]">
+        <div className="bg-black  shadow-md shadow-[#090808] mt-[7%] rounded-[2%] ml-[1%] w-[100%] sm:w-[60%] sm:mx-auto lg:w-[60%] lg:ml-5 lg:mt-[10%]">
           {/* PRIMER DIV */}
           <input
             type="text"
@@ -82,13 +82,13 @@ const Qa = () => {
             className="flex rounded-lg mt-5 mr-auto ml-auto w-[80%] bg-[#070a13] text-slate-200 placeholder:text-center  outline-none text-center sm:w-[60%] sm:text-sm sm:placeholder:text-sm"
             onChange={(e) => {setSearch(e.target.value)}}
           />
-          <div className="mt-[10%] mx-auto max-h-[30vh] overflow-y-auto shadow-sm shadow-[#2b5d6641]:">
+          <div className="mt-[10%] mx-auto max-h-[30vh] overflow-y-auto lg:max-h-[45%]">
             <h3 className="ml-2 underline font-medium text-[#46899B]">
               #Etiquetas
             </h3>
             {
                 etiquetas.map(etiqueta => (
-              <div className="inline-flex w-[40%] ml-5 text-center text-black font-medium justify-around">
+              <div className="inline-flex w-[40%] ml-5 text-center text-black font-medium justify-around" key={etiqueta}>
               <p
                 value={etiqueta}
                 className="text-white bg-[#19191959] mt-6 rounded-[3px] text-lg cursor-pointer hover:bg-[#0a0b0e]"

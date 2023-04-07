@@ -50,19 +50,7 @@ const Question = () => {
   const { id } = useParams(); //postId
   const postId = currentPost.id;
   const userId = JSON.parse(localStorage.getItem("currentUser")).id;
-  const switcher = ["up", "down"];
-  const [dispatchLike, setDispatchLike] = useState({
-    model: "Likes",
-    switcher: ["up", "down"],
-    userId: userId,
-    commentId: "",
-  });
-  const [dispatchDislike, setDispatchDislike] = useState({
-    model: "Dislikes",
-    switcher: ["up", "down"],
-    userId: userId,
-    commentId: "",
-  });
+
   const imgUser = [];
   const usersImg =  users.map(element => {
                         console.log(imgUser)
@@ -78,7 +66,6 @@ const Question = () => {
     dispatch(GetLikes());
     dispatch(GetDislikes());
     dispatch(getUsers());
-
     return () => {
       dispatch(clearState());
     };

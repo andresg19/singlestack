@@ -46,7 +46,7 @@ const AllFeedPosts = () => {
       {feedPosts.length
         ? feedPosts.map((post) => (
     
-            <div className="">
+            <div className="" key={post.id}>
               <div className="pt-5  ">
                 <div className="flex justify-between mb-2 mx-2">
                   <div className="flex -mt-2">
@@ -84,7 +84,7 @@ const AllFeedPosts = () => {
               <div className="grid text-white italic text-center w-[100%] lg:text-xs">
                 <span >Este posteo contiene archivos</span>
               </div>  :
-              <div  className="grid text-white italic text-center w-[100%]">
+              <div  className="grid text-white italic text-center w-[100%] lg:text-xs">
                 <span>No contiene archivos</span>
               </div>
 
@@ -125,9 +125,7 @@ const AllFeedPosts = () => {
             </div>
           ))
           : null}
-          <div className="mt-5 bg-black">
-          <Footer />
-          </div>
+          
     </div>
   );
 };
