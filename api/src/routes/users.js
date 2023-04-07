@@ -18,13 +18,16 @@ router.get("/", async (req, res) => {
 //CREATE USER
 router.post("/", async (req, res, next) => {
   try {
-    const { fullname, email, password } = req.body;
+    const { fullname, email, password, img} = req.body;
+
 
     /* const passHash = await encrypt(password); */
     const newUser = await Users.create({
       fullname,
       email,
       password,
+      img
+
     });
 
     res.send("User created");
@@ -58,6 +61,28 @@ router.post("/login", async (req, res, next) => {
     next(error);
   }
 });
+
+router.put("/", async (req, res, next) => {
+  try {
+    const { input } = req.body
+    console.log(input)
+    
+    const user = await Users.update({
+      fullname: input.fullname,
+      img: input.img,
+      password: input.password, 
+
+    },
+    {
+      where: {id: input.id},
+    });
+
+    res.status(200).send(user);
+
+  } catch (error) {
+    next(error);
+  }
+})
 
 //DELETE USER
 router.delete("/:id", async (req, res, next) => {

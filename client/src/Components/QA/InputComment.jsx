@@ -41,29 +41,29 @@ const InputComment = ({ postId }) => {
   };
 
   return (
-    <div className="justify-center ">
+    <div className="justify-center  mt-10 text-slate-200 font-light lg:w-[70%] lg:mx-auto">
       <div className="flex">
         <textarea
           name=""
           id=""
-          rows="10"
+          rows="5"
           cols="80"
           value={input.content}
-          placeholder="Escribe tu respuesta, cambia el mundo 😏"
-          className=" bg-[#1d2b50] shadow-lg rounded-b-lg outline-none mx-auto"
+          placeholder="Agrega un comentario..."
+          className=" bg-[#000000fd] shadow-sm shadow-[#151313] rounded-b-lg outline-none mx-auto lg:text-sm"
           onChange={(e) => setInput(e.target.value)}
         ></textarea>
       </div>
 
-      <div class="flex justify-center items-center w-[60%] ml-auto mr-auto mt-4">
+      <div class="flex justify-center items-center w-[100%] ml-auto mr-auto mt-4">
         <label
           for="dropzone-file"
-          class="flex flex-col justify-center items-center w-60 h-36 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+          class="flex flex-col justify-center items-center w-[80%] h-45 rounded-lg  cursor-pointer shadow-sm shadow-black box-shadow hover:bg-black  bg-[#191919] opacity-75 lg:w-[60%]"
         >
           <div class="flex flex-col justify-center items-center pt-5 pb-6">
             <svg
               aria-hidden="true"
-              class="mb-3 w-10 h-10 text-gray-400"
+              class="mb-3 w-10 h-10"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -80,6 +80,8 @@ const InputComment = ({ postId }) => {
               <span class="font-semibold">
                 Click para cargar tu captura del código
               </span>
+              <br />
+              <span class="font-light ">(seleccionar y cargar de a una imagen)</span>
             </p>
             <p class="text-xs text-gray-500 dark:text-gray-400">
               SVG, PNG, JPG or GIF
@@ -103,9 +105,9 @@ const InputComment = ({ postId }) => {
       <div className="flex justify-center mt-4 mb-2">
         <button
           onClick={handleSubmit}
-          className="bg-[#1e293b] rounded-md p-2 h-10 hover:bg-[#2B4046] hover:text-white hover:border-white hover:border"
+          className="bg-[#0a0d11] font-semibold rounded-md h-8 hover:bg-black text-[#ffffffdb]"
         >
-          Responder
+          Comentar
         </button>
       </div>
     </div>

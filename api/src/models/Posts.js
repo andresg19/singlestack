@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
     },
 
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
 
     author: {
@@ -24,6 +24,9 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
     img: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+    },
+    imgprofile: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
     },
   

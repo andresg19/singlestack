@@ -1,32 +1,41 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import { getPosts } from "../../Redux/Actions/Actions";
 
 const Questions = ({ handleSearch }) => {
   const dispatch = useDispatch();
-  const posteos = useSelector((state) => state.posts);
-  console.log(posteos)
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   useEffect(() => {
     dispatch(getPosts());
 
   }, []);
 
+
+  const handleUserControll = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      icon: 'warning',
+      text: 'Debe iniciar sesión para ver las preguntas'
+    })
+  }
+
   return (
-    <div className="mt-[6%] ml-[10%] text-xl max-h-[90vh] overflow-scroll scrollbar-hide">
+    <div className="h-[120vh] overflow-visible overflow-y-auto">
       {handleSearch.map((p) => {
         return (
           <div
             key={p.id}
-            className="bg-[#163250] mr-[3%] mb-[10%] text-white shadow-[#191919] shadow-lg"
+            className="text-white text-sm py-5 text-center shadow-sm shadow-[#2b5d6641] mt-[10%] bg-[#19191923]"
           >
-            <div className="flex justify-between">
-              <div className="ml-2 mt-2 font-thin">
+            <div className="flex justify-between italic">
+              <div className="ml-2 text-[#46899B] font-black">
                 {p.etiquetas?.map((e) => {
                   return `#${e} `;
                 })}
               </div>
-              <div className="flex mr-2 mt-2 font-bold">
+              <div className="flex mr-2 font-medium ">
                 {p.author}
 
                 <img
@@ -36,15 +45,23 @@ const Questions = ({ handleSearch }) => {
                 />
               </div>
             </div>
-            <div className="ml-[20%]">
+            <div className="ml-[10%]">
               {/* contenido */}
-              <h5>{p.title}</h5>
-              <h5 className="truncate mr-2">{p.content}</h5>
+              <h5 className="mt-5 underline">{p.title}</h5>
+
+              <h5 className="truncate mt-5">{p.content}</h5>
             </div>
             <div className="">
-              <p className="underline ml-[80%]">
-                <Link to={"/question/" + p.id}>Saber mas...</Link>
-              </p>
+            {currentUser ?
+              <button className="flex hover:text-blue-600 text-sm h-8 text-white font-semibold py-2 px-4 ml-auto rounded shadow">
+                <Link to={"/question/" + p.id}>Ver más...</Link>
+              </button>
+              :
+              <button className="flex text-sm h-8 text-white font-semibold py-2 px-4 ml-auto rounded shadow"
+              onClick={handleUserControll}>
+               Ver más...
+            </button>
+              }
             </div>
           </div>
         );

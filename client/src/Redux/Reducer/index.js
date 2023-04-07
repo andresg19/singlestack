@@ -25,6 +25,8 @@ import {
   FILTER_LIKES_FORO,
   FILTER_COMMENTS_FORO,
   FILTER_DATE_FORO,
+  SEARCH_FEEDPOST_ID,
+  PUT_PROFILE,
 } from "../Actions/ActionTypes";
 
 const initialState = {
@@ -36,10 +38,12 @@ const initialState = {
   likes: [],
   dislikes: [],
   feedPosts: [],
+  feedPostComments: [],
   feedComments: [],
   feedlikes: [],
   feeddislikes: [],
   feedPostFilter: [],
+  feedPostDetail: [],
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -75,6 +79,8 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
         postDetail: [],
         commentsDetail: [],
+        feedPostDetail: [],
+        feedPostComments: [],
       };
     case POST_COMMENT:
       return {
@@ -116,6 +122,13 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
         feedPosts: payload,
       };
+
+    case SEARCH_FEEDPOST_ID:
+        return {
+          ...state,
+          feedPostDetail: payload[0], 
+          feedPostComments: payload[1]
+        }
     case FILTER_LIKES_FORO: {
       return {
         ...state,
@@ -161,20 +174,14 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
       };
     }
-
-     case FILTER_FEED_POSTS: {
+    case PUT_PROFILE: {
       return {
         ...state,
-      }
-     }
-    case GET_POSTSRECIENTES: {
-      let copyState = state.posts.reverse();
-      console.log(copyState)
-      return {
-        ...state,
-        posts: [...copyState]
-      }
+      };
     }
+
+  
+   
   
   default:
     return state;

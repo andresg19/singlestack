@@ -39,11 +39,12 @@ const PostsForo = () => {
   };
 
   return (
-    <div>
+    <div className="text-slate-200 font-sans text-lg font-light">
+      <div className="sm:grid">
       <textarea
-        className="m-3 shadow-lg bg-[#aaabac5b] shadow-[#1919191c] rounded-b-lg "
-        rows="10"
-        cols="80"
+        className=" shadow-lg bg-[#0a0b0e] rounded-md  shadow-[#1919191c] rounded-b-lg sm:mx-auto lg:text-sm"
+        rows="5"
+        cols="30"
         name="content"
         placeholder="Contenido"
         value={input.content}
@@ -52,10 +53,12 @@ const PostsForo = () => {
         }}
       />
 
-      <div class="flex justify-center items-center w-[60%] mx-auto">
+      </div>
+
+      <div class="flex justify-center items-center mt-5 w-[100%] mx-auto lg:w-[30%] ">
         <label
           for="dropzone-file"
-          class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+          class="flex flex-col justify-center items-center w-[80%] h-54 rounded-lg shadow-sm shadow-black box-shadow hover:bg-black cursor-pointer bg-[#0a0b0e]"
         >
           <div class="flex flex-col justify-center items-center pt-5 pb-6">
             <svg
@@ -73,8 +76,10 @@ const PostsForo = () => {
                 d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
               ></path>
             </svg>
-            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-              <span class="font-semibold">Subir una imagen</span>
+            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+              <span className="font-semibold ml-4">Subir una imágen</span>
+              <br />
+              <span className="font-light">(Cargar de a una imágen)</span>
             </p>
             <p class="text-xs text-gray-500 dark:text-gray-400">
               SVG, PNG, JPG or GIF
@@ -89,14 +94,25 @@ const PostsForo = () => {
           />
         </label>
       </div>
-      {img ? <img src={img} alt="" width={25} /> : <p>No hay imagen</p>}
+     
+     
+      <div className="flex justify-around mt-4">
+      {imgArr?.map((i) => {
+          return <img src={i} alt="" className="w-32" />;
+        })}
+      
+      </div>
 
+      <div className="flex justify-center mt-4 mb-2">
       <button
-        className="text-sm bg-[#aaabac5b] shadow-lg shadow-[#19191980] w-[30%] mx-auto"
+        className="bg-[#070a13] hover:bg-[#030509] w-[16%] rounded-sm shadow-md shadow-[#000000] font-semibold text-[#ababae] text-sm ml-[1%] mt-8 lg:mt-0"
         onClick={handlePost}
       >
         Postear
       </button>
+      </div>
+
+
     </div>
   );
 };

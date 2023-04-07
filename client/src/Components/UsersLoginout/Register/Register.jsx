@@ -1,21 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../../Redux/Actions/Actions";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Swal from 'sweetalert2'
+import userwhite from "../../../assets/imgs/userWhite.png"
+import Nav from "../../NavBar/Nav"
+import Footer from "../../Footer/Footer"
 
 export function validate(input) {
   let errors = {};
 
   if (!input.fullname) {
-    errors.fullname = "Name is required";
+    errors.fullname = "Su nombre es requerido";
+  } 
+  else if (!/^[A-Z][a-zA-Z]{3,}(?: [A-Z][a-zA-Z]*){0,2}$/.test(input.fullname)) {
+    errors.fullname = "El nombre ingresado es invalido"
   }
   if (!input.email) {
-    errors.email = "Email is required";
+    errors.email = "Su email es requerido";
+  } 
+  else if (!/\S+@\S+\.\S+/.test(input.email)) {
+    errors.email = "Email inválido"
   }
   if (!input.password) {
-    errors.password = "Password is required";
+    errors.password = "La contraseña es requerida";
+  } 
+  else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(input.password)) {
+    errors.password = "Mínimo 8 caracteres, al menos una letra y un número"
   }
+
   return errors;
 }
 
@@ -23,14 +37,19 @@ const Register = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
+
   const [input, setInput] = useState({
     fullname: "",
     email: "",
     password: "",
+    img: [userwhite]
   });
   console.log(input);
 
   const [errors, setErrors] = useState({});
+
+  
+
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -43,6 +62,12 @@ const Register = () => {
     );
   };
 
+
+  
+  const handleNavigate = () => {
+    navigate('/login')
+  }
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     const errorsValidations = validate(input);
@@ -54,55 +79,97 @@ const Register = () => {
         email: "",
         password: "",
       });
-      navigate("/login");
+      Swal.fire({
+        icon: 'success',
+        text: 'Registro exitoso',
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload()
+      } 
+      
+    })
+      
+    } else {
+      Swal.fire({
+        icon: 'error',
+        text: 'Revise los campos',
+    })
     }
   };
   return (
-    <div className="mt-[5%] opacity-80 shadow-md shadow-[#0f0f0fbd] rounded-xl bg-black max-w-[40%] h-[60vh] ml-auto mr-auto">
-      <div className="flex w-[25%] p-1 text-gray-500 ml-auto mr-auto">
-        <h1>Ingrese sus datos</h1>
+    <div>
+
+    <Nav />
+    <div className="mt-[25%] bg-black shadow-md shadow-[#0f0f0fbd] rounded-xl w-[100%] h-[75vh] ml-auto mr-auto text-slate-200 font-sans font-light sm:mt-[10%] sm:h-[80vh] lg:mt-[7%]">
+      <div className="grid w-[90%] p-1 ml-auto mr-auto">
+        <h1 className="mx-auto text-slate-300 italic font-medium">Ingrese sus datos</h1>
       </div>
-      <form className="flex flex-col p-10 max-w-[50%] ml-auto mr-auto" onSubmit={handleSubmit}>
+      <form className="flex flex-col p-10 max-w-[90%] ml-auto mr-auto sm:w-[50%] lg:w-[30%] lg:text-sm" onSubmit={handleSubmit}>
         <input
           id="small-input" 
-          className="text-center block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="text-center block w-full p-2 bg-[#191919] rounded-md "
           type="text"
           autoComplete="off"
+          value={input.fullname}
           name="fullname"
-          placeholder="Harvey Specter"
+          placeholder="Nombre Apellido"
           onChange={handleChange}
         />
+        <p className="text-red-600">{errors.fullname}</p>
         <br />
         <input
           id="small-input" 
-          className="text-center block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="text-center block w-full p-2  bg-[#191919] rounded-md "
           type="text"
           autoComplete="off"
+          value={input.email}
           name="email"
-          placeholder="pearson@gmail.com"
+          placeholder="single@gmail.com"
           onChange={handleChange}
         />
+        <p className="text-red-600">{errors.email}</p>
         <br />
         <input
           id="small-input" 
-          className="text-center block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="text-center block w-full p-2  bg-[#191919] rounded-md "
           type="password"
           autoComplete="off"
+          value={input.password}
           name="password"
-          placeholder="password"
+          placeholder="contraseña"
           onChange={handleChange}
         />
+        <p className="text-red-600">{errors.password}</p>
         <br />
+        <input
+              id="dropzone"
+              type="dropzone"
+              class="hidden"
+              multiple
+              onChange
+            />
+
         <button 
-        className="text-sm bg-[#aaabac5b] shadow-lg shadow-[#19191980] w-[50%] mr-auto ml-auto" 
+        className="text-sm bg-[#191919] font-medium text-slate-300 hover:bg-[#060606] hover:text-slate-200 shadow-sm shadow-[#1d1d1de6] w-[50%] mr-auto ml-auto" 
         type="submit">
-          Confirm
+          Confirmar
           </button>
+          <p className="underline mt-8 mx-auto font-normal text-[#0a0ac5]">
+            Ya tienes una cuenta?
+          </p>
+      <button 
+        className="text-xs mt-3 bg-[#191919] font-medium text-[#dddde2df] hover:bg-[#060606] hover:text-slate-200 shadow-sm shadow-[#1d1d1de6] w-[35%] mr-auto ml-auto"
+        onClick={handleNavigate} 
+        type="submit">
+          Iniciar sesión
+      </button>
+        <h1 className="mx-auto mt-12 text-slate-500 italic font-medium lg:mt-5">singlestack</h1>
       </form>
-      <div className="w-[30%] text-gray-900 p-10 ml-auto mr-auto">
-        <h1>singlestack</h1>
-      </div>
     </div>
+    <Footer />
+    </div>
+
   );
 };
 

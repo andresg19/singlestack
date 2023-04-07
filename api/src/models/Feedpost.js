@@ -10,11 +10,11 @@ module.exports = (sequelize) => {
     },
 
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
 
     author: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
 
     img: {
@@ -22,6 +22,11 @@ module.exports = (sequelize) => {
     },
 
     likes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+
+    dislikes: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
