@@ -53,10 +53,12 @@ router.post("/", async (req, res) => {
   console.log(req.body);
 
   try {
-    let posts = await Feedposts.create({
-      content,
-      author,
-      img,
+    let posts = await Feedposts.findOrCreate({
+      where: {
+        content,
+        author,
+        img,
+      },
     });
     res.status(200).json(posts); // este if es porque me molesta el created sin usar
   } catch (error) {
