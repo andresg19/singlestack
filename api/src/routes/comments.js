@@ -31,7 +31,14 @@ router.post("/", async (req, res) => {
   let { content, author, postId, img } = req.body;
   console.log(req.body.img.length);
   try {
-    let comment = await Comments.create({ content, author, postId, img });
+    let comment = await Comments.findOrCreate({
+      where: {
+        content,
+        author,
+        postId,
+        img,
+      },
+    });
     res.status(200).json(comment);
   } catch (err) {
     console.log(err);

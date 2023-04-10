@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { ScrollToTop } from 'react-scroll-to-top';
 import {
   searchPost,
   clearState,
@@ -66,6 +67,7 @@ const Question = () => {
     dispatch(GetLikes());
     dispatch(GetDislikes());
     dispatch(getUsers());
+    window.scrollTo(0,0)
     return () => {
       dispatch(clearState());
     };
@@ -94,6 +96,7 @@ const Question = () => {
 
 
   return (
+    
     <div className="text-slate-200 font-sans font-normal leading-loose">
       <Nav />
       <Link to="/q-a">
@@ -120,7 +123,7 @@ const Question = () => {
         </div>
 
         <div className="w-[100%] ml-auto mr-auto mt-2 m-7 rounded-[8px] text-center">
-          <h1 className=" ml-auto mr-auto text-lg underline ">
+          <h1 className=" ml-auto mr-auto text-lg underline">
             {currentPost.title}
           </h1>
           <div className="block  mt-5 mb-2 mx-10 ml-auto mr-auto ">
