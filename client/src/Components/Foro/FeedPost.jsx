@@ -48,6 +48,7 @@ const FeedPost = () => {
 
   //console.log("dislikes", dislikes);
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(getFeedLikes());
     dispatch(getFeedDislikes());
     dispatch(searchFeedPost(id));

@@ -16,19 +16,19 @@ import Loading from "../loadPage";
 const Qa = () => {
   const dispatch = useDispatch();
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  const posts = useSelector((state) => state.posts)
-  console.log(posts)
+  const posts = useSelector((state) => state.posts);
+  console.log(posts);
 
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    dispatch(getPosts)
+    window.scrollTo(0, 0);
+    dispatch(getPosts);
   })
 
   const handleTagFilter = (e) => {
     e.preventDefault();
     let tag = e.target.attributes.getNamedItem("value").value; // o.O
-    console.log(tag)
     dispatch(searchByTag(tag));
   };
 
