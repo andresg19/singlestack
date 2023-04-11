@@ -132,7 +132,7 @@ export const clearState = () => {
 export const postComment = (payload) => {
   return async function (dispatch) {
     try {
-      let result = await axios.post(`https://singlestack-production.up.railway.app/comments`, payload);
+      let result = await axios.post("https://singlestack-production.up.railway.app/comments", payload);
 
       return dispatch({
         type: POST_COMMENT,
@@ -386,7 +386,7 @@ export const postFeedComments = (payload) => {
   return async function (dispatch) {
     try {
       let result = await axios.post(
-        `https://singlestack-production.up.railway.app/feedcomments`,
+        "https://singlestack-production.up.railway.app/feedcomments",
         payload
       );
 
