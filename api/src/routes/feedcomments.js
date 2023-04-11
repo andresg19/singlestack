@@ -16,18 +16,12 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   let { author, feedPostId, content } = req.body;
   try {
-    let comment = await Feedcomments.findOrCreate({
-      where: {
-        author,
-        content,
-        feedPostId,
-      },
-    });
+    let [comment, created] = await Feedcomments.create({ author, feedPostId, content });
     let newCommentInPost = await Feedposts.increment("comments", {
       by: 1,
       where: { id: feedPostId },
     });
-    res.status(200).json(comment);
+    created ? res.status(200).json(comment) : null;
   } catch (error) {
     console.log(error);
   }
