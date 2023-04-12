@@ -8,6 +8,7 @@ import { feedAllComments } from "./../../Redux/Actions/Actions";
 import  AllFeedPosts  from "./AllFeedPosts"
 import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import websitecons from "../../assets/imgs/websitecons.jpg"
 
 
 
@@ -56,7 +57,9 @@ const Foro = () => {
   return (
     <div>
       <Nav />
-      <div className="flex w-[80%] h-[10vh] bg-[#0a0b0e85] ml-auto mr-auto mt-[30%] rounded-xl shadow-md shadow-[#0f0f0fbd] sm:mt-[15%] sm:w-[50%] lg:w-[35%] lg:mt-[6%]">
+      <img src={websitecons} alt="" />
+
+      {/* <div className="flex w-[80%] h-[10vh] bg-[#0a0b0e85] ml-auto mr-auto mt-[30%] rounded-xl shadow-md shadow-[#0f0f0fbd] sm:mt-[15%] sm:w-[50%] lg:w-[35%] lg:mt-[6%]">
      { actualUser?  <img
           src={actualUser.img}
           alt="not found"
@@ -135,7 +138,7 @@ const Foro = () => {
       </div>
       <div className="mt-5 bg-black">
           <Footer />
-          </div>
+          </div> */}
 
     </div>
   );
