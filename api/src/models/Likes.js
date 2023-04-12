@@ -15,10 +15,10 @@ module.exports = (sequelize) => {
         defaultValue: 0,
       },
       commentId: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       userId: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       
     },
