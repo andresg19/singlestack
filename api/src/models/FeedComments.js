@@ -14,10 +14,10 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
       },
       author: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       feedPostId: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
     },
     { timestamp: true }
