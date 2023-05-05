@@ -14,12 +14,14 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
+
       postId: {
         type: DataTypes.TEXT,
       },
       userId: {
         type: DataTypes.TEXT,
       },
+
     },
     { timestamp: true }
   );

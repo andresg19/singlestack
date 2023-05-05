@@ -19,6 +19,7 @@ module.exports = (sequelize) => {
       postId: {
         type: DataTypes.TEXT,
       },
+      
       img: {
         type: DataTypes.ARRAY(DataTypes.TEXT),
       },

@@ -41,7 +41,17 @@ const Login = () => {
         } 
         
       })
-  } 
+  } else if (!input.email || !input.password || u.email !== input.email || u.password !== input.password) {
+    Swal.fire({
+      icon: 'error',
+      text: 'Revise los datos ingresados',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      null 
+    } 
+    
+  })
+  }
 });
   };
       

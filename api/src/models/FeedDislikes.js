@@ -14,12 +14,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
-      postId: {
-        type: DataTypes.STRING,
-      },
-      userId: {
-        type: DataTypes.STRING,
-      },
+
     },
     { timestamp: true }
   );

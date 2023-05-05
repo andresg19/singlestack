@@ -31,6 +31,8 @@ import {
   PUT_PROFILE,
 } from "../Actions/ActionTypes";
 
+
+
 export const getUsers = (payload) => {
   return async function (dispatch) {
     console.log("entre");
@@ -130,6 +132,7 @@ export const clearState = () => {
 };
 
 export const postComment = (payload) => {
+  console.log('entre')
   return async function (dispatch) {
     try {
       let result = await axios.post("https://singlestack-production.up.railway.app/comments", payload);
