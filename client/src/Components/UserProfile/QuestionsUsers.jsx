@@ -38,7 +38,7 @@ const QuestionsUsers = () => {
                 {q.title}
                 </h1>
               <p
-              className="mt-3 text-sm lg:text-xs"
+              className="break-all w-[90%] mx-auto mt-3 text-sm lg:text-xs"
               >
                 {q.content}
                 </p>

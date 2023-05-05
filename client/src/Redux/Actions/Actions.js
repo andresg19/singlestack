@@ -35,7 +35,7 @@ export const getUsers = (payload) => {
   return async function (dispatch) {
     console.log("entre");
     try {
-      let result = await axios.get("https://singlestack-production.up.railway.app/users");
+      let result = await axios.get("http://localhost:3001/users");
       return dispatch({
         type: GET_USERS,
         payload: result.data,
@@ -50,7 +50,7 @@ export const getUsers = (payload) => {
 //   return async function () {
 //     try {
 //       console.log('entre')
-//       let fnLogin = await axios.post('https://singlestack-production.up.railway.app/users/login', payload);
+//       let fnLogin = await axios.post('http://localhost:3001/users/login', payload);
 //       return {
 //         fnLogin,
 //       }
@@ -72,7 +72,7 @@ export const userLogged = (payload) => {
 export const register = (payload) => {
   return async function () {
     console.log("entre");
-    let data = axios.post("https://singlestack-production.up.railway.app/users", payload);
+    let data = axios.post("http://localhost:3001/users", payload);
     return {
       data,
     };
@@ -83,7 +83,7 @@ export const getPosts = () => {
 
   return async function (dispatch) {
     try {
-      let result = await axios.get("https://singlestack-production.up.railway.app/posts");
+      let result = await axios.get("http://localhost:3001/posts");
       return dispatch({
         type: GET_POSTS,
         payload: result.data,
@@ -97,7 +97,7 @@ export const getPosts = () => {
 export const postPost = (payload) => {
   return async function (dispatch) {
     try {
-      let result = await axios.post("https://singlestack-production.up.railway.app/posts", payload);
+      let result = await axios.post("http://localhost:3001/posts", payload);
 
       return dispatch({
         type: POST_POSTS,
@@ -111,7 +111,7 @@ export const postPost = (payload) => {
 export const searchPost = (id) => {
   return async function (dispatch) {
     try {
-      let result = await axios.get(`https://singlestack-production.up.railway.app/posts/${id}`);
+      let result = await axios.get(`http://localhost:3001/posts/${id}`);
       console.log("result.data", result.data);
       return dispatch({
         type: SEARCH_BY_ID,
@@ -130,10 +130,11 @@ export const clearState = () => {
 };
 
 export const postComment = (payload) => {
+  console.log('entre')
   return async function (dispatch) {
     try {
-      let result = await axios.post("https://singlestack-production.up.railway.app/comments", payload);
-
+      let result = await axios.post("http://localhost:3001/comments", payload);
+      console.log('result action', result)
       return dispatch({
         type: POST_COMMENT,
       });
@@ -146,7 +147,7 @@ export const postComment = (payload) => {
 export const searchByTag = (tag) => {
   return async function (dispatch) {
     try {
-      let result = await axios.get(`https://singlestack-production.up.railway.app/posts/ematch/${tag}`);
+      let result = await axios.get(`http://localhost:3001/posts/ematch/${tag}`);
       return dispatch({
         type: SEARCH_TAG,
         payload: result.data,
@@ -160,7 +161,7 @@ export const searchByTag = (tag) => {
 export const GetLikes = () => {
   return async function (dispatch) {
     try {
-      let result = await axios.get(`https://singlestack-production.up.railway.app/likes`);
+      let result = await axios.get(`http://localhost:3001/likes`);
       return dispatch({
         type: ALL_LIKES,
         payload: result.data,
@@ -174,7 +175,7 @@ export const GetLikes = () => {
 export const GetDislikes = () => {
   return async function (dispatch) {
     try {
-      let result = await axios.get(`https://singlestack-production.up.railway.app/dislikes`);
+      let result = await axios.get(`http://localhost:3001/dislikes`);
       return dispatch({
         type: ALL_DISLIKES,
         payload: result.data,
@@ -189,7 +190,7 @@ export const likeComment = (commentId, userId) => {
   return async function (dispatch) {
     try {
       console.log("entre al action");
-      let result = await axios.put("https://singlestack-production.up.railway.app/likes/" + commentId, {
+      let result = await axios.put("http://localhost:3001/likes/" + commentId, {
         userId,
       });
       return dispatch({
@@ -206,7 +207,7 @@ export const dislikeComment = (commentId, userId) => {
     try {
       console.log("entre al dislike action");
       let result = await axios.put(
-        "https://singlestack-production.up.railway.app/dislikes/" + commentId,
+        "http://localhost:3001/dislikes/" + commentId,
         { userId }
       );
       return dispatch({
@@ -222,7 +223,7 @@ export const getFeedPosts = () => {
   return async function (dispatch) {
 
     try {
-      let result = await axios.get("https://singlestack-production.up.railway.app/feedposts");
+      let result = await axios.get("http://localhost:3001/feedposts");
       return dispatch({
         type: GET_FEEDPOSTS,
         payload: result.data,
@@ -237,7 +238,7 @@ export const searchFeedPost = (id) => {
   return async function (dispatch) {
     console.log('entre')
     try {
-      let result = await axios.get('https://singlestack-production.up.railway.app/feedposts/' + id);
+      let result = await axios.get('http://localhost:3001/feedposts/' + id);
       console.log(result.data)
       return dispatch({
         type: SEARCH_FEEDPOST_ID,
@@ -253,7 +254,7 @@ export const searchFeedPost = (id) => {
 export const filterLikesForo = () => {
   return async function (dispatch) {
     try {
-      let result = await axios.get("https://singlestack-production.up.railway.app/feedposts/likes");
+      let result = await axios.get("http://localhost:3001/feedposts/likes");
       return dispatch({
         type: FILTER_LIKES_FORO,
         payload: result.data,
@@ -267,7 +268,7 @@ export const filterLikesForo = () => {
 export const filterCommentsForo = () => {
   return async function (dispatch) {
     try {
-      let result = await axios.get("https://singlestack-production.up.railway.app/feedposts/comments");
+      let result = await axios.get("http://localhost:3001/feedposts/comments");
       return dispatch({
         type: FILTER_COMMENTS_FORO,
         payload: result.data,
@@ -281,7 +282,7 @@ export const filterCommentsForo = () => {
 export const filterDateForo = () => {
   return async function (dispatch) {
     try {
-      let result = await axios.get("https://singlestack-production.up.railway.app/feedposts/date");
+      let result = await axios.get("http://localhost:3001/feedposts/date");
       return dispatch({
         type: FILTER_DATE_FORO,
         payload: result.data,
@@ -297,7 +298,7 @@ export const filterDateForo = () => {
 export const postFeedPosts = (payload) => {
   return async function (dispatch) {
     try {
-      let posteo = await axios.post("https://singlestack-production.up.railway.app/feedposts", payload);
+      let posteo = await axios.post("http://localhost:3001/feedposts", payload);
       return dispatch({
         type: POST_FEEDPOSTS,
       });
@@ -311,7 +312,7 @@ export const feedAllComments = () => {
   //get
   return async function (dispatch) {
     try {
-      let result = await axios.get("https://singlestack-production.up.railway.app/feedcomments");
+      let result = await axios.get("http://localhost:3001/feedcomments");
       return dispatch({
         type: FEEDCOMMENTS,
         payload: result.data,
@@ -325,7 +326,7 @@ export const feedAllComments = () => {
 export const getFeedLikes = () => {
   return async function (dispatch) {
     try {
-      let result = await axios.get("https://singlestack-production.up.railway.app/feedlikes");
+      let result = await axios.get("http://localhost:3001/feedlikes");
       return dispatch({
         type: GETLIKES,
         payload: result.data,
@@ -339,7 +340,7 @@ export const getFeedLikes = () => {
 export const getFeedDislikes = () => {
   return async function (dispatch) {
     try {
-      let result = await axios.get("https://singlestack-production.up.railway.app/feeddislikes");
+      let result = await axios.get("http://localhost:3001/feeddislikes");
       return dispatch({
         type: GETDISLIKES,
         payload: result.data,
@@ -354,7 +355,7 @@ export const feedLikes = (postId, userId) => {
   return async function (dispatch) {
     try {
       let result = await axios.put(
-        "https://singlestack-production.up.railway.app/feedlikes/" + postId,
+        "http://localhost:3001/feedlikes/" + postId,
         { userId }
       );
       return dispatch({
@@ -370,7 +371,7 @@ export const feedDislikes = (postId, userId) => {
   return async function (dispatch) {
     try {
       let result = await axios.put(
-        "https://singlestack-production.up.railway.app/feeddislikes/" + postId,
+        "http://localhost:3001/feeddislikes/" + postId,
         { userId }
       );
       return dispatch({
@@ -386,7 +387,7 @@ export const postFeedComments = (payload) => {
   return async function (dispatch) {
     try {
       let result = await axios.post(
-        "https://singlestack-production.up.railway.app/feedcomments",
+        "http://localhost:3001/feedcomments",
         payload
       );
 
@@ -416,7 +417,7 @@ export const putProfile = (input) => {
   return async function (dispatch) {
     try {
       console.log('entre')
-      const result = await axios.put("https://singlestack-production.up.railway.app/users",
+      const result = await axios.put("http://localhost:3001/users",
       {input});
       console.log(result.data)
       return dispatch({

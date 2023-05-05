@@ -43,6 +43,7 @@ const Question = () => {
   console.log(currentPost)
   const currentComments = useSelector((state) => state.commentsDetail);
   const initialComments = currentComments.slice(0, 1);
+  console.log(initialComments)
   console.log(initialComments);
   const [moreComments, setMoreComments] = useState(false);
   const likes = useSelector((state) => state.likes);
@@ -67,7 +68,7 @@ const Question = () => {
     dispatch(GetLikes());
     dispatch(GetDislikes());
     dispatch(getUsers());
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
     return () => {
       dispatch(clearState());
     };
