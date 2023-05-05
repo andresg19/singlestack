@@ -15,12 +15,12 @@ module.exports = (sequelize) => {
         defaultValue: 0,
       },
       commentId: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
       },
       userId: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
       },
-      
+
     },
     { timestamp: true }
   );

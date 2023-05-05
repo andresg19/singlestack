@@ -16,9 +16,7 @@ module.exports = (sequelize) => {
       author: {
         type: DataTypes.TEXT,
       },
-      feedPostId: {
-        type: DataTypes.TEXT,
-      },
+
     },
     { timestamp: true }
   );

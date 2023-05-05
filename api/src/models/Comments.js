@@ -17,8 +17,9 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
       postId: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
       },
+      
       img: {
         type: DataTypes.ARRAY(DataTypes.TEXT),
       },
