@@ -136,7 +136,7 @@ export const postComment = (payload) => {
   return async function (dispatch) {
     try {
       let result = await axios.post("https://singlestack-production.up.railway.app/comments", payload);
-      console.log('result action', result)
+
       return dispatch({
         type: POST_COMMENT,
       });

@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
       postId: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       
       img: {

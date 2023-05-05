@@ -15,6 +15,12 @@ module.exports = (sequelize) => {
         defaultValue: 0,
       },
 
+      postId: {
+        type: DataTypes.TEXT,
+      },
+      userId: {
+        type: DataTypes.TEXT,
+      },
 
     },
     { timestamp: true }
