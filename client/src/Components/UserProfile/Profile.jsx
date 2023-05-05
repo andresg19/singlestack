@@ -54,7 +54,7 @@ const Profile = () => {
         onClick={() => setSectionUser('questions')}>Ver mis preguntas</p>
         <p
         className="cursor-pointer text-[#0000ffa3] text-sm font-bold "
-        onClick={() => setSectionUser('posts')}
+        // onClick={() => setSectionUser('posts')}
         >Ver mis publicaciones</p>
       </div>
       <div className="m-[10%] ml-auto mr-auto py-4 text-[#0000ffa3] text-sm font-bold text-center">

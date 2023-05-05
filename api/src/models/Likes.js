@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
       userId: {
         type: DataTypes.STRING,
       },
-      
+
     },
     { timestamp: true }
   );

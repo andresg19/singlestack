@@ -35,9 +35,10 @@ const InputComment = ({ postId }) => {
     console.log(img);
     fullComment.content = input;
     fullComment.img = imgArr;
-    console.log(fullComment);
     dispatch(postComment(fullComment));
+    window.scrollTo(0, 0);
     window.location.reload();
+
   };
 
   return (
